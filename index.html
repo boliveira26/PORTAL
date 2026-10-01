@@ -3,125 +3,173 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>CONMEBOL PES | Portal Oficial de Competições</title>
-    <!-- CSS PRINCIPAL -->
-    <link rel="stylesheet" href="assets/css/index.css?v=22">
+    <title>CONMEBOL PES | Portal Oficial</title>
+    <!-- CSS DO PORTAL -->
+    <link rel="stylesheet" href="assets/css/index.css?v=31">
     <!-- ESTILO DO PLAYER DE ÁUDIO -->
-    <link rel="stylesheet" href="assets/css/audio-player.css?v=29">
+    <link rel="stylesheet" href="assets/css/audio-player.css?v=30">
 </head>
-<body class="tema-portal">
+<body class="portal-ge-conmebol">
 
-    <!-- 1. BARRA DE NAVEGAÇÃO SUPERIOR OFICIAL -->
-    <header id="cabecalho-portal">
-        <div class="nav-container">
-            <div class="brand-logo">
-                <span class="tag-confederacao-mini">CONMEBOL</span>
-                <span class="tag-pes-mini">PES</span>
+    <!-- 1. BARRA SUPERIOR INSTITUCIONAL (ESTILO CONMEBOL OFICIAL) -->
+    <div class="topbar-conmebol">
+        <div class="topbar-container">
+            <div class="bloco-marca-conmebol">
+                <span class="logo-conmebol-txt">CONMEBOL</span>
+                <span class="slogan-topo">Acredite sempre.</span>
             </div>
-            
-            <nav class="nav-menu">
-                <a href="index.html" class="nav-link ativo">Início</a>
-                <a href="fase-de-grupos.html" class="nav-link">Fase de Grupos</a>
-                <a href="libertadores-oficial.html" class="nav-link link-liberta">Libertadores</a>
-                <a href="sulamericana-oficial.html" class="nav-link link-sula">Sul-Americana</a>
-                <a href="chaveamento-libertadores.html" class="nav-link">Mata-Mata</a>
+            <div class="destaque-topo-ticker">
+                <span class="tag-noticia-topo" id="ticker-top-tag">NOTÍCIA DESTACADA</span>
+                <span class="texto-noticia-topo" id="ticker-top-texto">6ª Rodada da Fase de Grupos define classificados e vagas na Sul-Americana</span>
+            </div>
+            <div class="links-topo-extra">
+                <span class="link-item-topo">PES MEDIA HUB</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. NAVBAR PRINCIPAL -->
+    <header id="cabecalho-principal">
+        <div class="navbar-container">
+            <div class="logo-area">
+                <a href="index.html" class="brand-portal">
+                    <span class="logo-pes-destaque">PES</span>
+                    <span class="logo-conmebol-sec">CONMEBOL</span>
+                </a>
+            </div>
+
+            <nav class="nav-links-menu">
+                <a href="index.html" class="nav-item ativo">Início</a>
+                <a href="fase-de-grupos.html" class="nav-item">Fase de Grupos</a>
+                <a href="libertadores.html" class="nav-item liberta-cor">Libertadores</a>
+                <a href="sulamericana.html" class="nav-item sula-cor">Sul-Americana</a>
             </nav>
         </div>
     </header>
 
-    <!-- 2. FAIXA DE JOGOS DINÂMICA (JOGOS DO DIA / DATA MAIS PRÓXIMA) -->
-    <section class="ticker-jogos">
+    <!-- 3. FAIXA DE JOGOS DINÂMICA (MATCH TICKER) -->
+    <section class="ticker-jogos-ge">
         <div class="ticker-lista" id="ticker-lista">
             <!-- Gerado dinamicamente pelo ticker.js -->
         </div>
     </section>
 
-    <!-- 3. CONTEÚDO PRINCIPAL DO PORTAL -->
-    <main id="conteudo-principal">
+    <!-- 4. CONTEÚDO PRINCIPAL DO PORTAL -->
+    <main id="corpo-portal">
 
-        <!-- PAINEL DE DESTAQUE BROADCAST -->
-        <section class="secao-destaque-broadcast">
-            <article class="banner-principal-destaque">
-                <div class="conteudo-banner">
-                    <span class="tag-categoria-banner">FASE DECISIVA NO PES</span>
-                    <h2>A Glória Eterna e A Grande Conquista: Quadro Oficial do Mata-Mata</h2>
-                    <p>Acompanhe todos os resultados, tabelas de classificação da fase de grupos e os chaveamentos das grandes finais continentais.</p>
-                    <div class="links-rapidos-banner">
-                        <a href="fase-de-grupos.html" class="btn-banner-link ouro">Ver Fase de Grupos &rarr;</a>
-                        <a href="libertadores-oficial.html" class="btn-banner-link ouro">Mata-Mata Libertadores</a>
-                        <a href="sulamericana-oficial.html" class="btn-banner-link prata">Sul-Americana</a>
+        <!-- GRID DE MANCHETES PRINCIPAIS (NOTICIAS.JSON) -->
+        <section class="secao-hero-ge">
+            <!-- Manchete Principal (Grande à Esquerda) -->
+            <article class="manchete-hero-grande" id="hero-destaque-principal">
+                <div class="imagem-hero-bg" style="background-image: linear-gradient(to top, rgba(5,7,10,0.95) 15%, rgba(5,7,10,0.3) 70%), url('https://admin.cnnbrasil.com.br/wp-content/uploads/sites/12/2025/03/taca-libertadores-e1742232529519.jpeg?w=1200&h=675&crop=1');">
+                    <div class="conteudo-hero">
+                        <span class="badge-categoria-hero ouro">CONMEBOL LIBERTADORES</span>
+                        <h2>6ª Rodada Decisiva: Quem garante liderança no Pote 1 e quem vai para a Sul-Americana?</h2>
+                        <p>Última rodada da fase de grupos define os 16 classificados às Oitavas de Final e os 16 times que entram direto na Sul-Americana.</p>
+                        <div class="botoes-hero-links">
+                            <a href="fase-de-grupos.html" class="btn-hero primario">Tabela de Grupos &rarr;</a>
+                        </div>
                     </div>
                 </div>
             </article>
+
+            <!-- Coluna de Manchetes Secundárias (À Direita) -->
+            <div class="coluna-hero-secundaria" id="hero-destaques-secundarios">
+                
+                <!-- Manchete Secundária com Imagem da Sul-Americana -->
+                <article class="card-hero-menor com-imagem" style="background-image: linear-gradient(to top, rgba(5,7,10,0.95) 30%, rgba(5,7,10,0.45) 100%), url('https://img.band.com.br/image/2025/10/10/trofeu-da-sul-americana-13580.jpg');">
+                    <div class="conteudo-card-menor">
+                        <span class="badge-categoria-hero azul">SUL-AMERICANA</span>
+                        <h3>3º e 4º colocados da Libertadores caem direto para as Oitavas da Sula</h3>
+                        <p>Sem repescagem: 16 eliminados da Liberta iniciam a disputa da Grande Conquista na fase eliminatória.</p>
+                    </div>
+                </article>
+
+                <article class="card-hero-menor">
+                    <div class="conteudo-card-menor">
+                        <span class="badge-categoria-hero neutro">CRITÉRIOS OFICIAIS</span>
+                        <h3>Confronto Direto e Saldo de Gols: Como funciona o desempate no PES</h3>
+                        <p>Entenda a ordem dos critérios de desempate duplo, triplo e quádruplo aplicados na classificação.</p>
+                    </div>
+                </article>
+            </div>
         </section>
 
-        <!-- DIVISOR DE SEÇÃO -->
-        <div class="divisor-secao">
-            <span class="linha-marcador-ouro"></span>
-            <h2 class="titulo-secao-competicoes">CENTRAL DAS COMPETIÇÕES</h2>
-            <span class="linha-marcador-ouro"></span>
-        </div>
+        <!-- CENTRAL DAS COMPETIÇÕES -->
+        <section class="secao-centrais-copas">
+            <div class="divisor-titulo-secao">
+                <span class="linha-dourada"></span>
+                <h2>CENTRAL DAS COMPETIÇÕES</h2>
+                <span class="linha-dourada"></span>
+            </div>
 
-        <!-- 4. OS DOIS CARDS OFICIAIS METÁLICOS LAPIDADOS -->
-        <section class="container-selecao-copa">
+            <div class="grid-cards-copas">
+                <!-- CARD LIBERTADORES -->
+                <article class="card-competicao liberta-tema">
+                    <div class="glow-topo-card"></div>
+                    <div class="emblema-card">
+                        <img src="https://www.ogol.com.br/img/logos/edicoes/130437_imgbank_.png" alt="CONMEBOL Libertadores">
+                    </div>
+                    <div class="info-card-texto">
+                        <span class="sub-chancela">COMPETIÇÃO OFICIAL</span>
+                        <h3>CONMEBOL Libertadores</h3>
+                        <span class="slogan-torneio ouro">A GLÓRIA ETERNA</span>
+                    </div>
+                    <div class="botoes-card-acoes">
+                        <a href="fase-de-grupos.html" class="btn-card ouro-btn">Tabela &amp; Classificação</a>
+                        <a href="libertadores.html" class="btn-card ouro-outline">Portal Libertadores</a>
+                    </div>
+                </article>
 
-            <!-- CARD CONMEBOL LIBERTADORES -->
-            <article class="card-copa libertadores">
-                <span class="faixa-topo-card">COMPETIÇÃO OFICIAL</span>
-                
-                <div class="emblema-copa">
-                    <img src="https://www.ogol.com.br/img/logos/edicoes/130437_imgbank_.png" alt="CONMEBOL Libertadores">
-                </div>
-                
-                <div class="bloco-info-card">
-                    <h2>CONMEBOL Libertadores</h2>
-                    <span class="slogan-card">A GLÓRIA ETERNA</span>
-                </div>
+                <!-- CARD SUL-AMERICANA -->
+                <article class="card-competicao sula-tema">
+                    <div class="glow-topo-card"></div>
+                    <div class="emblema-card">
+                        <img src="https://www.ogol.com.br/img/logos/competicoes/269_imgbank_cs_20250311124354.png" alt="CONMEBOL Sudamericana">
+                    </div>
+                    <div class="info-card-texto">
+                        <span class="sub-chancela">COMPETIÇÃO OFICIAL</span>
+                        <h3>CONMEBOL Sudamericana</h3>
+                        <span class="slogan-torneio azul">A GRANDE CONQUISTA</span>
+                    </div>
+                    <div class="botoes-card-acoes">
+                        <a href="fase-de-grupos.html" class="btn-card azul-btn">Tabela &amp; Classificação</a>
+                        <a href="sulamericana.html" class="btn-card azul-outline">Portal Sul-Americana</a>
+                    </div>
+                </article>
+            </div>
+        </section>
 
-                <div class="acoes-card">
-                    <a href="fase-de-grupos.html" class="btn-copa btn-primario-liberta">
-                        Fase de Grupos &rarr;
-                    </a>
-                    <a href="libertadores-oficial.html" class="btn-copa btn-secundario-liberta">
-                        Mata-Mata Oficial
-                    </a>
+        <!-- 5. SEÇÃO DE NOTÍCIAS EM GRADE EXPANDIDA (INFORMATIVAS) -->
+        <section class="secao-noticias-conmebol">
+            <div class="cabecalho-noticias-conmebol">
+                <div>
+                    <span class="sub-tag-noticias">COBERTURA COMPLETA PES</span>
+                    <h2>ÚLTIMAS NOTÍCIAS DA RODADA</h2>
                 </div>
-            </article>
+            </div>
 
-            <!-- CARD CONMEBOL SUDAMERICANA -->
-            <article class="card-copa sulamericana">
-                <span class="faixa-topo-card">COMPETIÇÃO OFICIAL</span>
-                
-                <div class="emblema-copa">
-                    <img src="https://www.ogol.com.br/img/logos/competicoes/269_imgbank_cs_20250311124354.png" alt="CONMEBOL Sudamericana">
-                </div>
-                
-                <div class="bloco-info-card">
-                    <h2>CONMEBOL Sudamericana</h2>
-                    <span class="slogan-card">A GRANDE CONQUISTA</span>
-                </div>
-
-                <div class="acoes-card">
-                    <a href="sulamericana-oficial.html" class="btn-copa btn-primario-sula">
-                        Quadro Oficial &rarr;
-                    </a>
-                    <a href="chaveamento-sulamericana.html" class="btn-copa btn-secundario-sula">
-                        Chaveamento do Torneio
-                    </a>
-                </div>
-            </article>
-
+            <div class="grid-quatro-noticias" id="grid-ultimas-noticias">
+                <!-- Injetado dinamicamente pelo noticias.js (8 notícias completas) -->
+            </div>
         </section>
 
     </main>
 
-    <!-- RODAPÉ OFICIAL -->
-    <footer id="rodape">
-        <p>CONMEBOL &copy; Portal Oficial de Acompanhamento PES</p>
+    <!-- 6. RODAPÉ INSTITUCIONAL -->
+    <footer id="rodape-institucional">
+        <div class="rodape-bloco-topo">
+            <h3 class="slogan-rodape-conmebol">ACREDITE SEMPRE</h3>
+            <span class="sub-rodape">CONMEBOL PES &bull; Portal Oficial de Competições Continentais</span>
+        </div>
+        <div class="rodape-copyright">
+            <p>CONMEBOL &copy; Todos os direitos reservados &bull; Acompanhamento Oficial PES</p>
+        </div>
     </footer>
 
     <!-- SCRIPTS -->
-    <script src="assets/js/ticker.js?v=22"></script>
-    <script src="assets/js/audio-player.js?v=29"></script>
+    <script src="assets/js/ticker.js?v=31"></script>
+    <script src="assets/js/noticias.js?v=31"></script>
+    <script src="assets/js/audio-player.js?v=30"></script>
 </body>
 </html>

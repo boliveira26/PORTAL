@@ -1,6 +1,51 @@
 // ==========================================================================
-// assets/js/ticker.js - MOTOR DINÂMICO COM DATA/HORA E ESTÁDIO SEPARADOS
+// assets/js/ticker.js - MOTOR DINÂMICO MATCH TICKER OFICIAL CONMEBOL
 // ==========================================================================
+
+// Mapeamento de escudos dos clubes da competição
+const ESCUDOS_CLUBES = {
+    "Atlético Mineiro": "https://logodetimes.com/times/atletico-mineiro/logo-atletico-mineiro-256.png",
+    "Flamengo": "https://logodetimes.com/times/flamengo/logo-flamengo-256.png",
+    "Bolívar": "https://logodetimes.com/times/bolivar/logo-bolivar-256.png",
+    "Sporting Cristal": "https://logodetimes.com/times/sporting-cristal/logo-sporting-cristal-256.png",
+    "Universitario": "https://logodetimes.com/times/universitario-de-deportes/logo-universitario-de-deportes-256.png",
+    "CRB": "https://logodetimes.com/times/crb/logo-crb-256.png",
+    "River Plate": "https://logodetimes.com/times/river-plate/logo-river-plate-256.png",
+    "Libertad": "https://logodetimes.com/times/club-libertad/logo-club-libertad-256.png",
+    "Junior Barranquilla": "https://logodetimes.com/times/junior-barranquilla/logo-junior-barranquilla-256.png",
+    "Olimpia": "https://logodetimes.com/times/olimpia-asuncion/logo-olimpia-asuncion-256.png",
+    "Jorge Wilstermann": "https://logodetimes.com/times/jorge-wilstermann/logo-jorge-wilstermann-256.png",
+    "Palmeiras": "https://logodetimes.com/times/palmeiras/logo-palmeiras-256.png",
+    "Barcelona SC": "https://logodetimes.com/times/barcelona-de-guayaquil/logo-barcelona-de-guayaquil-256.png",
+    "Boca Juniors": "https://logodetimes.com/times/boca-juniors/logo-boca-juniors-256.png",
+    "Corinthians": "https://logodetimes.com/times/corinthians/logo-corinthians-256.png",
+    "Universidad Católica": "https://logodetimes.com/times/universidad-catolica/logo-universidad-catolica-256.png",
+    "Bahia": "https://logodetimes.com/times/bahia/logo-bahia-256.png",
+    "Atlético Nacional": "https://logodetimes.com/times/atletico-nacional/logo-atletico-nacional-256.png",
+    "Independiente del Valle": "https://logodetimes.com/times/independiente-del-valle/logo-independiente-del-valle-256.png",
+    "Nacional": "https://logodetimes.com/times/nacional-do-uruguai/logo-nacional-do-uruguai-256.png",
+    "Estudiantes": "https://logodetimes.com/times/estudiantes-de-la-plata/logo-estudiantes-de-la-plata-256.png",
+    "Red Bull Bragantino": "https://logodetimes.com/times/red-bull-bragantino/logo-red-bull-bragantino-256.png",
+    "Peñarol": "https://logodetimes.com/times/penarol/logo-penarol-256.png",
+    "Cerro Porteño": "https://logodetimes.com/times/cerro-porteno/logo-cerro-porteno-256.png",
+    "Colo-Colo": "https://logodetimes.com/times/colo-colo/logo-colo-colo-256.png",
+    "Racing Club": "https://logodetimes.com/times/racing-club/logo-racing-club-256.png",
+    "Mirassol": "https://logodetimes.com/times/mirassol/logo-mirassol-256.png",
+    "Deportivo Táchira": "https://logodetimes.com/times/deportivo-tachira/logo-deportivo-tachira-256.png",
+    "LDU Quito": "https://logodetimes.com/times/ldu-quito/logo-ldu-quito-256.png",
+    "Caracas": "https://logodetimes.com/times/caracas-fc/logo-caracas-fc-256.png",
+    "Fluminense": "https://logodetimes.com/times/fluminense/logo-fluminense-256.png",
+    "The Strongest": "https://logodetimes.com/times/the-strongest/logo-the-strongest-256.png"
+};
+
+function obterEscudo(nomeTime) {
+    if (ESCUDOS_CLUBES[nomeTime]) {
+        return ESCUDOS_CLUBES[nomeTime];
+    }
+    // Fallback genérico para imagem local caso exista
+    const slug = nomeTime.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]/g, "-");
+    return `assets/img/escudos/${slug}.png`;
+}
 
 async function carregarTickerJogosDoDia() {
     const container = document.getElementById('ticker-lista');
@@ -14,7 +59,9 @@ async function carregarTickerJogosDoDia() {
         if (resposta.ok) {
             dadosGrupos = await resposta.json();
         }
-    } catch (e) {}
+    } catch (e) {
+        console.warn('Erro ao carregar dados-fase-de-grupos.json:', e);
+    }
 
     // Fallback para localStorage
     if (!dadosGrupos) {
@@ -41,28 +88,47 @@ async function carregarTickerJogosDoDia() {
 
         const gmTexto = temPlacar ? jogo.gm : '-';
         const gvTexto = temPlacar ? jogo.gv : '-';
-        const divisorTexto = temPlacar ? 'x' : 'vs';
         
         const statusTexto = temPlacar ? 'ENCERRADO' : 'A JOGAR';
         const statusClasse = temPlacar ? 'encerrado' : 'proximo';
+
+        // Destaque de vencedor
+        let gmVencedor = '';
+        let gvVencedor = '';
+        if (temPlacar) {
+            if (jogo.gm > jogo.gv) gmVencedor = 'vencedor';
+            else if (jogo.gv > jogo.gm) gvVencedor = 'vencedor';
+        }
 
         // Separa Data/Hora do Estádio de forma limpa
         const info = formatarInfoJogo(jogo.data);
 
         card.innerHTML = `
-            <div style="display:flex; justify-content:space-between; align-items:center;">
+            <div class="card-jogo-header">
                 <span class="badge-copa-ticker">${jogo.grupo} &bull; R${jogo.rodada}</span>
-                <span style="font-size:0.58rem; color:#ffd700; font-weight:800; letter-spacing:0.5px;">${info.dataHora}</span>
+                <span style="font-size:0.62rem; color:var(--gold-bright); font-weight:800;">${info.dataHora}</span>
             </div>
-            <div class="linha-placar-ticker">
-                <span class="time-ticker" title="${jogo.m}">${jogo.m}</span>
-                <span class="gols-ticker">${gmTexto}</span>
-                <span class="vs-ticker">${divisorTexto}</span>
-                <span class="gols-ticker">${gvTexto}</span>
-                <span class="time-ticker" title="${jogo.v}">${jogo.v}</span>
+
+            <div class="card-jogo-corpo">
+                <div class="linha-time-ticker">
+                    <div class="time-info-ticker">
+                        <img class="escudo-time-ticker" src="${obterEscudo(jogo.m)}" alt="${jogo.m}" onerror="this.style.opacity='0.2'">
+                        <span class="nome-time-ticker" title="${jogo.m}">${jogo.m}</span>
+                    </div>
+                    <span class="gols-time-ticker ${gmVencedor}">${gmTexto}</span>
+                </div>
+
+                <div class="linha-time-ticker">
+                    <div class="time-info-ticker">
+                        <img class="escudo-time-ticker" src="${obterEscudo(jogo.v)}" alt="${jogo.v}" onerror="this.style.opacity='0.2'">
+                        <span class="nome-time-ticker" title="${jogo.v}">${jogo.v}</span>
+                    </div>
+                    <span class="gols-time-ticker ${gvVencedor}">${gvTexto}</span>
+                </div>
             </div>
-            <div style="display:flex; justify-content:space-between; align-items:center;">
-                <span style="font-size:0.56rem; color:#8fa0b5; font-weight:800; max-width:145px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; text-transform:uppercase;">
+
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-top:3px; padding-top:3px; border-top:1px solid rgba(255,255,255,0.04);">
+                <span style="font-size:0.56rem; color:#8fa0b5; font-weight:700; max-width:130px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; text-transform:uppercase;">
                     ${info.estadio}
                 </span>
                 <span class="status-ticker ${statusClasse}">${statusTexto}</span>

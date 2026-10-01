@@ -1,8 +1,9 @@
 /* ==========================================================================
-   assets/css/index.css - PORTAL OFICIAL CONMEBOL PES (TICKER FULLWIDTH)
+   assets/css/index.css - PORTAL OFICIAL CONMEBOL PES
+   Normas Oficiais de Marca: Brandia Central / CONMEBOL
    ========================================================================== */
 
-/* TIPOGRAFIA OFICIAL BRANDING */
+/* 1. TIPOGRAFIA OFICIAL BRANDING */
 @font-face {
     font-family: 'Branding';
     src: url('../fonts/Branding%20Thin.otf') format('opentype');
@@ -35,34 +36,34 @@
 }
 
 :root {
-    --tv-black-base: #06080b;
-    --tv-black-panel: #0d1117;
-    --tv-black-card: #11151c;
+    --bg-fundo: #05070a;
+    --bg-card: #0b0f17;
+    --bg-card-alt: #101622;
+    --bg-topbar: #020305;
     
-    /* Libertadores */
+    /* Pantone 873 C / Dourado Metálico CONMEBOL */
     --gold-bright: #fff3c4;
-    --gold-main: #d4af37;
-    --gold-metal: #aa8428;
-    --gold-badge: linear-gradient(180deg, #fff2c2 0%, #d8b04a 40%, #a37c22 85%, #5a420f 100%);
-    --gold-bar: linear-gradient(90deg, #3d2e0f 0%, #a8832a 20%, #fff0b8 50%, #a8832a 80%, #3d2e0f 100%);
-    --border-gold: rgba(212, 175, 55, 0.35);
+    --gold-main: #c59b27;
+    --gold-metal: #a8832a;
+    --gold-badge: linear-gradient(135deg, #c59b27 0%, #8f6e16 100%);
+    --gold-bar: linear-gradient(90deg, transparent 0%, #c59b27 50%, transparent 100%);
     
-    /* Sul-Americana */
-    --silver-bright: #ffffff;
-    --silver-main: #d0dce8;
-    --silver-badge: linear-gradient(180deg, #ffffff 0%, #c4d7ed 35%, #7592b5 85%, #2c425e 100%);
-    --silver-bar: linear-gradient(90deg, #152336 0%, #7697be 25%, #ffffff 50%, #7697be 75%, #152336 100%);
-    --sula-blue: #0088ff;
-    --sula-blue-light: #60a5fa;
-    --border-sula: rgba(96, 165, 250, 0.35);
+    /* Paleta Oficial CONMEBOL Sudamericana */
+    --sula-blue: #0077ff;
+    --sula-blue-light: #5cb3ff;
+    --sula-badge: linear-gradient(135deg, #0077ff 0%, #004db3 100%);
     
-    --text-pure-white: #ffffff;
-    --text-silver: #c8d1de;
-    --text-muted: #657488;
-    --font-main: 'Branding', sans-serif;
+    --border-gold: rgba(197, 155, 39, 0.4);
+    --border-sula: rgba(0, 119, 255, 0.4);
+    --border-dark: rgba(255, 255, 255, 0.08);
+    --border-subtle: rgba(255, 255, 255, 0.04);
+    
+    --text-white: #ffffff;
+    --text-silver: #c2cbd6;
+    --text-muted: #6f7d91;
+    --font-main: 'Branding', 'Segoe UI', -apple-system, sans-serif;
 }
 
-/* RESET E BASE */
 * {
     margin: 0;
     padding: 0;
@@ -70,82 +71,107 @@
     font-family: var(--font-main);
 }
 
-body.tema-portal {
-    background-color: var(--tv-black-base);
+body.portal-ge-conmebol {
+    background-color: var(--bg-fundo);
     background-image: 
-        radial-gradient(ellipse at 50% -10%, rgba(212, 175, 55, 0.16) 0%, transparent 60%),
-        linear-gradient(180deg, rgba(6, 8, 11, 0.7) 0%, rgba(3, 4, 6, 0.98) 100%),
-        repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(0, 0, 0, 0.3) 3px, rgba(0, 0, 0, 0.3) 6px);
-    color: var(--text-pure-white);
+        radial-gradient(ellipse at 50% 0%, rgba(197, 155, 39, 0.08) 0%, transparent 55%),
+        linear-gradient(180deg, #05070a 0%, #020305 100%);
+    color: var(--text-white);
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    position: relative;
     overflow-x: hidden;
-    transition: background 0.5s cubic-bezier(0.2, 0.9, 0.3, 1);
+    -webkit-font-smoothing: antialiased;
 }
 
-/* LUZES DE ESTÚDIO LATERAIS */
-body.tema-portal::before,
-body.tema-portal::after {
-    content: '';
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    width: 16vw;
-    pointer-events: none;
-    z-index: 1;
-    transition: all 0.5s ease;
+/* ================= 1. TOPBAR INSTITUCIONAL CONMEBOL ================= */
+.topbar-conmebol {
+    background: var(--bg-topbar);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 7px 0;
+    font-size: 0.7rem;
 }
 
-body.tema-portal::before {
-    left: 0;
-    background: radial-gradient(circle at left, rgba(212, 175, 55, 0.12) 0%, transparent 70%);
+.topbar-container {
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-body.tema-portal::after {
-    right: 0;
-    background: radial-gradient(circle at right, rgba(212, 175, 55, 0.12) 0%, transparent 70%);
+.bloco-marca-conmebol {
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
-/* ILUMINAÇÃO DINÂMICA AO PASSAR O MOUSE */
-body.tema-portal:has(.card-copa.sulamericana:hover) {
-    background-color: #030711;
-    background-image: 
-        radial-gradient(ellipse at 50% -10%, rgba(0, 136, 255, 0.2) 0%, transparent 60%),
-        linear-gradient(180deg, rgba(3, 7, 17, 0.75) 0%, rgba(1, 4, 10, 0.98) 100%),
-        repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(0, 0, 0, 0.35) 3px, rgba(0, 0, 0, 0.35) 6px);
+.logo-conmebol-txt {
+    font-weight: 900;
+    letter-spacing: 2.5px;
+    color: var(--gold-main);
+    font-size: 0.8rem;
 }
 
-body.tema-portal:has(.card-copa.sulamericana:hover)::before,
-body.tema-portal:has(.card-copa.sulamericana:hover)::after {
-    background: radial-gradient(circle, rgba(0, 136, 255, 0.2) 0%, transparent 70%);
+.slogan-topo {
+    color: var(--text-muted);
+    font-weight: 700;
+    border-left: 1px solid rgba(255, 255, 255, 0.15);
+    padding-left: 10px;
+    text-transform: uppercase;
+    font-size: 0.65rem;
+    letter-spacing: 1px;
 }
 
-body.tema-portal:has(.card-copa.sulamericana:hover) .card-copa.libertadores {
-    opacity: 0.35;
-    transform: scale(0.97);
-    filter: grayscale(0.5);
+.destaque-topo-ticker {
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
-body.tema-portal:has(.card-copa.libertadores:hover) .card-copa.sulamericana {
-    opacity: 0.35;
-    transform: scale(0.97);
-    filter: grayscale(0.5);
+.tag-noticia-topo {
+    background: #0f1520;
+    border: 1px solid rgba(197, 155, 39, 0.3);
+    color: var(--gold-bright);
+    font-weight: 900;
+    font-size: 0.6rem;
+    padding: 2px 7px;
+    border-radius: 2px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
 }
 
-/* 1. NAVBAR OFICIAL */
-#cabecalho-portal {
-    background: rgba(10, 13, 18, 0.96);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(10px);
+.texto-noticia-topo {
+    color: var(--text-silver);
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 520px;
+    font-size: 0.68rem;
+}
+
+.link-item-topo {
+    color: var(--gold-main);
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    font-size: 0.65rem;
+    text-transform: uppercase;
+}
+
+/* ================= 2. NAVBAR PRINCIPAL ================= */
+#cabecalho-principal {
+    background: rgba(3, 5, 8, 0.96);
+    border-bottom: 1px solid var(--border-dark);
+    backdrop-filter: blur(12px);
     position: sticky;
     top: 0;
     z-index: 100;
 }
 
-.nav-container {
-    max-width: 1240px;
+.navbar-container {
+    max-width: 1320px;
     margin: 0 auto;
     padding: 12px 20px;
     display: flex;
@@ -153,274 +179,331 @@ body.tema-portal:has(.card-copa.libertadores:hover) .card-copa.sulamericana {
     align-items: center;
 }
 
-.brand-logo {
+.brand-portal {
     display: flex;
     align-items: center;
     gap: 8px;
+    text-decoration: none;
 }
 
-.tag-confederacao-mini {
-    font-size: 1rem;
+.logo-pes-destaque {
+    background: #ffffff;
+    color: #000000;
+    font-size: 0.78rem;
     font-weight: 900;
-    letter-spacing: 3px;
-    color: var(--gold-bright);
-}
-
-.tag-pes-mini {
-    background: #19202c;
-    border: 1px solid var(--border-gold);
-    color: #ffffff;
-    font-size: 0.72rem;
-    font-weight: 900;
-    padding: 2px 7px;
+    padding: 2px 6px;
     border-radius: 2px;
-    letter-spacing: 1px;
+    letter-spacing: 1.5px;
 }
 
-.nav-menu {
+.logo-conmebol-sec {
+    color: #ffffff;
+    font-size: 1.15rem;
+    font-weight: 900;
+    letter-spacing: 2px;
+}
+
+.nav-links-menu {
     display: flex;
-    gap: 12px;
-    align-items: center;
+    gap: 6px;
 }
 
-.nav-link {
+.nav-item {
     color: var(--text-silver);
     text-decoration: none;
-    font-size: 0.78rem;
+    font-size: 0.76rem;
     font-weight: 800;
     text-transform: uppercase;
-    letter-spacing: 1.5px;
-    padding: 6px 14px;
+    letter-spacing: 1.2px;
+    padding: 7px 14px;
     border-radius: 2px;
-    transition: all 0.25s ease;
+    transition: all 0.2s ease;
 }
 
-.nav-link:hover, .nav-link.ativo {
+.nav-item:hover, .nav-item.ativo {
     color: #ffffff;
-    background: rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.06);
 }
 
-.nav-link.link-liberta:hover { color: var(--gold-bright); }
-.nav-link.link-sula:hover { color: var(--sula-blue-light); }
+.nav-item.ativo {
+    border-bottom: 2px solid var(--gold-main);
+}
 
-/* 2. MATCH TICKER (100% LIMPO E CONTÍNUO) */
-.ticker-jogos {
-    background: #090c12;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+.nav-item.liberta-cor:hover { color: var(--gold-bright); }
+.nav-item.sula-cor:hover { color: var(--sula-blue-light); }
+
+/* ================= 3. MATCH TICKER ================= */
+.ticker-jogos-ge {
+    background: #020306;
+    border-bottom: 1px solid var(--border-dark);
     display: flex;
     align-items: center;
     overflow: hidden;
-    padding: 8px 0;
-    position: relative;
-    z-index: 10;
+    padding: 6px 0;
     width: 100%;
 }
 
 .ticker-lista {
     display: flex;
-    gap: 16px;
+    gap: 10px;
     width: max-content;
     will-change: transform;
     animation: tickerInfinito 90s linear infinite;
-    padding-left: 20px;
+    padding-left: 15px;
 }
 
-.ticker-jogos:hover .ticker-lista {
+.ticker-jogos-ge:hover .ticker-lista {
     animation-play-state: paused;
 }
 
 @keyframes tickerInfinito {
-    0% {
-        transform: translateX(0);
-    }
-    100% {
-        transform: translateX(-50%);
-    }
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
 }
 
 .card-jogo-ticker {
-    background: linear-gradient(180deg, #131722 0%, #0a0d14 100%);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: var(--bg-card);
+    border: 1px solid var(--border-dark);
     border-radius: 3px;
-    padding: 6px 14px;
-    min-width: 250px;
+    padding: 6px 12px;
+    min-width: 230px;
     display: flex;
     flex-direction: column;
-    gap: 3px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.8);
+    gap: 4px;
     flex-shrink: 0;
-    transition: border-color 0.2s, transform 0.2s;
+    transition: border-color 0.2s ease, background-color 0.2s ease;
 }
 
 .card-jogo-ticker:hover {
-    border-color: var(--gold-bright);
-    transform: translateY(-2px);
+    border-color: var(--border-gold);
+    background: var(--bg-card-alt);
 }
 
-.badge-copa-ticker {
-    font-size: 0.62rem;
-    font-weight: 900;
-    letter-spacing: 1px;
-    color: var(--gold-bright);
-}
-
-.linha-placar-ticker {
+.card-jogo-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 0.82rem;
-    font-weight: 800;
+    padding-bottom: 3px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-.time-ticker {
+.badge-copa-ticker {
+    font-size: 0.58rem;
+    font-weight: 900;
+    letter-spacing: 1px;
+    color: var(--gold-main);
+}
+
+.card-jogo-corpo {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.linha-time-ticker {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 6px;
+}
+
+.time-info-ticker {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    flex: 1;
+    overflow: hidden;
+}
+
+.escudo-time-ticker {
+    width: 15px !important;
+    height: 15px !important;
+    max-width: 15px !important;
+    max-height: 15px !important;
+    object-fit: contain;
+    flex-shrink: 0;
+    display: block;
+}
+
+.nome-time-ticker {
+    font-size: 0.72rem;
+    font-weight: 700;
     color: #ffffff;
-    max-width: 90px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
-.gols-ticker {
-    color: var(--gold-bright);
-    font-size: 0.95rem;
+.gols-time-ticker {
+    font-size: 0.82rem;
     font-weight: 900;
-}
-
-.vs-ticker {
-    color: var(--text-muted);
-    font-size: 0.7rem;
-    margin: 0 4px;
-}
-
-/* STATUS AUTOMÁTICO */
-.status-ticker {
-    font-size: 0.62rem;
-    font-weight: 900;
+    color: #ffffff;
+    min-width: 14px;
     text-align: right;
-    letter-spacing: 1px;
+}
+
+.gols-time-ticker.vencedor {
+    color: var(--gold-bright);
+}
+
+.status-ticker {
+    font-size: 0.55rem;
+    font-weight: 900;
+    letter-spacing: 0.5px;
     text-transform: uppercase;
 }
 
-.status-ticker.encerrado {
-    color: #7d8799;
-}
+.status-ticker.encerrado { color: #8a96a8; }
+.status-ticker.proximo { color: #00e676; }
 
-.status-ticker.proximo {
-    color: #00e676;
-}
-
-/* 3. CONTEÚDO PRINCIPAL */
-#conteudo-principal {
-    position: relative;
-    z-index: 2;
-    max-width: 1240px;
+/* ================= 4. CONTEÚDO PRINCIPAL ================= */
+#corpo-portal {
+    max-width: 1320px;
     width: 100%;
-    margin: 0 auto;
-    padding: 2.2rem 1.5rem;
+    margin: 2.2rem auto;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 3.5rem;
+    flex: 1;
+}
+
+/* HERO NEWS */
+.secao-hero-ge {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 22px;
+    width: 100%;
+}
+
+.manchete-hero-grande {
+    border-radius: 3px;
+    border: 1px solid var(--border-gold);
+    overflow: hidden;
+    min-height: 440px;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.85);
+    background: #030508;
+}
+
+.imagem-hero-bg {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: flex-end;
+    padding: 2.5rem;
+}
+
+.conteudo-hero {
+    max-width: 720px;
+}
+
+.conteudo-hero h2 {
+    font-size: 1.85rem;
+    font-weight: 900;
+    line-height: 1.2;
+    margin: 10px 0 12px;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9);
+}
+
+.conteudo-hero p {
+    color: var(--text-silver);
+    font-size: 0.92rem;
+    font-weight: 500;
+    line-height: 1.45;
+    margin-bottom: 1.4rem;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8);
+}
+
+.badge-categoria-hero {
+    font-size: 0.65rem;
+    font-weight: 900;
+    padding: 3px 8px;
+    border-radius: 2px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    display: inline-block;
+}
+
+.badge-categoria-hero.ouro { background: var(--gold-main); color: #000; }
+.badge-categoria-hero.azul { background: #0077ff; color: #fff; }
+.badge-categoria-hero.neutro { background: #192231; color: var(--gold-bright); border: 1px solid rgba(197, 155, 39, 0.25); }
+
+.botoes-hero-links {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.btn-hero {
+    text-decoration: none;
+    font-size: 0.76rem;
+    font-weight: 900;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 0.75rem 1.4rem;
+    border-radius: 2px;
+    transition: all 0.2s ease;
+}
+
+.btn-hero.primario {
+    background: var(--gold-main);
+    color: #000;
+}
+
+.btn-hero.primario:hover {
+    background: var(--gold-bright);
+    box-shadow: 0 0 20px rgba(197, 155, 39, 0.5);
+}
+
+.coluna-hero-secundaria {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.card-hero-menor {
+    background: var(--bg-card);
+    border: 1px solid var(--border-dark);
+    border-radius: 3px;
+    padding: 1.6rem;
     flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 2.5rem;
-}
-
-/* BANNER DESTAQUE */
-.secao-destaque-broadcast {
-    width: 100%;
-}
-
-.banner-principal-destaque {
-    background: 
-        radial-gradient(ellipse at 80% 50%, rgba(212, 175, 55, 0.15) 0%, transparent 65%),
-        linear-gradient(180deg, #131722 0%, #0a0d13 100%);
-    border: 1px solid var(--border-gold);
-    border-radius: 4px;
-    padding: 2.2rem;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.9);
+    justify-content: flex-end;
     position: relative;
     overflow: hidden;
 }
 
-.banner-principal-destaque::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background: var(--gold-bar);
+.card-hero-menor.com-imagem {
+    background-size: cover;
+    background-position: center;
+    border-color: rgba(0, 119, 255, 0.35);
 }
 
-.tag-categoria-banner {
-    font-size: 0.68rem;
-    font-weight: 900;
-    letter-spacing: 3px;
-    color: #0b0e14;
-    background: var(--gold-badge);
-    padding: 0.3rem 0.8rem;
-    border-radius: 2px;
-    display: inline-block;
-    margin-bottom: 0.8rem;
+.conteudo-card-menor {
+    position: relative;
+    z-index: 2;
 }
 
-.conteudo-banner h2 {
-    font-size: 1.8rem;
-    font-weight: 900;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    margin-bottom: 0.6rem;
-    background: linear-gradient(180deg, #ffffff 0%, #e2e8f0 45%, #94a3b8 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+.card-hero-menor h3 {
+    font-size: 1.12rem;
+    font-weight: 800;
+    line-height: 1.35;
+    margin: 10px 0 8px;
+    color: #ffffff;
 }
 
-.conteudo-banner p {
+.card-hero-menor p {
+    font-size: 0.82rem;
     color: var(--text-silver);
-    font-size: 0.9rem;
     font-weight: 500;
-    max-width: 750px;
-    margin-bottom: 1.5rem;
     line-height: 1.4;
 }
 
-.links-rapidos-banner {
-    display: flex;
-    gap: 15px;
-    flex-wrap: wrap;
-}
-
-.btn-banner-link {
-    text-decoration: none;
-    font-size: 0.76rem;
-    font-weight: 900;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    padding: 0.75rem 1.6rem;
-    border-radius: 2px;
-    transition: all 0.25s ease;
-}
-
-.btn-banner-link.ouro {
-    background: var(--gold-badge);
-    color: #0b0e14;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.8);
-}
-
-.btn-banner-link.ouro:hover {
-    box-shadow: 0 0 20px rgba(212, 175, 55, 0.7);
-}
-
-.btn-banner-link.prata {
-    background: var(--silver-badge);
-    color: #080d16;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.8);
-}
-
-.btn-banner-link.prata:hover {
-    box-shadow: 0 0 20px rgba(96, 165, 250, 0.7);
-}
-
-/* DIVISOR DE SEÇÃO */
-.divisor-secao {
+/* ================= CENTRAL DAS COMPETIÇÕES ================= */
+.divisor-titulo-secao {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -428,290 +511,278 @@ body.tema-portal:has(.card-copa.libertadores:hover) .card-copa.sulamericana {
     width: 100%;
 }
 
-.linha-marcador-ouro {
+.linha-dourada {
     flex: 1;
     height: 1px;
-    background: linear-gradient(90deg, transparent 0%, rgba(212, 175, 55, 0.5) 100%);
+    background: linear-gradient(90deg, transparent 0%, rgba(197, 155, 39, 0.4) 100%);
 }
 
-.divisor-secao .linha-marcador-ouro:last-child {
-    background: linear-gradient(90deg, rgba(212, 175, 55, 0.5) 0%, transparent 100%);
+.divisor-titulo-secao .linha-dourada:last-child {
+    background: linear-gradient(90deg, rgba(197, 155, 39, 0.4) 0%, transparent 100%);
 }
 
-.titulo-secao-competicoes {
+.divisor-titulo-secao h2 {
     font-size: 1.15rem;
     font-weight: 900;
-    letter-spacing: 4px;
+    letter-spacing: 3.5px;
     color: var(--gold-bright);
     text-transform: uppercase;
-    text-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
 }
 
-/* 4. CARDS DAS COPAS */
-.container-selecao-copa {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    gap: 3.5rem;
+.grid-cards-copas {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
     width: 100%;
 }
 
-.card-copa {
-    width: 400px;
-    min-height: 520px;
-    background: linear-gradient(180deg, #11151c 0%, #080a0e 100%);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 4px;
-    position: relative;
+.card-competicao {
+    background: var(--bg-card);
+    border: 1px solid var(--border-dark);
+    border-radius: 3px;
+    padding: 2.2rem 2rem;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
-    padding: 1.6rem 1.8rem 2rem;
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.9);
-    transition: all 0.35s cubic-bezier(0.2, 0.9, 0.3, 1);
+    text-align: center;
+    position: relative;
     overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.7);
+    transition: transform 0.25s ease, border-color 0.25s ease;
 }
 
-.faixa-topo-card {
-    font-size: 0.65rem;
-    font-weight: 900;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    padding: 0.3rem 1rem;
-    border-radius: 2px;
-}
+.card-competicao.liberta-tema { border-color: var(--border-gold); }
+.card-competicao.sula-tema { border-color: var(--border-sula); }
 
-/* LIBERTADORES */
-.card-copa.libertadores {
-    border-color: var(--border-gold);
-}
-
-.card-copa.libertadores::before {
-    content: '';
+.card-competicao.liberta-tema .glow-topo-card {
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 2px;
+    top: 0; left: 0; right: 0;
+    height: 3px;
     background: var(--gold-bar);
 }
 
-.card-copa.libertadores .faixa-topo-card {
-    background: rgba(212, 175, 55, 0.12);
-    border: 1px solid rgba(212, 175, 55, 0.35);
-    color: var(--gold-bright);
-}
-
-.card-copa.libertadores:hover {
-    transform: translateY(-8px) scale(1.02);
-    border-color: var(--gold-bright);
-    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.95), 0 0 35px rgba(212, 175, 55, 0.35);
-}
-
-/* SUL-AMERICANA */
-.card-copa.sulamericana {
-    border-color: var(--border-sula);
-}
-
-.card-copa.sulamericana::before {
-    content: '';
+.card-competicao.sula-tema .glow-topo-card {
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background: var(--silver-bar);
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, transparent 0%, #0077ff 50%, transparent 100%);
 }
 
-.card-copa.sulamericana .faixa-topo-card {
-    background: rgba(96, 165, 250, 0.12);
-    border: 1px solid rgba(96, 165, 250, 0.35);
-    color: var(--sula-blue-light);
+.card-competicao:hover {
+    transform: translateY(-4px);
 }
 
-.card-copa.sulamericana:hover {
-    transform: translateY(-8px) scale(1.02);
-    border-color: var(--silver-bright);
-    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.95), 0 0 35px rgba(0, 136, 255, 0.4);
+.emblema-card img {
+    height: 105px;
+    object-fit: contain;
+    margin-bottom: 12px;
+    filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.8));
 }
 
-/* EMBLEMAS */
-.emblema-copa {
-    width: 100%;
-    height: 170px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    margin: 0.4rem 0;
+.sub-chancela {
+    font-size: 0.62rem;
+    font-weight: 900;
+    letter-spacing: 2px;
+    color: var(--text-muted);
 }
 
-.card-copa img,
-.emblema-copa img {
-    max-width: 190px !important;
-    max-height: 150px !important;
-    width: auto !important;
-    height: auto !important;
-    object-fit: contain !important;
-    display: block;
-    filter: drop-shadow(0 12px 25px rgba(0, 0, 0, 0.95));
-    transition: transform 0.35s cubic-bezier(0.2, 0.9, 0.3, 1);
-}
-
-.card-copa:hover img {
-    transform: scale(1.06);
-}
-
-/* TEXTOS DOS CARDS */
-.bloco-info-card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 0.3rem;
-    margin: 0.5rem 0 1.2rem;
-}
-
-.card-copa h2 {
-    font-size: 1.45rem !important;
+.info-card-texto h3 {
+    font-size: 1.35rem;
     font-weight: 900;
     text-transform: uppercase;
-    letter-spacing: 2px;
-    color: #ffffff !important;
-    text-shadow: 0 3px 10px rgba(0, 0, 0, 0.9);
-    line-height: 1.3;
+    margin: 4px 0;
 }
 
-.slogan-card {
+.slogan-torneio {
     font-size: 0.72rem;
-    font-weight: 800;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--text-muted);
+    font-weight: 900;
+    letter-spacing: 2.5px;
+    display: block;
+    margin-bottom: 22px;
 }
 
-.card-copa.libertadores:hover .slogan-card {
-    color: var(--gold-bright);
-    text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
-}
+.slogan-torneio.ouro { color: var(--gold-main); }
+.slogan-torneio.azul { color: var(--sula-blue-light); }
 
-.card-copa.sulamericana:hover .slogan-card {
-    color: var(--sula-blue-light);
-    text-shadow: 0 0 10px rgba(0, 136, 255, 0.5);
-}
-
-/* BOTÕES DE NAVEGAÇÃO */
-.acoes-card {
+.botoes-card-acoes {
     display: flex;
     flex-direction: column;
     width: 100%;
-    gap: 10px;
+    gap: 8px;
 }
 
-.btn-copa {
-    width: 100%;
-    padding: 0.85rem 1.2rem;
-    border-radius: 2px;
-    font-size: 0.8rem;
+.btn-card {
+    text-decoration: none;
+    font-size: 0.76rem;
     font-weight: 900;
     letter-spacing: 2px;
     text-transform: uppercase;
-    text-align: center;
-    text-decoration: none;
-    transition: all 0.25s ease;
+    padding: 0.75rem;
+    border-radius: 2px;
+    transition: all 0.2s ease;
+}
+
+.btn-card.ouro-btn { background: var(--gold-main); color: #000; }
+.btn-card.ouro-btn:hover { background: var(--gold-bright); }
+.btn-card.ouro-outline { background: rgba(197, 155, 39, 0.06); border: 1px solid var(--gold-main); color: var(--gold-bright); }
+.btn-card.ouro-outline:hover { background: rgba(197, 155, 39, 0.15); }
+
+.btn-card.azul-btn { background: #0077ff; color: #fff; }
+.btn-card.azul-btn:hover { background: #2b8eff; }
+.btn-card.azul-outline { background: rgba(0, 119, 255, 0.06); border: 1px solid var(--sula-blue); color: var(--sula-blue-light); }
+.btn-card.azul-outline:hover { background: rgba(0, 119, 255, 0.15); }
+
+/* ================= 5. SEÇÃO NOTÍCIAS EM GRADE (EXPANDIDA) ================= */
+.secao-noticias-conmebol {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+}
+
+.cabecalho-noticias-conmebol {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.08);
+    padding-bottom: 12px;
+}
+
+.sub-tag-noticias {
+    font-family: var(--font-branding);
+    font-size: 0.62rem;
+    font-weight: 900;
+    letter-spacing: 2px;
+    color: var(--gold-main);
     display: block;
-}
-
-/* Botões Libertadores */
-.btn-primario-liberta {
-    background: var(--gold-badge);
-    color: #0b0e14;
-    border: 1px solid #ffe89e;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.8), inset 0 1px 1px rgba(255, 255, 255, 0.9);
-}
-
-.btn-primario-liberta:hover {
-    box-shadow: 0 0 25px rgba(212, 175, 55, 0.85);
-    color: #000000;
-}
-
-.btn-secundario-liberta {
-    background: rgba(212, 175, 55, 0.08);
-    border: 1px solid rgba(212, 175, 55, 0.35);
-    color: var(--gold-bright);
-}
-
-.btn-secundario-liberta:hover {
-    background: rgba(212, 175, 55, 0.2);
-    border-color: var(--gold-bright);
-    color: #ffffff;
-}
-
-/* Botões Sul-Americana */
-.btn-primario-sula {
-    background: var(--silver-badge);
-    color: #060b14;
-    border: 1px solid #e0ebf8;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.8), inset 0 1px 1px rgba(255, 255, 255, 0.9);
-}
-
-.btn-primario-sula:hover {
-    box-shadow: 0 0 25px rgba(0, 136, 255, 0.85);
-    color: #000000;
-}
-
-.btn-secundario-sula {
-    background: rgba(0, 136, 255, 0.08);
-    border: 1px solid rgba(0, 136, 255, 0.35);
-    color: var(--sula-blue-light);
-}
-
-.btn-secundario-sula:hover {
-    background: rgba(0, 136, 255, 0.2);
-    border-color: var(--silver-bright);
-    color: #ffffff;
-}
-
-/* RODAPÉ */
-#rodape {
-    position: relative;
-    z-index: 2;
-    text-align: center;
-    padding: 1.5rem;
-    font-size: 0.68rem;
-    font-weight: 700;
-    color: var(--text-muted);
-    letter-spacing: 3px;
+    margin-bottom: 2px;
     text-transform: uppercase;
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.cabecalho-noticias-conmebol h2 {
+    font-size: 1.35rem;
+    font-weight: 900;
+    letter-spacing: 2.5px;
+    color: var(--text-white);
+    text-transform: uppercase;
+}
+
+.grid-quatro-noticias {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 22px;
+}
+
+.card-noticia-conmebol {
+    background: var(--bg-card);
+    border: 1px solid var(--border-dark);
+    border-radius: 4px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.7);
+    cursor: default;
+    transition: transform 0.25s ease, border-color 0.25s ease;
+}
+
+.card-noticia-conmebol:hover {
+    transform: translateY(-4px);
+    border-color: var(--border-gold);
+}
+
+.thumb-noticia {
+    width: 100%;
+    height: 165px;
+    background-size: cover;
+    background-position: center;
+}
+
+.corpo-noticia-conmebol {
+    padding: 16px 14px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex: 1;
+}
+
+.tag-noticia {
+    font-size: 0.6rem;
+    font-weight: 900;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    display: inline-block;
+}
+
+.tag-noticia.ouro { color: var(--gold-main); }
+.tag-noticia.azul { color: var(--sula-blue-light); }
+.tag-noticia.cinza { color: var(--text-muted); }
+
+.corpo-noticia-conmebol h4 {
+    font-size: 0.94rem;
+    font-weight: 800;
+    line-height: 1.35;
+    margin-bottom: 8px;
+    color: #ffffff;
+}
+
+.corpo-noticia-conmebol p {
+    font-size: 0.76rem;
+    color: var(--text-silver);
+    line-height: 1.45;
+    font-weight: 500;
+}
+
+/* ================= 6. RODAPÉ INSTITUCIONAL ================= */
+#rodape-institucional {
+    background: #020305;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 2.8rem 20px 1.8rem;
+    text-align: center;
     margin-top: auto;
 }
 
-/* RESPONSIVIDADE */
-@media (max-width: 900px) {
-    .nav-container {
-        flex-direction: column;
-        gap: 10px;
-    }
+.slogan-rodape-conmebol {
+    font-size: 1.5rem;
+    font-weight: 900;
+    letter-spacing: 4px;
+    color: var(--gold-main);
+    text-transform: uppercase;
+    margin-bottom: 6px;
+}
 
-    .container-selecao-copa {
-        flex-direction: column;
-        gap: 2rem;
-    }
+.sub-rodape {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    font-weight: 700;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+}
 
-    .card-copa {
-        width: 100%;
-        max-width: 350px;
-        min-height: 480px;
-    }
+.rodape-copyright {
+    margin-top: 1.6rem;
+    padding-top: 1.2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
 
-    .banner-principal-destaque {
-        padding: 1.5rem;
-    }
+.rodape-copyright p {
+    font-size: 0.68rem;
+    color: #525d6d;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
 
-    .conteudo-banner h2 {
-        font-size: 1.3rem;
-    }
+/* ================= RESPONSIVIDADE ================= */
+@media (max-width: 1100px) {
+    .secao-hero-ge { grid-template-columns: 1fr; }
+    .grid-quatro-noticias { grid-template-columns: repeat(2, 1fr); }
+    .grid-cards-copas { grid-template-columns: 1fr; }
+    .destaque-topo-ticker { display: none; }
+}
+
+@media (max-width: 650px) {
+    .grid-quatro-noticias { grid-template-columns: 1fr; }
+    .navbar-container { flex-direction: column; gap: 10px; }
+    .manchete-hero-grande { min-height: 360px; }
+    .imagem-hero-bg { padding: 1.5rem; }
+    .conteudo-hero h2 { font-size: 1.4rem; }
 }

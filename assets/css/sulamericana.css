@@ -1,0 +1,566 @@
+/* ==========================================================================
+   assets/css/sulamericana.css - CONMEBOL SUDAMERICANA PORTAL
+   Identidade Visual: A Grande Conquista / Azul Oficial CONMEBOL
+   ========================================================================== */
+
+/* 1. TIPOGRAFIA OFICIAL BRANDING */
+@font-face {
+    font-family: 'Branding';
+    src: url('../fonts/Branding%20Thin.otf') format('opentype');
+    font-weight: 100;
+}
+@font-face {
+    font-family: 'Branding';
+    src: url('../fonts/Branding%20Light.otf') format('opentype');
+    font-weight: 300;
+}
+@font-face {
+    font-family: 'Branding';
+    src: url('../fonts/Branding%20Medium.otf') format('opentype');
+    font-weight: 500;
+}
+@font-face {
+    font-family: 'Branding';
+    src: url('../fonts/Branding%20Semibold.otf') format('opentype');
+    font-weight: 600;
+}
+@font-face {
+    font-family: 'Branding';
+    src: url('../fonts/Branding%20Bold.otf') format('opentype');
+    font-weight: 700;
+}
+@font-face {
+    font-family: 'Branding';
+    src: url('../fonts/Branding%20Black.otf') format('opentype');
+    font-weight: 900;
+}
+
+:root {
+    --bg-dark-sula: #03060f;
+    --bg-card-sula: #070d1a;
+    --bg-card-hover: #0c1426;
+    
+    /* Paleta Oficial CONMEBOL Sudamericana */
+    --sula-blue: #0077ff;
+    --sula-blue-light: #5cb3ff;
+    --sula-blue-metal: #0052cc;
+    --sula-metal-line: linear-gradient(90deg, transparent 0%, #0077ff 50%, transparent 100%);
+    
+    /* Cores de Suporte */
+    --white-pure: #ffffff;
+    --text-silver: #c2cbd6;
+    --text-muted: #6f7d91;
+    --border-sula: rgba(0, 119, 255, 0.25);
+    --border-dark: rgba(255, 255, 255, 0.08);
+
+    /* Fontes */
+    --font-branding: 'Branding', Arial, sans-serif;
+    --font-ubuntu: 'Ubuntu', -apple-system, sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body.pagina-sulamericana-oficial {
+    background-color: var(--bg-dark-sula);
+    background-image: 
+        radial-gradient(ellipse at 50% -10%, rgba(0, 119, 255, 0.12) 0%, transparent 60%),
+        linear-gradient(180deg, #040814 0%, #02040a 100%);
+    color: var(--white-pure);
+    font-family: var(--font-ubuntu);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ================= 1. TOP SWITCHER INSTITUCIONAL ================= */
+.top-switcher-conmebol {
+    background: #020408;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 7px 0;
+    font-size: 0.68rem;
+    font-family: var(--font-branding);
+}
+
+.switcher-container {
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.marca-endosso-topo .txt-endosso {
+    color: var(--text-muted);
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-size: 0.62rem;
+}
+
+.links-switcher {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.tab-switch {
+    color: var(--text-silver);
+    text-decoration: none;
+    font-weight: 800;
+    letter-spacing: 1px;
+    transition: color 0.2s;
+}
+
+.tab-switch:hover, .tab-switch.ativo {
+    color: var(--sula-blue-light);
+}
+
+.divisor-switch {
+    color: rgba(255, 255, 255, 0.15);
+}
+
+/* ================= 2. NAVBAR OFICIAL SUL-AMERICANA ================= */
+#navbar-conmebol-sula {
+    background: rgba(4, 8, 16, 0.96);
+    border-bottom: 1px solid var(--border-dark);
+    backdrop-filter: blur(12px);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.navbar-wrapper {
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: 12px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.brand-sula .logo-link-conmebol {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+}
+
+.chancela-conmebol {
+    font-family: var(--font-branding);
+    font-size: 0.62rem;
+    font-weight: 900;
+    letter-spacing: 3px;
+    color: var(--sula-blue-light);
+    line-height: 1;
+    margin-bottom: 2px;
+}
+
+.titulo-sula {
+    font-family: var(--font-branding);
+    font-size: 1.35rem;
+    font-weight: 900;
+    letter-spacing: 2.2px;
+    color: var(--white-pure);
+    line-height: 1;
+}
+
+.menu-navegacao-sula {
+    display: flex;
+    gap: 6px;
+}
+
+.menu-navegacao-sula .nav-item {
+    font-family: var(--font-branding);
+    color: var(--text-silver);
+    text-decoration: none;
+    font-size: 0.78rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    padding: 7px 14px;
+    border-radius: 2px;
+    transition: all 0.2s ease;
+}
+
+.menu-navegacao-sula .nav-item:hover {
+    color: var(--white-pure);
+    background: rgba(255, 255, 255, 0.06);
+}
+
+/* ================= 3. FAIXA DE STATUS DO TORNEIO ================= */
+.barra-status-sula {
+    background: #030712;
+    border-bottom: 1px solid var(--border-dark);
+    padding: 10px 0;
+}
+
+.status-sula-container {
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.tag-status-sula {
+    background: rgba(0, 119, 255, 0.15);
+    border: 1px solid var(--sula-blue);
+    color: var(--sula-blue-light);
+    font-family: var(--font-branding);
+    font-size: 0.62rem;
+    font-weight: 900;
+    letter-spacing: 1px;
+    padding: 3px 8px;
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+    text-transform: uppercase;
+}
+
+.ponto-pulsante {
+    width: 6px;
+    height: 6px;
+    background: var(--sula-blue-light);
+    border-radius: 50%;
+    box-shadow: 0 0 8px var(--sula-blue-light);
+}
+
+.texto-status-sula {
+    color: var(--text-silver);
+    font-size: 0.74rem;
+    font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* ================= 4. BANNER INSTITUCIONAL A GRANDE CONQUISTA ================= */
+.secao-conceito-sula {
+    background: linear-gradient(180deg, #02050c 0%, #050b18 100%);
+    border-bottom: 1px solid var(--border-dark);
+    padding: 1.4rem 0;
+}
+
+.faixa-conceito-container {
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.chancela-sub-azul {
+    font-family: var(--font-branding);
+    font-size: 0.65rem;
+    font-weight: 900;
+    letter-spacing: 3px;
+    color: var(--sula-blue-light);
+    display: block;
+    margin-bottom: 3px;
+}
+
+.slogan-principal-sula {
+    font-family: var(--font-branding);
+    font-size: 1.9rem;
+    font-weight: 900;
+    letter-spacing: 2px;
+    color: var(--white-pure);
+    line-height: 1.1;
+}
+
+.frase-legado-sula {
+    font-family: var(--font-ubuntu);
+    font-size: 0.85rem;
+    color: var(--text-silver);
+    font-weight: 400;
+    margin-top: 4px;
+}
+
+.selo-oficial-edicao {
+    border-left: 2px solid var(--sula-blue);
+    padding-left: 14px;
+    display: flex;
+    flex-direction: column;
+}
+
+.ano-edicao {
+    font-family: var(--font-branding);
+    font-size: 0.82rem;
+    font-weight: 900;
+    color: var(--sula-blue-light);
+    letter-spacing: 1px;
+}
+
+.sub-edicao {
+    font-size: 0.68rem;
+    color: var(--text-muted);
+    font-weight: 700;
+    letter-spacing: 1.5px;
+}
+
+/* ================= 5. SHOWCASE DE NOTÍCIAS ================= */
+.container-showcase-noticias {
+    max-width: 1320px;
+    margin: 2.2rem auto;
+    padding: 0 20px;
+    width: 100%;
+    flex: 1;
+}
+
+.grid-layout-noticias {
+    display: grid;
+    grid-template-columns: 1.65fr 1fr;
+    gap: 24px;
+}
+
+.bloco-destaque-principal {
+    display: flex;
+    flex-direction: column;
+}
+
+.moldura-foto-grande {
+    position: relative;
+    border-radius: 4px;
+    overflow: hidden;
+    height: 440px;
+    border: 1px solid var(--border-sula);
+    background: #020408;
+}
+
+.moldura-foto-grande img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.mascara-protecao-sula {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 85%, rgba(2, 6, 15, 0.96) 20%, rgba(2, 6, 15, 0.6) 60%, transparent 100%);
+    pointer-events: none;
+}
+
+.painel-conteudo-hero {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 2.2rem;
+    z-index: 2;
+}
+
+.tag-secao-azul {
+    font-family: var(--font-branding);
+    font-size: 0.68rem;
+    font-weight: 900;
+    letter-spacing: 2px;
+    color: var(--sula-blue-light);
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.painel-conteudo-hero h2 {
+    font-family: var(--font-branding);
+    font-size: 1.7rem;
+    font-weight: 900;
+    line-height: 1.25;
+    color: var(--white-pure);
+    margin-bottom: 8px;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
+}
+
+.resumo-hero-txt {
+    font-family: var(--font-ubuntu);
+    font-size: 0.88rem;
+    color: var(--text-silver);
+    line-height: 1.45;
+}
+
+/* COLUNA DIREITA NOTÍCIAS */
+.coluna-noticias-empilhadas {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.card-noticia-item {
+    display: flex;
+    gap: 14px;
+    align-items: center;
+    background: var(--bg-card-sula);
+    border: 1px solid var(--border-dark);
+    border-radius: 4px;
+    padding: 12px;
+    cursor: default;
+    transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.card-noticia-item:hover {
+    background: var(--bg-card-hover);
+    border-color: var(--border-sula);
+}
+
+.thumb-quadrada {
+    width: 100px;
+    height: 75px;
+    border-radius: 3px;
+    background-size: cover;
+    background-position: center;
+    flex-shrink: 0;
+}
+
+.info-noticia-conteudo {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 4px;
+}
+
+.categoria-azul {
+    font-family: var(--font-branding);
+    font-size: 0.6rem;
+    font-weight: 900;
+    letter-spacing: 1.5px;
+    color: var(--sula-blue-light);
+    text-transform: uppercase;
+}
+
+.info-noticia-conteudo h4 {
+    font-family: var(--font-branding);
+    font-size: 0.88rem;
+    font-weight: 800;
+    line-height: 1.35;
+    color: var(--white-pure);
+}
+
+.data-noticia-txt {
+    font-family: var(--font-ubuntu);
+    font-size: 0.68rem;
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+/* ================= 6. RODAPÉ OFICIAL CONMEBOL ================= */
+#rodape-conmebol-sula {
+    background: #02040a;
+    border-top: 1px solid var(--border-dark);
+    padding: 3rem 20px 2.5rem;
+    text-align: center;
+    margin-top: auto;
+    position: relative;
+}
+
+#rodape-conmebol-sula::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 240px;
+    height: 2px;
+    background: var(--sula-metal-line);
+}
+
+.rodape-limite-container {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.rodape-chancela {
+    font-family: var(--font-branding);
+    font-size: 0.68rem;
+    font-weight: 900;
+    letter-spacing: 3.5px;
+    color: var(--sula-blue-light);
+    display: block;
+}
+
+.rodape-nome {
+    font-family: var(--font-branding);
+    font-size: 1.5rem;
+    font-weight: 900;
+    letter-spacing: 3px;
+    color: var(--white-pure);
+    display: block;
+}
+
+.slogan-rodape-oficial {
+    font-family: var(--font-branding);
+    font-size: 0.85rem;
+    font-weight: 900;
+    letter-spacing: 4px;
+    color: var(--sula-blue-light);
+    text-transform: uppercase;
+}
+
+.rodape-links-navegacao {
+    display: flex;
+    gap: 18px;
+    margin: 8px 0;
+}
+
+.rodape-links-navegacao a {
+    font-family: var(--font-branding);
+    color: var(--text-silver);
+    text-decoration: none;
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: color 0.2s;
+}
+
+.rodape-links-navegacao a:hover {
+    color: var(--sula-blue-light);
+}
+
+.copyright-oficial {
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding-top: 12px;
+    width: 100%;
+}
+
+.copyright-oficial p {
+    font-family: var(--font-ubuntu);
+    font-size: 0.68rem;
+    color: var(--text-muted);
+    font-weight: 400;
+    line-height: 1.5;
+}
+
+.site-institucional {
+    font-family: var(--font-branding);
+    font-size: 0.65rem;
+    color: var(--sula-blue-light);
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    display: block;
+    margin-top: 4px;
+}
+
+/* ================= RESPONSIVIDADE ================= */
+@media (max-width: 992px) {
+    .grid-layout-noticias { grid-template-columns: 1fr; }
+    .faixa-conceito-container { flex-direction: column; align-items: flex-start; gap: 14px; }
+    .selo-oficial-edicao { border-left: none; border-top: 2px solid var(--sula-blue); padding-left: 0; padding-top: 8px; }
+    .menu-navegacao-sula { display: none; }
+    .moldura-foto-grande { height: 360px; }
+    .painel-conteudo-hero h2 { font-size: 1.35rem; }
+    .status-sula-container { flex-direction: column; align-items: flex-start; gap: 8px; }
+    .texto-status-sula { white-space: normal; }
+}

@@ -1,0 +1,103 @@
+{
+  "ticker_topo": {
+    "tag": "NOTÍCIA DESTACADA",
+    "texto": "6ª Rodada da Fase de Grupos define classificados e vagas na Sul-Americana"
+  },
+  "manchete_hero": {
+    "categoria": "CONMEBOL LIBERTADORES",
+    "tipo_tag": "ouro",
+    "titulo": "6ª Rodada Decisiva: Quem garante liderança no Pote 1 e quem vai para a Sul-Americana?",
+    "resumo": "Última rodada da fase de grupos define os 16 classificados às Oitavas de Final e os 16 times que entram direto na Sul-Americana.",
+    "imagem": "https://admin.cnnbrasil.com.br/wp-content/uploads/sites/12/2025/03/taca-libertadores-e1742232529519.jpeg?w=1200&h=675&crop=1",
+    "botao_primario_texto": "Tabela de Grupos →",
+    "botao_primario_link": "fase-de-grupos.html"
+  },
+  "destaques_secundarios": [
+    {
+      "categoria": "SUL-AMERICANA",
+      "tipo_tag": "azul",
+      "titulo": "3º e 4º colocados da Libertadores caem direto para as Oitavas da Sula",
+      "resumo": "Sem repescagem: 16 eliminados da Liberta iniciam a disputa da Grande Conquista na fase eliminatória.",
+      "imagem": "https://img.band.com.br/image/2025/10/10/trofeu-da-sul-americana-13580.jpg"
+    },
+    {
+      "categoria": "CRITÉRIOS OFICIAIS",
+      "tipo_tag": "neutro",
+      "titulo": "Confronto Direto e Saldo de Gols: Como funciona o desempate no PES",
+      "resumo": "Entenda a ordem dos critérios de desempate duplo, triplo e quádruplo aplicados na classificação.",
+      "imagem": null
+    }
+  ],
+  "ultimas_noticias": [
+    {
+      "categoria": "FASE DE GRUPOS",
+      "tipo_tag": "ouro",
+      "titulo": "Boca leva empate do Barcelona e está eliminado",
+      "resumo": "Corinthians vence a Católica e se classifica em segundo lugar",
+      "imagem": "https://s2-ge.glbimg.com/ASG6A9GRp8MhZ5NrRF-kmm1he1g=/0x0:2048x1366/984x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_bc8228b6673f488aa253bbcb03c80ec5/internal_photos/bs/2025/2/Q/AYeiv4QwGQxT7tOMuy2Q/2025-02-26t025545z-866675613-up1el2q084wa2-rtrmadp-3-soccer-libertadores-boj-ali-report.jpg"
+    },
+    {
+      "categoria": "LIBERTADORES",
+      "tipo_tag": "ouro",
+      "titulo": "River é humilhado pelo CRB e é eliminado na Fase de Grupos",
+      "resumo": "Millonarios jogam muito mal e perdem as três partidas em casa pela primeira vez na história.",
+      "imagem": "https://lncimg.lance.com.br/cdn-cgi/image/width=1200,height=630,quality=75,fit=cover,format=webp/uploads/2026/08/Eduardo-Coudet-comandando-o-River-Plate-na-eliminacao-nas-oitavas-de-final-da-Sul-Americana-scaled-aspect-ratio-512-320.jpg"
+    },
+    {
+      "categoria": "DESEMPATES",
+      "tipo_tag": "ouro",
+      "titulo": "Atlético e Bahia garantem vaga em primeiro lugar",
+      "resumo": "Galo foi ao Maracanã e empatou com o Flamengo, e Esquadrão foi superado pelo Nacional, mas se classificou em primeiro no saldo de gols.",
+      "imagem": "https://agenciaesporte.com.br/wp-content/uploads/2025/07/Atletico-Cuelo-31-07-2025.jpg"
+    },
+    {
+      "categoria": "LIBERTADORES E SUL-AMERICANA",
+      "tipo_tag": "cinza",
+      "titulo": "Sorteio do Mata-Mata da Libertadores e Sul-Americana será nesta quinta-feira",
+      "resumo": "Sorteio será realizado a partir das 22h30, após o fim dos jogos da fase de grupos, com transmissão ao vivo no Youtube.",
+      "imagem": "https://fimdejogo.com.br/wp-content/uploads/2020/09/libertadores-sudamericana-2_1.jpg"
+    },
+    {
+      "categoria": "GRUPO F • 5ª RODADA",
+      "tipo_tag": "ouro",
+      "titulo": "Noite histórica em Bragança: Red Bull Bragantino aplica 6 a 1 no Cerro Porteño",
+      "resumo": "Massa Bruta foi avassalador no Nabi Abi Chedid e garantiu a maior goleada desta edição da Libertadores.",
+      "imagem": "https://s2-ge.glbimg.com/smd4sheBmTuvdo1IQMgLLalTS4g=/0x0:2048x1365/1008x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_bc8228b6673f488aa253bbcb03c80ec5/internal_photos/bs/2022/E/V/khaIO4QQ2xXXYa17V8Vg/51894784175-5c91e55689-k.jpg"
+    },
+    {
+      "categoria": "GRUPO E • 4ª RODADA",
+      "tipo_tag": "ouro",
+      "titulo": "Nacional atropela Atlético Nacional por 5 a 0 em Medellín",
+      "resumo": "Equipe uruguaia teve atuação impecável fora de casa e calou o Estádio Atanasio Girardot com massacre histórico.",
+      "imagem": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCaasVFb_uDp_hDZ6IAgPjOfrb2peKgfajnEw_XFe_hBQgwbMbAI97r60&s=10"
+    },
+    {
+      "categoria": "GRUPO B • 2ª RODADA",
+      "tipo_tag": "ouro",
+      "titulo": "Universitario cala o Monumental de Núñez e vence o River Plate por 2 a 0",
+      "resumo": "Time peruano impôs forte marcação em Buenos Aires e construiu vitória maiúscula rumo à liderança da chave.",
+      "imagem": "https://www.eluniverso.com/resizer/v2/KKRSWFGXSRBJVJ4GCYSVLQQ62Y.jpg?auth=33b264dafeb4849c8a42d6bf392888572e6f3b2f50bcb6b4246b279434e3de30&width=1039&height=670&quality=75&smart=true"
+    },
+    {
+      "categoria": "GRUPO H • 4ª RODADA",
+      "tipo_tag": "ouro",
+      "titulo": "LDU dá show na altitude e goleia o The Strongest por 5 a 2 em La Paz",
+      "resumo": "Equipe equatoriana quebrou o tabu do Hernando Siles com ataque fulminante e assumiu a liderança isolada.",
+      "imagem": "https://lncimg.lance.com.br/cdn-cgi/image/width=950,quality=60,fit=pad,format=webp/uploads/2026/09/Deyverson-em-Palmeiras-x-LDU-aspect-ratio-512-320.jpeg"
+    },
+    {
+      "categoria": "GRUPO A • 1ª RODADA",
+      "tipo_tag": "ouro",
+      "titulo": "Clássico nacional: Atlético-MG supera o Flamengo por 2 a 0 na Arena MRV",
+      "resumo": "Galo dominou as ações no confronto brasileiro da estreia e começou a caminhada continental com vitória contundente.",
+      "imagem": "https://s2-ge.glbimg.com/AZlovnYzBB9KARwURx3kHt2ksGo=/0x0:2000x1333/984x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_bc8228b6673f488aa253bbcb03c80ec5/internal_photos/bs/2025/Z/N/Z8xNpJTCCBy1R7CccYsw/agif25080622072695.jpg"
+    },
+    {
+      "categoria": "GRUPO G • 4ª RODADA",
+      "tipo_tag": "ouro",
+      "titulo": "Força no Maião: Mirassol vence o Colo-Colo por 2 a 0 e segue firme",
+      "resumo": "Com apoio da torcida paulista, o Leão fez valer o mando de campo e embolou de vez a disputa pela vaga às Oitavas.",
+      "imagem": "https://img.olympics.com/images/image/private/t_s_pog_staticContent_hero_lg_2x/f_auto/primary/fk6lqs1wrx3xrkmhqpg2"
+    }
+  ]
+}
