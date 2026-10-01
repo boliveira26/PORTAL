@@ -3,27 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>CONMEBOL Libertadores | Portal Oficial PES</title>
+    <title>CONMEBOL Libertadores | Portal Oficial</title>
     
     <!-- FONTE DIGITAL OFICIAL (MANUAL PÁG. 25: UBUNTU) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
 
-    <!-- CSS OFICIAL LIBERTADORES (3D & ATMOSFERA) -->
-    <link rel="stylesheet" href="assets/css/libertadores.css?v=38">
+    <!-- CSS OFICIAL LIBERTADORES -->
+    <link rel="stylesheet" href="assets/css/libertadores.css?v=52">
     <!-- AUDIO PLAYER -->
     <link rel="stylesheet" href="assets/css/audio-player.css?v=32">
 </head>
 <body class="pagina-libertadores-oficial">
 
-    <!-- REFLETORES DE ESTÁDIO VOLUMÉTRICOS -->
+    <!-- REFLETORES DE ESTÁDIO EM SEGUNDO PLANO -->
     <div class="estadio-luz-topo esquerda"></div>
     <div class="estadio-luz-topo direita"></div>
-
-    <!-- FAIXAS 3D LATERAIS DECORATIVAS DO MANUAL -->
-    <div class="fita-3d-estudio fita-esquerda"></div>
-    <div class="fita-3d-estudio fita-direita"></div>
 
     <!-- 1. TOP SWITCHER INSTITUCIONAL CONMEBOL -->
     <div class="top-switcher-conmebol">
@@ -36,7 +32,7 @@
                 <span class="divisor-switch">|</span>
                 <a href="sulamericana.html" class="tab-switch">CONMEBOL SUDAMERICANA</a>
                 <span class="divisor-switch">|</span>
-                <a href="index.html" class="tab-switch">PES MEDIA HUB</a>
+                <a href="index.html" class="tab-switch">INÍCIO</a>
             </div>
         </div>
     </div>
@@ -46,22 +42,20 @@
         <div class="navbar-wrapper">
             <div class="brand-libertadores">
                 <a href="libertadores.html" class="logo-link-conmebol">
-                    <span class="chancela-conmebol">- CONMEBOL -</span>
-                    <span class="titulo-libertadores">LIBERTADORES</span>
+                    <img src="https://i.namu.wiki/i/ERiBtFg1CI8uCA2WQjlo25QR7pHAP6KPE271lVupZxa3AvVq_uvexbiMIZD-UYUPkGwF1dCmiLqsA5wQ0XQYzQ.webp" alt="CONMEBOL Libertadores" class="logo-topo-copa">
                 </a>
             </div>
 
             <nav class="menu-navegacao-libertadores">
                 <a href="index.html" class="nav-item">Início</a>
-                <a href="fase-de-grupos.html" class="nav-item">Tabela &amp; Jogos</a>
-                <a href="fase-de-grupos.html" class="nav-item">Classificação</a>
+                <a href="fase-de-grupos.html" class="nav-item">Fase de Grupos</a>
                 <a href="libertadores-oficial.html" class="nav-item">Mata-Mata</a>
                 <a href="sulamericana.html" class="nav-item">Sul-Americana</a>
             </nav>
         </div>
     </header>
 
-    <!-- 3. TICKER DE CABEÇALHO (JOGOS DO DIA EM LOOPING COM VIRADA ÀS 00:00) -->
+    <!-- 3. TICKER DE CABEÇALHO (JOGOS DO DIA COM VIRADA ÀS 00:00) -->
     <section class="barra-ticker-topo">
         <div class="header-bloco-ticker">
             <span class="tag-ao-vivo-ticker"><span class="led-pulso"></span>RODADA ATIVA</span>
@@ -74,97 +68,40 @@
         </div>
     </section>
 
-    <!-- 4. BANNER INSTITUCIONAL: A GLÓRIA ETERNA -->
+    <!-- 4. BANNER INSTITUCIONAL: A GLÓRIA ETERNA (LIMPO SEM REPETIÇÃO DO NOME) -->
     <section class="secao-conceito-faixa">
         <div class="faixa-conceito-container">
             <div class="bloco-conceito-texto">
-                <div class="tag-glória-topo">
-                    <span class="linha-ouro-curta"></span>
-                    <span class="chancela-sub-ouro">CONMEBOL LIBERTADORES</span>
-                </div>
                 <h1 class="slogan-principal-header">A GLÓRIA ETERNA.</h1>
                 <p class="frase-legado">Não há comparação. Sem igual. Absoluto.</p>
-            </div>
-            <div class="selo-oficial-edicao">
-                <span class="badge-edicao-ouro">TEMPORADA OFICIAL</span>
-                <span class="sub-edicao">PES CONTINENTAL LEAGUE</span>
             </div>
         </div>
     </section>
 
-    <!-- 5. SHOWCASE DE NOTÍCIAS PRINCIPAIS (TODAS CLICÁVEIS) -->
+    <!-- 5. SHOWCASE DE NOTÍCIAS (ALIMENTADO DINAMICAMENTE PELO NOTICIAS.JSON) -->
     <main class="container-showcase-noticias">
         <section class="grid-layout-noticias">
             
-            <!-- DESTAQUE PRINCIPAL (ESQUERDA - CLICÁVEL & 3D) -->
-            <article class="bloco-destaque-principal card-3d-tilt" onclick="location.href='noticia.html?id=manchete-principal'" title="Clique para ler a matéria completa">
-                <div class="moldura-foto-grande">
-                    <img src="https://admin.cnnbrasil.com.br/wp-content/uploads/sites/12/2025/03/taca-libertadores-e1742232529519.jpeg?w=1200&h=675&crop=1" alt="Taça CONMEBOL Libertadores">
-                    <div class="mascara-protecao-conmebol"></div>
-                    <div class="reflexo-luz-3d"></div>
-                    <div class="painel-conteudo-hero">
-                        <span class="tag-secao-ouro">FASE DE GRUPOS &bull; DECISÃO</span>
-                        <h2>6ª Rodada define os 16 classificados às Oitavas da Glória Eterna</h2>
-                        <p class="resumo-hero-txt">Classificação geral determina os líderes do Pote 1 e as equipes transferidas para a fase final continental.</p>
-                    </div>
-                </div>
+            <!-- DESTAQUE PRINCIPAL (ESQUERDA - MANCHETE AJUSTADA) -->
+            <article class="manchete-hero-grande" id="hero-libertadores-destaque">
+                <!-- Preenchido pelo libertadores-portal.js -->
             </article>
 
-            <!-- 4 NOTÍCIAS HORIZONTAIS EMPILHADAS (DIREITA - CLICÁVEIS) -->
-            <aside class="coluna-noticias-empilhadas">
-                
-                <!-- Notícia 1 -->
-                <article class="card-noticia-item card-3d-tilt" onclick="location.href='noticia.html?id=atletico-lider'" title="Clique para ler a matéria completa">
-                    <div class="thumb-quadrada" style="background-image: url('https://agenciaesporte.com.br/wp-content/uploads/2025/07/Atletico-Cuelo-31-07-2025.jpg');"></div>
-                    <div class="info-noticia-conteudo">
-                        <span class="categoria-amarela">LIBERTADORES</span>
-                        <h4>Atlético empata com o Flamengo e conquista o primeiro lugar do Grupo A</h4>
-                        <span class="data-noticia-txt">Ontem &bull; 6ª Rodada</span>
-                    </div>
-                </article>
-
-                <!-- Notícia 2 -->
-                <article class="card-noticia-item card-3d-tilt" onclick="location.href='noticia.html?id=river-derrotado-crb'" title="Clique para ler a matéria completa">
-                    <div class="thumb-quadrada" style="background-image: url('https://lncimg.lance.com.br/cdn-cgi/image/width=1200,height=630,quality=75,fit=cover,format=webp/uploads/2026/08/Eduardo-Coudet-comandando-o-River-Plate-na-eliminacao-nas-oitavas-de-final-da-Sul-Americana-scaled-aspect-ratio-512-320.jpg');"></div>
-                    <div class="info-noticia-conteudo">
-                        <span class="categoria-amarela">LIBERTADORES</span>
-                        <h4>River é humilhado pelo CRB e é eliminado na Fase de Grupos</h4>
-                        <span class="data-noticia-txt">Grupo B &bull; Encerrado</span>
-                    </div>
-                </article>
-
-                <!-- Notícia 3 -->
-                <article class="card-noticia-item card-3d-tilt" onclick="location.href='noticia.html?id=boca-eliminado-barcelona'" title="Clique para ler a matéria completa">
-                    <div class="thumb-quadrada" style="background-image: url('https://s2-ge.glbimg.com/ASG6A9GRp8MhZ5NrRF-kmm1he1g=/0x0:2048x1366/984x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_bc8228b6673f488aa253bbcb03c80ec5/internal_photos/bs/2025/2/Q/AYeiv4QwGQxT7tOMuy2Q/2025-02-26t025545z-866675613-up1el2q084wa2-rtrmadp-3-soccer-libertadores-boj-ali-report.jpg');"></div>
-                    <div class="info-noticia-conteudo">
-                        <span class="categoria-amarela">FASE DE GRUPOS</span>
-                        <h4>Boca leva empate do Barcelona e está eliminado da Libertadores</h4>
-                        <span class="data-noticia-txt">Grupo D &bull; Encerrado</span>
-                    </div>
-                </article>
-
-                <!-- Notícia 4 -->
-                <article class="card-noticia-item card-3d-tilt" onclick="location.href='noticia.html?id=sorteio-mata-mata-quinta'" title="Clique para ler a matéria completa">
-                    <div class="thumb-quadrada" style="background-image: url('https://fimdejogo.com.br/wp-content/uploads/2020/09/libertadores-sudamericana-2_1.jpg');"></div>
-                    <div class="info-noticia-conteudo">
-                        <span class="categoria-amarela">MATA-MATA</span>
-                        <h4>Sorteio Oficial dos Confrontos das Oitavas de Final</h4>
-                        <span class="data-noticia-txt">Transmissão PES Media Hub</span>
-                    </div>
-                </article>
-
+            <!-- 4 NOTÍCIAS HORIZONTAIS EMPILHADAS (DIREITA) -->
+            <aside class="coluna-noticias-empilhadas" id="grid-noticias-libertadores">
+                <!-- Preenchido pelo libertadores-portal.js -->
             </aside>
 
         </section>
     </main>
 
-    <!-- 6. CENTRAL DE GRUPOS EM CARROSSEL NAVEGÁVEL (GRUPOS A AO H) -->
+    <!-- 6. CENTRAL DA FASE DE GRUPOS (CARROSSEL DINÂMICO DOS 8 GRUPOS) -->
     <section class="secao-painel-grupos">
         <div class="container-secao">
             <div class="cabecalho-secao-ouro">
                 <div>
-                    <span class="sub-tag-ouro">TABELA OFICIAL &bull; GRUPOS A A H</span>
-                    <h3>PANORAMA DE TODOS OS GRUPOS</h3>
+                    <span class="sub-tag-ouro">CLASSIFICAÇÃO OFICIAL</span>
+                    <h3>GRUPOS A A H</h3>
                 </div>
                 <div class="controles-carrossel-grupos">
                     <button type="button" class="btn-nav-grupo" onclick="deslizarGrupos(-1)" aria-label="Anterior">&#8249;</button>
@@ -173,323 +110,33 @@
                 </div>
             </div>
 
-            <!-- TRILHA DESLIZANTE COM TODOS OS 8 GRUPOS -->
-            <div class="trilha-grupos-carrossel" id="trilha-todos-grupos">
-                
-                <!-- GRUPO A -->
-                <div class="card-mini-grupo">
-                    <div class="topo-mini-grupo">
-                        <span>GRUPO A</span>
-                        <span class="status-grupo-txt">ENCERRADO</span>
-                    </div>
-                    <div class="linha-tabela-mini qualificado">
-                        <span class="pos-mini">1</span>
-                        <img src="https://logodetimes.com/times/atletico-mineiro/logo-atletico-mineiro-256.png" class="escudo-tabela" alt="Atlético-MG">
-                        <span class="nome-clube-mini">Atlético-MG</span>
-                        <div class="forma-jogos"><span class="forma-badge v">V</span><span class="forma-badge v">V</span><span class="forma-badge e">E</span></div>
-                        <span class="pts-mini">13</span>
-                    </div>
-                    <div class="linha-tabela-mini qualificado">
-                        <span class="pos-mini">2</span>
-                        <img src="https://logodetimes.com/times/flamengo/logo-flamengo-256.png" class="escudo-tabela" alt="Flamengo">
-                        <span class="nome-clube-mini">Flamengo</span>
-                        <div class="forma-jogos"><span class="forma-badge v">V</span><span class="forma-badge e">E</span><span class="forma-badge e">E</span></div>
-                        <span class="pts-mini">11</span>
-                    </div>
-                    <div class="linha-tabela-mini sula">
-                        <span class="pos-mini">3</span>
-                        <img src="https://logodetimes.com/times/bolivar/logo-bolivar-256.png" class="escudo-tabela" alt="Bolívar">
-                        <span class="nome-clube-mini">Bolívar</span>
-                        <div class="forma-jogos"><span class="forma-badge v">V</span><span class="forma-badge e">E</span><span class="forma-badge e">E</span></div>
-                        <span class="pts-mini">6</span>
-                    </div>
-                    <div class="linha-tabela-mini sula">
-                        <span class="pos-mini">4</span>
-                        <img src="https://logodetimes.com/times/sporting-cristal/logo-sporting-cristal-256.png" class="escudo-tabela" alt="Sporting Cristal">
-                        <span class="nome-clube-mini">Sporting Cristal</span>
-                        <div class="forma-jogos"><span class="forma-badge d">D</span><span class="forma-badge d">D</span><span class="forma-badge e">E</span></div>
-                        <span class="pts-mini">2</span>
-                    </div>
-                </div>
-
-                <!-- GRUPO B -->
-                <div class="card-mini-grupo">
-                    <div class="topo-mini-grupo">
-                        <span>GRUPO B</span>
-                        <span class="status-grupo-txt">ENCERRADO</span>
-                    </div>
-                    <div class="linha-tabela-mini qualificado">
-                        <span class="pos-mini">1</span>
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Escudo_del_Club_Universitario_de_Deportes.svg/3840px-Escudo_del_Club_Universitario_de_Deportes.svg.png" class="escudo-tabela" alt="Universitario">
-                        <span class="nome-clube-mini">Universitario</span>
-                        <div class="forma-jogos"><span class="forma-badge d">D</span><span class="forma-badge v">V</span><span class="forma-badge v">V</span></div>
-                        <span class="pts-mini">11</span>
-                    </div>
-                    <div class="linha-tabela-mini qualificado">
-                        <span class="pos-mini">2</span>
-                        <img src="https://logodetimes.com/times/crb/logo-crb-256.png" class="escudo-tabela" alt="CRB">
-                        <span class="nome-clube-mini">CRB</span>
-                        <div class="forma-jogos"><span class="forma-badge v">V</span><span class="forma-badge d">D</span><span class="forma-badge v">V</span></div>
-                        <span class="pts-mini">11</span>
-                    </div>
-                    <div class="linha-tabela-mini sula">
-                        <span class="pos-mini">3</span>
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/Club_Libertad.png?utm_source=pt.wikipedia.org&utm_campaign=index&utm_content=original" class="escudo-tabela" alt="Libertad">
-                        <span class="nome-clube-mini">Libertad</span>
-                        <div class="forma-jogos"><span class="forma-badge d">D</span><span class="forma-badge v">V</span><span class="forma-badge d">D</span></div>
-                        <span class="pts-mini">5</span>
-                    </div>
-                    <div class="linha-tabela-mini sula">
-                        <span class="pos-mini">4</span>
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/f/f1/River_Plate.png?utm_source=pt.wikipedia.org&utm_campaign=index&utm_content=original" class="escudo-tabela" alt="River Plate">
-                        <span class="nome-clube-mini">River Plate</span>
-                        <div class="forma-jogos"><span class="forma-badge v">V</span><span class="forma-badge d">D</span><span class="forma-badge d">D</span></div>
-                        <span class="pts-mini">5</span>
-                    </div>
-                </div>
-
-                <!-- GRUPO C -->
-                <div class="card-mini-grupo">
-                    <div class="topo-mini-grupo">
-                        <span>GRUPO C</span>
-                        <span class="status-grupo-txt proxima">RODADA 6</span>
-                    </div>
-                    <div class="linha-tabela-mini qualificado">
-                        <span class="pos-mini">1</span>
-                        <img src="https://logodetimes.com/times/junior-barranquilla/logo-junior-barranquilla-256.png" class="escudo-tabela" alt="Junior">
-                        <span class="nome-clube-mini">Junior Barranquilla</span>
-                        <div class="forma-jogos"><span class="forma-badge v">V</span><span class="forma-badge v">V</span><span class="forma-badge v">V</span></div>
-                        <span class="pts-mini">11</span>
-                    </div>
-                    <div class="linha-tabela-mini qualificado">
-                        <span class="pos-mini">2</span>
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/4/4a/Logo_de_Olimpia_2022_PNG_HD.png?utm_source=pt.wikipedia.org&utm_campaign=index&utm_content=original" class="escudo-tabela" alt="Olimpia">
-                        <span class="nome-clube-mini">Olimpia</span>
-                        <div class="forma-jogos"><span class="forma-badge e">E</span><span class="forma-badge e">E</span><span class="forma-badge e">E</span></div>
-                        <span class="pts-mini">6</span>
-                    </div>
-                    <div class="linha-tabela-mini sula">
-                        <span class="pos-mini">3</span>
-                        <img src="https://logodetimes.com/times/jorge-wilstermann/logo-jorge-wilstermann-256.png" class="escudo-tabela" alt="Jorge Wilstermann">
-                        <span class="nome-clube-mini">Jorge Wilstermann</span>
-                        <div class="forma-jogos"><span class="forma-badge e">E</span><span class="forma-badge e">E</span><span class="forma-badge d">D</span></div>
-                        <span class="pts-mini">6</span>
-                    </div>
-                    <div class="linha-tabela-mini sula">
-                        <span class="pos-mini">4</span>
-                        <img src="https://logodetimes.com/times/palmeiras/logo-palmeiras-256.png" class="escudo-tabela" alt="Palmeiras">
-                        <span class="nome-clube-mini">Palmeiras</span>
-                        <div class="forma-jogos"><span class="forma-badge d">D</span><span class="forma-badge d">D</span><span class="forma-badge e">E</span></div>
-                        <span class="pts-mini">2</span>
-                    </div>
-                </div>
-
-                <!-- GRUPO D -->
-                <div class="card-mini-grupo">
-                    <div class="topo-mini-grupo">
-                        <span>GRUPO D</span>
-                        <span class="status-grupo-txt">ENCERRADO</span>
-                    </div>
-                    <div class="linha-tabela-mini qualificado">
-                        <span class="pos-mini">1</span>
-                        <img src="https://logodetimes.com/times/barcelona-de-guayaquil/logo-barcelona-de-guayaquil-256.png" class="escudo-tabela" alt="Barcelona SC">
-                        <span class="nome-clube-mini">Barcelona SC</span>
-                        <div class="forma-jogos"><span class="forma-badge v">V</span><span class="forma-badge d">D</span><span class="forma-badge e">E</span></div>
-                        <span class="pts-mini">10</span>
-                    </div>
-                    <div class="linha-tabela-mini qualificado">
-                        <span class="pos-mini">2</span>
-                        <img src="https://logodetimes.com/times/corinthians/logo-corinthians-256.png" class="escudo-tabela" alt="Corinthians">
-                        <span class="nome-clube-mini">Corinthians</span>
-                        <div class="forma-jogos"><span class="forma-badge d">D</span><span class="forma-badge e">E</span><span class="forma-badge v">V</span></div>
-                        <span class="pts-mini">9</span>
-                    </div>
-                    <div class="linha-tabela-mini sula">
-                        <span class="pos-mini">3</span>
-                        <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cb/Boca_Juniors_-_Novo_Escudo.svg/1920px-Boca_Juniors_-_Novo_Escudo.svg.png?utm_source=pt.wikipedia.org&utm_campaign=index&utm_content=thumbnail" class="escudo-tabela" alt="Boca Juniors">
-                        <span class="nome-clube-mini">Boca Juniors</span>
-                        <div class="forma-jogos"><span class="forma-badge v">V</span><span class="forma-badge e">E</span><span class="forma-badge e">E</span></div>
-                        <span class="pts-mini">9</span>
-                    </div>
-                    <div class="linha-tabela-mini sula">
-                        <span class="pos-mini">4</span>
-                        <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/c/ca/Escudo_Club_Deportivo_Universidad_Cat%C3%B3lica.svg/1280px-Escudo_Club_Deportivo_Universidad_Cat%C3%B3lica.svg.png?utm_source=pt.wikipedia.org&utm_campaign=index&utm_content=thumbnail" class="escudo-tabela" alt="U. Católica">
-                        <span class="nome-clube-mini">Universidad Católica</span>
-                        <div class="forma-jogos"><span class="forma-badge d">D</span><span class="forma-badge v">V</span><span class="forma-badge d">D</span></div>
-                        <span class="pts-mini">4</span>
-                    </div>
-                </div>
-
-                <!-- GRUPO E -->
-                <div class="card-mini-grupo">
-                    <div class="topo-mini-grupo">
-                        <span>GRUPO E</span>
-                        <span class="status-grupo-txt">ENCERRADO</span>
-                    </div>
-                    <div class="linha-tabela-mini qualificado">
-                        <span class="pos-mini">1</span>
-                        <img src="https://logodetimes.com/times/bahia/logo-bahia-256.png" class="escudo-tabela" alt="Bahia">
-                        <span class="nome-clube-mini">Bahia</span>
-                        <div class="forma-jogos"><span class="forma-badge v">V</span><span class="forma-badge e">E</span><span class="forma-badge d">D</span></div>
-                        <span class="pts-mini">11</span>
-                    </div>
-                    <div class="linha-tabela-mini qualificado">
-                        <span class="pos-mini">2</span>
-                        <img src="https://logodetimes.com/times/atletico-nacional/logo-atletico-nacional-256.png" class="escudo-tabela" alt="Atlético Nacional">
-                        <span class="nome-clube-mini">Atlético Nacional</span>
-                        <div class="forma-jogos"><span class="forma-badge d">D</span><span class="forma-badge e">E</span><span class="forma-badge v">V</span></div>
-                        <span class="pts-mini">11</span>
-                    </div>
-                    <div class="linha-tabela-mini sula">
-                        <span class="pos-mini">3</span>
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/1/1e/Club_Nacional_de_Football%27s_logo.png?utm_source=pt.wikipedia.org&utm_campaign=index&utm_content=original" class="escudo-tabela" alt="Nacional">
-                        <span class="nome-clube-mini">Nacional</span>
-                        <div class="forma-jogos"><span class="forma-badge v">V</span><span class="forma-badge d">D</span><span class="forma-badge v">V</span></div>
-                        <span class="pts-mini">6</span>
-                    </div>
-                    <div class="linha-tabela-mini sula">
-                        <span class="pos-mini">4</span>
-                        <img src="https://logodetimes.com/times/independiente-del-valle/logo-independiente-del-valle-256.png" class="escudo-tabela" alt="IDV">
-                        <span class="nome-clube-mini">Indep. del Valle</span>
-                        <div class="forma-jogos"><span class="forma-badge d">D</span><span class="forma-badge v">V</span><span class="forma-badge d">D</span></div>
-                        <span class="pts-mini">6</span>
-                    </div>
-                </div>
-
-                <!-- GRUPO F -->
-                <div class="card-mini-grupo">
-                    <div class="topo-mini-grupo">
-                        <span>GRUPO F</span>
-                        <span class="status-grupo-txt proxima">RODADA 6</span>
-                    </div>
-                    <div class="linha-tabela-mini qualificado">
-                        <span class="pos-mini">1</span>
-                        <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/6/68/Escudo_del_Club_Estudiantes_de_La_Plata.svg/1280px-Escudo_del_Club_Estudiantes_de_La_Plata.svg.png?utm_source=pt.wikipedia.org&utm_campaign=index&utm_content=thumbnail" class="escudo-tabela" alt="Estudiantes">
-                        <span class="nome-clube-mini">Estudiantes</span>
-                        <div class="forma-jogos"><span class="forma-badge v">V</span><span class="forma-badge v">V</span><span class="forma-badge d">D</span></div>
-                        <span class="pts-mini">12</span>
-                    </div>
-                    <div class="linha-tabela-mini qualificado">
-                        <span class="pos-mini">2</span>
-                        <img src="https://logodetimes.com/times/red-bull-bragantino/logo-red-bull-bragantino-256.png" class="escudo-tabela" alt="RB Bragantino">
-                        <span class="nome-clube-mini">RB Bragantino</span>
-                        <div class="forma-jogos"><span class="forma-badge e">E</span><span class="forma-badge e">E</span><span class="forma-badge v">V</span></div>
-                        <span class="pts-mini">8</span>
-                    </div>
-                    <div class="linha-tabela-mini sula">
-                        <span class="pos-mini">3</span>
-                        <img src="https://logodetimes.com/times/penarol/logo-penarol-256.png" class="escudo-tabela" alt="Peñarol">
-                        <span class="nome-clube-mini">Peñarol</span>
-                        <div class="forma-jogos"><span class="forma-badge d">D</span><span class="forma-badge e">E</span><span class="forma-badge v">V</span></div>
-                        <span class="pts-mini">7</span>
-                    </div>
-                    <div class="linha-tabela-mini sula">
-                        <span class="pos-mini">4</span>
-                        <img src="https://logodetimes.com/times/cerro-porteno/logo-cerro-porteno-256.png" class="escudo-tabela" alt="Cerro Porteño">
-                        <span class="nome-clube-mini">Cerro Porteño</span>
-                        <div class="forma-jogos"><span class="forma-badge d">D</span><span class="forma-badge d">D</span><span class="forma-badge d">D</span></div>
-                        <span class="pts-mini">1</span>
-                    </div>
-                </div>
-
-                <!-- GRUPO G -->
-                <div class="card-mini-grupo">
-                    <div class="topo-mini-grupo">
-                        <span>GRUPO G</span>
-                        <span class="status-grupo-txt proxima">RODADA 6</span>
-                    </div>
-                    <div class="linha-tabela-mini qualificado">
-                        <span class="pos-mini">1</span>
-                        <img src="https://upload.wikimedia.org/wikipedia/pt/e/e8/Colo-Colo_Futbol_Club.png?utm_source=pt.wikipedia.org&utm_campaign=index&utm_content=original" class="escudo-tabela" alt="Colo-Colo">
-                        <span class="nome-clube-mini">Colo-Colo</span>
-                        <div class="forma-jogos"><span class="forma-badge e">E</span><span class="forma-badge d">D</span><span class="forma-badge v">V</span></div>
-                        <span class="pts-mini">8</span>
-                    </div>
-                    <div class="linha-tabela-mini qualificado">
-                        <span class="pos-mini">2</span>
-                        <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/5/56/Escudo_de_Racing_Club_%282014%29.svg/1920px-Escudo_de_Racing_Club_%282014%29.svg.png?utm_source=pt.wikipedia.org&utm_campaign=index&utm_content=thumbnail" class="escudo-tabela" alt="Racing">
-                        <span class="nome-clube-mini">Racing Club</span>
-                        <div class="forma-jogos"><span class="forma-badge d">D</span><span class="forma-badge v">V</span><span class="forma-badge d">D</span></div>
-                        <span class="pts-mini">8</span>
-                    </div>
-                    <div class="linha-tabela-mini sula">
-                        <span class="pos-mini">3</span>
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/5/5b/Mirassol_FC_logo.png?utm_source=pt.wikipedia.org&utm_campaign=index&utm_content=original" class="escudo-tabela" alt="Mirassol">
-                        <span class="nome-clube-mini">Mirassol</span>
-                        <div class="forma-jogos"><span class="forma-badge v">V</span><span class="forma-badge v">V</span><span class="forma-badge d">D</span></div>
-                        <span class="pts-mini">7</span>
-                    </div>
-                    <div class="linha-tabela-mini sula">
-                        <span class="pos-mini">4</span>
-                        <img src="https://a.espncdn.com/combiner/i?img=/i/teamlogos/soccer/500/4818.png" class="escudo-tabela" alt="Táchira">
-                        <span class="nome-clube-mini">Deportivo Táchira</span>
-                        <div class="forma-jogos"><span class="forma-badge d">D</span><span class="forma-badge d">D</span><span class="forma-badge v">V</span></div>
-                        <span class="pts-mini">4</span>
-                    </div>
-                </div>
-
-                <!-- GRUPO H -->
-                <div class="card-mini-grupo">
-                    <div class="topo-mini-grupo">
-                        <span>GRUPO H</span>
-                        <span class="status-grupo-txt proxima">RODADA 6</span>
-                    </div>
-                    <div class="linha-tabela-mini qualificado">
-                        <span class="pos-mini">1</span>
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/7/72/LDU_Escudo_Actualizado_2023.png?utm_source=pt.wikipedia.org&utm_campaign=index&utm_content=original" class="escudo-tabela" alt="LDU">
-                        <span class="nome-clube-mini">LDU Quito</span>
-                        <div class="forma-jogos"><span class="forma-badge e">E</span><span class="forma-badge v">V</span><span class="forma-badge v">V</span></div>
-                        <span class="pts-mini">13</span>
-                    </div>
-                    <div class="linha-tabela-mini qualificado">
-                        <span class="pos-mini">2</span>
-                        <img src="https://upload.wikimedia.org/wikipedia/pt/f/f4/Caracas_FC.png?utm_source=pt.wikipedia.org&utm_campaign=index&utm_content=original" class="escudo-tabela" alt="Caracas">
-                        <span class="nome-clube-mini">Caracas</span>
-                        <div class="forma-jogos"><span class="forma-badge v">V</span><span class="forma-badge d">D</span><span class="forma-badge d">D</span></div>
-                        <span class="pts-mini">7</span>
-                    </div>
-                    <div class="linha-tabela-mini sula">
-                        <span class="pos-mini">3</span>
-                        <img src="https://logodetimes.com/times/fluminense/logo-fluminense-256.png" class="escudo-tabela" alt="Fluminense">
-                        <span class="nome-clube-mini">Fluminense</span>
-                        <div class="forma-jogos"><span class="forma-badge e">E</span><span class="forma-badge v">V</span><span class="forma-badge d">D</span></div>
-                        <span class="pts-mini">5</span>
-                    </div>
-                    <div class="linha-tabela-mini sula">
-                        <span class="pos-mini">4</span>
-                        <img src="https://assets.footylogos.com/logos/the-strongest/the-strongest-logo-footylogos.png" class="escudo-tabela" alt="The Strongest">
-                        <span class="nome-clube-mini">The Strongest</span>
-                        <div class="forma-jogos"><span class="forma-badge d">D</span><span class="forma-badge d">D</span><span class="forma-badge v">V</span></div>
-                        <span class="pts-mini">3</span>
-                    </div>
-                </div>
-
+            <!-- TRILHA DINÂMICA ALIMENTADA PELO JSON -->
+            <div class="trilha-grupos-carrossel" id="trilha-grupos-dinamica">
+                <!-- Renderizado automaticamente pelo libertadores-portal.js -->
             </div>
 
-            <!-- LEGENDA OFICIAL DE CLASSIFICAÇÃO -->
+            <!-- LEGENDA OFICIAL -->
             <div class="legenda-zonas-conmebol">
                 <div class="item-legenda">
-                    <span class="bloco-cor liberta"></span>
-                    <span>1º e 2º &bull; Classificados às Oitavas de Final (CONMEBOL Libertadores)</span>
+                    <span class="box-legenda-tv verde"></span>
+                    <span class="txt-legenda">1º e 2º &bull; Oitavas de Final (CONMEBOL Libertadores)</span>
                 </div>
                 <div class="item-legenda">
-                    <span class="bloco-cor sula"></span>
-                    <span>3º e 4º &bull; Transferidos para as Oitavas de Final (CONMEBOL Sudamericana)</span>
+                    <span class="box-legenda-tv vermelho"></span>
+                    <span class="txt-legenda">3º e 4º &bull; Transferidos para as Oitavas de Final (CONMEBOL Sudamericana)</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 7. BANNER 3D: O CAMINHO DA GLÓRIA ETERNA (MATA-MATA) -->
+    <!-- 7. ATALHO DO MATA-MATA (CARD DE ESTÚDIO COM TROFÉU) -->
     <section class="secao-caminho-taca">
         <div class="container-secao">
             <div class="banner-caminho-card card-3d-tilt">
-                <div class="efeito-raios-ouro"></div>
-                <div class="reflexo-luz-3d"></div>
                 <div class="conteudo-caminho">
                     <span class="tag-caminho">FASE DECISIVA</span>
-                    <h3>O CAMINHO DA GLÓRIA ETERNA</h3>
-                    <p>16 clubes em busca da eternidade sul-americana. Acompanhe os confrontos do sorteio até a Grande Decisão.</p>
+                    <h3>QUADRO OFICIAL DO MATA-MATA</h3>
+                    <p>Acompanhe o caminho dos 16 clubes classificados das Oitavas até a Grande Decisão da Glória Eterna.</p>
                     <a href="libertadores-oficial.html" class="btn-caminho-ouro">VER QUADRO DO MATA-MATA &rarr;</a>
                 </div>
                 <div class="imagem-taca-caminho">
@@ -499,35 +146,7 @@
         </div>
     </section>
 
-    <!-- 8. NÚMEROS E ESTATÍSTICAS COM CONTADOR ANIMADO JS -->
-    <section class="secao-stats-copa" id="secao-estatisticas">
-        <div class="container-secao">
-            <div class="grid-stats-cards">
-                <div class="card-stat-item card-3d-tilt">
-                    <span class="stat-numero" data-valor="8">0</span>
-                    <span class="stat-label">GRUPOS OFICIAIS</span>
-                    <span class="stat-desc">32 clubes disputando a América do Sul no PES</span>
-                </div>
-                <div class="card-stat-item card-3d-tilt">
-                    <span class="stat-numero" data-valor="16">0</span>
-                    <span class="stat-label">VAGAS NAS OITAVAS</span>
-                    <span class="stat-desc">Os 2 melhores de cada chave avançam ao Pote 1 e 2</span>
-                </div>
-                <div class="card-stat-item card-3d-tilt">
-                    <span class="stat-numero" data-valor="16">0</span>
-                    <span class="stat-label">VAGAS NA SUL-AMERICANA</span>
-                    <span class="stat-desc">3º e 4º colocados entram direto na fase eliminatória</span>
-                </div>
-                <div class="card-stat-item destaque-ouro card-3d-tilt">
-                    <span class="stat-numero" data-valor="1">0</span>
-                    <span class="stat-label">GLÓRIA ETERNA</span>
-                    <span class="stat-desc">Apenas um campeão levantará a taça mais cobiçada</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 9. RODAPÉ OFICIAL CONMEBOL -->
+    <!-- 8. RODAPÉ INSTITUCIONAL CONMEBOL -->
     <footer id="rodape-conmebol-libertadores">
         <div class="rodape-limite-container">
             <div class="rodape-bloco-marca">
@@ -545,15 +164,15 @@
             </div>
 
             <div class="copyright-oficial">
-                <p>Copyright &copy; CONMEBOL. Todos os direitos reservados. Licenciado para PES Media Hub.</p>
+                <p>CONMEBOL &copy; Todos os direitos reservados</p>
                 <span class="site-institucional">www.conmebol.com</span>
             </div>
         </div>
     </footer>
 
     <!-- SCRIPTS -->
-    <script src="assets/js/ticker-rodape.js?v=38"></script>
-    <script src="assets/js/libertadores-animacoes.js?v=38"></script>
+    <script src="assets/js/ticker-rodape.js?v=52"></script>
+    <script src="assets/js/libertadores-portal.js?v=52"></script>
     <script src="assets/js/audio-player.js?v=32"></script>
 </body>
 </html>

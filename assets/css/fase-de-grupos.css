@@ -1,5 +1,6 @@
 /* ==========================================================================
    assets/css/fase-de-grupos.css - BROADCAST OFICIAL CONMEBOL PES
+   Padronização Tipográfica: Família Completa Branding (100 a 900)
    ========================================================================== */
 
 /* TIPOGRAFIA OFICIAL BRANDING */
@@ -7,31 +8,37 @@
     font-family: 'Branding';
     src: url('../fonts/Branding%20Thin.otf') format('opentype');
     font-weight: 100;
+    font-style: normal;
 }
 @font-face {
     font-family: 'Branding';
     src: url('../fonts/Branding%20Light.otf') format('opentype');
     font-weight: 300;
+    font-style: normal;
 }
 @font-face {
     font-family: 'Branding';
     src: url('../fonts/Branding%20Medium.otf') format('opentype');
     font-weight: 500;
+    font-style: normal;
 }
 @font-face {
     font-family: 'Branding';
     src: url('../fonts/Branding%20Semibold.otf') format('opentype');
     font-weight: 600;
+    font-style: normal;
 }
 @font-face {
     font-family: 'Branding';
     src: url('../fonts/Branding%20Bold.otf') format('opentype');
     font-weight: 700;
+    font-style: normal;
 }
 @font-face {
     font-family: 'Branding';
     src: url('../fonts/Branding%20Black.otf') format('opentype');
     font-weight: 900;
+    font-style: normal;
 }
 
 :root {
@@ -49,8 +56,8 @@
     --border-card: rgba(212, 175, 55, 0.3);
     
     /* INDICADORES DE CLASSIFICAÇÃO */
-    --cor-verde: #00e676; /* Verde Oitavas */
-    --cor-vermelho: #ff3b30; /* Vermelho Sula */
+    --cor-verde: #00e676;
+    --cor-vermelho: #ff3b30;
     
     --text-pure-white: #ffffff;
     --text-silver: #c8d1de;
@@ -119,7 +126,7 @@ body.dashboard-fullscreen-tv::after {
     color: var(--gold-bright);
     padding: 0.5rem 1.2rem;
     font-size: 0.72rem;
-    font-weight: 800;
+    font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 2px;
     text-decoration: none;
@@ -179,7 +186,7 @@ body.dashboard-fullscreen-tv::after {
 
 .header-dashboard-tv h2 {
     font-size: 1.1rem;
-    font-weight: 800;
+    font-weight: 700;
     letter-spacing: 4px;
     color: var(--gold-main);
     text-transform: uppercase;
@@ -250,7 +257,7 @@ table.tabela-tv thead tr {
 
 table.tabela-tv th {
     color: var(--gold-bright);
-    font-weight: 900;
+    font-weight: 700;
     font-size: 0.74rem;
     padding: 6px 4px;
     letter-spacing: 1px;
@@ -275,7 +282,7 @@ table.tabela-tv tbody tr:hover {
 
 table.tabela-tv td {
     color: var(--text-silver);
-    font-weight: 700;
+    font-weight: 500;
     padding: 4px;
     font-size: 0.82rem;
 }
@@ -301,7 +308,7 @@ table.tabela-tv td.td-time-dupla {
 
 .nome-time-txt {
     color: var(--text-pure-white);
-    font-weight: 800;
+    font-weight: 700;
     font-size: 0.86rem;
     letter-spacing: 0.5px;
     white-space: nowrap;
@@ -316,7 +323,7 @@ table.tabela-tv td.td-time-dupla {
     background: rgba(212, 175, 55, 0.05);
 }
 
-/* ================= LADO DIREITO: JOGOS & SELETOR 100% ESTICADO ================= */
+/* ================= LADO DIREITO: JOGOS & SELETOR ================= */
 .painel-jogos-tv {
     background: rgba(8, 11, 16, 0.85);
     padding: 1rem 1.4rem;
@@ -391,7 +398,7 @@ table.tabela-tv td.td-time-dupla {
 
 .data-estadio-linha {
     font-size: 0.62rem;
-    font-weight: 900;
+    font-weight: 300;
     letter-spacing: 1px;
     color: var(--gold-bright);
     text-align: center;
@@ -403,7 +410,7 @@ table.tabela-tv td.td-time-dupla {
     justify-content: space-between;
     align-items: center;
     font-size: 0.85rem;
-    font-weight: 900;
+    font-weight: 700;
 }
 
 .time-box-txt {
@@ -412,6 +419,7 @@ table.tabela-tv td.td-time-dupla {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    font-weight: 700;
 }
 
 .time-box-txt.mandante { text-align: right; }
@@ -479,7 +487,7 @@ table.tabela-tv td.td-time-dupla {
 
 .txt-legenda {
     font-size: 0.8rem;
-    font-weight: 900;
+    font-weight: 700;
     letter-spacing: 1.5px;
     color: var(--gold-main);
     text-transform: uppercase;
@@ -487,20 +495,8 @@ table.tabela-tv td.td-time-dupla {
 
 /* RESPONSIVIDADE */
 @media (max-width: 1150px) {
-    .linha-grupo-tv {
-        grid-template-columns: 1fr;
-    }
-    .painel-tabela-tv {
-        border-right: none;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    }
-    body.dashboard-fullscreen-tv {
-        padding: 1.2rem 1rem;
-    }
-    .btn-voltar-portal,
-    .btn-mata-mata-header {
-        position: static;
-        display: inline-block;
-        margin-bottom: 0.6rem;
-    }
+    .linha-grupo-tv { grid-template-columns: 1fr; }
+    .painel-tabela-tv { border-right: none; border-bottom: 1px solid rgba(255, 255, 255, 0.08); }
+    body.dashboard-fullscreen-tv { padding: 1.2rem 1rem; }
+    .btn-voltar-portal, .btn-mata-mata-header { position: static; display: inline-block; margin-bottom: 0.6rem; }
 }
