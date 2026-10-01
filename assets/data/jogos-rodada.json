@@ -1,0 +1,146 @@
+[
+  {
+    "grupo": "GRUPO A",
+    "info": "QUA 30/09 • 21:00 • HERNANDO SILES",
+    "mandante": "Bolívar",
+    "visitante": "Sporting Cristal",
+    "golsM": null,
+    "golsV": null,
+    "status": "DECISIVO"
+  },
+  {
+    "grupo": "GRUPO A",
+    "info": "QUA 30/09 • 21:00 • MARACANÃ",
+    "mandante": "Flamengo",
+    "visitante": "Atlético Mineiro",
+    "golsM": null,
+    "golsV": null,
+    "status": "DECISIVO"
+  },
+  {
+    "grupo": "GRUPO B",
+    "info": "QUA 30/09 • 19:30 • DEFENSORES DEL CHACO",
+    "mandante": "Libertad",
+    "visitante": "Universitario",
+    "golsM": null,
+    "golsV": null,
+    "status": "DECISIVO"
+  },
+  {
+    "grupo": "GRUPO B",
+    "info": "QUA 30/09 • 19:30 • MONUMENTAL DE NÚÑEZ",
+    "mandante": "River Plate",
+    "visitante": "CRB",
+    "golsM": null,
+    "golsV": null,
+    "status": "DECISIVO"
+  },
+  {
+    "grupo": "GRUPO C",
+    "info": "QUI 01/10 • 21:00 • MANUEL FERREIRA",
+    "mandante": "Olimpia",
+    "visitante": "Junior Barranquilla",
+    "golsM": null,
+    "golsV": null,
+    "status": "DECISIVO"
+  },
+  {
+    "grupo": "GRUPO C",
+    "info": "QUI 01/10 • 21:00 • NUBANK PARQUE",
+    "mandante": "Palmeiras",
+    "visitante": "Jorge Wilstermann",
+    "golsM": null,
+    "golsV": null,
+    "status": "A JOGAR"
+  },
+  {
+    "grupo": "GRUPO D",
+    "info": "QUA 30/09 • 21:30 • NEO QUÍMICA ARENA",
+    "mandante": "Corinthians",
+    "visitante": "Universidad Católica",
+    "golsM": null,
+    "golsV": null,
+    "status": "DECISIVO"
+  },
+  {
+    "grupo": "GRUPO D",
+    "info": "QUA 30/09 • 21:30 • LA BOMBONERA",
+    "mandante": "Boca Juniors",
+    "visitante": "Barcelona SC",
+    "golsM": null,
+    "golsV": null,
+    "status": "DECISIVO"
+  },
+  {
+    "grupo": "GRUPO E",
+    "info": "QUA 30/09 • 20:00 • BANCO GUAYAQUIL",
+    "mandante": "Independiente del Valle",
+    "visitante": "Atlético Nacional",
+    "golsM": null,
+    "golsV": null,
+    "status": "DECISIVO"
+  },
+  {
+    "grupo": "GRUPO E",
+    "info": "QUA 30/09 • 20:00 • GRAN PARQUE CENTRAL",
+    "mandante": "Nacional",
+    "visitante": "Bahia",
+    "golsM": null,
+    "golsV": null,
+    "status": "A JOGAR"
+  },
+  {
+    "grupo": "GRUPO F",
+    "info": "QUI 01/10 • 21:30 • LUIS HIRSCHI",
+    "mandante": "Estudiantes",
+    "visitante": "Red Bull Bragantino",
+    "golsM": null,
+    "golsV": null,
+    "status": "DECISIVO"
+  },
+  {
+    "grupo": "GRUPO F",
+    "info": "QUI 01/10 • 21:30 • CAMPEÓN DEL SIGLO",
+    "mandante": "Peñarol",
+    "visitante": "Cerro Porteño",
+    "golsM": null,
+    "golsV": null,
+    "status": "A JOGAR"
+  },
+  {
+    "grupo": "GRUPO G",
+    "info": "QUI 01/10 • 20:00 • MONUMENTAL D. ARELLANO",
+    "mandante": "Colo-Colo",
+    "visitante": "Deportivo Táchira",
+    "golsM": null,
+    "golsV": null,
+    "status": "DECISIVO"
+  },
+  {
+    "grupo": "GRUPO G",
+    "info": "QUI 01/10 • 20:00 • PRESIDENTE PERÓN",
+    "mandante": "Racing Club",
+    "visitante": "Mirassol",
+    "golsM": null,
+    "golsV": null,
+    "status": "DECISIVO"
+  },
+  {
+    "grupo": "GRUPO H",
+    "info": "QUI 01/10 • 19:30 • MARACANÃ",
+    "mandante": "Fluminense",
+    "visitante": "The Strongest",
+    "golsM": null,
+    "golsV": null,
+    "status": "DECISIVO"
+  },
+  {
+    "grupo": "GRUPO H",
+    "info": "QUI 01/10 • 19:30 • CASABLANCA",
+    "mandante": "LDU Quito",
+    "visitante": "Caracas",
+    "golsM": null,
+    "golsV": null,
+    "status": "A JOGAR"
+  }
+]
