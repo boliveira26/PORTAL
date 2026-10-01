@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>CONMEBOL PES | Portal Oficial</title>
     <!-- CSS DO PORTAL -->
-    <link rel="stylesheet" href="assets/css/index.css?v=31">
+    <link rel="stylesheet" href="assets/css/index.css?v=32">
     <!-- ESTILO DO PLAYER DE ÁUDIO -->
     <link rel="stylesheet" href="assets/css/audio-player.css?v=30">
 </head>
@@ -150,7 +150,14 @@
             </div>
 
             <div class="grid-quatro-noticias" id="grid-ultimas-noticias">
-                <!-- Injetado dinamicamente pelo noticias.js (8 notícias completas) -->
+                <!-- Injetado dinamicamente pelo noticias.js -->
+            </div>
+
+            <!-- BOTÃO CARREGAR MAIS NOTÍCIAS DO ACERVO -->
+            <div class="container-carregar-mais" id="area-carregar-mais" style="display: none;">
+                <button type="button" class="btn-carregar-mais-noticias" onclick="carregarMaisNoticias()">
+                    CARREGAR MAIS NOTÍCIAS (+4) &darr;
+                </button>
             </div>
         </section>
 
@@ -168,8 +175,8 @@
     </footer>
 
     <!-- SCRIPTS -->
-    <script src="assets/js/ticker.js?v=31"></script>
-    <script src="assets/js/noticias.js?v=31"></script>
+    <script src="assets/js/ticker.js?v=32"></script>
+    <script src="assets/js/noticias.js?v=32"></script>
     <script src="assets/js/audio-player.js?v=30"></script>
 </body>
 </html>

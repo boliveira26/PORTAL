@@ -1,6 +1,9 @@
 // ==========================================================================
-// assets/js/noticias.js - CARREGAMENTO DE NOTÍCIAS DINÂMICAS DO PORTAL
+// assets/js/noticias.js - CARREGAMENTO DINÂMICO COM ACERVO E "CARREGAR MAIS"
 // ==========================================================================
+
+let todasNoticiasAcervo = [];
+let quantidadeExibida = 8; // Exibe as 8 primeiras por padrão
 
 document.addEventListener('DOMContentLoaded', () => {
     carregarNoticiasPortal();
@@ -18,7 +21,11 @@ function carregarNoticiasPortal() {
             renderizarTickerTopo(data.ticker_topo);
             renderizarHeroPrincipal(data.manchete_hero);
             renderizarHeroSecundarios(data.destaques_secundarios);
-            renderizarUltimasNoticias(data.ultimas_noticias);
+
+            if (data.ultimas_noticias && Array.isArray(data.ultimas_noticias)) {
+                todasNoticiasAcervo = data.ultimas_noticias;
+                renderizarGradeNoticiasPaginada();
+            }
         })
         .catch(error => {
             console.warn('Aviso ao carregar notícias dinâmicas:', error);
@@ -83,13 +90,16 @@ function renderizarHeroSecundarios(cards) {
     }).join('');
 }
 
-// 4. Grid de Últimas Notícias (Cada card abre sua matéria desenvolvida no noticia.html)
-function renderizarUltimasNoticias(noticias) {
-    if (!noticias || !noticias.length) return;
+// 4. Grid de Últimas Notícias com Paginação / Acervo
+function renderizarGradeNoticiasPaginada() {
     const container = document.getElementById('grid-ultimas-noticias');
+    const areaBotao = document.getElementById('area-carregar-mais');
     if (!container) return;
 
-    container.innerHTML = noticias.map(item => `
+    // Pega apenas as notícias até o limite atual (ex: 8)
+    const noticiasParaExibir = todasNoticiasAcervo.slice(0, quantidadeExibida);
+
+    container.innerHTML = noticiasParaExibir.map(item => `
         <article class="card-noticia-conmebol" style="cursor:pointer;" onclick="location.href='noticia.html?id=${item.id}'">
             <div class="thumb-noticia" style="background-image: url('${item.imagem}');"></div>
             <div class="corpo-noticia-conmebol">
@@ -99,4 +109,19 @@ function renderizarUltimasNoticias(noticias) {
             </div>
         </article>
     `).join('');
+
+    // Controla o botão "Carregar Mais"
+    if (areaBotao) {
+        if (quantidadeExibida < todasNoticiasAcervo.length) {
+            areaBotao.style.display = 'flex';
+        } else {
+            areaBotao.style.display = 'none';
+        }
+    }
 }
+
+// Função acionada ao clicar no botão "Carregar Mais"
+window.carregarMaisNoticias = function() {
+    quantidadeExibida += 4; // Adiciona mais 4 notícias à tela
+    renderizarGradeNoticiasPaginada();
+};

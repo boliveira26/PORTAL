@@ -36,7 +36,7 @@
       "tipo_tag": "neutro",
       "titulo": "Confronto Direto e Saldo de Gols: Como funciona o desempate no PES",
       "resumo": "Entenda a ordem dos critérios de desempate duplo, triplo e quádruplo aplicados na classificação.",
-      "imagem": null
+      "imagem": "https://conteudo.imguol.com.br/c/esporte/bb/2024/03/18/a-conmebol-e-a-puma-apresentaram-a-nova-versao-da-bola-cumbre-para-a-copa-libertadores-e-sul-americana-1710803823080_v2_1x1.jpg"
     }
   ],
   "ultimas_noticias": [
@@ -44,57 +44,68 @@
       "id": "boca-eliminado-barcelona",
       "categoria": "FASE DE GRUPOS",
       "tipo_tag": "ouro",
-      "titulo": "Boca leva empate do Barcelona e está eliminado",
+      "titulo": "Boca leva empate do Barcelona e está eliminado da CONMEBOL Libertadores na Fase de Grupos.",
       "resumo": "Corinthians vence a Católica e se classifica em segundo lugar no Grupo D.",
       "autor": "Por Redação PES Media Hub",
       "data_publicacao": "30/09/2026 23:30",
       "imagem": "https://s2-ge.glbimg.com/ASG6A9GRp8MhZ5NrRF-kmm1he1g=/0x0:2048x1366/984x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_bc8228b6673f488aa253bbcb03c80ec5/internal_photos/bs/2025/2/Q/AYeiv4QwGQxT7tOMuy2Q/2025-02-26t025545z-866675613-up1el2q084wa2-rtrmadp-3-soccer-libertadores-boj-ali-report.jpg",
-      "legenda_foto": "Jogadores do Boca Juniors lamentam o empate cedido no final do segundo tempo em La Bombonera.",
+      "legenda_foto": "Torcedores do Boca frustrados após queda precoce na CONMEBOL Libertadores.",
       "corpo_materia": [
-        "O Estádio La Bombonera viveu uma noite de profunda frustração. Precisando da vitória para garantir vaga nas Oitavas de Final da Libertadores, o Boca Juniors ficou no empate por 2 a 2 com o Barcelona de Guayaquil e deu adeus ao sonho da Glória Eterna.",
-        "A equipe argentina chegou a estar em vantagem no placar duas vezes, mas a forte bola parada do time equatoriano castigou os mandantes nos minutos finais. Com o resultado, o Barcelona confirmou o primeiro lugar do Grupo D com 10 pontos.",
-        "> \"Fizemos tudo o que estava ao nosso alcance, mas faltou tranquilidade nos minutos decisivos. Agora o foco é a Sul-Americana.\"",
-        "No outro jogo da chave, o Corinthians superou a Universidad Católica por 2 a 0 na Neo Química Arena e ficou com a segunda vaga do grupo, somando 9 pontos e superando o Boca no saldo de gols."
-      ],
-      "ficha_tecnica": {
-        "estadio": "La Bombonera, Buenos Aires",
-        "gols": "Cavani 23', Merentiel 61' (BOC); Diaz 45', Cortez 84' (BSC)"
-      }
+        "O Boca Juniors está eliminado da CONMEBOL Libertadores. A equipe argentina empatou em 2 a 2 com o Barcelona SC nessa quarta-feira, em La Bombonera, e combinado com a vitória do Corinthians sobre a Universidad Católica por 2 a 0, em São Paulo, se despediu da competição ainda na primeira fase.",
+        "A equipe argentina chegou a estar duas vezes à frente do placar, mas acabou sofrendo o empate com gols relâmpagos da equipe equatoriana, que veio da Fase Preliminar e agora alcança as Oitavas de Final como primeira colocada da chave.",
+        "Ao Boca Juniors, restará disputar a CONMEBOL Sudamericana, onde a equipe será integrante do Pote 1 e decidirá seu confronto como mandante nas Oitavas de Final.",
+        "No outro jogo da chave, o Corinthians superou a Universidad Católica por 2 a 0 na Neo Química Arena e ficou com a segunda vaga do grupo, somando 9 pontos e superando o Boca no saldo de gols.",
+        "O primeiro tempo foi de fracas emoções e poucas chances. Os dois times pareciam estar prestando atenção no que poderia acontecer na Neo Química Arena, pois em caso de derrota ou empate do Corinthians, as duas equipes se classificariam automaticamente. Porém, o gol de Memphis Depay no último lance do primeiro tempo em São Paulo, parece ter despertado os jogadores dos dois times, que já estavam no vestiário.",
+        "Com o gol do Corinthians e a vitória parcial por 1x0 dos brasileiros, o resultado ainda era favorável aos dois times. Mas o jogo mudou muito de cara na segunda etapa. Aos 18 minutos, Adam Bareiro bateu cruzado e abriu o marcador. O resultado colocava o Boca em primeiro lugar, com o Barcelona sendo eliminado.",
+        "6 minutos após o gol de Bareiro, o Corinthians marcou o segundo, também com Memphis Depay, e carimbou a sua entrada em segundo lugar do grupo, independente do que acontecesse em La Bombonera. Quem estava desesperado eram os equatorianos. Aos 29 minutos, Jonathan Perlaza recebeu lançamento longo, arrancou e igualou o jogo, desesperando a torcida xeneize.",
+        "Os argentinos não demoraram a reagir. Em bola alçada, apenas 2 minutos depois, Kevin Zenón foi a linha de fundo e bateu pro meio da área, onde estava Miguel Merentiel pronto para estufar a rede sem goleiro. Seria o gol do alívio para o Boca. Novamente o Barcelona estava ficando fora.",
+        "Porém o futebol tem as suas histórias. Se o Boca marcou 2 minutos após o gol do Barcelona, foi a vez dos visitantes darem o golpe fatal apenas 3 minutos depois. Aos 34 minutos, Benedetto, ex jogador do Boca, marcou, empatou o jogo, não comemorou em respeito ao ex-clube, e de quebra eliminou os argentinos em pleno estádio onde marcou gol pela Final da CONMEBOL Libertadores em 2018.",
+        "O Boca está fora, o Barcelona segue em frente, e as histórias da CONMEBOL Libertadores seguem inigualáveis."
+      ]
+
     },
     {
       "id": "river-derrotado-crb",
       "categoria": "LIBERTADORES",
       "tipo_tag": "ouro",
       "titulo": "River é humilhado pelo CRB e é eliminado na Fase de Grupos",
-      "resumo": "Millonarios jogam muito mal e perdem as três partidas em casa pela primeira vez na história.",
+      "resumo": "Millonarios jogam muito mal, levam 3 a 0 dos estreantes brasileiros, e perdem as três partidas em casa pela primeira vez na história.",
       "autor": "Por Redação PES Media Hub",
       "data_publicacao": "30/09/2026 21:30",
       "imagem": "https://lncimg.lance.com.br/cdn-cgi/image/width=1200,height=630,quality=75,fit=cover,format=webp/uploads/2026/08/Eduardo-Coudet-comandando-o-River-Plate-na-eliminacao-nas-oitavas-de-final-da-Sul-Americana-scaled-aspect-ratio-512-320.jpg",
       "legenda_foto": "Técnico do River Plate consternado à beira do gramado no Monumental.",
       "corpo_materia": [
         "Uma das maiores zebras da história recente do futebol continental se concretizou no Monumental de Núñez. O CRB foi a Buenos Aires, dominou o gigante River Plate e aplicou uma goleada maiúscula por 3 a 0, carimbando a vaga alagoana no mata-mata.",
-        "Com um futebol rápido e letal nos contra-ataques, o Galo da Pajuçara silenciou mais de 70 mil torcedores argentinos e fechou a fase de grupos na 2ª colocação com 11 pontos, empatado com o líder Universitario.",
-        "> \"Ninguém acreditava no CRB quando os grupos foram sorteados. Hoje nós mostramos a força do nosso futebol dentro do Monumental.\"",
+        "Poucas vezes na CONMEBOL Libertadores se viram duas histórias tão distintas se chocando no mesmo gramado. De um lado, o gigante River Plate, tetracampeão da América, jogando para 80 mil pessoas, precisando apenas de uma simples vitória para avançar ao mata-mata. Do outro lado, um clube brasileiro estreante, podemos dizer até que desconhecido pelo grande público do futebol sul-americano, mas que veio para deixar seu nome.",
+        "O River Plate jogou muito mal, foi anulado pelo CRB, clube de Maceió, e acabou sofrendo um sonoro 3 a 0, e sendo despachado da disputa pela Glória Eterna tendo perdido os seus três confrontos como mandantes na competição. Os Millonarios agora disputarão a CONMEBOL Sudamericana, enquanto o Galo Alagoano vai ao mata-mata na sua primeira participação continental.",
+        "O jogo não teve grandes emoções nos primeiros 45 minutos. A equipe argentina teve mais a posse de bola, porém com enormes dificuldades de entrar na defesa brasileira, acabou trocando passes simples errados e irritando os torcedores, que lotaram as arquibancadas e fizeram festa, apoiando até o último suspiro.",
+        "No primeiro tempo do outro jogo, o Libertad vencia o Universitario por 1x0 e ultrapassava o River na classificação. O River ainda precisava de um gol, e naquele cenário, causaria um empate quádruplo jamais visto na CONMEBOL Libertadores no atual formato.",
+        "Porém na volta do segundo tempo o que já estava péssimo, piorou ainda mais.",
+        "O River Plate voltou pro segundo tempo totalmente desligado do jogo, desconectado da realidade e pensando que a qualquer momento a camisa jogaria sozinha e venceria o jogo. Porém, o futebol é implacável com aqueles que não jogam com o devido amor ao jogo, e à bola.",
+        "Em pleno Monumental, o CRB conseguiu achar um contragolpe, e aos 30 minutos do segundo tempo, Pedro Castro inaugurou o marcador. Esse gol gelou o maior estádio da América do Sul de forma poucas vezes vista na história.",
+        "1 minuto depois desse gol, o Universitario empatou o jogo contra o Libertad em Assunção com Diego Churín. Esse resultado até seria bom para o River caso estivesse ganhando. Os argentinos precisariam virar o jogo para se manter vivo na Libertadores.",
+        "Com as mexidas ofensivas, os Millonarios foram todos ao ataque. E pagaram o preço. Ir ao ataque faltando 10 minutos pro fim da 6ª rodada era quase um insulto a quem fez 5 rodadas e 80 minutos para esquecer. Aos 45, em mais uma boa jogada pela esquerda, Guilherme Estrella soltou a canhota na bola e marcou o segundo do CRB. Festa e protestos nas arquibancadas.",
+        "Como se já não fosse suficiente a humilhação, ainda teve tempo de Guilherme Pato marcar o terceiro quando o relógio batia 49 minutos do segundo tempo. Um banho de realidade que elimina o gigante argentino da disputa do título que não vem desde 2018.",
         "O River Plate encerra sua pior campanha histórica em fases de grupos, perdendo todos os jogos disputados dentro de seus domínios e caindo para a Sul-Americana."
-      ],
-      "ficha_tecnica": {
-        "estadio": "Monumental de Núñez, Buenos Aires",
-        "gols": "Anselmo Ramon 18', Gegê 54', Léo Pereira 79' (CRB)"
-      }
+      ]
+
     },
     {
-      "id": "atletico-bahia-lideres",
-      "categoria": "DESEMPATES",
+      "id": "atletico-lider",
+      "categoria": "LIBERTADORES",
       "tipo_tag": "ouro",
-      "titulo": "Atlético e Bahia garantem vaga em primeiro lugar",
-      "resumo": "Galo foi ao Maracanã e empatou com o Flamengo, e Esquadrão foi superado pelo Nacional, mas se classificou em primeiro no saldo de gols.",
+      "titulo": "Atlético empata com o Flamengo e conquista o primeiro lugar do Grupo A",
+      "resumo": "Galo marca de pênalti com Thiago Borbas e passa em primeiro; Fla já estava classificado e avança em segundo.",
       "autor": "Por Redação PES Media Hub",
       "data_publicacao": "30/09/2026 23:00",
       "imagem": "https://agenciaesporte.com.br/wp-content/uploads/2025/07/Atletico-Cuelo-31-07-2025.jpg",
       "legenda_foto": "Atlético Mineiro comemora liderança do Grupo A no Maracanã.",
       "corpo_materia": [
-        "A frieza dos números e os critérios de desempate coroaram duas grandes campanhas brasileiras. No Grupo A, o Atlético Mineiro foi ao Rio de Janeiro, segurou o empate em 1 a 1 contra o Flamengo e garantiu a ponta da tabela com 13 pontos.",
-        "Já no Grupo E, mesmo com a derrota por 1 a 0 para o Nacional em Montevidéu, o Bahia manteve o primeiro lugar graças ao saldo de gols (+7 contra +1 do Atlético Nacional), garantindo presença no Pote 1 do sorteio das Oitavas de Final."
+        "O Atlético Mineiro é o líder do Grupo A da CONMEBOL Libertadores. Na noite desta quarta-feira, o time mineiro foi ao Rio de Janeiro, diante de 71.283 pessoas, e arrancou um empate com o Flamengo em 1 a 1, consolidando assim a sua classificação em primeiro lugar da chave.",
+        "Os dois times já chegaram ao Maracanã classificados, e só decidiriam entre si quem seria o primeiro colocado. O Flamengo começou melhor, precisava vencer o jogo para conquistar essa vaga, já que chegou ao jogo com 10 pontos contra 12 do Atlético.",
+        "O jogo foi se alternando em domínio ao longo do primeiro tempo. Até os 25, o time carioca foi quem teve mais ações ofensivas, e depois disso, os mineiros entraram mais no jogo. E como o futebol tem dessas, após um momento de pressão atleticana, os Rubro-Negros foram ao ataque e Arrascaeta abriu o marcador com belo chute no canto de Éverson aos 37 minutos. Esse placar colocava os donos da casa na ponta do grupo.",
+        "Na volta do intervalo, o Flamengo começou com mais posse de bola, porém, aos 3 minutos, após saída errada, um escanteio foi cedido. E após essa cobrança de escanteio, Léo Ortiz cometeu pênalti em cima de Bernard. Thiago Borbas empatou o jogo após deslocar o goleiro Rossi. Era o empate do Galo e a liderança retomada.",
+        "O Flamengo até tentou, mas o Atlético se defendeu muito bem e confirmou o empate em 1 a 1 para festa dos 2.500 atleticanos que foram ao Rio nesta noite. O Galo agora vai ao Pote 1 e decidirá as Oitavas de Final como mandante. O Flamengo vai ao Pote 2 e decide fora de casa."
       ]
     },
     {
@@ -112,59 +123,35 @@
       ]
     },
     {
-      "id": "bragantino-goleia-cerro",
-      "categoria": "GRUPO F • 5ª RODADA",
+      "id": "bahia-perde-mas-e-lider",
+      "categoria": "GRUPO E • 6ª RODADA",
       "tipo_tag": "ouro",
-      "titulo": "Noite histórica em Bragança: Red Bull Bragantino aplica 6 a 1 no Cerro Porteño",
-      "resumo": "Massa Bruta foi avassalador no Nabi Abi Chedid e garantiu a maior goleada desta edição da Libertadores no PES.",
+      "titulo": "Bahia perde para o Nacional, mas se classifica em primeiro no Grupo E",
+      "resumo": "Time baiano até jogou para vencer, mas acabou levando gol aos 44 minutos do 2º tempo, perdendo sua invencibilidade na CONMEBOL Libertadores.",
       "autor": "Por Redação PES Media Hub",
       "data_publicacao": "27/09/2026 21:30",
-      "imagem": "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=600&q=80",
+      "imagem": "https://admin.cnnbrasil.com.br/wp-content/uploads/sites/12/2025/04/nacional-bahia-e1744240757276.jpg?w=1200&h=900&crop=1",
+      "legenda_foto": "Bahia fez bom jogo, mas perdeu para o Nacional em Montevidéu",
       "corpo_materia": [
-        "Uma aula de futebol ofensivo e intensidade. O Red Bull Bragantino atropelou o tradicional Cerro Porteño por 6 a 1 em Bragança Paulista pela 5ª rodada.",
-        "Com grande exibição coletiva, o time paulista construiu a maior goleada da história do clube na competição continental e colocou pressão direta sobre o líder Estudiantes."
+        "O Bahia está classificado para as oitavas de final da CONMEBOL Libertadores. Em primeiro lugar do grupo. Disso, o torcedor baiano já sabia desde a última rodada, que seria quase impossível o Atlético Nacional tirar 9 gols de saldo do time brasileiro. O Esquadrão foi a Montevidéu para fazer um jogo protocolar diante do Nacional.",
+        "A equipe de Rogério Ceni atuou bem, criou boas chances durante os 90 minutos, mas não conseguiu marcar. O empate levava o Bahia a 12 pontos e de qualquer maneira garantia o primeiro lugar mesmo que os colombianos vencessem o Independiente del Valle, como venceram, por qualquer placar.",
+        "Parecia que tudo estaria se encaminhando para um 0 a 0, quando a zaga tricolor deu bobeira, e acabou sofrendo gol de Maxi Gómez aos 44 minutos da etapa final, dando assim fim a melhor campanha do Bahia na fase de grupos da CONMEBOL Libertadores."
       ]
     },
     {
       "id": "nacional-massacre-colombia",
-      "categoria": "GRUPO E • 4ª RODADA",
+      "categoria": "GRUPO D • 6ª RODADA",
       "tipo_tag": "ouro",
-      "titulo": "Nacional atropela Atlético Nacional por 5 a 0 em Medellín",
-      "resumo": "Equipe uruguaia teve atuação impecável fora de casa e calou o Estádio Atanasio Girardot com massacre histórico.",
+      "titulo": "Corinthians põe fim ao drama, vence a Universidad Católica e está nas Oitavas",
+      "resumo": "Timão teve a sua melhor atuação nessa edição da CONMEBOL Libertadores e avança em segundo lugar",
       "autor": "Por Redação PES Media Hub",
-      "data_publicacao": "24/09/2026 23:00",
-      "imagem": "https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&w=600&q=80",
+      "data_publicacao": "24/09/2026 23:30",
+      "imagem": "https://esportenewsmundo.com.br/wp-content/uploads/2025/12/corinthians-v-sao-paulo-brasileirao-2025-scaled.jpg",
+      "legenda_foto": "Memphis marcou dois na vitória do Corinthians por 2 a 0 nesta quarta",
       "corpo_materia": [
-        "Em uma das atuações mais impactantes da temporada, o Nacional do Uruguai foi até Medellín e venceu o Atlético Nacional por 5 a 0.",
-        "A vitória com cinco gols de diferença chocou o continente e recolocou o tradicional clube uruguaio na disputa acirrada pela classificação."
-      ]
-    },
-    {
-      "id": "universitario-supera-river",
-      "categoria": "GRUPO B • 2ª RODADA",
-      "tipo_tag": "ouro",
-      "titulo": "Universitario cala o Monumental de Núñez e vence o River Plate por 2 a 0",
-      "resumo": "Time peruano impôs forte marcação em Buenos Aires e construiu vitória maiúscula rumo à liderança da chave.",
-      "autor": "Por Redação PES Media Hub",
-      "data_publicacao": "08/09/2026 22:00",
-      "imagem": "https://images.unsplash.com/photo-1522778119026-d647f0596c20?auto=format&fit=crop&w=600&q=80",
-      "corpo_materia": [
-        "Com organização tática perfeita e contra-ataques precisos, o Universitario de Deportes superou o River Plate por 2 a 0 em Buenos Aires.",
-        "O resultado consolidou o time peruano como uma das grandes sensações da fase de grupos desta edição."
-      ]
-    },
-    {
-      "id": "ldu-show-altitude",
-      "categoria": "GRUPO H • 4ª RODADA",
-      "tipo_tag": "ouro",
-      "titulo": "LDU dá show na altitude e goleia o The Strongest por 5 a 2 em La Paz",
-      "resumo": "Equipe equatoriana quebrou o tabu do Hernando Siles com ataque fulminante e assumiu a liderança isolada.",
-      "autor": "Por Redação PES Media Hub",
-      "data_publicacao": "22/09/2026 21:00",
-      "imagem": "https://images.unsplash.com/photo-1518091043644-c1d4457512c6?auto=format&fit=crop&w=600&q=80",
-      "corpo_materia": [
-        "Jogando a mais de 3.600 metros de altitude, a LDU de Quito protagonizou um jogo memorável ao golear o The Strongest por 5 a 2 em La Paz.",
-        "Comandada por um ataque veloz, a equipe equatoriana não tomou conhecimento do adversário e encaminhou a classificação como melhor campanha geral da fase de grupos."
+        "O Corinthians está nas Oitavas de Final da CONMEBOL Libertadores. Como manda o manual, em uma digna noite de Copa, o Timão venceu a Universidad Católica, já eliminada, por 2 a 0 e se garantiu na próxima fase.",
+        "Com dois gols de Memphis Depay, aos 47 do primeiro e aos 22 do segundo tempo, o time de Fernando Diniz foi valente, conseguiu superar as suas dificuldades técnicas para carimbar a classificação, deixando para trás o Boca Juniors.",
+        "Agora, o clube paulista se prepara para o mata-mata, enquanto os chilenos irão disputar a CONMEBOL Sudamericana."
       ]
     }
   ]
