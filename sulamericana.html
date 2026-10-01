@@ -11,11 +11,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
 
     <!-- CSS OFICIAL SUL-AMERICANA -->
-    <link rel="stylesheet" href="assets/css/sulamericana.css?v=1">
+    <link rel="stylesheet" href="assets/css/sulamericana.css?v=10">
     <!-- AUDIO PLAYER -->
     <link rel="stylesheet" href="assets/css/audio-player.css?v=32">
 </head>
 <body class="pagina-sulamericana-oficial">
+
+    <!-- REFLETORES DE ESTÁDIO VOLUMÉTRICOS -->
+    <div class="estadio-luz-sula esquerda"></div>
+    <div class="estadio-luz-sula direita"></div>
 
     <!-- 1. TOP SWITCHER INSTITUCIONAL CONMEBOL -->
     <div class="top-switcher-conmebol">
@@ -75,17 +79,17 @@
             </div>
             <div class="selo-oficial-edicao">
                 <span class="ano-edicao">TEMPORADA OFICIAL</span>
-                <span class="sub-edicao">PES CONTINENTAL</span>
+                <span class="sub-edicao">PES CONTINENTAL LEAGUE</span>
             </div>
         </div>
     </section>
 
-    <!-- 5. SHOWCASE DE NOTÍCIAS PRINCIPAIS -->
+    <!-- 5. SHOWCASE DE NOTÍCIAS PRINCIPAIS (TODAS CLICÁVEIS) -->
     <main class="container-showcase-noticias">
         <section class="grid-layout-noticias">
             
-            <!-- DESTAQUE PRINCIPAL (ESQUERDA) -->
-            <article class="bloco-destaque-principal">
+            <!-- DESTAQUE PRINCIPAL (ESQUERDA - CLICÁVEL) -->
+            <article class="bloco-destaque-principal card-3d-tilt" onclick="location.href='noticia.html?id=vagas-sul-americana'" title="Clique para ler a matéria completa">
                 <div class="moldura-foto-grande">
                     <img src="https://img.band.com.br/image/2025/10/10/trofeu-da-sul-americana-13580.jpg" alt="Taça CONMEBOL Sudamericana">
                     <div class="mascara-protecao-sula"></div>
@@ -97,11 +101,11 @@
                 </div>
             </article>
 
-            <!-- 4 NOTÍCIAS HORIZONTAIS EMPILHADAS (DIREITA) -->
+            <!-- 4 NOTÍCIAS HORIZONTAIS EMPILHADAS (DIREITA - CLICÁVEIS) -->
             <aside class="coluna-noticias-empilhadas">
                 
                 <!-- Notícia 1 -->
-                <article class="card-noticia-item">
+                <article class="card-noticia-item card-3d-tilt" onclick="location.href='noticia.html?id=river-derrotado-crb'" title="Clique para ler a matéria completa">
                     <div class="thumb-quadrada" style="background-image: url('https://lncimg.lance.com.br/cdn-cgi/image/width=1200,height=630,quality=75,fit=cover,format=webp/uploads/2026/08/Eduardo-Coudet-comandando-o-River-Plate-na-eliminacao-nas-oitavas-de-final-da-Sul-Americana-scaled-aspect-ratio-512-320.jpg');"></div>
                     <div class="info-noticia-conteudo">
                         <span class="categoria-azul">MATA-MATA</span>
@@ -111,7 +115,7 @@
                 </article>
 
                 <!-- Notícia 2 -->
-                <article class="card-noticia-item">
+                <article class="card-noticia-item card-3d-tilt" onclick="location.href='noticia.html?id=sorteio-mata-mata-quinta'" title="Clique para ler a matéria completa">
                     <div class="thumb-quadrada" style="background-image: url('https://fimdejogo.com.br/wp-content/uploads/2020/09/libertadores-sudamericana-2_1.jpg');"></div>
                     <div class="info-noticia-conteudo">
                         <span class="categoria-azul">SORTEIO</span>
@@ -121,22 +125,22 @@
                 </article>
 
                 <!-- Notícia 3 -->
-                <article class="card-noticia-item">
-                    <div class="thumb-quadrada" style="background-image: url('https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=300&q=80');"></div>
+                <article class="card-noticia-item card-3d-tilt" onclick="location.href='noticia.html?id=criterios-desempate'" title="Clique para ler a matéria completa">
+                    <div class="thumb-quadrada" style="background-image: url('https://conteudo.imguol.com.br/c/esporte/bb/2024/03/18/a-conmebol-e-a-puma-apresentaram-a-nova-versao-da-bola-cumbre-para-a-copa-libertadores-e-sul-americana-1710803823080_v2_1x1.jpg');"></div>
                     <div class="info-noticia-conteudo">
-                        <span class="categoria-azul">PREMIAÇÃO</span>
-                        <h4>Campeão da CONMEBOL Sudamericana garante vaga direta na Recopa</h4>
-                        <span class="data-noticia-txt">Temporada Oficial PES</span>
+                        <span class="categoria-azul">CRITÉRIOS</span>
+                        <h4>Confronto direto e saldo de gols definem vagas continentais</h4>
+                        <span class="data-noticia-txt">Regulamento Oficial</span>
                     </div>
                 </article>
 
                 <!-- Notícia 4 -->
-                <article class="card-noticia-item">
-                    <div class="thumb-quadrada" style="background-image: url('https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&w=300&q=80');"></div>
+                <article class="card-noticia-item card-3d-tilt" onclick="location.href='noticia.html?id=boca-eliminado-barcelona'" title="Clique para ler a matéria completa">
+                    <div class="thumb-quadrada" style="background-image: url('https://s2-ge.glbimg.com/ASG6A9GRp8MhZ5NrRF-kmm1he1g=/0x0:2048x1366/984x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_bc8228b6673f488aa253bbcb03c80ec5/internal_photos/bs/2025/2/Q/AYeiv4QwGQxT7tOMuy2Q/2025-02-26t025545z-866675613-up1el2q084wa2-rtrmadp-3-soccer-libertadores-boj-ali-report.jpg');"></div>
                     <div class="info-noticia-conteudo">
-                        <span class="categoria-azul">CRITÉRIOS</span>
-                        <h4>Como funcionará o mando de campo na fase de mata-mata no PES</h4>
-                        <span class="data-noticia-txt">Regulamento Oficial</span>
+                        <span class="categoria-azul">REPERCUSSÃO</span>
+                        <h4>Boca Juniors confirma vaga nas Oitavas da Sul-Americana</h4>
+                        <span class="data-noticia-txt">Pote 1 &bull; Mandante</span>
                     </div>
                 </article>
 
@@ -145,7 +149,24 @@
         </section>
     </main>
 
-    <!-- 6. RODAPÉ OFICIAL CONMEBOL -->
+    <!-- 6. BANNER: O CAMINHO DA GRANDE CONQUISTA -->
+    <section class="secao-caminho-sula">
+        <div class="container-secao">
+            <div class="banner-caminho-sula-card card-3d-tilt">
+                <div class="conteudo-caminho-sula">
+                    <span class="tag-caminho-sula">MATA-MATA</span>
+                    <h3>O QUADRO DA GRANDE CONQUISTA</h3>
+                    <p>Confira o chaveamento das 16 equipes que disputarão o troféu mais cobiçado da CONMEBOL Sudamericana no PES.</p>
+                    <a href="sulamericana-oficial.html" class="btn-caminho-azul">VER QUADRO DO MATA-MATA &rarr;</a>
+                </div>
+                <div class="imagem-taca-sula">
+                    <img src="https://www.ogol.com.br/img/logos/competicoes/269_imgbank_cs_20250311124354.png" alt="Troféu Sudamericana">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. RODAPÉ OFICIAL CONMEBOL -->
     <footer id="rodape-conmebol-sula">
         <div class="rodape-limite-container">
             <div class="rodape-bloco-marca">

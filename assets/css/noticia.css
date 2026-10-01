@@ -1,5 +1,6 @@
 /* ==========================================================================
    assets/css/noticia.css - DIAGRAMAÇÃO EDITORIAL OFICIAL (ESTILO GE / CONMEBOL)
+   Normas Oficiais de Leitura & Mobile UX Refinado
    ========================================================================== */
 
 /* TIPOGRAFIA BRANDING */
@@ -66,6 +67,7 @@ body.pagina-noticia-leitura {
     display: flex;
     flex-direction: column;
     -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
 }
 
 /* ================= 1. TOPBAR & NAVBAR ================= */
@@ -105,6 +107,7 @@ body.pagina-noticia-leitura {
     text-decoration: none;
     font-weight: 800;
     letter-spacing: 1px;
+    white-space: nowrap;
 }
 
 .tab-switch:hover, .tab-switch.ativo {
@@ -175,6 +178,7 @@ body.pagina-noticia-leitura {
     padding: 7px 14px;
     border-radius: 2px;
     transition: all 0.2s ease;
+    white-space: nowrap;
 }
 
 .nav-item:hover {
@@ -237,7 +241,7 @@ body.pagina-noticia-leitura {
 
 .artigo-titulo-manchete {
     font-family: var(--font-branding);
-    font-size: 2.3rem;
+    font-size: clamp(1.4rem, 4vw, 2.3rem);
     font-weight: 900;
     line-height: 1.2;
     color: var(--white-pure);
@@ -246,7 +250,7 @@ body.pagina-noticia-leitura {
 }
 
 .artigo-linha-fina {
-    font-size: 1.1rem;
+    font-size: clamp(0.95rem, 2.5vw, 1.1rem);
     color: #a5b4c7;
     line-height: 1.5;
     font-weight: 400;
@@ -274,6 +278,7 @@ body.pagina-noticia-leitura {
     font-weight: 900;
     font-size: 0.75rem;
     margin-right: 12px;
+    flex-shrink: 0;
 }
 
 .dados-publicacao {
@@ -304,6 +309,7 @@ body.pagina-noticia-leitura {
     border-radius: 2px;
     cursor: pointer;
     transition: all 0.2s;
+    white-space: nowrap;
 }
 
 .btn-voltar-home:hover {
@@ -498,10 +504,44 @@ body.pagina-noticia-leitura {
     letter-spacing: 0.5px;
 }
 
-/* RESPONSIVIDADE */
+/* ================= RESPONSIVIDADE & MOBILE UX ================= */
 @media (max-width: 992px) {
-    .grid-materia-layout { grid-template-columns: 1fr; }
-    .artigo-titulo-manchete { font-size: 1.8rem; }
-    .artigo-principal { padding: 1.5rem; }
+    .grid-materia-layout { grid-template-columns: 1fr; gap: 24px; }
     .coluna-lateral-relacionadas { position: static; }
+}
+
+@media (max-width: 768px) {
+    /* Topbar Mobile */
+    .top-switcher-conmebol { padding: 8px 0; }
+    .switcher-container { flex-direction: column; gap: 6px; padding: 0 12px; }
+    .marca-endosso-topo .txt-endosso { font-size: 0.58rem; text-align: center; }
+    .links-switcher { overflow-x: auto; max-width: 100%; padding-bottom: 2px; }
+    .tab-switch { font-size: 0.64rem; }
+
+    /* Navbar Mobile com Touch Pills */
+    .navbar-container { flex-direction: column; gap: 12px; padding: 12px 14px; }
+    .nav-links-menu {
+        width: 100%;
+        overflow-x: auto;
+        padding-bottom: 4px;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+    }
+    .nav-links-menu::-webkit-scrollbar { display: none; }
+    .nav-item {
+        font-size: 0.72rem;
+        padding: 6px 12px;
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    /* Artigo Principal */
+    .container-materia-completa { margin: 1.2rem auto; padding: 0 12px; }
+    .artigo-principal { padding: 1.4rem 1.1rem; }
+    .artigo-metadados-autor { flex-direction: column; align-items: flex-start; gap: 12px; }
+    .btn-voltar-home { width: 100%; text-align: center; }
+
+    /* Tipografia de Leitura */
+    .corpo-texto-paragrafos p { font-size: 0.98rem; line-height: 1.7; margin-bottom: 1.2rem; }
+    .corpo-texto-paragrafos blockquote { padding: 14px 16px; font-size: 1rem; margin: 1.4rem 0; }
 }

@@ -1,6 +1,6 @@
 /* ==========================================================================
    assets/css/sulamericana-oficial.css - BROADCAST OFICIAL CONMEBOL SUDAMERICANA
-   Normas Oficiais de Marca: A Grande Conquista / Azul Oficial
+   Normas Oficiais de Marca: A Grande Conquista / Azul Oficial & Mobile UX
    ========================================================================== */
 
 /* TIPOGRAFIA OFICIAL BRANDING */
@@ -141,7 +141,7 @@ body.tema-sulamericana::after { right: 0; background: radial-gradient(circle at 
 
 .cabecalho-torneio h1 {
     font-family: var(--font-branding);
-    font-size: 2.1rem;
+    font-size: clamp(1.4rem, 4vw, 2.1rem);
     font-weight: 900;
     letter-spacing: 5px;
     color: var(--text-pure-white);
@@ -152,7 +152,7 @@ body.tema-sulamericana::after { right: 0; background: radial-gradient(circle at 
 
 .cabecalho-torneio h2 {
     font-family: var(--font-branding);
-    font-size: 1.05rem;
+    font-size: clamp(0.85rem, 2.5vw, 1.05rem);
     font-weight: 900;
     letter-spacing: 3.5px;
     color: var(--sula-blue-light);
@@ -390,8 +390,18 @@ span.gols {
     padding-top: 1.8rem;
 }
 
-/* RESPONSIVIDADE */
+/* ================= RESPONSIVIDADE & MOBILE UX ================= */
 @media (max-width: 900px) {
+    body.tema-sulamericana { padding: 1.2rem 12px 2.5rem; }
     .linha-duelo-duplo { grid-template-columns: 1fr; gap: 0.8rem; }
-    .cabecalho-torneio h1 { font-size: 1.5rem; }
+    
+    .nav-links-tabela { gap: 6px; }
+    .btn-nav-tabela { font-size: 0.65rem; padding: 0.5rem 1rem; }
+
+    .time { font-size: 0.76rem; padding: 0.45rem 0.4rem; letter-spacing: 0.5px; }
+    span.gols { width: 30px; height: 30px; font-size: 0.95rem; }
+    
+    .card-final-destaque .placar-jogo { padding: 0.9rem 0.6rem; gap: 0.4rem; }
+    .card-final-destaque .time { font-size: 0.85rem; padding: 0.55rem 0.5rem; }
+    .card-final-destaque span.gols { width: 36px; height: 36px; font-size: 1.05rem; }
 }
