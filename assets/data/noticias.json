@@ -62,7 +62,6 @@
         "Porém o futebol tem as suas histórias. Se o Boca marcou 2 minutos após o gol do Barcelona, foi a vez dos visitantes darem o golpe fatal apenas 3 minutos depois. Aos 34 minutos, Benedetto, ex jogador do Boca, marcou, empatou o jogo, não comemorou em respeito ao ex-clube, e de quebra eliminou os argentinos em pleno estádio onde marcou gol pela Final da CONMEBOL Libertadores em 2018.",
         "O Boca está fora, o Barcelona segue em frente, e as histórias da CONMEBOL Libertadores seguem inigualáveis."
       ]
-
     },
     {
       "id": "river-derrotado-crb",
@@ -88,7 +87,6 @@
         "Como se já não fosse suficiente a humilhação, ainda teve tempo de Guilherme Pato marcar o terceiro quando o relógio batia 49 minutos do segundo tempo. Um banho de realidade que elimina o gigante argentino da disputa do título que não vem desde 2018.",
         "O River Plate encerra sua pior campanha histórica em fases de grupos, perdendo todos os jogos disputados dentro de seus domínios e caindo para a Sul-Americana."
       ]
-
     },
     {
       "id": "atletico-lider",
@@ -139,7 +137,7 @@
       ]
     },
     {
-      "id": "nacional-massacre-colombia",
+      "id": "corinthians-classifica-catolica",
       "categoria": "GRUPO D • 6ª RODADA",
       "tipo_tag": "ouro",
       "titulo": "Corinthians põe fim ao drama, vence a Universidad Católica e está nas Oitavas",
@@ -152,6 +150,62 @@
         "O Corinthians está nas Oitavas de Final da CONMEBOL Libertadores. Como manda o manual, em uma digna noite de Copa, o Timão venceu a Universidad Católica, já eliminada, por 2 a 0 e se garantiu na próxima fase.",
         "Com dois gols de Memphis Depay, aos 47 do primeiro e aos 22 do segundo tempo, o time de Fernando Diniz foi valente, conseguiu superar as suas dificuldades técnicas para carimbar a classificação, deixando para trás o Boca Juniors.",
         "Agora, o clube paulista se prepara para o mata-mata, enquanto os chilenos irão disputar a CONMEBOL Sudamericana."
+      ]
+    },
+    {
+      "id": "bragantino-goleia-cerro",
+      "categoria": "GRUPO F • 5ª RODADA",
+      "tipo_tag": "ouro",
+      "titulo": "Noite histórica em Bragança: Red Bull Bragantino aplica 6 a 1 no Cerro Porteño",
+      "resumo": "Massa Bruta foi avassalador no Nabi Abi Chedid e garantiu a maior goleada desta edição da Libertadores no PES.",
+      "autor": "Por Redação PES Media Hub",
+      "data_publicacao": "27/09/2026 21:30",
+      "imagem": "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=600&q=80",
+      "corpo_materia": [
+        "Uma aula de futebol ofensivo e intensidade. O Red Bull Bragantino atropelou o tradicional Cerro Porteño por 6 a 1 em Bragança Paulista pela 5ª rodada.",
+        "Com grande exibição coletiva, o time paulista construiu a maior goleada da história do clube na competição continental e colocou pressão direta sobre o líder Estudiantes."
+      ]
+    },
+    {
+      "id": "nacional-massacre-colombia",
+      "categoria": "GRUPO E • 4ª RODADA",
+      "tipo_tag": "ouro",
+      "titulo": "Nacional atropela Atlético Nacional por 5 a 0 em Medellín",
+      "resumo": "Equipe uruguaia teve atuação impecável fora de casa e calou o Estádio Atanasio Girardot com massacre histórico.",
+      "autor": "Por Redação PES Media Hub",
+      "data_publicacao": "24/09/2026 23:00",
+      "imagem": "https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&w=600&q=80",
+      "corpo_materia": [
+        "Em uma das atuações mais impactantes da temporada, o Nacional do Uruguai foi até Medellín e venceu o Atlético Nacional por 5 a 0.",
+        "A vitória com cinco gols de diferença chocou o continente e recolocou o tradicional clube uruguaio na disputa acirrada pela classificação."
+      ]
+    },
+    {
+      "id": "universitario-supera-river",
+      "categoria": "GRUPO B • 2ª RODADA",
+      "tipo_tag": "ouro",
+      "titulo": "Universitario cala o Monumental de Núñez e vence o River Plate por 2 a 0",
+      "resumo": "Time peruano impôs forte marcação em Buenos Aires e construiu vitória maiúscula rumo à liderança da chave.",
+      "autor": "Por Redação PES Media Hub",
+      "data_publicacao": "08/09/2026 22:00",
+      "imagem": "https://images.unsplash.com/photo-1522778119026-d647f0596c20?auto=format&fit=crop&w=600&q=80",
+      "corpo_materia": [
+        "Com organização tática perfeita e contra-ataques precisos, o Universitario de Deportes superou o River Plate por 2 a 0 em Buenos Aires.",
+        "O resultado consolidou o time peruano como uma das grandes sensações da fase de grupos desta edição."
+      ]
+    },
+    {
+      "id": "ldu-show-altitude",
+      "categoria": "GRUPO H • 4ª RODADA",
+      "tipo_tag": "ouro",
+      "titulo": "LDU dá show na altitude e goleia o The Strongest por 5 a 2 em La Paz",
+      "resumo": "Equipe equatoriana quebrou o tabu do Hernando Siles com ataque fulminante e assumiu a liderança isolada.",
+      "autor": "Por Redação PES Media Hub",
+      "data_publicacao": "22/09/2026 21:00",
+      "imagem": "https://images.unsplash.com/photo-1518091043644-c1d4457512c6?auto=format&fit=crop&w=600&q=80",
+      "corpo_materia": [
+        "Jogando a mais de 3.600 metros de altitude, a LDU de Quito protagonizou um jogo memorável ao golear o The Strongest por 5 a 2 em La Paz.",
+        "Comandada por um ataque veloz, a equipe equatoriana não tomou conhecimento do adversário e encaminhou a classificação como melhor campanha geral da fase de grupos."
       ]
     }
   ]

@@ -1,7 +1,7 @@
 /* ==========================================================================
    assets/css/libertadores.css - MANUAL DE IDENTIDADE CONMEBOL LIBERTADORES
    Normas Oficiais de Marca: Brandia Central / CONMEBOL
-   Efeitos Visuais: Efeitos 3D, Carrossel de Grupos, Shimmer e Motion
+   Efeitos Visuais: Efeitos 3D, Carrossel de Grupos, Shimmer e Mobile UX
    ========================================================================== */
 
 /* 1. TIPOGRAFIA OFICIAL BRANDING */
@@ -84,7 +84,7 @@ body.pagina-libertadores-oficial {
     -webkit-font-smoothing: antialiased;
 }
 
-/* ================= ELEMENTOS 3D DE ESTÚDIO (MANUAL PÁGS. 30-34) ================= */
+/* ================= ELEMENTOS 3D DE ESTÚDIO ================= */
 .fita-3d-estudio {
     position: absolute;
     top: 180px;
@@ -97,15 +97,8 @@ body.pagina-libertadores-oficial {
     filter: blur(20px);
 }
 
-.fita-3d-estudio.fita-esquerda {
-    left: 0;
-    transform: rotateY(45deg) rotateZ(-15deg);
-}
-
-.fita-3d-estudio.fita-direita {
-    right: 0;
-    transform: rotateY(-45deg) rotateZ(15deg);
-}
+.fita-3d-estudio.fita-esquerda { left: 0; transform: rotateY(45deg) rotateZ(-15deg); }
+.fita-3d-estudio.fita-direita { right: 0; transform: rotateY(-45deg) rotateZ(15deg); }
 
 .estadio-luz-topo {
     position: absolute;
@@ -167,6 +160,7 @@ body.pagina-libertadores-oficial {
     font-weight: 800;
     letter-spacing: 1px;
     transition: color 0.2s;
+    white-space: nowrap;
 }
 
 .tab-switch:hover, .tab-switch.ativo {
@@ -237,6 +231,7 @@ body.pagina-libertadores-oficial {
     padding: 7px 14px;
     border-radius: 2px;
     transition: all 0.2s ease;
+    white-space: nowrap;
 }
 
 .menu-navegacao-libertadores .nav-item:hover {
@@ -418,7 +413,7 @@ body.pagina-libertadores-oficial {
 .tag-status-rodape.encerrado { color: #8a96a8; }
 .tag-status-rodape.a-jogar { color: #00e676; }
 
-/* ================= 4. BANNER INSTITUCIONAL: A GLÓRIA ETERNA ================= */
+/* ================= 4. BANNER INSTITUCIONAL ================= */
 .secao-conceito-faixa {
     background: linear-gradient(180deg, #020407 0%, #060a12 100%);
     border-bottom: 1px solid var(--border-conmebol);
@@ -459,11 +454,11 @@ body.pagina-libertadores-oficial {
 
 .slogan-principal-header {
     font-family: var(--font-branding);
-    font-size: 2.1rem;
+    font-size: clamp(1.4rem, 4vw, 2.1rem);
     font-weight: 900;
     letter-spacing: 2px;
     color: var(--white-pure);
-    line-height: 1.1;
+    line-height: 1.15;
     text-shadow: 0 0 25px rgba(197, 155, 39, 0.3);
 }
 
@@ -497,7 +492,7 @@ body.pagina-libertadores-oficial {
     letter-spacing: 1.8px;
 }
 
-/* ================= 5. SHOWCASE DE NOTÍCIAS COM 3D TILT ================= */
+/* ================= 5. SHOWCASE DE NOTÍCIAS CLICÁVEIS ================= */
 .container-showcase-noticias {
     max-width: 1360px;
     margin: 2.4rem auto;
@@ -516,6 +511,7 @@ body.pagina-libertadores-oficial {
 .bloco-destaque-principal {
     display: flex;
     flex-direction: column;
+    cursor: pointer;
 }
 
 .moldura-foto-grande {
@@ -535,6 +531,10 @@ body.pagina-libertadores-oficial {
     object-fit: cover;
     display: block;
     transition: transform 0.6s ease;
+}
+
+.bloco-destaque-principal:hover .moldura-foto-grande img {
+    transform: scale(1.03);
 }
 
 /* Gradiente de Proteção Oficial (Manual Pág. 36) */
@@ -581,7 +581,7 @@ body.pagina-libertadores-oficial {
 
 .painel-conteudo-hero h2 {
     font-family: var(--font-branding);
-    font-size: 1.75rem;
+    font-size: clamp(1.25rem, 2.5vw, 1.75rem);
     font-weight: 900;
     line-height: 1.25;
     color: var(--white-pure);
@@ -611,7 +611,7 @@ body.pagina-libertadores-oficial {
     border: 1px solid var(--border-conmebol);
     border-radius: 4px;
     padding: 12px;
-    cursor: default;
+    cursor: pointer;
     transition: border-color 0.25s ease, background 0.25s ease, transform 0.25s ease;
     transform-style: preserve-3d;
 }
@@ -619,6 +619,7 @@ body.pagina-libertadores-oficial {
 .card-noticia-item:hover {
     background: var(--bg-card-alt);
     border-color: var(--border-gold-subtle);
+    transform: translateX(4px);
 }
 
 .thumb-quadrada {
@@ -635,6 +636,7 @@ body.pagina-libertadores-oficial {
     flex-direction: column;
     justify-content: space-between;
     gap: 4px;
+    flex: 1;
 }
 
 .categoria-amarela {
@@ -698,7 +700,7 @@ body.pagina-libertadores-oficial {
 
 .cabecalho-secao-ouro h3 {
     font-family: var(--font-branding);
-    font-size: 1.45rem;
+    font-size: clamp(1.15rem, 3vw, 1.45rem);
     font-weight: 900;
     letter-spacing: 2px;
     color: var(--white-pure);
@@ -744,6 +746,7 @@ body.pagina-libertadores-oficial {
     border-radius: 2px;
     margin-left: 6px;
     transition: all 0.2s;
+    white-space: nowrap;
 }
 
 .btn-ver-tabela-completa:hover {
@@ -751,7 +754,7 @@ body.pagina-libertadores-oficial {
     color: #000000;
 }
 
-/* Trilha com Scroll Suave e Barra Dourada */
+/* Trilha com Scroll Suave e Snap Magnético */
 .trilha-grupos-carrossel {
     display: flex;
     gap: 16px;
@@ -760,21 +763,13 @@ body.pagina-libertadores-oficial {
     padding: 8px 0 18px;
     scrollbar-width: thin;
     scrollbar-color: var(--pantone-873c) #080c14;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
 }
 
-.trilha-grupos-carrossel::-webkit-scrollbar {
-    height: 6px;
-}
-
-.trilha-grupos-carrossel::-webkit-scrollbar-track {
-    background: #080c14;
-    border-radius: 3px;
-}
-
-.trilha-grupos-carrossel::-webkit-scrollbar-thumb {
-    background: var(--pantone-873c);
-    border-radius: 3px;
-}
+.trilha-grupos-carrossel::-webkit-scrollbar { height: 6px; }
+.trilha-grupos-carrossel::-webkit-scrollbar-track { background: #080c14; border-radius: 3px; }
+.trilha-grupos-carrossel::-webkit-scrollbar-thumb { background: var(--pantone-873c); border-radius: 3px; }
 
 .card-mini-grupo {
     background: var(--bg-card-slate);
@@ -784,6 +779,7 @@ body.pagina-libertadores-oficial {
     min-width: 295px;
     flex-shrink: 0;
     transition: transform 0.25s, border-color 0.25s;
+    scroll-snap-align: start;
 }
 
 .card-mini-grupo:hover {
@@ -811,9 +807,7 @@ body.pagina-libertadores-oficial {
     font-weight: 800;
 }
 
-.status-grupo-txt.proxima {
-    color: #00e676;
-}
+.status-grupo-txt.proxima { color: #00e676; }
 
 .linha-tabela-mini {
     display: flex;
@@ -824,13 +818,8 @@ body.pagina-libertadores-oficial {
     font-size: 0.76rem;
 }
 
-.linha-tabela-mini.qualificado {
-    border-left: 3px solid var(--pantone-873c);
-}
-
-.linha-tabela-mini.sula {
-    border-left: 3px solid #0077ff;
-}
+.linha-tabela-mini.qualificado { border-left: 3px solid var(--pantone-873c); }
+.linha-tabela-mini.sula { border-left: 3px solid #0077ff; }
 
 .pos-mini {
     font-family: var(--font-branding);
@@ -856,10 +845,7 @@ body.pagina-libertadores-oficial {
     font-size: 0.75rem;
 }
 
-.forma-jogos {
-    display: flex;
-    gap: 2px;
-}
+.forma-jogos { display: flex; gap: 2px; }
 
 .forma-badge {
     width: 14px;
@@ -959,7 +945,7 @@ body.pagina-libertadores-oficial {
 
 .conteudo-caminho h3 {
     font-family: var(--font-branding);
-    font-size: 1.8rem;
+    font-size: clamp(1.3rem, 3vw, 1.8rem);
     font-weight: 900;
     letter-spacing: 2px;
     color: var(--white-pure);
@@ -1024,9 +1010,7 @@ body.pagina-libertadores-oficial {
     transition: transform 0.25s, border-color 0.25s;
 }
 
-.card-stat-item:hover {
-    border-color: var(--border-gold-subtle);
-}
+.card-stat-item:hover { border-color: var(--border-gold-subtle); }
 
 .card-stat-item.destaque-ouro {
     border-color: var(--border-gold-subtle);
@@ -1035,7 +1019,7 @@ body.pagina-libertadores-oficial {
 
 .stat-numero {
     font-family: var(--font-branding);
-    font-size: 2.5rem;
+    font-size: clamp(2rem, 4vw, 2.5rem);
     font-weight: 900;
     color: var(--gold-bright);
     line-height: 1;
@@ -1101,7 +1085,7 @@ body.pagina-libertadores-oficial {
 
 .rodape-nome {
     font-family: var(--font-branding);
-    font-size: 1.5rem;
+    font-size: clamp(1.2rem, 3vw, 1.5rem);
     font-weight: 900;
     letter-spacing: 3px;
     color: var(--white-pure);
@@ -1121,6 +1105,8 @@ body.pagina-libertadores-oficial {
     display: flex;
     gap: 18px;
     margin: 8px 0;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .rodape-links-navegacao a {
@@ -1162,18 +1148,84 @@ body.pagina-libertadores-oficial {
     margin-top: 4px;
 }
 
-/* ================= RESPONSIVIDADE ================= */
+/* ================= RESPONSIVIDADE & MOBILE UX REFINADO ================= */
 @media (max-width: 1100px) {
     .grid-layout-noticias { grid-template-columns: 1fr; }
     .grid-stats-cards { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 768px) {
-    .grid-stats-cards { grid-template-columns: 1fr; }
-    .banner-caminho-card { flex-direction: column; text-align: center; gap: 20px; }
-    .faixa-conceito-container { flex-direction: column; align-items: flex-start; gap: 14px; }
-    .selo-oficial-edicao { border-left: none; border-top: 2px solid var(--pantone-873c); padding-left: 0; padding-top: 8px; }
-    .menu-navegacao-libertadores { display: none; }
-    .moldura-foto-grande { height: 350px; }
-    .painel-conteudo-hero h2 { font-size: 1.35rem; }
+    /* Top Switcher Mobile */
+    .top-switcher-conmebol { padding: 8px 0; }
+    .switcher-container { flex-direction: column; gap: 6px; padding: 0 12px; }
+    .marca-endosso-topo .txt-endosso { font-size: 0.58rem; text-align: center; }
+    .links-switcher { overflow-x: auto; max-width: 100%; padding-bottom: 2px; }
+    .tab-switch { font-size: 0.64rem; }
+
+    /* Navbar Mobile com Touch Pills */
+    .navbar-wrapper { flex-direction: column; gap: 12px; padding: 12px 14px; }
+    .menu-navegacao-libertadores {
+        width: 100%;
+        overflow-x: auto;
+        padding-bottom: 4px;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+    }
+    .menu-navegacao-libertadores::-webkit-scrollbar { display: none; }
+    .menu-navegacao-libertadores .nav-item {
+        font-size: 0.72rem;
+        padding: 6px 12px;
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    /* Ticker Superior Adaptativo */
+    .barra-ticker-topo { height: auto; flex-direction: column; align-items: stretch; padding: 6px 0; }
+    .header-bloco-ticker {
+        border-right: none;
+        border-bottom: 1px solid var(--border-conmebol);
+        padding: 4px 14px;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        min-width: 100%;
+    }
+    .container-trilha-topo { padding: 6px 0; }
+    .item-jogo-rodape { min-width: 215px; padding: 5px 10px; }
+
+    /* Banner Slogan */
+    .secao-conceito-faixa { padding: 1.4rem 0; }
+    .faixa-conceito-container { flex-direction: column; align-items: flex-start; gap: 12px; padding: 0 14px; }
+    .selo-oficial-edicao { border-left: none; border-top: 2px solid var(--pantone-873c); padding-left: 0; padding-top: 8px; width: 100%; }
+
+    /* Showcase Notícias */
+    .container-showcase-noticias { padding: 0 14px; margin: 1.5rem auto; }
+    .moldura-foto-grande { height: 280px; }
+    .painel-conteudo-hero { padding: 1.2rem; }
+    .painel-conteudo-hero h2 { font-size: 1.2rem; margin-bottom: 4px; }
+    .resumo-hero-txt { display: none; } /* Oculta resumo longo na capa mobile para dar destaque ao título */
+
+    /* Cards Laterais Notícias */
+    .card-noticia-item { padding: 10px; gap: 10px; }
+    .thumb-quadrada { width: 80px; height: 65px; }
+    .info-noticia-conteudo h4 { font-size: 0.82rem; }
+
+    /* Central de Grupos */
+    .secao-painel-grupos { padding: 2rem 0; }
+    .container-secao { padding: 0 14px; }
+    .cabecalho-secao-ouro { flex-direction: column; align-items: flex-start; gap: 10px; }
+    .controles-carrossel-grupos { width: 100%; justify-content: space-between; }
+    .btn-ver-tabela-completa { margin-left: 0; width: 100%; text-align: center; }
+    .card-mini-grupo { min-width: 270px; }
+
+    /* Banner Caminho da Taça */
+    .banner-caminho-card { flex-direction: column; text-align: center; padding: 1.8rem 1.2rem; gap: 16px; }
+    .imagem-taca-caminho img { height: 110px; }
+
+    /* Estatísticas */
+    .grid-stats-cards { grid-template-columns: 1fr; gap: 12px; }
+    .card-stat-item { padding: 1.2rem; }
+
+    /* Desativa Fitras 3D em telas pequenas para evitar cortes e lag */
+    .fita-3d-estudio { display: none; }
 }

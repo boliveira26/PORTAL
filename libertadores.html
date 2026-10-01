@@ -11,7 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
 
     <!-- CSS OFICIAL LIBERTADORES (3D & ATMOSFERA) -->
-    <link rel="stylesheet" href="assets/css/libertadores.css?v=36">
+    <link rel="stylesheet" href="assets/css/libertadores.css?v=38">
     <!-- AUDIO PLAYER -->
     <link rel="stylesheet" href="assets/css/audio-player.css?v=32">
 </head>
@@ -74,7 +74,7 @@
         </div>
     </section>
 
-    <!-- 4. BANNER INSTITUCIONAL: A GLÓRIA ETERNA (COM PROFUNDIDADE 3D) -->
+    <!-- 4. BANNER INSTITUCIONAL: A GLÓRIA ETERNA -->
     <section class="secao-conceito-faixa">
         <div class="faixa-conceito-container">
             <div class="bloco-conceito-texto">
@@ -92,12 +92,12 @@
         </div>
     </section>
 
-    <!-- 5. SHOWCASE DE NOTÍCIAS PRINCIPAIS (COM EFEITO 3D TILT INTERATIVO) -->
+    <!-- 5. SHOWCASE DE NOTÍCIAS PRINCIPAIS (TODAS CLICÁVEIS) -->
     <main class="container-showcase-noticias">
         <section class="grid-layout-noticias">
             
-            <!-- DESTAQUE PRINCIPAL (ESQUERDA - INTERATIVO 3D) -->
-            <article class="bloco-destaque-principal card-3d-tilt">
+            <!-- DESTAQUE PRINCIPAL (ESQUERDA - CLICÁVEL & 3D) -->
+            <article class="bloco-destaque-principal card-3d-tilt" onclick="location.href='noticia.html?id=manchete-principal'" title="Clique para ler a matéria completa">
                 <div class="moldura-foto-grande">
                     <img src="https://admin.cnnbrasil.com.br/wp-content/uploads/sites/12/2025/03/taca-libertadores-e1742232529519.jpeg?w=1200&h=675&crop=1" alt="Taça CONMEBOL Libertadores">
                     <div class="mascara-protecao-conmebol"></div>
@@ -110,41 +110,41 @@
                 </div>
             </article>
 
-            <!-- 4 NOTÍCIAS HORIZONTAIS EMPILHADAS (DIREITA) -->
+            <!-- 4 NOTÍCIAS HORIZONTAIS EMPILHADAS (DIREITA - CLICÁVEIS) -->
             <aside class="coluna-noticias-empilhadas">
                 
                 <!-- Notícia 1 -->
-                <article class="card-noticia-item card-3d-tilt">
-                    <div class="thumb-quadrada" style="background-image: url('https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&w=300&q=80');"></div>
+                <article class="card-noticia-item card-3d-tilt" onclick="location.href='noticia.html?id=atletico-lider'" title="Clique para ler a matéria completa">
+                    <div class="thumb-quadrada" style="background-image: url('https://agenciaesporte.com.br/wp-content/uploads/2025/07/Atletico-Cuelo-31-07-2025.jpg');"></div>
                     <div class="info-noticia-conteudo">
-                        <span class="categoria-amarela">LIDERANÇA</span>
-                        <h4>A trajetória dos líderes da Fase de Grupos no PES rumo ao Pote 1</h4>
-                        <span class="data-noticia-txt">Hoje &bull; 6ª Rodada</span>
+                        <span class="categoria-amarela">LIBERTADORES</span>
+                        <h4>Atlético empata com o Flamengo e conquista o primeiro lugar do Grupo A</h4>
+                        <span class="data-noticia-txt">Ontem &bull; 6ª Rodada</span>
                     </div>
                 </article>
 
                 <!-- Notícia 2 -->
-                <article class="card-noticia-item card-3d-tilt">
+                <article class="card-noticia-item card-3d-tilt" onclick="location.href='noticia.html?id=river-derrotado-crb'" title="Clique para ler a matéria completa">
                     <div class="thumb-quadrada" style="background-image: url('https://lncimg.lance.com.br/cdn-cgi/image/width=1200,height=630,quality=75,fit=cover,format=webp/uploads/2026/08/Eduardo-Coudet-comandando-o-River-Plate-na-eliminacao-nas-oitavas-de-final-da-Sul-Americana-scaled-aspect-ratio-512-320.jpg');"></div>
                     <div class="info-noticia-conteudo">
-                        <span class="categoria-amarela">SUL-AMERICANA</span>
-                        <h4>CRB vence o River Plate no Monumental e vaga fica com o Universitario</h4>
+                        <span class="categoria-amarela">LIBERTADORES</span>
+                        <h4>River é humilhado pelo CRB e é eliminado na Fase de Grupos</h4>
                         <span class="data-noticia-txt">Grupo B &bull; Encerrado</span>
                     </div>
                 </article>
 
                 <!-- Notícia 3 -->
-                <article class="card-noticia-item card-3d-tilt">
-                    <div class="thumb-quadrada" style="background-image: url('https://agenciaesporte.com.br/wp-content/uploads/2025/07/Atletico-Cuelo-31-07-2025.jpg');"></div>
+                <article class="card-noticia-item card-3d-tilt" onclick="location.href='noticia.html?id=boca-eliminado-barcelona'" title="Clique para ler a matéria completa">
+                    <div class="thumb-quadrada" style="background-image: url('https://s2-ge.glbimg.com/ASG6A9GRp8MhZ5NrRF-kmm1he1g=/0x0:2048x1366/984x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_bc8228b6673f488aa253bbcb03c80ec5/internal_photos/bs/2025/2/Q/AYeiv4QwGQxT7tOMuy2Q/2025-02-26t025545z-866675613-up1el2q084wa2-rtrmadp-3-soccer-libertadores-boj-ali-report.jpg');"></div>
                     <div class="info-noticia-conteudo">
-                        <span class="categoria-amarela">CLASSIFICAÇÃO</span>
-                        <h4>Atlético-MG e Bahia confirmam liderança nos critérios de desempate</h4>
-                        <span class="data-noticia-txt">Saldo de Gols &bull; Oficial</span>
+                        <span class="categoria-amarela">FASE DE GRUPOS</span>
+                        <h4>Boca leva empate do Barcelona e está eliminado da Libertadores</h4>
+                        <span class="data-noticia-txt">Grupo D &bull; Encerrado</span>
                     </div>
                 </article>
 
                 <!-- Notícia 4 -->
-                <article class="card-noticia-item card-3d-tilt">
+                <article class="card-noticia-item card-3d-tilt" onclick="location.href='noticia.html?id=sorteio-mata-mata-quinta'" title="Clique para ler a matéria completa">
                     <div class="thumb-quadrada" style="background-image: url('https://fimdejogo.com.br/wp-content/uploads/2020/09/libertadores-sudamericana-2_1.jpg');"></div>
                     <div class="info-noticia-conteudo">
                         <span class="categoria-amarela">MATA-MATA</span>
@@ -552,8 +552,8 @@
     </footer>
 
     <!-- SCRIPTS -->
-    <script src="assets/js/ticker-rodape.js?v=36"></script>
-    <script src="assets/js/libertadores-animacoes.js?v=36"></script>
+    <script src="assets/js/ticker-rodape.js?v=38"></script>
+    <script src="assets/js/libertadores-animacoes.js?v=38"></script>
     <script src="assets/js/audio-player.js?v=32"></script>
 </body>
 </html>

@@ -1,6 +1,7 @@
 /* ==========================================================================
    assets/css/index.css - PORTAL OFICIAL CONMEBOL PES
    Normas Oficiais de Marca: Brandia Central / CONMEBOL
+   Efeitos Visuais: Match Ticker, Grid Expandido, Mobile UX
    ========================================================================== */
 
 /* 1. TIPOGRAFIA OFICIAL BRANDING */
@@ -218,6 +219,7 @@ body.portal-ge-conmebol {
     padding: 7px 14px;
     border-radius: 2px;
     transition: all 0.2s ease;
+    white-space: nowrap;
 }
 
 .nav-item:hover, .nav-item.ativo {
@@ -342,9 +344,7 @@ body.portal-ge-conmebol {
     text-align: right;
 }
 
-.gols-time-ticker.vencedor {
-    color: var(--gold-bright);
-}
+.gols-time-ticker.vencedor { color: var(--gold-bright); }
 
 .status-ticker {
     font-size: 0.55rem;
@@ -400,7 +400,7 @@ body.portal-ge-conmebol {
 }
 
 .conteudo-hero h2 {
-    font-size: 1.85rem;
+    font-size: clamp(1.25rem, 2.8vw, 1.85rem);
     font-weight: 900;
     line-height: 1.2;
     margin: 10px 0 12px;
@@ -447,15 +447,8 @@ body.portal-ge-conmebol {
     transition: all 0.2s ease;
 }
 
-.btn-hero.primario {
-    background: var(--gold-main);
-    color: #000;
-}
-
-.btn-hero.primario:hover {
-    background: var(--gold-bright);
-    box-shadow: 0 0 20px rgba(197, 155, 39, 0.5);
-}
+.btn-hero.primario { background: var(--gold-main); color: #000; }
+.btn-hero.primario:hover { background: var(--gold-bright); box-shadow: 0 0 20px rgba(197, 155, 39, 0.5); }
 
 .coluna-hero-secundaria {
     display: flex;
@@ -522,7 +515,7 @@ body.portal-ge-conmebol {
 }
 
 .divisor-titulo-secao h2 {
-    font-size: 1.15rem;
+    font-size: clamp(1.05rem, 3vw, 1.15rem);
     font-weight: 900;
     letter-spacing: 3.5px;
     color: var(--gold-bright);
@@ -568,9 +561,7 @@ body.portal-ge-conmebol {
     background: linear-gradient(90deg, transparent 0%, #0077ff 50%, transparent 100%);
 }
 
-.card-competicao:hover {
-    transform: translateY(-4px);
-}
+.card-competicao:hover { transform: translateY(-4px); }
 
 .emblema-card img {
     height: 105px;
@@ -632,7 +623,7 @@ body.portal-ge-conmebol {
 .btn-card.azul-outline { background: rgba(0, 119, 255, 0.06); border: 1px solid var(--sula-blue); color: var(--sula-blue-light); }
 .btn-card.azul-outline:hover { background: rgba(0, 119, 255, 0.15); }
 
-/* ================= 5. SEÇÃO NOTÍCIAS EM GRADE (EXPANDIDA) ================= */
+/* ================= 5. SEÇÃO NOTÍCIAS EM GRADE ================= */
 .secao-noticias-conmebol {
     display: flex;
     flex-direction: column;
@@ -659,7 +650,7 @@ body.portal-ge-conmebol {
 }
 
 .cabecalho-noticias-conmebol h2 {
-    font-size: 1.35rem;
+    font-size: clamp(1.15rem, 3vw, 1.35rem);
     font-weight: 900;
     letter-spacing: 2.5px;
     color: var(--text-white);
@@ -801,18 +792,52 @@ body.portal-ge-conmebol {
     letter-spacing: 0.5px;
 }
 
-/* ================= RESPONSIVIDADE ================= */
+/* ================= RESPONSIVIDADE & MOBILE UX ================= */
 @media (max-width: 1100px) {
     .secao-hero-ge { grid-template-columns: 1fr; }
     .grid-quatro-noticias { grid-template-columns: repeat(2, 1fr); }
-    .grid-cards-copas { grid-template-columns: 1fr; }
-    .destaque-topo-ticker { display: none; }
 }
 
-@media (max-width: 650px) {
-    .grid-quatro-noticias { grid-template-columns: 1fr; }
-    .navbar-container { flex-direction: column; gap: 10px; }
-    .manchete-hero-grande { min-height: 360px; }
-    .imagem-hero-bg { padding: 1.5rem; }
-    .conteudo-hero h2 { font-size: 1.4rem; }
+@media (max-width: 768px) {
+    /* Topbar Mobile */
+    .topbar-conmebol { padding: 8px 0; }
+    .topbar-container { flex-direction: column; gap: 6px; padding: 0 12px; }
+    .slogan-topo { display: none; }
+    .destaque-topo-ticker { display: none; }
+
+    /* Navbar Mobile com Touch Pills */
+    .navbar-container { flex-direction: column; gap: 12px; padding: 12px 14px; }
+    .nav-links-menu {
+        width: 100%;
+        overflow-x: auto;
+        padding-bottom: 4px;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+    }
+    .nav-links-menu::-webkit-scrollbar { display: none; }
+    .nav-item {
+        font-size: 0.72rem;
+        padding: 6px 12px;
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    /* Ticker Superior Adaptativo */
+    .ticker-jogos-ge { padding: 4px 0; }
+    .card-jogo-ticker { min-width: 215px; padding: 5px 10px; }
+
+    /* Hero & Manchete */
+    #corpo-portal { margin: 1.2rem auto; padding: 0 14px; gap: 2.2rem; }
+    .manchete-hero-grande { min-height: 290px; }
+    .imagem-hero-bg { padding: 1.2rem; }
+    .conteudo-hero p { display: none; }
+
+    /* Central das Copas */
+    .grid-cards-copas { grid-template-columns: 1fr; gap: 16px; }
+    .card-competicao { padding: 1.6rem 1.2rem; }
+    .emblema-card img { height: 85px; }
+
+    /* Grade de Notícias */
+    .grid-quatro-noticias { grid-template-columns: 1fr; gap: 14px; }
+    .thumb-noticia { height: 180px; }
 }
