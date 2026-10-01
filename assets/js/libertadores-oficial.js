@@ -1,94 +1,117 @@
 // ==========================================================================
-// assets/js/libertadores-oficial.js - MODO VIEWER COM SUPORTE A JSON & LOCAL
+// assets/js/libertadores-oficial.js - QUADRO OFICIAL MATA-MATA LIBERTADORES
 // ==========================================================================
 
-const CHAVE_SORTEIO = 'resultado_sorteio_libertadores';
-const CHAVE_JOGOS = 'jogos_oficial_libertadores';
+const CHAVE_SORTEIO = 'conmebol_libertadores_sorteio_oficial_2026';
+const CHAVE_JOGOS = 'conmebol_libertadores_jogos_oficial_2026';
 
 let estadoLibertadores = {
+    sorteioAtivo: false,
     placares: {},
     infoJogos: {}
 };
 
 async function inicializarTabelaLibertadores() {
-    // 1. Tenta carregar dados do arquivo JSON publicado caso exista
+    let dadosJson = null;
+
+    // 1. Tenta carregar dados oficiais publicados via JSON
     try {
         const resposta = await fetch('assets/data/dados-mata-mata-libertadores.json?v=' + Date.now());
         if (resposta.ok) {
-            const dadosJson = await resposta.json();
-            if (dadosJson.sorteio) localStorage.setItem(CHAVE_SORTEIO, JSON.stringify(dadosJson.sorteio));
-            if (dadosJson.jogos) localStorage.setItem(CHAVE_JOGOS, JSON.stringify(dadosJson.jogos));
+            dadosJson = await resposta.json();
         }
     } catch (e) {}
 
-    // 2. Renderiza a tabela e calcula o mata-mata
-    carregarEstruturaOitavas();
-    carregarJogosSalvos();
-    calcularClassificadosEAvanço();
-}
+    // 2. Se houver dados oficiais no JSON e o sorteio estiver marcado como realizado
+    if (dadosJson && dadosJson.sorteioRealizado === true && dadosJson.sorteio) {
+        estadoLibertadores.sorteioAtivo = true;
+        carregarEstruturaOitavas(dadosJson.sorteio);
+        if (dadosJson.jogos) {
+            carregarJogosPublicados(dadosJson.jogos);
+            calcularClassificadosEAvanço();
+        }
+        return;
+    }
 
-function carregarEstruturaOitavas() {
-    const sorteioSalvo = localStorage.getItem(CHAVE_SORTEIO);
-    if (!sorteioSalvo) return;
-
-    try {
-        const confrontos = typeof sorteioSalvo === 'string' ? JSON.parse(sorteioSalvo) : sorteioSalvo;
-
-        confrontos.forEach(confronto => {
-            const letra = confronto.chave;
-            const timeP2 = confronto.pote2;
-            const timeP1 = confronto.pote1;
-
-            const cardIda = document.getElementById(`oitavas-${letra}-ida`);
-            if (cardIda && timeP2 && timeP1) {
-                cardIda.querySelector('.time.mandante').textContent = timeP2;
-                cardIda.querySelector('.time.visitante').textContent = timeP1;
+    // 3. Fallback controlado via localStorage apenas se estiver explicitamente ativo
+    const sorteioLocal = localStorage.getItem(CHAVE_SORTEIO);
+    if (sorteioLocal) {
+        try {
+            const dadosSorteio = JSON.parse(sorteioLocal);
+            if (Array.isArray(dadosSorteio) && dadosSorteio.length > 0) {
+                estadoLibertadores.sorteioAtivo = true;
+                carregarEstruturaOitavas(dadosSorteio);
+                carregarJogosSalvosLocal();
+                calcularClassificadosEAvanço();
             }
-
-            const cardVolta = document.getElementById(`oitavas-${letra}-volta`);
-            if (cardVolta && timeP2 && timeP1) {
-                cardVolta.querySelector('.time.mandante').textContent = timeP1;
-                cardVolta.querySelector('.time.visitante').textContent = timeP2;
-            }
-        });
-    } catch (e) {
-        console.error('Erro ao ler sorteio salvo:', e);
+        } catch (e) {
+            console.error('Erro ao ler sorteio local:', e);
+        }
     }
 }
 
-function carregarJogosSalvos() {
+function carregarEstruturaOitavas(confrontos) {
+    if (!Array.isArray(confrontos)) return;
+
+    confrontos.forEach(confronto => {
+        const letra = confronto.chave;
+        const timeP2 = confronto.pote2;
+        const timeP1 = confronto.pote1;
+
+        const cardIda = document.getElementById(`oitavas-${letra}-ida`);
+        if (cardIda && timeP2 && timeP1) {
+            cardIda.querySelector('.time.mandante').textContent = timeP2;
+            cardIda.querySelector('.time.visitante').textContent = timeP1;
+        }
+
+        const cardVolta = document.getElementById(`oitavas-${letra}-volta`);
+        if (cardVolta && timeP2 && timeP1) {
+            cardVolta.querySelector('.time.mandante').textContent = timeP1;
+            cardVolta.querySelector('.time.visitante').textContent = timeP2;
+        }
+    });
+}
+
+function carregarJogosPublicados(dadosJogos) {
+    estadoLibertadores.placares = dadosJogos.placares || {};
+    estadoLibertadores.infoJogos = dadosJogos.infoJogos || {};
+    aplicarPlacaresNaTela();
+}
+
+function carregarJogosSalvosLocal() {
     const salvos = localStorage.getItem(CHAVE_JOGOS);
     if (!salvos) return;
 
     try {
-        const dados = typeof salvos === 'string' ? JSON.parse(salvos) : salvos;
-        estadoLibertadores = { ...estadoLibertadores, ...dados };
+        const dados = JSON.parse(salvos);
+        estadoLibertadores.placares = dados.placares || {};
+        estadoLibertadores.infoJogos = dados.infoJogos || {};
+        aplicarPlacaresNaTela();
+    } catch (e) {}
+}
 
-        document.querySelectorAll('.card-jogo').forEach(card => {
-            const id = card.id;
-            const elM = card.querySelector('.gols-mandante');
-            const elV = card.querySelector('.gols-visitante');
-            const infoEl = card.querySelector('.info-jogo');
+function aplicarPlacaresNaTela() {
+    document.querySelectorAll('.card-jogo').forEach(card => {
+        const id = card.id;
+        const elM = card.querySelector('.gols-mandante');
+        const elV = card.querySelector('.gols-visitante');
+        const infoEl = card.querySelector('.info-jogo');
 
-            if (dados.placares && dados.placares[id]) {
-                if (elM && dados.placares[id].m !== null && dados.placares[id].m !== undefined) {
-                    elM.textContent = dados.placares[id].m;
-                }
-                if (elV && dados.placares[id].v !== null && dados.placares[id].v !== undefined) {
-                    elV.textContent = dados.placares[id].v;
-                }
-            }
+        if (estadoLibertadores.placares && estadoLibertadores.placares[id]) {
+            const p = estadoLibertadores.placares[id];
+            if (elM && p.m !== null && p.m !== undefined) elM.textContent = p.m;
+            if (elV && p.v !== null && p.v !== undefined) elV.textContent = p.v;
+        }
 
-            if (dados.infoJogos && dados.infoJogos[id] && infoEl) {
-                infoEl.textContent = dados.infoJogos[id];
-            }
-        });
-    } catch (e) {
-        console.error('Erro ao carregar dados dos jogos:', e);
-    }
+        if (estadoLibertadores.infoJogos && estadoLibertadores.infoJogos[id] && infoEl) {
+            infoEl.textContent = estadoLibertadores.infoJogos[id];
+        }
+    });
 }
 
 function calcularClassificadosEAvanço() {
+    if (!estadoLibertadores.sorteioAtivo) return;
+
     const chaves = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
     const vencedoresOitavas = {};
 
@@ -101,6 +124,8 @@ function calcularClassificadosEAvanço() {
 
         const timeP2 = cardIda.querySelector('.time.mandante').textContent;
         const timeP1 = cardIda.querySelector('.time.visitante').textContent;
+
+        if (timeP2.includes('Pote') || timeP1.includes('Pote')) return;
 
         if (placarIda && placarVolta && 
             placarIda.m !== null && placarIda.m !== undefined && 
@@ -116,7 +141,7 @@ function calcularClassificadosEAvanço() {
             } else if (golsP2 > golsP1) {
                 vencedoresOitavas[letra] = timeP2;
             } else {
-                vencedoresOitavas[letra] = timeP1;
+                vencedoresOitavas[letra] = timeP1; // Fallback desempate
             }
         }
     });

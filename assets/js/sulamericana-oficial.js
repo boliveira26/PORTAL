@@ -1,94 +1,117 @@
 // ==========================================================================
-// assets/js/sulamericana-oficial.js - MODO VIEWER MATA-MATA SUL-AMERICANA
+// assets/js/sulamericana-oficial.js - QUADRO OFICIAL MATA-MATA SUL-AMERICANA
 // ==========================================================================
 
-const CHAVE_SORTEIO_SULA = 'resultado_sorteio_sulamericana';
-const CHAVE_JOGOS_SULA = 'jogos_oficial_sulamericana';
+const CHAVE_SORTEIO_SULA = 'conmebol_sulamericana_sorteio_oficial_2026';
+const CHAVE_JOGOS_SULA = 'conmebol_sulamericana_jogos_oficial_2026';
 
 let estadoSulamericana = {
+    sorteioAtivo: false,
     placares: {},
     infoJogos: {}
 };
 
 async function inicializarTabelaSulamericana() {
-    // 1. Tenta carregar dados do arquivo JSON publicado caso exista
+    let dadosJson = null;
+
+    // 1. Tenta carregar dados oficiais publicados via JSON
     try {
         const resposta = await fetch('assets/data/dados-mata-mata-sulamericana.json?v=' + Date.now());
         if (resposta.ok) {
-            const dadosJson = await resposta.json();
-            if (dadosJson.sorteio) localStorage.setItem(CHAVE_SORTEIO_SULA, JSON.stringify(dadosJson.sorteio));
-            if (dadosJson.jogos) localStorage.setItem(CHAVE_JOGOS_SULA, JSON.stringify(dadosJson.jogos));
+            dadosJson = await resposta.json();
         }
     } catch (e) {}
 
-    // 2. Renderiza a tabela e calcula o mata-mata
-    carregarEstruturaOitavasSula();
-    carregarJogosSalvosSula();
-    calcularClassificadosEAvançoSula();
-}
+    // 2. Se houver dados oficiais no JSON e o sorteio estiver ativo
+    if (dadosJson && dadosJson.sorteioRealizado === true && dadosJson.sorteio) {
+        estadoSulamericana.sorteioAtivo = true;
+        carregarEstruturaOitavasSula(dadosJson.sorteio);
+        if (dadosJson.jogos) {
+            carregarJogosPublicadosSula(dadosJson.jogos);
+            calcularClassificadosEAvançoSula();
+        }
+        return;
+    }
 
-function carregarEstruturaOitavasSula() {
-    const sorteioSalvo = localStorage.getItem(CHAVE_SORTEIO_SULA);
-    if (!sorteioSalvo) return;
-
-    try {
-        const confrontos = typeof sorteioSalvo === 'string' ? JSON.parse(sorteioSalvo) : sorteioSalvo;
-
-        confrontos.forEach(confronto => {
-            const letra = confronto.chave;
-            const timeP4 = confronto.pote4 || confronto.time4;
-            const timeP3 = confronto.pote3 || confronto.time3;
-
-            const cardIda = document.getElementById(`sula-oitavas-${letra}-ida`);
-            if (cardIda && timeP4 && timeP3) {
-                cardIda.querySelector('.time.mandante').textContent = timeP4;
-                cardIda.querySelector('.time.visitante').textContent = timeP3;
+    // 3. Fallback controlado via localStorage apenas se estiver explicitamente ativo
+    const sorteioLocal = localStorage.getItem(CHAVE_SORTEIO_SULA);
+    if (sorteioLocal) {
+        try {
+            const dadosSorteio = JSON.parse(sorteioLocal);
+            if (Array.isArray(dadosSorteio) && dadosSorteio.length > 0) {
+                estadoSulamericana.sorteioAtivo = true;
+                carregarEstruturaOitavasSula(dadosSorteio);
+                carregarJogosSalvosLocalSula();
+                calcularClassificadosEAvançoSula();
             }
-
-            const cardVolta = document.getElementById(`sula-oitavas-${letra}-volta`);
-            if (cardVolta && timeP4 && timeP3) {
-                cardVolta.querySelector('.time.mandante').textContent = timeP3;
-                cardVolta.querySelector('.time.visitante').textContent = timeP4;
-            }
-        });
-    } catch (e) {
-        console.error('Erro ao ler sorteio da Sul-Americana salvo:', e);
+        } catch (e) {
+            console.error('Erro ao ler sorteio local da Sul-Americana:', e);
+        }
     }
 }
 
-function carregarJogosSalvosSula() {
+function carregarEstruturaOitavasSula(confrontos) {
+    if (!Array.isArray(confrontos)) return;
+
+    confrontos.forEach(confronto => {
+        const letra = confronto.chave;
+        const timeP4 = confronto.pote4 || confronto.time4;
+        const timeP3 = confronto.pote3 || confronto.time3;
+
+        const cardIda = document.getElementById(`sula-oitavas-${letra}-ida`);
+        if (cardIda && timeP4 && timeP3) {
+            cardIda.querySelector('.time.mandante').textContent = timeP4;
+            cardIda.querySelector('.time.visitante').textContent = timeP3;
+        }
+
+        const cardVolta = document.getElementById(`sula-oitavas-${letra}-volta`);
+        if (cardVolta && timeP4 && timeP3) {
+            cardVolta.querySelector('.time.mandante').textContent = timeP3;
+            cardVolta.querySelector('.time.visitante').textContent = timeP4;
+        }
+    });
+}
+
+function carregarJogosPublicadosSula(dadosJogos) {
+    estadoSulamericana.placares = dadosJogos.placares || {};
+    estadoSulamericana.infoJogos = dadosJogos.infoJogos || {};
+    aplicarPlacaresNaTelaSula();
+}
+
+function carregarJogosSalvosLocalSula() {
     const salvos = localStorage.getItem(CHAVE_JOGOS_SULA);
     if (!salvos) return;
 
     try {
-        const dados = typeof salvos === 'string' ? JSON.parse(salvos) : salvos;
-        estadoSulamericana = { ...estadoSulamericana, ...dados };
+        const dados = JSON.parse(salvos);
+        estadoSulamericana.placares = dados.placares || {};
+        estadoSulamericana.infoJogos = dados.infoJogos || {};
+        aplicarPlacaresNaTelaSula();
+    } catch (e) {}
+}
 
-        document.querySelectorAll('.card-jogo').forEach(card => {
-            const id = card.id;
-            const elM = card.querySelector('.gols-mandante');
-            const elV = card.querySelector('.gols-visitante');
-            const infoEl = card.querySelector('.info-jogo');
+function aplicarPlacaresNaTelaSula() {
+    document.querySelectorAll('.card-jogo').forEach(card => {
+        const id = card.id;
+        const elM = card.querySelector('.gols-mandante');
+        const elV = card.querySelector('.gols-visitante');
+        const infoEl = card.querySelector('.info-jogo');
 
-            if (dados.placares && dados.placares[id]) {
-                if (elM && dados.placares[id].m !== null && dados.placares[id].m !== undefined) {
-                    elM.textContent = dados.placares[id].m;
-                }
-                if (elV && dados.placares[id].v !== null && dados.placares[id].v !== undefined) {
-                    elV.textContent = dados.placares[id].v;
-                }
-            }
+        if (estadoSulamericana.placares && estadoSulamericana.placares[id]) {
+            const p = estadoSulamericana.placares[id];
+            if (elM && p.m !== null && p.m !== undefined) elM.textContent = p.m;
+            if (elV && p.v !== null && p.v !== undefined) elV.textContent = p.v;
+        }
 
-            if (dados.infoJogos && dados.infoJogos[id] && infoEl) {
-                infoEl.textContent = dados.infoJogos[id];
-            }
-        });
-    } catch (e) {
-        console.error('Erro ao carregar jogos da Sul-Americana:', e);
-    }
+        if (estadoSulamericana.infoJogos && estadoSulamericana.infoJogos[id] && infoEl) {
+            infoEl.textContent = estadoSulamericana.infoJogos[id];
+        }
+    });
 }
 
 function calcularClassificadosEAvançoSula() {
+    if (!estadoSulamericana.sorteioAtivo) return;
+
     const chaves = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
     const vencedoresOitavas = {};
 
@@ -101,6 +124,8 @@ function calcularClassificadosEAvançoSula() {
 
         const timeP4 = cardIda.querySelector('.time.mandante').textContent;
         const timeP3 = cardIda.querySelector('.time.visitante').textContent;
+
+        if (timeP4.includes('Lugar') || timeP3.includes('Lugar')) return;
 
         if (placarIda && placarVolta && 
             placarIda.m !== null && placarIda.m !== undefined && 
