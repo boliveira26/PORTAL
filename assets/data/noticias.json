@@ -4,16 +4,26 @@
     "texto": "6ª Rodada da Fase de Grupos define classificados e vagas na Sul-Americana"
   },
   "manchete_hero": {
+    "id": "manchete-principal",
     "categoria": "CONMEBOL LIBERTADORES",
     "tipo_tag": "ouro",
     "titulo": "6ª Rodada Decisiva: Quem garante liderança no Pote 1 e quem vai para a Sul-Americana?",
     "resumo": "Última rodada da fase de grupos define os 16 classificados às Oitavas de Final e os 16 times que entram direto na Sul-Americana.",
+    "autor": "Por Redação PES Media Hub",
+    "data_publicacao": "01/10/2026 01:15",
     "imagem": "https://admin.cnnbrasil.com.br/wp-content/uploads/sites/12/2025/03/taca-libertadores-e1742232529519.jpeg?w=1200&h=675&crop=1",
     "botao_primario_texto": "Tabela de Grupos →",
-    "botao_primario_link": "fase-de-grupos.html"
+    "botao_primario_link": "fase-de-grupos.html",
+    "corpo_materia": [
+      "A 6ª e última rodada da Fase de Grupos da CONMEBOL Libertadores no PES chegou ao seu momento mais dramático. Com metade das chaves já encerradas e as outras com jogos decisivos nesta noite, o cenário das 16 vagas no Pote 1 e no Pote 2 está praticamente selado.",
+      "Além da disputa acirrada pela liderança geral, os olhos de todo o continente também se voltam para a parte inferior das tabelas. Pelo regulamento oficial da temporada, as equipes que terminarem na 3ª e na 4ª posições de cada grupo não voltam para casa: elas são transferidas diretamente para as Oitavas de Final da CONMEBOL Sudamericana.",
+      "> \"Esta é a rodada em que não há espaço para erro tático. Um gol aos 90 minutos pode significar a liderança no mata-mata da Libertadores ou a transferência direta para a Grande Conquista.\"",
+      "Os líderes de cada grupo garantem vantagem no sorteio oficial dos confrontos, que será realizado ao vivo logo após o apito final das últimas partidas programadas."
+    ]
   },
   "destaques_secundarios": [
     {
+      "id": "vagas-sul-americana",
       "categoria": "SUL-AMERICANA",
       "tipo_tag": "azul",
       "titulo": "3º e 4º colocados da Libertadores caem direto para as Oitavas da Sula",
@@ -21,6 +31,7 @@
       "imagem": "https://img.band.com.br/image/2025/10/10/trofeu-da-sul-americana-13580.jpg"
     },
     {
+      "id": "criterios-desempate",
       "categoria": "CRITÉRIOS OFICIAIS",
       "tipo_tag": "neutro",
       "titulo": "Confronto Direto e Saldo de Gols: Como funciona o desempate no PES",
@@ -30,74 +41,131 @@
   ],
   "ultimas_noticias": [
     {
+      "id": "boca-eliminado-barcelona",
       "categoria": "FASE DE GRUPOS",
       "tipo_tag": "ouro",
       "titulo": "Boca leva empate do Barcelona e está eliminado",
-      "resumo": "Corinthians vence a Católica e se classifica em segundo lugar",
-      "imagem": "https://s2-ge.glbimg.com/ASG6A9GRp8MhZ5NrRF-kmm1he1g=/0x0:2048x1366/984x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_bc8228b6673f488aa253bbcb03c80ec5/internal_photos/bs/2025/2/Q/AYeiv4QwGQxT7tOMuy2Q/2025-02-26t025545z-866675613-up1el2q084wa2-rtrmadp-3-soccer-libertadores-boj-ali-report.jpg"
+      "resumo": "Corinthians vence a Católica e se classifica em segundo lugar no Grupo D.",
+      "autor": "Por Redação PES Media Hub",
+      "data_publicacao": "30/09/2026 23:30",
+      "imagem": "https://s2-ge.glbimg.com/ASG6A9GRp8MhZ5NrRF-kmm1he1g=/0x0:2048x1366/984x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_bc8228b6673f488aa253bbcb03c80ec5/internal_photos/bs/2025/2/Q/AYeiv4QwGQxT7tOMuy2Q/2025-02-26t025545z-866675613-up1el2q084wa2-rtrmadp-3-soccer-libertadores-boj-ali-report.jpg",
+      "legenda_foto": "Jogadores do Boca Juniors lamentam o empate cedido no final do segundo tempo em La Bombonera.",
+      "corpo_materia": [
+        "O Estádio La Bombonera viveu uma noite de profunda frustração. Precisando da vitória para garantir vaga nas Oitavas de Final da Libertadores, o Boca Juniors ficou no empate por 2 a 2 com o Barcelona de Guayaquil e deu adeus ao sonho da Glória Eterna.",
+        "A equipe argentina chegou a estar em vantagem no placar duas vezes, mas a forte bola parada do time equatoriano castigou os mandantes nos minutos finais. Com o resultado, o Barcelona confirmou o primeiro lugar do Grupo D com 10 pontos.",
+        "> \"Fizemos tudo o que estava ao nosso alcance, mas faltou tranquilidade nos minutos decisivos. Agora o foco é a Sul-Americana.\"",
+        "No outro jogo da chave, o Corinthians superou a Universidad Católica por 2 a 0 na Neo Química Arena e ficou com a segunda vaga do grupo, somando 9 pontos e superando o Boca no saldo de gols."
+      ],
+      "ficha_tecnica": {
+        "estadio": "La Bombonera, Buenos Aires",
+        "gols": "Cavani 23', Merentiel 61' (BOC); Diaz 45', Cortez 84' (BSC)"
+      }
     },
     {
+      "id": "river-derrotado-crb",
       "categoria": "LIBERTADORES",
       "tipo_tag": "ouro",
       "titulo": "River é humilhado pelo CRB e é eliminado na Fase de Grupos",
       "resumo": "Millonarios jogam muito mal e perdem as três partidas em casa pela primeira vez na história.",
-      "imagem": "https://lncimg.lance.com.br/cdn-cgi/image/width=1200,height=630,quality=75,fit=cover,format=webp/uploads/2026/08/Eduardo-Coudet-comandando-o-River-Plate-na-eliminacao-nas-oitavas-de-final-da-Sul-Americana-scaled-aspect-ratio-512-320.jpg"
+      "autor": "Por Redação PES Media Hub",
+      "data_publicacao": "30/09/2026 21:30",
+      "imagem": "https://lncimg.lance.com.br/cdn-cgi/image/width=1200,height=630,quality=75,fit=cover,format=webp/uploads/2026/08/Eduardo-Coudet-comandando-o-River-Plate-na-eliminacao-nas-oitavas-de-final-da-Sul-Americana-scaled-aspect-ratio-512-320.jpg",
+      "legenda_foto": "Técnico do River Plate consternado à beira do gramado no Monumental.",
+      "corpo_materia": [
+        "Uma das maiores zebras da história recente do futebol continental se concretizou no Monumental de Núñez. O CRB foi a Buenos Aires, dominou o gigante River Plate e aplicou uma goleada maiúscula por 3 a 0, carimbando a vaga alagoana no mata-mata.",
+        "Com um futebol rápido e letal nos contra-ataques, o Galo da Pajuçara silenciou mais de 70 mil torcedores argentinos e fechou a fase de grupos na 2ª colocação com 11 pontos, empatado com o líder Universitario.",
+        "> \"Ninguém acreditava no CRB quando os grupos foram sorteados. Hoje nós mostramos a força do nosso futebol dentro do Monumental.\"",
+        "O River Plate encerra sua pior campanha histórica em fases de grupos, perdendo todos os jogos disputados dentro de seus domínios e caindo para a Sul-Americana."
+      ],
+      "ficha_tecnica": {
+        "estadio": "Monumental de Núñez, Buenos Aires",
+        "gols": "Anselmo Ramon 18', Gegê 54', Léo Pereira 79' (CRB)"
+      }
     },
     {
+      "id": "atletico-bahia-lideres",
       "categoria": "DESEMPATES",
       "tipo_tag": "ouro",
       "titulo": "Atlético e Bahia garantem vaga em primeiro lugar",
       "resumo": "Galo foi ao Maracanã e empatou com o Flamengo, e Esquadrão foi superado pelo Nacional, mas se classificou em primeiro no saldo de gols.",
-      "imagem": "https://agenciaesporte.com.br/wp-content/uploads/2025/07/Atletico-Cuelo-31-07-2025.jpg"
+      "autor": "Por Redação PES Media Hub",
+      "data_publicacao": "30/09/2026 23:00",
+      "imagem": "https://agenciaesporte.com.br/wp-content/uploads/2025/07/Atletico-Cuelo-31-07-2025.jpg",
+      "legenda_foto": "Atlético Mineiro comemora liderança do Grupo A no Maracanã.",
+      "corpo_materia": [
+        "A frieza dos números e os critérios de desempate coroaram duas grandes campanhas brasileiras. No Grupo A, o Atlético Mineiro foi ao Rio de Janeiro, segurou o empate em 1 a 1 contra o Flamengo e garantiu a ponta da tabela com 13 pontos.",
+        "Já no Grupo E, mesmo com a derrota por 1 a 0 para o Nacional em Montevidéu, o Bahia manteve o primeiro lugar graças ao saldo de gols (+7 contra +1 do Atlético Nacional), garantindo presença no Pote 1 do sorteio das Oitavas de Final."
+      ]
     },
     {
+      "id": "sorteio-mata-mata-quinta",
       "categoria": "LIBERTADORES E SUL-AMERICANA",
       "tipo_tag": "cinza",
       "titulo": "Sorteio do Mata-Mata da Libertadores e Sul-Americana será nesta quinta-feira",
       "resumo": "Sorteio será realizado a partir das 22h30, após o fim dos jogos da fase de grupos, com transmissão ao vivo no Youtube.",
-      "imagem": "https://fimdejogo.com.br/wp-content/uploads/2020/09/libertadores-sudamericana-2_1.jpg"
+      "autor": "Por Redação PES Media Hub",
+      "data_publicacao": "29/09/2026 20:00",
+      "imagem": "https://fimdejogo.com.br/wp-content/uploads/2020/09/libertadores-sudamericana-2_1.jpg",
+      "corpo_materia": [
+        "A CONMEBOL marcou para a noite desta quinta-feira a cerimônia oficial de sorteio dos confrontos de mata-mata da Libertadores e da Sul-Americana.",
+        "O evento definirá o chaveamento completo desde as Oitavas de Final até a Grande Final única, além de sortear a ordem dos mandos de campo de cada chave eliminatória."
+      ]
     },
     {
+      "id": "bragantino-goleia-cerro",
       "categoria": "GRUPO F • 5ª RODADA",
       "tipo_tag": "ouro",
       "titulo": "Noite histórica em Bragança: Red Bull Bragantino aplica 6 a 1 no Cerro Porteño",
-      "resumo": "Massa Bruta foi avassalador no Nabi Abi Chedid e garantiu a maior goleada desta edição da Libertadores.",
-      "imagem": "https://s2-ge.glbimg.com/smd4sheBmTuvdo1IQMgLLalTS4g=/0x0:2048x1365/1008x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_bc8228b6673f488aa253bbcb03c80ec5/internal_photos/bs/2022/E/V/khaIO4QQ2xXXYa17V8Vg/51894784175-5c91e55689-k.jpg"
+      "resumo": "Massa Bruta foi avassalador no Nabi Abi Chedid e garantiu a maior goleada desta edição da Libertadores no PES.",
+      "autor": "Por Redação PES Media Hub",
+      "data_publicacao": "27/09/2026 21:30",
+      "imagem": "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=600&q=80",
+      "corpo_materia": [
+        "Uma aula de futebol ofensivo e intensidade. O Red Bull Bragantino atropelou o tradicional Cerro Porteño por 6 a 1 em Bragança Paulista pela 5ª rodada.",
+        "Com grande exibição coletiva, o time paulista construiu a maior goleada da história do clube na competição continental e colocou pressão direta sobre o líder Estudiantes."
+      ]
     },
     {
+      "id": "nacional-massacre-colombia",
       "categoria": "GRUPO E • 4ª RODADA",
       "tipo_tag": "ouro",
       "titulo": "Nacional atropela Atlético Nacional por 5 a 0 em Medellín",
       "resumo": "Equipe uruguaia teve atuação impecável fora de casa e calou o Estádio Atanasio Girardot com massacre histórico.",
-      "imagem": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCaasVFb_uDp_hDZ6IAgPjOfrb2peKgfajnEw_XFe_hBQgwbMbAI97r60&s=10"
+      "autor": "Por Redação PES Media Hub",
+      "data_publicacao": "24/09/2026 23:00",
+      "imagem": "https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&w=600&q=80",
+      "corpo_materia": [
+        "Em uma das atuações mais impactantes da temporada, o Nacional do Uruguai foi até Medellín e venceu o Atlético Nacional por 5 a 0.",
+        "A vitória com cinco gols de diferença chocou o continente e recolocou o tradicional clube uruguaio na disputa acirrada pela classificação."
+      ]
     },
     {
+      "id": "universitario-supera-river",
       "categoria": "GRUPO B • 2ª RODADA",
       "tipo_tag": "ouro",
       "titulo": "Universitario cala o Monumental de Núñez e vence o River Plate por 2 a 0",
       "resumo": "Time peruano impôs forte marcação em Buenos Aires e construiu vitória maiúscula rumo à liderança da chave.",
-      "imagem": "https://www.eluniverso.com/resizer/v2/KKRSWFGXSRBJVJ4GCYSVLQQ62Y.jpg?auth=33b264dafeb4849c8a42d6bf392888572e6f3b2f50bcb6b4246b279434e3de30&width=1039&height=670&quality=75&smart=true"
+      "autor": "Por Redação PES Media Hub",
+      "data_publicacao": "08/09/2026 22:00",
+      "imagem": "https://images.unsplash.com/photo-1522778119026-d647f0596c20?auto=format&fit=crop&w=600&q=80",
+      "corpo_materia": [
+        "Com organização tática perfeita e contra-ataques precisos, o Universitario de Deportes superou o River Plate por 2 a 0 em Buenos Aires.",
+        "O resultado consolidou o time peruano como uma das grandes sensações da fase de grupos desta edição."
+      ]
     },
     {
+      "id": "ldu-show-altitude",
       "categoria": "GRUPO H • 4ª RODADA",
       "tipo_tag": "ouro",
       "titulo": "LDU dá show na altitude e goleia o The Strongest por 5 a 2 em La Paz",
       "resumo": "Equipe equatoriana quebrou o tabu do Hernando Siles com ataque fulminante e assumiu a liderança isolada.",
-      "imagem": "https://lncimg.lance.com.br/cdn-cgi/image/width=950,quality=60,fit=pad,format=webp/uploads/2026/09/Deyverson-em-Palmeiras-x-LDU-aspect-ratio-512-320.jpeg"
-    },
-    {
-      "categoria": "GRUPO A • 1ª RODADA",
-      "tipo_tag": "ouro",
-      "titulo": "Clássico nacional: Atlético-MG supera o Flamengo por 2 a 0 na Arena MRV",
-      "resumo": "Galo dominou as ações no confronto brasileiro da estreia e começou a caminhada continental com vitória contundente.",
-      "imagem": "https://s2-ge.glbimg.com/AZlovnYzBB9KARwURx3kHt2ksGo=/0x0:2000x1333/984x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_bc8228b6673f488aa253bbcb03c80ec5/internal_photos/bs/2025/Z/N/Z8xNpJTCCBy1R7CccYsw/agif25080622072695.jpg"
-    },
-    {
-      "categoria": "GRUPO G • 4ª RODADA",
-      "tipo_tag": "ouro",
-      "titulo": "Força no Maião: Mirassol vence o Colo-Colo por 2 a 0 e segue firme",
-      "resumo": "Com apoio da torcida paulista, o Leão fez valer o mando de campo e embolou de vez a disputa pela vaga às Oitavas.",
-      "imagem": "https://img.olympics.com/images/image/private/t_s_pog_staticContent_hero_lg_2x/f_auto/primary/fk6lqs1wrx3xrkmhqpg2"
+      "autor": "Por Redação PES Media Hub",
+      "data_publicacao": "22/09/2026 21:00",
+      "imagem": "https://images.unsplash.com/photo-1518091043644-c1d4457512c6?auto=format&fit=crop&w=600&q=80",
+      "corpo_materia": [
+        "Jogando a mais de 3.600 metros de altitude, a LDU de Quito protagonizou um jogo memorável ao golear o The Strongest por 5 a 2 em La Paz.",
+        "Comandada por um ataque veloz, a equipe equatoriana não tomou conhecimento do adversário e encaminhou a classificação como melhor campanha geral da fase de grupos."
+      ]
     }
   ]
 }

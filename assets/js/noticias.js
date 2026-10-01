@@ -34,29 +34,30 @@ function renderizarTickerTopo(ticker) {
     if (textoEl) textoEl.textContent = ticker.texto || '';
 }
 
-// 2. Hero Principal (Com 1 botão para Tabela de Grupos)
+// 2. Hero Principal (Link para matéria completa ou tabela)
 function renderizarHeroPrincipal(hero) {
     if (!hero) return;
     const container = document.getElementById('hero-destaque-principal');
     if (!container) return;
 
     const tagClasse = hero.tipo_tag ? hero.tipo_tag : 'ouro';
+    const linkMateria = hero.id ? `noticia.html?id=${hero.id}` : hero.botao_primario_link;
 
     container.innerHTML = `
-        <div class="imagem-hero-bg" style="background-image: linear-gradient(to top, rgba(5,7,10,0.95) 15%, rgba(5,7,10,0.3) 70%), url('${hero.imagem}');">
+        <div class="imagem-hero-bg" style="background-image: linear-gradient(to top, rgba(5,7,10,0.95) 15%, rgba(5,7,10,0.3) 70%), url('${hero.imagem}'); cursor:pointer;" onclick="location.href='${linkMateria}'">
             <div class="conteudo-hero">
                 <span class="badge-categoria-hero ${tagClasse}">${hero.categoria}</span>
                 <h2>${hero.titulo}</h2>
                 <p>${hero.resumo}</p>
                 <div class="botoes-hero-links">
-                    <a href="${hero.botao_primario_link}" class="btn-hero primario">${hero.botao_primario_texto}</a>
+                    <a href="${hero.botao_primario_link}" class="btn-hero primario" onclick="event.stopPropagation();">${hero.botao_primario_texto}</a>
                 </div>
             </div>
         </div>
     `;
 }
 
-// 3. Hero Secundários (Suporte a imagem de fundo ou card sólido)
+// 3. Hero Secundários (Clicáveis para notícia completa)
 function renderizarHeroSecundarios(cards) {
     if (!cards || !cards.length) return;
     const container = document.getElementById('hero-destaques-secundarios');
@@ -65,12 +66,13 @@ function renderizarHeroSecundarios(cards) {
     container.innerHTML = cards.map(item => {
         const temImagem = item.imagem ? true : false;
         const estiloBg = temImagem 
-            ? `style="background-image: linear-gradient(to top, rgba(5,7,10,0.95) 30%, rgba(5,7,10,0.45) 100%), url('${item.imagem}');"` 
-            : '';
+            ? `style="background-image: linear-gradient(to top, rgba(5,7,10,0.95) 30%, rgba(5,7,10,0.45) 100%), url('${item.imagem}'); cursor:pointer;"` 
+            : 'style="cursor:pointer;"';
         const classeExtra = temImagem ? 'com-imagem' : '';
+        const link = item.id ? `noticia.html?id=${item.id}` : '#';
 
         return `
-            <article class="card-hero-menor ${classeExtra}" ${estiloBg}>
+            <article class="card-hero-menor ${classeExtra}" ${estiloBg} onclick="location.href='${link}'">
                 <div class="conteudo-card-menor">
                     <span class="badge-categoria-hero ${item.tipo_tag || 'neutro'}">${item.categoria}</span>
                     <h3>${item.titulo}</h3>
@@ -81,14 +83,14 @@ function renderizarHeroSecundarios(cards) {
     }).join('');
 }
 
-// 4. Grid de Últimas Notícias (Renderiza todas as notícias do JSON dinamicamente)
+// 4. Grid de Últimas Notícias (Cada card abre sua matéria desenvolvida no noticia.html)
 function renderizarUltimasNoticias(noticias) {
     if (!noticias || !noticias.length) return;
     const container = document.getElementById('grid-ultimas-noticias');
     if (!container) return;
 
     container.innerHTML = noticias.map(item => `
-        <article class="card-noticia-conmebol">
+        <article class="card-noticia-conmebol" style="cursor:pointer;" onclick="location.href='noticia.html?id=${item.id}'">
             <div class="thumb-noticia" style="background-image: url('${item.imagem}');"></div>
             <div class="corpo-noticia-conmebol">
                 <span class="tag-noticia ${item.tipo_tag || 'ouro'}">${item.categoria}</span>

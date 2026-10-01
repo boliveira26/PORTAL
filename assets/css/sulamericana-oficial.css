@@ -1,88 +1,81 @@
 /* ==========================================================================
    assets/css/sulamericana-oficial.css - BROADCAST OFICIAL CONMEBOL SUDAMERICANA
+   Normas Oficiais de Marca: A Grande Conquista / Azul Oficial
    ========================================================================== */
 
-/* TIPOGRAFIA OFICIAL CONMEBOL BRANDING */
+/* TIPOGRAFIA OFICIAL BRANDING */
 @font-face {
     font-family: 'Branding';
     src: url('../fonts/Branding%20Thin.otf') format('opentype');
     font-weight: 100;
-    font-style: normal;
 }
 @font-face {
     font-family: 'Branding';
     src: url('../fonts/Branding%20Light.otf') format('opentype');
     font-weight: 300;
-    font-style: normal;
 }
 @font-face {
     font-family: 'Branding';
     src: url('../fonts/Branding%20Medium.otf') format('opentype');
     font-weight: 500;
-    font-style: normal;
 }
 @font-face {
     font-family: 'Branding';
     src: url('../fonts/Branding%20Semibold.otf') format('opentype');
     font-weight: 600;
-    font-style: normal;
 }
 @font-face {
     font-family: 'Branding';
     src: url('../fonts/Branding%20Bold.otf') format('opentype');
     font-weight: 700;
-    font-style: normal;
 }
 @font-face {
     font-family: 'Branding';
     src: url('../fonts/Branding%20Black.otf') format('opentype');
     font-weight: 900;
-    font-style: normal;
 }
 
 :root {
-    --tv-black-base: #04070d;
-    --tv-black-panel: #0a101a;
-    --tv-black-slot: #030508;
+    --tv-black-base: #03060f;
+    --tv-black-panel: #070d1a;
+    --tv-black-slot: #040814;
     
-    /* PRATA E AZUL METÁLICO CONMEBOL */
-    --silver-bright: #ffffff;
-    --silver-main: #d0dce8;
-    --silver-metal: #7697be;
-    --silver-dark: #1e334d;
-    --silver-bar: linear-gradient(90deg, #152336 0%, #7697be 25%, #ffffff 50%, #7697be 75%, #152336 100%);
-    --silver-badge: linear-gradient(180deg, #ffffff 0%, #c4d7ed 35%, #7592b5 85%, #2c425e 100%);
+    /* AZUL OFICIAL CONMEBOL SUDAMERICANA */
+    --sula-blue: #0077ff;
+    --sula-blue-light: #5cb3ff;
+    --sula-blue-metal: #0052cc;
+    --sula-bar: linear-gradient(90deg, transparent 0%, #0077ff 50%, transparent 100%);
+    --sula-badge: linear-gradient(135deg, #0077ff 0%, #004db3 100%);
     
-    --sula-blue: #0088ff;
-    --sula-blue-light: #60a5fa;
-    --border-card: rgba(96, 165, 250, 0.28);
-    --border-hover: rgba(147, 197, 253, 0.85);
+    --border-card: rgba(0, 119, 255, 0.35);
+    --border-hover: rgba(92, 179, 255, 0.85);
     
     --text-pure-white: #ffffff;
-    --text-silver: #c8d1de;
-    --text-muted: #64748b;
+    --text-silver: #c2cbd6;
+    --text-muted: #6f7d91;
     
-    --font-main: 'Branding', sans-serif;
+    --font-branding: 'Branding', Arial, sans-serif;
+    --font-ubuntu: 'Ubuntu', -apple-system, sans-serif;
 }
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: var(--font-main);
 }
 
 body.tema-sulamericana {
     background-color: var(--tv-black-base);
     background-image: 
-        radial-gradient(ellipse at 50% -10%, rgba(0, 136, 255, 0.18) 0%, transparent 55%),
-        linear-gradient(180deg, rgba(4, 7, 13, 0.8) 0%, rgba(2, 4, 8, 0.98) 100%),
-        repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(0, 0, 0, 0.3) 3px, rgba(0, 0, 0, 0.3) 6px);
+        radial-gradient(ellipse at 50% -10%, rgba(0, 119, 255, 0.16) 0%, transparent 60%),
+        linear-gradient(180deg, #040814 0%, #02040a 100%);
     color: var(--text-pure-white);
+    font-family: var(--font-ubuntu);
     min-height: 100vh;
-    padding: 2rem 1.5rem 3rem 1.5rem;
+    padding: 2rem 1.5rem 3.5rem;
     position: relative;
     overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
 }
 
 body.tema-sulamericana::before,
@@ -96,15 +89,8 @@ body.tema-sulamericana::after {
     z-index: 1;
 }
 
-body.tema-sulamericana::before {
-    left: 0;
-    background: radial-gradient(circle at left, rgba(0, 136, 255, 0.12) 0%, transparent 75%);
-}
-
-body.tema-sulamericana::after {
-    right: 0;
-    background: radial-gradient(circle at right, rgba(0, 136, 255, 0.12) 0%, transparent 75%);
-}
+body.tema-sulamericana::before { left: 0; background: radial-gradient(circle at left, rgba(0, 119, 255, 0.1) 0%, transparent 75%); }
+body.tema-sulamericana::after { right: 0; background: radial-gradient(circle at right, rgba(0, 119, 255, 0.1) 0%, transparent 75%); }
 
 /* CABEÇALHO */
 .cabecalho-torneio {
@@ -117,35 +103,36 @@ body.tema-sulamericana::after {
 .nav-links-tabela {
     display: flex;
     justify-content: center;
-    gap: 1.2rem;
+    gap: 1rem;
     margin-bottom: 1.5rem;
     flex-wrap: wrap;
 }
 
 .btn-nav-tabela {
-    background: linear-gradient(180deg, #132238 0%, #08111d 100%);
-    border: 1px solid var(--silver-metal);
-    color: var(--silver-bright);
+    background: linear-gradient(180deg, #0b1424 0%, #050a14 100%);
+    border: 1px solid var(--border-card);
+    color: var(--sula-blue-light);
     padding: 0.6rem 1.4rem;
+    font-family: var(--font-branding);
     font-size: 0.72rem;
     font-weight: 800;
     text-transform: uppercase;
-    letter-spacing: 2px;
+    letter-spacing: 1.5px;
     text-decoration: none;
     border-radius: 2px;
     transition: all 0.25s ease;
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 4px 10px rgba(0, 0, 0, 0.7);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.8);
 }
 
 .btn-nav-tabela:hover {
     border-color: var(--sula-blue-light);
     color: #ffffff;
-    box-shadow: 0 0 18px rgba(0, 136, 255, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    box-shadow: 0 0 18px rgba(0, 119, 255, 0.5);
     transform: translateY(-1px);
 }
 
 .emblema-topo-tabela img {
-    height: 48px;
+    height: 52px;
     width: auto;
     object-fit: contain;
     filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.9));
@@ -153,22 +140,33 @@ body.tema-sulamericana::after {
 }
 
 .cabecalho-torneio h1 {
-    font-size: 2rem;
+    font-family: var(--font-branding);
+    font-size: 2.1rem;
     font-weight: 900;
     letter-spacing: 5px;
-    background: linear-gradient(180deg, #ffffff 0%, #e2e8f0 45%, #94a3b8 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: var(--text-pure-white);
     text-transform: uppercase;
-    margin-bottom: 0.3rem;
+    margin-bottom: 0.2rem;
     text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9);
 }
 
 .cabecalho-torneio h2 {
-    font-size: 0.95rem;
-    font-weight: 800;
-    letter-spacing: 4px;
+    font-family: var(--font-branding);
+    font-size: 1.05rem;
+    font-weight: 900;
+    letter-spacing: 3.5px;
     color: var(--sula-blue-light);
+    text-transform: uppercase;
+}
+
+.sub-status-tabela {
+    font-family: var(--font-branding);
+    font-size: 0.65rem;
+    font-weight: 900;
+    letter-spacing: 2px;
+    color: var(--text-muted);
+    display: block;
+    margin-top: 6px;
     text-transform: uppercase;
 }
 
@@ -179,7 +177,7 @@ body.tema-sulamericana::after {
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-    gap: 2.8rem;
+    gap: 3rem;
     position: relative;
     z-index: 2;
 }
@@ -200,30 +198,31 @@ body.tema-sulamericana::after {
     width: 100%;
 }
 
-.marcador-prata {
+.marcador-azul {
     flex: 1;
-    max-width: 120px;
+    max-width: 140px;
     height: 1px;
-    background: linear-gradient(90deg, transparent 0%, rgba(96, 165, 250, 0.6) 100%);
+    background: linear-gradient(90deg, transparent 0%, rgba(0, 119, 255, 0.6) 100%);
 }
 
-.divisor-fase-header .marcador-prata:last-child {
-    background: linear-gradient(90deg, rgba(96, 165, 250, 0.6) 0%, transparent 100%);
+.divisor-fase-header .marcador-azul:last-child {
+    background: linear-gradient(90deg, rgba(0, 119, 255, 0.6) 0%, transparent 100%);
 }
 
 .titulo-fase {
-    font-size: 1.15rem;
+    font-family: var(--font-branding);
+    font-size: 1.2rem;
     font-weight: 900;
     letter-spacing: 3.5px;
-    color: var(--silver-bright);
+    color: var(--sula-blue-light);
     text-transform: uppercase;
-    text-shadow: 0 0 10px rgba(0, 136, 255, 0.4);
+    text-shadow: 0 0 10px rgba(0, 119, 255, 0.3);
 }
 
 .container-linhas-confronto {
     display: flex;
     flex-direction: column;
-    gap: 0.9rem;
+    gap: 1rem;
     width: 100%;
 }
 
@@ -236,9 +235,9 @@ body.tema-sulamericana::after {
 
 /* CARD DO JOGO */
 .card-jogo {
-    background: linear-gradient(180deg, #0e1726 0%, #060b14 100%);
+    background: var(--tv-black-panel);
     border: 1px solid var(--border-card);
-    border-radius: 3px;
+    border-radius: 4px;
     overflow: hidden;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.85);
     position: relative;
@@ -248,25 +247,23 @@ body.tema-sulamericana::after {
 .card-jogo::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background: linear-gradient(90deg, transparent 0%, rgba(96, 165, 250, 0.6) 50%, transparent 100%);
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--sula-bar);
 }
 
 .card-jogo:hover {
-    border-color: var(--silver-bright);
-    box-shadow: 0 0 20px rgba(0, 136, 255, 0.35);
+    border-color: var(--sula-blue-light);
+    box-shadow: 0 0 20px rgba(0, 119, 255, 0.35);
 }
 
-/* TARJA DE INFORMAÇÃO */
 .info-jogo {
-    background: linear-gradient(180deg, #152336 0%, #0a121e 100%);
+    background: #020408;
     border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-    padding: 0.45rem 0.8rem;
+    padding: 0.5rem 0.8rem;
+    font-family: var(--font-branding);
     font-size: 0.68rem;
-    font-weight: 800;
+    font-weight: 900;
     text-transform: uppercase;
     letter-spacing: 1.5px;
     color: var(--sula-blue-light);
@@ -275,59 +272,59 @@ body.tema-sulamericana::after {
 }
 
 .placar-jogo {
-    padding: 0.65rem 0.8rem;
+    padding: 0.75rem 0.9rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 0.45rem;
+    gap: 0.5rem;
     background: rgba(0, 0, 0, 0.4);
 }
 
 .time {
-    font-size: 0.92rem;
+    font-family: var(--font-branding);
+    font-size: 0.88rem;
     font-weight: 800;
     text-transform: uppercase;
-    letter-spacing: 1.5px;
+    letter-spacing: 1px;
     color: var(--text-pure-white);
     flex: 1;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    background: linear-gradient(180deg, #09111c 0%, #03070d 100%);
+    background: #040814;
     border: 1px solid rgba(255, 255, 255, 0.08);
-    border-top: 1px solid rgba(255, 255, 255, 0.15);
-    padding: 0.5rem 0.6rem;
+    padding: 0.55rem 0.8rem;
     border-radius: 2px;
-    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.9);
 }
 
 .time.mandante { text-align: center; }
 .time.visitante { text-align: center; }
 
-/* MOSTRADOR DE PLACAR FIXO (SPAN PRATEADO/AZUL) */
 span.gols {
-    width: 38px;
-    height: 38px;
+    width: 36px;
+    height: 36px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.15rem;
+    font-family: var(--font-branding);
+    font-size: 1.1rem;
     font-weight: 900;
-    color: #060b14;
-    background: var(--silver-badge);
-    border: 1px solid #e0ebf8;
+    color: #ffffff;
+    background: var(--sula-badge);
+    border: 1px solid #75b2ff;
     border-radius: 2px;
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.8), inset 0 1px 1px rgba(255, 255, 255, 0.9);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.8);
     flex-shrink: 0;
     text-align: center;
     user-select: none;
 }
 
 .divisor-x {
+    font-family: var(--font-branding);
     font-size: 0.72rem;
     font-weight: 900;
     color: var(--sula-blue-light);
-    padding: 0 0.15rem;
+    padding: 0 0.2rem;
     flex-shrink: 0;
     opacity: 0.75;
 }
@@ -340,38 +337,36 @@ span.gols {
 }
 
 .card-final-destaque {
-    border: 2px solid;
-    border-image: var(--silver-badge) 1;
-    background: linear-gradient(180deg, #101c2e 0%, #050a12 100%);
-    box-shadow: 0 0 30px rgba(0, 136, 255, 0.35), 0 10px 30px rgba(0, 0, 0, 0.9);
+    border: 1px solid var(--sula-blue);
+    background: linear-gradient(180deg, #0c162b 0%, #040814 100%);
+    box-shadow: 0 0 35px rgba(0, 119, 255, 0.35), 0 10px 30px rgba(0, 0, 0, 0.9);
 }
 
 .card-final-destaque .info-jogo {
-    padding: 0.65rem 1.2rem;
-    font-size: 0.78rem;
+    padding: 0.7rem 1.2rem;
+    font-size: 0.76rem;
     font-weight: 900;
     letter-spacing: 2px;
     color: #ffffff;
-    background: linear-gradient(180deg, #1a2a42 0%, #0c1626 100%);
+    background: #020408;
 }
 
 .card-final-destaque .placar-jogo {
-    padding: 1.2rem 1.6rem;
+    padding: 1.3rem 1.6rem;
     gap: 0.8rem;
 }
 
 .card-final-destaque .time {
-    font-size: 1.15rem;
+    font-size: 1.1rem;
     font-weight: 900;
-    padding: 0.8rem 1.2rem;
-    border-color: rgba(96, 165, 250, 0.4);
-    border-top: 1px solid rgba(255, 255, 255, 0.5);
+    padding: 0.85rem 1.2rem;
+    border-color: rgba(0, 119, 255, 0.4);
 }
 
 .card-final-destaque span.gols {
-    width: 46px;
-    height: 46px;
-    font-size: 1.35rem;
+    width: 44px;
+    height: 44px;
+    font-size: 1.3rem;
 }
 
 .card-final-destaque .final-vs {
@@ -385,62 +380,18 @@ span.gols {
     position: relative;
     z-index: 2;
     text-align: center;
-    margin-top: 3.5rem;
-    font-size: 0.68rem;
+    margin-top: 4rem;
+    font-size: 0.7rem;
     font-weight: 700;
     color: var(--text-muted);
-    letter-spacing: 3px;
+    letter-spacing: 2px;
     text-transform: uppercase;
     border-top: 1px solid rgba(255, 255, 255, 0.05);
-    padding-top: 1.5rem;
+    padding-top: 1.8rem;
 }
 
 /* RESPONSIVIDADE */
 @media (max-width: 900px) {
-    body.tema-sulamericana {
-        padding: 1.2rem 0.8rem 2rem 0.8rem;
-    }
-
-    .cabecalho-torneio h1 {
-        font-size: 1.4rem;
-        letter-spacing: 3px;
-    }
-
-    .cabecalho-torneio h2 {
-        font-size: 0.8rem;
-        letter-spacing: 2px;
-    }
-
-    .linha-duelo-duplo {
-        grid-template-columns: 1fr;
-        gap: 0.8rem;
-    }
-
-    .time {
-        font-size: 0.78rem;
-        padding: 0.4rem 0.3rem;
-        letter-spacing: 0.5px;
-    }
-
-    span.gols {
-        width: 32px;
-        height: 32px;
-        font-size: 0.95rem;
-    }
-
-    .card-final-destaque .placar-jogo {
-        padding: 0.8rem 0.6rem;
-        gap: 0.4rem;
-    }
-
-    .card-final-destaque .time {
-        font-size: 0.85rem;
-        padding: 0.5rem 0.4rem;
-    }
-
-    .card-final-destaque span.gols {
-        width: 36px;
-        height: 36px;
-        font-size: 1.05rem;
-    }
+    .linha-duelo-duplo { grid-template-columns: 1fr; gap: 0.8rem; }
+    .cabecalho-torneio h1 { font-size: 1.5rem; }
 }

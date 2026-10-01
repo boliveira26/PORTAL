@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title id="pagina-meta-titulo">Notícia | CONMEBOL PES Oficial</title>
+    
+    <!-- FONTE DE LEITURA EDITORIAL OFICIAL (UBUNTU) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+
+    <!-- CSS DA MATÉRIA -->
+    <link rel="stylesheet" href="assets/css/noticia.css?v=1">
+    <!-- AUDIO PLAYER -->
+    <link rel="stylesheet" href="assets/css/audio-player.css?v=32">
+</head>
+<body class="pagina-noticia-leitura">
+
+    <!-- 1. TOP SWITCHER INSTITUCIONAL CONMEBOL -->
+    <div class="top-switcher-conmebol">
+        <div class="switcher-container">
+            <div class="marca-endosso-topo">
+                <span class="txt-endosso">CONFEDERAÇÃO SUL-AMERICANA DE FUTEBOL</span>
+            </div>
+            <div class="links-switcher">
+                <a href="libertadores.html" class="tab-switch">CONMEBOL LIBERTADORES</a>
+                <span class="divisor-switch">|</span>
+                <a href="sulamericana.html" class="tab-switch">CONMEBOL SUDAMERICANA</a>
+                <span class="divisor-switch">|</span>
+                <a href="index.html" class="tab-switch ativo">PES MEDIA HUB</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. NAVBAR PRINCIPAL -->
+    <header id="cabecalho-principal">
+        <div class="navbar-container">
+            <div class="logo-area">
+                <a href="index.html" class="brand-portal">
+                    <span class="logo-pes-destaque">PES</span>
+                    <span class="logo-conmebol-sec">CONMEBOL</span>
+                </a>
+            </div>
+
+            <nav class="nav-links-menu">
+                <a href="index.html" class="nav-item">Início</a>
+                <a href="fase-de-grupos.html" class="nav-item">Fase de Grupos</a>
+                <a href="libertadores.html" class="nav-item liberta-cor">Libertadores</a>
+                <a href="sulamericana.html" class="nav-item sula-cor">Sul-Americana</a>
+                <a href="libertadores-oficial.html" class="nav-item">Mata-Mata</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 3. CORPO DA REPORTAGEM COMPLETA -->
+    <main class="container-materia-completa">
+        <div class="grid-materia-layout">
+            
+            <!-- ARTIGO PRINCIPAL -->
+            <article class="artigo-principal">
+                
+                <!-- CABEÇALHO DO ARTIGO -->
+                <header class="cabecalho-artigo">
+                    <div class="badge-chapeu-categoria">
+                        <span id="artigo-tag" class="tag-categoria-badge ouro">CONMEBOL LIBERTADORES</span>
+                    </div>
+                    <h1 id="artigo-titulo" class="artigo-titulo-manchete">Carregando matéria...</h1>
+                    <p id="artigo-subtitulo" class="artigo-linha-fina"></p>
+                    
+                    <div class="artigo-metadados-autor">
+                        <div class="avatar-redacao">PES</div>
+                        <div class="dados-publicacao">
+                            <span class="nome-autor" id="artigo-autor">Por Redação PES Media Hub</span>
+                            <span class="data-hora" id="artigo-data-publicacao">--/--/----</span>
+                        </div>
+                        <div class="botoes-compartilhar">
+                            <button type="button" class="btn-voltar-home" onclick="location.href='index.html'">&larr; Voltar ao Portal</button>
+                        </div>
+                    </div>
+                </header>
+
+                <!-- FOTO DE CAPA EM DESTAQUE -->
+                <figure class="moldura-foto-materia">
+                    <img id="artigo-imagem-capa" src="" alt="Foto da partida" class="foto-capa-img">
+                    <figcaption id="artigo-legenda-foto" class="legenda-foto-txt">Momento decisivo da partida pela competição continental no PES.</figcaption>
+                </figure>
+
+                <!-- TEXTO COMPLETO E DESENVOLVIDO DA REPORTAGEM -->
+                <div id="artigo-corpo-texto" class="corpo-texto-paragrafos">
+                    <!-- Parágrafos inseridos dinamicamente pelo noticia.js -->
+                </div>
+
+                <!-- FICHA TÉCNICA DO JOGO (SE HOUVER) -->
+                <div id="artigo-ficha-tecnica" class="bloco-ficha-tecnica" style="display: none;">
+                    <div class="topo-ficha-tecnica">
+                        <span>FICHA TÉCNICA DA PARTIDA</span>
+                    </div>
+                    <div id="artigo-ficha-conteudo" class="conteudo-ficha-tecnica"></div>
+                </div>
+
+            </article>
+
+            <!-- BARRA LATERAL: VEJA TAMBÉM / MAIS NOTÍCIAS -->
+            <aside class="coluna-lateral-relacionadas">
+                <div class="cabecalho-sidebar-noticias">
+                    <h3>MAIS NOTÍCIAS</h3>
+                </div>
+                <div id="lista-noticias-relacionadas" class="feed-relacionadas-stack">
+                    <!-- Injetado dinamicamente pelo noticia.js -->
+                </div>
+            </aside>
+
+        </div>
+    </main>
+
+    <!-- 4. RODAPÉ INSTITUCIONAL -->
+    <footer id="rodape-institucional">
+        <div class="rodape-bloco-topo">
+            <h3 class="slogan-rodape-conmebol">ACREDITE SEMPRE</h3>
+            <span class="sub-rodape">CONMEBOL PES &bull; Portal Oficial de Competições Continentais</span>
+        </div>
+        <div class="rodape-copyright">
+            <p>CONMEBOL &copy; Todos os direitos reservados &bull; Acompanhamento Oficial PES</p>
+        </div>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script src="assets/js/noticia.js?v=1"></script>
+    <script src="assets/js/audio-player.js?v=32"></script>
+</body>
+</html>

@@ -11,17 +11,15 @@ let estadoLibertadores = {
 };
 
 async function inicializarTabelaLibertadores() {
-    // 1. Tenta carregar dados do arquivo JSON publicado
+    // 1. Tenta carregar dados do arquivo JSON publicado caso exista
     try {
-        const resposta = await fetch('dados-libertadores.json');
+        const resposta = await fetch('assets/data/dados-mata-mata-libertadores.json?v=' + Date.now());
         if (resposta.ok) {
             const dadosJson = await resposta.json();
-            if (dadosJson.sorteio) localStorage.setItem(CHAVE_SORTEIO, dadosJson.sorteio);
-            if (dadosJson.jogos) localStorage.setItem(CHAVE_JOGOS, dadosJson.jogos);
+            if (dadosJson.sorteio) localStorage.setItem(CHAVE_SORTEIO, JSON.stringify(dadosJson.sorteio));
+            if (dadosJson.jogos) localStorage.setItem(CHAVE_JOGOS, JSON.stringify(dadosJson.jogos));
         }
-    } catch (e) {
-        // Se estiver rodando local sem o JSON, usa o localStorage existente
-    }
+    } catch (e) {}
 
     // 2. Renderiza a tabela e calcula o mata-mata
     carregarEstruturaOitavas();
@@ -34,7 +32,7 @@ function carregarEstruturaOitavas() {
     if (!sorteioSalvo) return;
 
     try {
-        const confrontos = JSON.parse(sorteioSalvo);
+        const confrontos = typeof sorteioSalvo === 'string' ? JSON.parse(sorteioSalvo) : sorteioSalvo;
 
         confrontos.forEach(confronto => {
             const letra = confronto.chave;
@@ -42,13 +40,13 @@ function carregarEstruturaOitavas() {
             const timeP1 = confronto.pote1;
 
             const cardIda = document.getElementById(`oitavas-${letra}-ida`);
-            if (cardIda) {
+            if (cardIda && timeP2 && timeP1) {
                 cardIda.querySelector('.time.mandante').textContent = timeP2;
                 cardIda.querySelector('.time.visitante').textContent = timeP1;
             }
 
             const cardVolta = document.getElementById(`oitavas-${letra}-volta`);
-            if (cardVolta) {
+            if (cardVolta && timeP2 && timeP1) {
                 cardVolta.querySelector('.time.mandante').textContent = timeP1;
                 cardVolta.querySelector('.time.visitante').textContent = timeP2;
             }
@@ -63,7 +61,7 @@ function carregarJogosSalvos() {
     if (!salvos) return;
 
     try {
-        const dados = JSON.parse(salvos);
+        const dados = typeof salvos === 'string' ? JSON.parse(salvos) : salvos;
         estadoLibertadores = { ...estadoLibertadores, ...dados };
 
         document.querySelectorAll('.card-jogo').forEach(card => {
@@ -110,8 +108,8 @@ function calcularClassificadosEAvanço() {
             placarVolta.m !== null && placarVolta.m !== undefined && 
             placarVolta.v !== null && placarVolta.v !== undefined) {
             
-            const golsP2 = placarIda.m + placarVolta.v;
-            const golsP1 = placarIda.v + placarVolta.m;
+            const golsP2 = parseInt(placarIda.m, 10) + parseInt(placarVolta.v, 10);
+            const golsP1 = parseInt(placarIda.v, 10) + parseInt(placarVolta.m, 10);
 
             if (golsP1 > golsP2) {
                 vencedoresOitavas[letra] = timeP1;
@@ -123,18 +121,18 @@ function calcularClassificadosEAvanço() {
         }
     });
 
-    atualizarConfrontoMataMata('quartas-1', vencedoresOitavas['A'] || 'Venc. A', vencedoresOitavas['C'] || 'Venc. C');
-    atualizarConfrontoMataMata('quartas-2', vencedoresOitavas['E'] || 'Venc. E', vencedoresOitavas['G'] || 'Venc. G');
-    atualizarConfrontoMataMata('quartas-3', vencedoresOitavas['B'] || 'Venc. B', vencedoresOitavas['D'] || 'Venc. D');
-    atualizarConfrontoMataMata('quartas-4', vencedoresOitavas['F'] || 'Venc. F', vencedoresOitavas['H'] || 'Venc. H');
+    atualizarConfrontoMataMata('quartas-1', vencedoresOitavas['A'] || 'Vencedor A', vencedoresOitavas['C'] || 'Vencedor C');
+    atualizarConfrontoMataMata('quartas-2', vencedoresOitavas['E'] || 'Vencedor E', vencedoresOitavas['G'] || 'Vencedor G');
+    atualizarConfrontoMataMata('quartas-3', vencedoresOitavas['B'] || 'Vencedor B', vencedoresOitavas['D'] || 'Vencedor D');
+    atualizarConfrontoMataMata('quartas-4', vencedoresOitavas['F'] || 'Vencedor F', vencedoresOitavas['H'] || 'Vencedor H');
 
     const vQ1 = calcularVencedorMataMata('quartas-1');
     const vQ2 = calcularVencedorMataMata('quartas-2');
     const vQ3 = calcularVencedorMataMata('quartas-3');
     const vQ4 = calcularVencedorMataMata('quartas-4');
 
-    atualizarConfrontoMataMata('semi-1', vQ1 || 'Venc. Q1', vQ2 || 'Venc. Q2');
-    atualizarConfrontoMataMata('semi-2', vQ3 || 'Venc. Q3', vQ4 || 'Venc. Q4');
+    atualizarConfrontoMataMata('semi-1', vQ1 || 'Vencedor Q1', vQ2 || 'Vencedor Q2');
+    atualizarConfrontoMataMata('semi-2', vQ3 || 'Vencedor Q3', vQ4 || 'Vencedor Q4');
 
     const vS1 = calcularVencedorMataMata('semi-1');
     const vS2 = calcularVencedorMataMata('semi-2');
@@ -170,7 +168,7 @@ function calcularVencedorMataMata(prefixo) {
     const t1 = cardIda.querySelector('.time.mandante').textContent;
     const t2 = cardIda.querySelector('.time.visitante').textContent;
 
-    if (t1.startsWith('Venc.') || t2.startsWith('Venc.')) return null;
+    if (t1.startsWith('Vencedor') || t2.startsWith('Vencedor')) return null;
 
     if (placarIda && placarVolta && 
         placarIda.m !== null && placarIda.m !== undefined && 
@@ -178,8 +176,8 @@ function calcularVencedorMataMata(prefixo) {
         placarVolta.m !== null && placarVolta.m !== undefined && 
         placarVolta.v !== null && placarVolta.v !== undefined) {
         
-        const golsT1 = placarIda.m + placarVolta.v;
-        const golsT2 = placarIda.v + placarVolta.m;
+        const golsT1 = parseInt(placarIda.m, 10) + parseInt(placarVolta.v, 10);
+        const golsT2 = parseInt(placarIda.v, 10) + parseInt(placarVolta.m, 10);
 
         if (golsT1 > golsT2) return t1;
         if (golsT2 > golsT1) return t2;
@@ -188,7 +186,6 @@ function calcularVencedorMataMata(prefixo) {
     return null;
 }
 
-// Inicialização automática
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', inicializarTabelaLibertadores);
 } else {

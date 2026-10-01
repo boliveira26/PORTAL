@@ -135,6 +135,31 @@ body.dashboard-fullscreen-tv::after {
     transform: translateY(-1px);
 }
 
+.btn-mata-mata-header {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: var(--gold-badge);
+    border: 1px solid #ffe89e;
+    color: #000000;
+    padding: 0.5rem 1.2rem;
+    font-size: 0.72rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-decoration: none;
+    border-radius: 2px;
+    transition: all 0.25s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.8);
+}
+
+.btn-mata-mata-header:hover {
+    background: #ffffff;
+    color: #000000;
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.8);
+    transform: translateY(-1px);
+}
+
 .emblema-topo-tv img {
     height: 48px;
     margin-bottom: 0.3rem;
@@ -307,7 +332,6 @@ table.tabela-tv td.td-time-dupla {
     align-items: center;
 }
 
-/* BARRA BRANCA 100% ESTICADA DE PONTA A PONTA */
 .controle-rodada-setas {
     width: 100%;
     display: flex;
@@ -393,7 +417,6 @@ table.tabela-tv td.td-time-dupla {
 .time-box-txt.mandante { text-align: right; }
 .time-box-txt.visitante { text-align: left; }
 
-/* BLOCO DE GOLS MODELO MATA-MATA */
 .bloco-gols-duelo {
     display: flex;
     align-items: center;
@@ -474,9 +497,10 @@ table.tabela-tv td.td-time-dupla {
     body.dashboard-fullscreen-tv {
         padding: 1.2rem 1rem;
     }
-    .btn-voltar-portal {
+    .btn-voltar-portal,
+    .btn-mata-mata-header {
         position: static;
         display: inline-block;
-        margin-bottom: 1rem;
+        margin-bottom: 0.6rem;
     }
 }
