@@ -1,6 +1,6 @@
 {
   "sorteioRealizado": true,
-  "faseAtiva": "oitavas_ida",
+  "faseAtiva": "sorteio_concluido",
   "sorteio": [
     { "chave": "A", "pote2": "Flamengo", "pote1": "Estudiantes" },
     { "chave": "B", "pote2": "Atlético Nacional", "pote1": "Junior Barranquilla" },
@@ -10,88 +10,6 @@
     { "chave": "F", "pote2": "Red Bull Bragantino", "pote1": "Bahia" },
     { "chave": "G", "pote2": "Corinthians", "pote1": "Barcelona SC" },
     { "chave": "H", "pote2": "Olimpia", "pote1": "LDU Quito" }
-  ],
-  "partidasMataMata": [
-    {
-      "fase": "OITAVAS • IDA",
-      "torneio": "libertadores",
-      "chave": "A",
-      "data": "TER 13/10/2026 MARACANÃ 21:30",
-      "m": "Flamengo",
-      "v": "Estudiantes",
-      "gm": null,
-      "gv": null
-    },
-    {
-      "fase": "OITAVAS • IDA",
-      "torneio": "libertadores",
-      "chave": "B",
-      "data": "TER 13/10/2026 ATANASIO GIRARDOT 19:00",
-      "m": "Atlético Nacional",
-      "v": "Junior Barranquilla",
-      "gm": null,
-      "gv": null
-    },
-    {
-      "fase": "OITAVAS • IDA",
-      "torneio": "libertadores",
-      "chave": "C",
-      "data": "QUA 14/10/2026 PRESIDENTE PERÓN 21:30",
-      "m": "Racing Club",
-      "v": "Atlético Mineiro",
-      "gm": null,
-      "gv": null
-    },
-    {
-      "fase": "OITAVAS • IDA",
-      "torneio": "libertadores",
-      "chave": "D",
-      "data": "QUA 14/10/2026 MARACANÃ 19:00",
-      "m": "Fluminense",
-      "v": "Universitario",
-      "gm": null,
-      "gv": null
-    },
-    {
-      "fase": "OITAVAS • IDA",
-      "torneio": "libertadores",
-      "chave": "E",
-      "data": "QUI 15/10/2026 REI PELÉ 19:30",
-      "m": "CRB",
-      "v": "Colo-Colo",
-      "gm": null,
-      "gv": null
-    },
-    {
-      "fase": "OITAVAS • IDA",
-      "torneio": "libertadores",
-      "chave": "F",
-      "data": "QUI 15/10/2026 NABI ABI CHEDID 21:00",
-      "m": "Red Bull Bragantino",
-      "v": "Bahia",
-      "gm": null,
-      "gv": null
-    },
-    {
-      "fase": "OITAVAS • IDA",
-      "torneio": "libertadores",
-      "chave": "G",
-      "data": "QUA 14/10/2026 NEO QUÍMICA ARENA 21:30",
-      "m": "Corinthians",
-      "v": "Barcelona SC",
-      "gm": null,
-      "gv": null
-    },
-    {
-      "fase": "OITAVAS • IDA",
-      "torneio": "libertadores",
-      "chave": "H",
-      "data": "TER 13/10/2026 MANUEL FERREIRA 19:30",
-      "m": "Olimpia",
-      "v": "LDU Quito",
-      "gm": null,
-      "gv": null
-    }
   ],
   "jogos": {
     "placares": {
@@ -126,23 +44,23 @@
       "final-jogo": { "m": null, "v": null }
     },
     "infoJogos": {
-      "oitavas-A-ida": "OITAVAS A • IDA • MARACANÃ",
-      "oitavas-A-volta": "OITAVAS A • VOLTA • LUIS HIRSCHI",
-      "oitavas-B-ida": "OITAVAS B • IDA • ATANASIO GIRARDOT",
-      "oitavas-B-volta": "OITAVAS B • VOLTA • METROPOLITANO ROBERTO MELÉNDEZ",
-      "oitavas-C-ida": "OITAVAS C • IDA • PRESIDENTE PERÓN",
-      "oitavas-C-volta": "OITAVAS C • VOLTA • ARENA MRV",
-      "oitavas-D-ida": "OITAVAS D • IDA • MARACANÃ",
-      "oitavas-D-volta": "OITAVAS D • VOLTA • MONUMENTAL U",
-      "oitavas-E-ida": "OITAVAS E • IDA • REI PELÉ",
-      "oitavas-E-volta": "OITAVAS E • VOLTA • MONUMENTAL DAVID ARELLANO",
-      "oitavas-F-ida": "OITAVAS F • IDA • NABI ABI CHEDID",
-      "oitavas-F-volta": "OITAVAS F • VOLTA • ARENA FONTE NOVA",
-      "oitavas-G-ida": "OITAVAS G • IDA • NEO QUÍMICA ARENA",
-      "oitavas-G-volta": "OITAVAS G • VOLTA • MONUMENTAL ISIDRO ROMERO",
-      "oitavas-H-ida": "OITAVAS H • IDA • MANUEL FERREIRA",
-      "oitavas-H-volta": "OITAVAS H • VOLTA • CASABLANCA",
-      "final-jogo": "SÁB 31/10/2026 • ESTÁDIO MARIO ALBERTO KEMPES • 17:00"
+      "oitavas-A-ida": "OITAVAS A • JOGO DE IDA (A DEFINIR)",
+      "oitavas-A-volta": "OITAVAS A • JOGO DE VOLTA (A DEFINIR)",
+      "oitavas-B-ida": "OITAVAS B • JOGO DE IDA (A DEFINIR)",
+      "oitavas-B-volta": "OITAVAS B • JOGO DE VOLTA (A DEFINIR)",
+      "oitavas-C-ida": "OITAVAS C • JOGO DE IDA (A DEFINIR)",
+      "oitavas-C-volta": "OITAVAS C • JOGO DE VOLTA (A DEFINIR)",
+      "oitavas-D-ida": "OITAVAS D • JOGO DE IDA (A DEFINIR)",
+      "oitavas-D-volta": "OITAVAS D • JOGO DE VOLTA (A DEFINIR)",
+      "oitavas-E-ida": "OITAVAS E • JOGO DE IDA (A DEFINIR)",
+      "oitavas-E-volta": "OITAVAS E • JOGO DE VOLTA (A DEFINIR)",
+      "oitavas-F-ida": "OITAVAS F • JOGO DE IDA (A DEFINIR)",
+      "oitavas-F-volta": "OITAVAS F • JOGO DE VOLTA (A DEFINIR)",
+      "oitavas-G-ida": "OITAVAS G • JOGO DE IDA (A DEFINIR)",
+      "oitavas-G-volta": "OITAVAS G • JOGO DE VOLTA (A DEFINIR)",
+      "oitavas-H-ida": "OITAVAS H • JOGO DE IDA (A DEFINIR)",
+      "oitavas-H-volta": "OITAVAS H • JOGO DE VOLTA (A DEFINIR)",
+      "final-jogo": "FINAL ÚNICA • ESTÁDIO MARIO ALBERTO KEMPES • CÓRDOBA"
     }
   }
 }

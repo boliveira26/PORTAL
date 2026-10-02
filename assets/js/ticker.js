@@ -1,8 +1,8 @@
 // ==========================================================================
-// assets/js/ticker.js - MOTOR UNIFICADO DO CARROSSEL DE JOGOS (HOME)
+// assets/js/ticker.js - MOTOR DE JOGOS DO DIA (FASE DE GRUPOS)
 // ==========================================================================
 
-const ESCUDOS_TICKER_UNIFICADOS = {
+const ESCUDOS_TICKER = {
     "Atlético Mineiro": "https://logodetimes.com/times/atletico-mineiro/logo-atletico-mineiro-256.png",
     "Flamengo": "https://logodetimes.com/times/flamengo/logo-flamengo-256.png",
     "Bolívar": "https://logodetimes.com/times/bolivar/logo-bolivar-256.png",
@@ -38,59 +38,52 @@ const ESCUDOS_TICKER_UNIFICADOS = {
 };
 
 function obterEscudoTicker(nome) {
-    return ESCUDOS_TICKER_UNIFICADOS[nome] || `assets/img/escudos/${nome.toLowerCase().replace(/[^a-z0-9]/g, '-')}.png`;
+    return ESCUDOS_TICKER[nome] || `assets/img/escudos/${nome.toLowerCase().replace(/[^a-z0-9]/g, '-')}.png`;
 }
 
-async function carregarCarrosselUnificadoHome() {
+async function carregarTickerJogosFaseDeGrupos() {
     const container = document.getElementById('ticker-lista');
     if (!container) return;
 
-    let listaJogosFinal = [];
-
-    // 1. Tenta carregar os arquivos do Mata-Mata
+    let dados = null;
     try {
-        const [resLiberta, resSula] = await Promise.all([
-            fetch('assets/data/dados-mata-mata-libertadores.json?v=' + Date.now()),
-            fetch('assets/data/dados-mata-mata-sulamericana.json?v=' + Date.now())
-        ]);
+        const resp = await fetch('assets/data/dados-fase-de-grupos.json?v=' + Date.now());
+        if (resp.ok) dados = await resp.json();
+    } catch (e) {}
 
-        let dadosLiberta = resLiberta.ok ? await resLiberta.json() : null;
-        let dadosSula = resSula.ok ? await resSula.json() : null;
+    if (!dados) return;
 
-        if (dadosLiberta && dadosLiberta.sorteioRealizado && dadosLiberta.partidasMataMata) {
-            const jogosLib = dadosLiberta.partidasMataMata;
-            const jogosSul = (dadosSula && dadosSula.sorteioRealizado && dadosSula.partidasMataMata) ? dadosSula.partidasMataMata : [];
+    // Coleta todos os jogos da 6ª rodada (ou rodada ativa)
+    const todosJogos = [];
+    const letras = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
 
-            // Intercala 1 jogo da Libertadores e 1 jogo da Sul-Americana
-            const maiorQtd = Math.max(jogosLib.length, jogosSul.length);
-            for (let i = 0; i < maiorQtd; i++) {
-                if (jogosLib[i]) listaJogosFinal.push(jogosLib[i]);
-                if (jogosSul[i]) listaJogosFinal.push(jogosSul[i]);
-            }
+    letras.forEach(letra => {
+        const grupo = dados[letra];
+        if (grupo && grupo.rodadas) {
+            const rodadaAtual = grupo.rodadaExibida || 6;
+            const jogos = grupo.rodadas[rodadaAtual] || [];
+            jogos.forEach(j => {
+                todosJogos.push({
+                    grupo: `GRUPO ${letra}`,
+                    rodada: rodadaAtual,
+                    data: j.data,
+                    m: j.m,
+                    v: j.v,
+                    gm: j.gm,
+                    gv: j.gv
+                });
+            });
         }
-    } catch (e) {
-        console.warn('Erro ao carregar dados do mata-mata no ticker:', e);
-    }
+    });
 
-    // 2. Se ainda não houver mata-mata, busca os jogos da fase de grupos como fallback
-    if (listaJogosFinal.length === 0) {
-        listaJogosFinal = await carregarJogosFaseGruposFallback();
-    }
-
-    if (listaJogosFinal.length === 0) return;
+    if (todosJogos.length === 0) return;
 
     container.innerHTML = '';
+    const loopDuplicado = [...todosJogos, ...todosJogos];
 
-    // Duplica para loop infinito contínuo sem solavancos
-    const loopTotal = [...listaJogosFinal, ...listaJogosFinal];
-
-    loopTotal.forEach(jogo => {
+    loopDuplicado.forEach(jogo => {
         const card = document.createElement('div');
         card.className = 'card-jogo-ticker';
-
-        const ehLiberta = (jogo.torneio === 'libertadores');
-        const badgeCor = ehLiberta ? 'color: var(--gold-main);' : 'color: var(--sula-solar);';
-        const badgeNome = ehLiberta ? `LIBERTADORES • ${jogo.fase || 'OITAVAS'}` : `SUDAMERICANA • ${jogo.fase || 'OITAVAS'}`;
 
         const temPlacar = (jogo.gm !== null && jogo.gm !== undefined && jogo.gv !== null && jogo.gv !== undefined);
         const gmTxt = temPlacar ? jogo.gm : '-';
@@ -105,11 +98,11 @@ async function carregarCarrosselUnificadoHome() {
             else if (jogo.gv > jogo.gm) gvVencedor = 'vencedor';
         }
 
-        const info = formatarDataHoraEstadio(jogo.data);
+        const info = formatarInfoJogo(jogo.data);
 
         card.innerHTML = `
             <div class="card-jogo-header">
-                <span class="badge-copa-ticker" style="${badgeCor}">${badgeNome}</span>
+                <span class="badge-copa-ticker">${jogo.grupo} • R${jogo.rodada}</span>
                 <span style="font-size:0.6rem; color:#ffffff; font-weight:700;">${info.dataHora}</span>
             </div>
 
@@ -143,7 +136,7 @@ async function carregarCarrosselUnificadoHome() {
     });
 }
 
-function formatarDataHoraEstadio(texto) {
+function formatarInfoJogo(texto) {
     if (!texto) return { dataHora: '', estadio: 'ESTÁDIO OFICIAL' };
     const partes = texto.trim().split(/\s+/);
     if (partes.length < 3) return { dataHora: texto, estadio: 'ESTÁDIO OFICIAL' };
@@ -159,35 +152,8 @@ function formatarDataHoraEstadio(texto) {
     };
 }
 
-async function carregarJogosFaseGruposFallback() {
-    try {
-        const resp = await fetch('assets/data/dados-fase-de-grupos.json?v=' + Date.now());
-        if (!resp.ok) return [];
-        const dados = await resp.json();
-        const jogos = [];
-        ['A','B','C','D','E','F','G','H'].forEach(l => {
-            if (dados[l] && dados[l].rodadas && dados[l].rodadas[dados[l].rodadaExibida || 6]) {
-                dados[l].rodadas[dados[l].rodadaExibida || 6].forEach(j => {
-                    jogos.push({
-                        torneio: 'libertadores',
-                        fase: `GRUPO ${l}`,
-                        data: j.data,
-                        m: j.m,
-                        v: j.v,
-                        gm: j.gm,
-                        gv: j.gv
-                    });
-                });
-            }
-        });
-        return jogos;
-    } catch (e) {
-        return [];
-    }
-}
-
 if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', carregarCarrosselUnificadoHome);
+    document.addEventListener('DOMContentLoaded', carregarTickerJogosFaseDeGrupos);
 } else {
-    carregarCarrosselUnificadoHome();
+    carregarTickerJogosFaseDeGrupos();
 }
