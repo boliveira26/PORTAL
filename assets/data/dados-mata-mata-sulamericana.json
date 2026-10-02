@@ -1,6 +1,6 @@
 {
   "sorteioRealizado": true,
-  "faseAtiva": "oitavas",
+  "faseAtiva": "oitavas_ida",
   "sorteio": [
     { "chave": "A", "pote4": "River Plate", "pote3": "Nacional" },
     { "chave": "B", "pote4": "The Strongest", "pote3": "Peñarol" },
@@ -10,6 +10,88 @@
     { "chave": "F", "pote4": "Universidad Católica", "pote3": "Libertad" },
     { "chave": "G", "pote4": "Cerro Porteño", "pote3": "Bolívar" },
     { "chave": "H", "pote4": "Deportivo Táchira", "pote3": "Boca Juniors" }
+  ],
+  "partidasMataMata": [
+    {
+      "fase": "OITAVAS • IDA",
+      "torneio": "sulamericana",
+      "chave": "A",
+      "data": "TER 20/10/2026 MONUMENTAL DE NÚÑEZ 21:30",
+      "m": "River Plate",
+      "v": "Nacional",
+      "gm": null,
+      "gv": null
+    },
+    {
+      "fase": "OITAVAS • IDA",
+      "torneio": "sulamericana",
+      "chave": "B",
+      "data": "TER 20/10/2026 HERNANDO SILES 19:00",
+      "m": "The Strongest",
+      "v": "Peñarol",
+      "gm": null,
+      "gv": null
+    },
+    {
+      "fase": "OITAVAS • IDA",
+      "torneio": "sulamericana",
+      "chave": "C",
+      "data": "QUA 21/10/2026 ALLIANZ PARQUE 21:30",
+      "m": "Palmeiras",
+      "v": "Jorge Wilstermann",
+      "gm": null,
+      "gv": null
+    },
+    {
+      "fase": "OITAVAS • IDA",
+      "torneio": "sulamericana",
+      "chave": "D",
+      "data": "QUA 21/10/2026 ALBERTO GALLARDO 19:00",
+      "m": "Sporting Cristal",
+      "v": "Mirassol",
+      "gm": null,
+      "gv": null
+    },
+    {
+      "fase": "OITAVAS • IDA",
+      "torneio": "sulamericana",
+      "chave": "E",
+      "data": "QUI 22/10/2026 BANCO GUAYAQUIL 21:30",
+      "m": "Independiente del Valle",
+      "v": "Caracas",
+      "gm": null,
+      "gv": null
+    },
+    {
+      "fase": "OITAVAS • IDA",
+      "torneio": "sulamericana",
+      "chave": "F",
+      "data": "QUI 22/10/2026 SAN CARLOS DE APOQUINDO 19:00",
+      "m": "Universidad Católica",
+      "v": "Libertad",
+      "gm": null,
+      "gv": null
+    },
+    {
+      "fase": "OITAVAS • IDA",
+      "torneio": "sulamericana",
+      "chave": "G",
+      "data": "QUA 21/10/2026 LA NUEVA OLLA 21:00",
+      "m": "Cerro Porteño",
+      "v": "Bolívar",
+      "gm": null,
+      "gv": null
+    },
+    {
+      "fase": "OITAVAS • IDA",
+      "torneio": "sulamericana",
+      "chave": "H",
+      "data": "TER 20/10/2026 PUEBLO NUEVO 19:30",
+      "m": "Deportivo Táchira",
+      "v": "Boca Juniors",
+      "gm": null,
+      "gv": null
+    }
   ],
   "jogos": {
     "placares": {

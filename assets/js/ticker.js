@@ -1,9 +1,8 @@
 // ==========================================================================
-// assets/js/ticker.js - MOTOR DINÂMICO MATCH TICKER OFICIAL CONMEBOL
+// assets/js/ticker.js - MOTOR UNIFICADO DO CARROSSEL DE JOGOS (HOME)
 // ==========================================================================
 
-// Mapeamento de escudos dos clubes da competição
-const ESCUDOS_CLUBES = {
+const ESCUDOS_TICKER_UNIFICADOS = {
     "Atlético Mineiro": "https://logodetimes.com/times/atletico-mineiro/logo-atletico-mineiro-256.png",
     "Flamengo": "https://logodetimes.com/times/flamengo/logo-flamengo-256.png",
     "Bolívar": "https://logodetimes.com/times/bolivar/logo-bolivar-256.png",
@@ -38,61 +37,67 @@ const ESCUDOS_CLUBES = {
     "The Strongest": "https://assets.footylogos.com/logos/the-strongest/the-strongest-logo-footylogos.png"
 };
 
-function obterEscudo(nomeTime) {
-    if (ESCUDOS_CLUBES[nomeTime]) {
-        return ESCUDOS_CLUBES[nomeTime];
-    }
-    // Fallback genérico para imagem local caso exista
-    const slug = nomeTime.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]/g, "-");
-    return `assets/img/escudos/${slug}.png`;
+function obterEscudoTicker(nome) {
+    return ESCUDOS_TICKER_UNIFICADOS[nome] || `assets/img/escudos/${nome.toLowerCase().replace(/[^a-z0-9]/g, '-')}.png`;
 }
 
-async function carregarTickerJogosDoDia() {
+async function carregarCarrosselUnificadoHome() {
     const container = document.getElementById('ticker-lista');
     if (!container) return;
 
-    let dadosGrupos = null;
+    let listaJogosFinal = [];
 
-    // 1. Tenta buscar os dados da fase de grupos exportados
+    // 1. Tenta carregar os arquivos do Mata-Mata
     try {
-        const resposta = await fetch('assets/data/dados-fase-de-grupos.json?v=' + Date.now());
-        if (resposta.ok) {
-            dadosGrupos = await resposta.json();
+        const [resLiberta, resSula] = await Promise.all([
+            fetch('assets/data/dados-mata-mata-libertadores.json?v=' + Date.now()),
+            fetch('assets/data/dados-mata-mata-sulamericana.json?v=' + Date.now())
+        ]);
+
+        let dadosLiberta = resLiberta.ok ? await resLiberta.json() : null;
+        let dadosSula = resSula.ok ? await resSula.json() : null;
+
+        if (dadosLiberta && dadosLiberta.sorteioRealizado && dadosLiberta.partidasMataMata) {
+            const jogosLib = dadosLiberta.partidasMataMata;
+            const jogosSul = (dadosSula && dadosSula.sorteioRealizado && dadosSula.partidasMataMata) ? dadosSula.partidasMataMata : [];
+
+            // Intercala 1 jogo da Libertadores e 1 jogo da Sul-Americana
+            const maiorQtd = Math.max(jogosLib.length, jogosSul.length);
+            for (let i = 0; i < maiorQtd; i++) {
+                if (jogosLib[i]) listaJogosFinal.push(jogosLib[i]);
+                if (jogosSul[i]) listaJogosFinal.push(jogosSul[i]);
+            }
         }
     } catch (e) {
-        console.warn('Erro ao carregar dados-fase-de-grupos.json:', e);
+        console.warn('Erro ao carregar dados do mata-mata no ticker:', e);
     }
 
-    // Fallback para localStorage
-    if (!dadosGrupos) {
-        const salvo = localStorage.getItem('conmebol_fase_grupos_admin_v4');
-        if (salvo) {
-            try { dadosGrupos = JSON.parse(salvo); } catch (e) {}
-        }
+    // 2. Se ainda não houver mata-mata, busca os jogos da fase de grupos como fallback
+    if (listaJogosFinal.length === 0) {
+        listaJogosFinal = await carregarJogosFaseGruposFallback();
     }
 
-    const listaJogosFiltrados = coletarJogosDataAtiva(dadosGrupos);
-    if (!listaJogosFiltrados || listaJogosFiltrados.length === 0) return;
+    if (listaJogosFinal.length === 0) return;
 
     container.innerHTML = '';
 
-    // Duplicamos a lista para criar o loop contínuo infinito sem cortes
-    const listaDuplicada = [...listaJogosFiltrados, ...listaJogosFiltrados];
+    // Duplica para loop infinito contínuo sem solavancos
+    const loopTotal = [...listaJogosFinal, ...listaJogosFinal];
 
-    listaDuplicada.forEach(jogo => {
+    loopTotal.forEach(jogo => {
         const card = document.createElement('div');
         card.className = 'card-jogo-ticker';
 
-        const temPlacar = (jogo.gm !== null && jogo.gm !== undefined && 
-                           jogo.gv !== null && jogo.gv !== undefined);
+        const ehLiberta = (jogo.torneio === 'libertadores');
+        const badgeCor = ehLiberta ? 'color: var(--gold-main);' : 'color: var(--sula-solar);';
+        const badgeNome = ehLiberta ? `LIBERTADORES • ${jogo.fase || 'OITAVAS'}` : `SUDAMERICANA • ${jogo.fase || 'OITAVAS'}`;
 
-        const gmTexto = temPlacar ? jogo.gm : '-';
-        const gvTexto = temPlacar ? jogo.gv : '-';
-        
-        const statusTexto = temPlacar ? 'ENCERRADO' : 'A JOGAR';
+        const temPlacar = (jogo.gm !== null && jogo.gm !== undefined && jogo.gv !== null && jogo.gv !== undefined);
+        const gmTxt = temPlacar ? jogo.gm : '-';
+        const gvTxt = temPlacar ? jogo.gv : '-';
+        const statusTxt = temPlacar ? 'ENCERRADO' : 'A JOGAR';
         const statusClasse = temPlacar ? 'encerrado' : 'proximo';
 
-        // Destaque de vencedor
         let gmVencedor = '';
         let gvVencedor = '';
         if (temPlacar) {
@@ -100,38 +105,37 @@ async function carregarTickerJogosDoDia() {
             else if (jogo.gv > jogo.gm) gvVencedor = 'vencedor';
         }
 
-        // Separa Data/Hora do Estádio de forma limpa
-        const info = formatarInfoJogo(jogo.data);
+        const info = formatarDataHoraEstadio(jogo.data);
 
         card.innerHTML = `
             <div class="card-jogo-header">
-                <span class="badge-copa-ticker">${jogo.grupo} &bull; R${jogo.rodada}</span>
-                <span style="font-size:0.62rem; color:var(--gold-bright); font-weight:800;">${info.dataHora}</span>
+                <span class="badge-copa-ticker" style="${badgeCor}">${badgeNome}</span>
+                <span style="font-size:0.6rem; color:#ffffff; font-weight:700;">${info.dataHora}</span>
             </div>
 
             <div class="card-jogo-corpo">
                 <div class="linha-time-ticker">
                     <div class="time-info-ticker">
-                        <img class="escudo-time-ticker" src="${obterEscudo(jogo.m)}" alt="${jogo.m}" onerror="this.style.opacity='0.2'">
+                        <img class="escudo-time-ticker" src="${obterEscudoTicker(jogo.m)}" alt="${jogo.m}" onerror="this.style.opacity='0.2'">
                         <span class="nome-time-ticker" title="${jogo.m}">${jogo.m}</span>
                     </div>
-                    <span class="gols-time-ticker ${gmVencedor}">${gmTexto}</span>
+                    <span class="gols-time-ticker ${gmVencedor}">${gmTxt}</span>
                 </div>
 
                 <div class="linha-time-ticker">
                     <div class="time-info-ticker">
-                        <img class="escudo-time-ticker" src="${obterEscudo(jogo.v)}" alt="${jogo.v}" onerror="this.style.opacity='0.2'">
+                        <img class="escudo-time-ticker" src="${obterEscudoTicker(jogo.v)}" alt="${jogo.v}" onerror="this.style.opacity='0.2'">
                         <span class="nome-time-ticker" title="${jogo.v}">${jogo.v}</span>
                     </div>
-                    <span class="gols-time-ticker ${gvVencedor}">${gvTexto}</span>
+                    <span class="gols-time-ticker ${gvVencedor}">${gvTxt}</span>
                 </div>
             </div>
 
             <div style="display:flex; justify-content:space-between; align-items:center; margin-top:3px; padding-top:3px; border-top:1px solid rgba(255,255,255,0.04);">
-                <span style="font-size:0.56rem; color:#8fa0b5; font-weight:700; max-width:130px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; text-transform:uppercase;">
+                <span style="font-size:0.54rem; color:#8fa0b5; font-weight:700; max-width:125px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; text-transform:uppercase;">
                     ${info.estadio}
                 </span>
-                <span class="status-ticker ${statusClasse}">${statusTexto}</span>
+                <span class="status-ticker ${statusClasse}">${statusTxt}</span>
             </div>
         `;
 
@@ -139,42 +143,34 @@ async function carregarTickerJogosDoDia() {
     });
 }
 
-// 2. SEPARADOR INTELIGENTE DE DATA/HORA E ESTÁDIO
-function formatarInfoJogo(texto) {
+function formatarDataHoraEstadio(texto) {
     if (!texto) return { dataHora: '', estadio: 'ESTÁDIO OFICIAL' };
-
-    // Exemplo: "QUA 30/09/2026 HERNANDO SILES 21:00"
     const partes = texto.trim().split(/\s+/);
-    if (partes.length < 3) {
-        return { dataHora: texto, estadio: 'ESTÁDIO OFICIAL' };
-    }
+    if (partes.length < 3) return { dataHora: texto, estadio: 'ESTÁDIO OFICIAL' };
 
-    const diaSemana = partes[0]; // "QUA"
-    const dataDia = partes[1].replace('/2026', ''); // "30/09"
-    const horario = partes[partes.length - 1]; // "21:00"
-    const estadio = partes.slice(2, partes.length - 1).join(' '); // "HERNANDO SILES"
+    const diaSemana = partes[0];
+    const dataDia = partes[1].replace('/2026', '');
+    const horario = partes[partes.length - 1];
+    const estadio = partes.slice(2, partes.length - 1).join(' ');
 
     return {
-        dataHora: `${diaSemana} ${dataDia} &bull; ${horario}`,
+        dataHora: `${diaSemana} ${dataDia} • ${horario}`,
         estadio: estadio || 'ESTÁDIO OFICIAL'
     };
 }
 
-// 3. COLETA OS JOGOS DA RODADA ATIVA
-function coletarJogosDataAtiva(dados) {
-    const jogosColetados = [];
-    const letras = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
-
-    if (dados) {
-        letras.forEach(letra => {
-            const grupo = dados[letra];
-            if (grupo && grupo.rodadas) {
-                const rodadaAtual = grupo.rodadaExibida || 6;
-                const jogos = grupo.rodadas[rodadaAtual] || [];
-                jogos.forEach(j => {
-                    jogosColetados.push({
-                        grupo: `GRUPO ${letra}`,
-                        rodada: rodadaAtual,
+async function carregarJogosFaseGruposFallback() {
+    try {
+        const resp = await fetch('assets/data/dados-fase-de-grupos.json?v=' + Date.now());
+        if (!resp.ok) return [];
+        const dados = await resp.json();
+        const jogos = [];
+        ['A','B','C','D','E','F','G','H'].forEach(l => {
+            if (dados[l] && dados[l].rodadas && dados[l].rodadas[dados[l].rodadaExibida || 6]) {
+                dados[l].rodadas[dados[l].rodadaExibida || 6].forEach(j => {
+                    jogos.push({
+                        torneio: 'libertadores',
+                        fase: `GRUPO ${l}`,
                         data: j.data,
                         m: j.m,
                         v: j.v,
@@ -184,13 +180,14 @@ function coletarJogosDataAtiva(dados) {
                 });
             }
         });
+        return jogos;
+    } catch (e) {
+        return [];
     }
-
-    return jogosColetados;
 }
 
 if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', carregarTickerJogosDoDia);
+    document.addEventListener('DOMContentLoaded', carregarCarrosselUnificadoHome);
 } else {
-    carregarTickerJogosDoDia();
+    carregarCarrosselUnificadoHome();
 }
