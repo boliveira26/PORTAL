@@ -1,45 +1,60 @@
 {
   "ticker_topo": {
-    "tag": "NOTÍCIA DESTACADA",
-    "texto": "6ª Rodada da Fase de Grupos define classificados e vagas na Sul-Americana"
+    "tag": "MATA-MATA DEFINIDO",
+    "texto": "Sorteio Oficial define os confrontos das Oitavas de Final da Libertadores e Sul-Americana"
   },
   "manchete_hero": {
     "id": "manchete-principal",
     "categoria": "CONMEBOL LIBERTADORES",
     "tipo_tag": "ouro",
-    "titulo": "6ª Rodada Decisiva: Quem garante a liderança e quem vai para a Sul-Americana?",
-    "resumo": "Última rodada define os 16 classificados às Oitavas de Final e os times transferidos para a Grande Conquista.",
+    "titulo": "Sorteio das Oitavas define clássicos e gigantes no caminho da Glória Eterna",
+    "resumo": "Flamengo pega o Estudiantes, Racing encara o Galo, duelo brasileiro entre Bragantino e Bahia, e River Plate x Nacional incendeiam a Sul-Americana.",
     "autor": "Por Redação PES Media Hub",
-    "data_publicacao": "01/10/2026 01:15",
+    "data_publicacao": "01/10/2026 23:45",
     "imagem": "https://admin.cnnbrasil.com.br/wp-content/uploads/sites/12/2025/03/taca-libertadores-e1742232529519.jpeg?w=1200&h=675&crop=1",
-    "botao_primario_texto": "Tabela de Grupos →",
-    "botao_primario_link": "fase-de-grupos.html",
+    "botao_primario_texto": "Ver Quadro do Mata-Mata →",
+    "botao_primario_link": "libertadores-oficial.html",
     "corpo_materia": [
-      "A 6ª e última rodada da Fase de Grupos da CONMEBOL Libertadores no PES chegou ao seu momento mais dramático. Com metade das chaves já encerradas e as outras com jogos decisivos nesta noite, o cenário das 16 vagas no Pote 1 e no Pote 2 está praticamente selado.",
-      "Além da disputa acirrada pela liderança geral, os olhos de todo o continente também se voltam para a parte inferior das tabelas. Pelo regulamento oficial da temporada, as equipes que terminarem na 3ª e na 4ª posições de cada grupo não voltam para casa: elas são transferidas diretamente para as Oitavas de Final da CONMEBOL Sudamericana.",
-      "> \"Esta é a rodada em que não há espaço para erro tático. Um gol aos 90 minutos pode significar a liderança no mata-mata da Libertadores ou a transferência direta para a Grande Conquista.\"",
-      "Os líderes de cada grupo garantem vantagem no sorteio oficial dos confrontos, que será realizado ao vivo logo após o apito final das últimas partidas programadas."
+      "A cerimônia oficial de sorteio da CONMEBOL definiu o chaveamento mais esperado da temporada do eFootball PES. Com confrontos de peso histórico do início ao fim, as Oitavas de Final prometem capítulos inesquecíveis na busca pela Glória Eterna.",
+      "Entre os confrontos mais badalados, o Flamengo terá pela frente o tetracampeão Estudiantes de La Plata, decidindo a vaga na Argentina. Já o líder geral do Grupo A, Atlético Mineiro, medirá forças contra o temido Racing Club, decidindo na Arena MRV. O sorteio também reservou um choque brasileiro entre Red Bull Bragantino e Bahia.",
+      "> \"O chaveamento ficou extraordinário. Não existe confronto fácil a partir de agora: são os 16 melhores clubes do continente buscando o título mais cobiçado da América.\"",
+      "As partidas de ida estão programadas para meados de outubro, com os líderes dos grupos tendo a vantagem de decidir a classificação diante de suas torcidas."
     ]
   },
   "destaques_secundarios": [
     {
-      "id": "vagas-sul-americana",
+      "id": "sorteio-sul-americana-pesado",
       "categoria": "SUL-AMERICANA",
       "tipo_tag": "azul",
-      "titulo": "3º e 4º colocados da Libertadores caem direto para as Oitavas da Sula",
-      "resumo": "Sem repescagem: 16 eliminados da Liberta iniciam a disputa da Grande Conquista na fase eliminatória.",
+      "titulo": "River Plate x Nacional e Palmeiras na Bolívia: o mata-mata mais pesado da história",
+      "resumo": "Chaveamento da Grande Conquista terá gigantes continentais disputando a taça na fase eliminatória.",
       "imagem": "https://img.band.com.br/image/2025/10/10/trofeu-da-sul-americana-13580.jpg"
     },
     {
       "id": "criterios-desempate",
       "categoria": "CRITÉRIOS OFICIAIS",
       "tipo_tag": "neutro",
-      "titulo": "Confronto Direto e Saldo de Gols: Como funciona o desempate no PES",
-      "resumo": "Entenda a ordem dos critérios de desempate duplo, triplo e quádruplo aplicados na classificação.",
+      "titulo": "Regulamento do Mata-Mata: Sem gol fora e decisão nos pênaltis em caso de empate",
+      "resumo": "Entenda como funcionam os critérios oficiais adotados nas fases eliminatórias do torneio.",
       "imagem": "https://conteudo.imguol.com.br/c/esporte/bb/2024/03/18/a-conmebol-e-a-puma-apresentaram-a-nova-versao-da-bola-cumbre-para-a-copa-libertadores-e-sul-americana-1710803823080_v2_1x1.jpg"
     }
   ],
   "ultimas_noticias": [
+    {
+      "id": "sorteio-confrontos-completos",
+      "categoria": "OITAVAS DE FINAL",
+      "tipo_tag": "ouro",
+      "titulo": "Confira o chaveamento completo das Oitavas da Libertadores e Sul-Americana",
+      "resumo": "Veja todos os 16 confrontos sorteados e a ordem dos mandos de campo da fase decisiva no PES.",
+      "autor": "Por Redação PES Media Hub",
+      "data_publicacao": "01/10/2026 23:30",
+      "imagem": "https://fimdejogo.com.br/wp-content/uploads/2020/09/libertadores-sudamericana-2_1.jpg",
+      "corpo_materia": [
+        "A CONMEBOL realizou nesta noite o sorteio oficial das Oitavas de Final da Libertadores e da Copa Sul-Americana. Confira os confrontos sorteados:",
+        "LIBERTADORES: Flamengo x Estudiantes | Atlético Nacional x Junior Barranquilla | Racing x Atlético-MG | Fluminense x Universitario | CRB x Colo-Colo | Red Bull Bragantino x Bahia | Corinthians x Barcelona SC | Olimpia x LDU Quito.",
+        "SUL-AMERICANA: River Plate x Nacional | The Strongest x Peñarol | Palmeiras x Jorge Wilstermann | Sporting Cristal x Mirassol | Ind. del Valle x Caracas | Universidad Católica x Libertad | Cerro Porteño x Bolívar | Deportivo Táchira x Boca Juniors."
+      ]
+    },
     {
       "id": "boca-eliminado-barcelona",
       "categoria": "FASE DE GRUPOS",
@@ -104,20 +119,6 @@
         "O jogo foi se alternando em domínio ao longo do primeiro tempo. Até os 25, o time carioca foi quem teve mais ações ofensivas, e depois disso, os mineiros entraram mais no jogo. E como o futebol tem dessas, após um momento de pressão atleticana, os Rubro-Negros foram ao ataque e Arrascaeta abriu o marcador com belo chute no canto de Éverson aos 37 minutos. Esse placar colocava os donos da casa na ponta do grupo.",
         "Na volta do intervalo, o Flamengo começou com mais posse de bola, porém, aos 3 minutos, após saída errada, um escanteio foi cedido. E após essa cobrança de escanteio, Léo Ortiz cometeu pênalti em cima de Bernard. Thiago Borbas empatou o jogo após deslocar o goleiro Rossi. Era o empate do Galo e a liderança retomada.",
         "O Flamengo até tentou, mas o Atlético se defendeu muito bem e confirmou o empate em 1 a 1 para festa dos 2.500 atleticanos que foram ao Rio nesta noite. O Galo agora vai ao Pote 1 e decidirá as Oitavas de Final como mandante. O Flamengo vai ao Pote 2 e decide fora de casa."
-      ]
-    },
-    {
-      "id": "sorteio-mata-mata-quinta",
-      "categoria": "LIBERTADORES E SUL-AMERICANA",
-      "tipo_tag": "cinza",
-      "titulo": "Sorteio do Mata-Mata da Libertadores e Sul-Americana será nesta quinta-feira",
-      "resumo": "Sorteio será realizado a partir das 22h30, após o fim dos jogos da fase de grupos, com transmissão ao vivo no Youtube.",
-      "autor": "Por Redação PES Media Hub",
-      "data_publicacao": "29/09/2026 20:00",
-      "imagem": "https://fimdejogo.com.br/wp-content/uploads/2020/09/libertadores-sudamericana-2_1.jpg",
-      "corpo_materia": [
-        "A CONMEBOL marcou para a noite desta quinta-feira a cerimônia oficial de sorteio dos confrontos de mata-mata da Libertadores e da Sul-Americana.",
-        "O evento definirá o chaveamento completo desde as Oitavas de Final até a Grande Final única, além de sortear a ordem dos mandos de campo de cada chave eliminatória."
       ]
     },
     {
