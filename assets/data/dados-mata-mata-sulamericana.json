@@ -1,15 +1,97 @@
 {
   "sorteioRealizado": true,
-  "faseAtiva": "sorteio_concluido",
+  "faseAtiva": "oitavas_ida",
   "sorteio": [
     { "chave": "A", "pote4": "River Plate", "pote3": "Nacional" },
     { "chave": "B", "pote4": "The Strongest", "pote3": "Peñarol" },
     { "chave": "C", "pote4": "Palmeiras", "pote3": "Jorge Wilstermann" },
     { "chave": "D", "pote4": "Sporting Cristal", "pote3": "Mirassol" },
-    { "chave": "E", "pote4": "Independiente del Valle", "pote3": "Caracas" },
+    { "chave": "E", "pote4": "Ind. del Valle", "pote3": "Caracas" },
     { "chave": "F", "pote4": "Universidad Católica", "pote3": "Libertad" },
     { "chave": "G", "pote4": "Cerro Porteño", "pote3": "Bolívar" },
     { "chave": "H", "pote4": "Deportivo Táchira", "pote3": "Boca Juniors" }
+  ],
+  "partidasMataMata": [
+    {
+      "fase": "OITAVAS • IDA",
+      "torneio": "sulamericana",
+      "chave": "A",
+      "data": "DOM 04/10/2026 MONUMENTAL DE NÚÑEZ 21:30",
+      "m": "River Plate",
+      "v": "Nacional",
+      "gm": null,
+      "gv": null
+    },
+    {
+      "fase": "OITAVAS • IDA",
+      "torneio": "sulamericana",
+      "chave": "B",
+      "data": "SEG 04/10/2026 HERNANDO SILES 20:45",
+      "m": "The Strongest",
+      "v": "Peñarol",
+      "gm": null,
+      "gv": null
+    },
+    {
+      "fase": "OITAVAS • IDA",
+      "torneio": "sulamericana",
+      "chave": "C",
+      "data": "SEG 05/10/2026 NUBANK PARQUE 21:30",
+      "m": "Palmeiras",
+      "v": "Jorge Wilstermann",
+      "gm": null,
+      "gv": null
+    },
+    {
+      "fase": "OITAVAS • IDA",
+      "torneio": "sulamericana",
+      "chave": "D",
+      "data": "SEG 05/10/2026 ALBERTO GALLARDO 19:15",
+      "m": "Sporting Cristal",
+      "v": "Mirassol",
+      "gm": null,
+      "gv": null
+    },
+    {
+      "fase": "OITAVAS • IDA",
+      "torneio": "sulamericana",
+      "chave": "E",
+      "data": "DOM 04/10/2026 BANCO GUAYAQUIL 19:15",
+      "m": "Ind. del Valle",
+      "v": "Caracas",
+      "gm": null,
+      "gv": null
+    },
+    {
+      "fase": "OITAVAS • IDA",
+      "torneio": "sulamericana",
+      "chave": "F",
+      "data": "DOM 04/10/2026 SAN CARLOS DE APOQUINDO 20:00",
+      "m": "Universidad Católica",
+      "v": "Libertad",
+      "gm": null,
+      "gv": null
+    },
+    {
+      "fase": "OITAVAS • IDA",
+      "torneio": "sulamericana",
+      "chave": "G",
+      "data": "SEG 05/10/2026 LA NUEVA OLLA 20:00",
+      "m": "Cerro Porteño",
+      "v": "Bolívar",
+      "gm": null,
+      "gv": null
+    },
+    {
+      "fase": "OITAVAS • IDA",
+      "torneio": "sulamericana",
+      "chave": "H",
+      "data": "DOM 04/10/2026 POLIDEPORTIVO PUEBLO NUEVO 20:45",
+      "m": "Deportivo Táchira",
+      "v": "Boca Juniors",
+      "gm": null,
+      "gv": null
+    }
   ],
   "jogos": {
     "placares": {
@@ -44,23 +126,23 @@
       "sula-final-jogo": { "m": null, "v": null }
     },
     "infoJogos": {
-      "sula-oitavas-A-ida": "OITAVAS A • JOGO DE IDA (A DEFINIR)",
-      "sula-oitavas-A-volta": "OITAVAS A • JOGO DE VOLTA (A DEFINIR)",
-      "sula-oitavas-B-ida": "OITAVAS B • JOGO DE IDA (A DEFINIR)",
-      "sula-oitavas-B-volta": "OITAVAS B • JOGO DE VOLTA (A DEFINIR)",
-      "sula-oitavas-C-ida": "OITAVAS C • JOGO DE IDA (A DEFINIR)",
-      "sula-oitavas-C-volta": "OITAVAS C • JOGO DE VOLTA (A DEFINIR)",
-      "sula-oitavas-D-ida": "OITAVAS D • JOGO DE IDA (A DEFINIR)",
-      "sula-oitavas-D-volta": "OITAVAS D • JOGO DE VOLTA (A DEFINIR)",
-      "sula-oitavas-E-ida": "OITAVAS E • JOGO DE IDA (A DEFINIR)",
-      "sula-oitavas-E-volta": "OITAVAS E • JOGO DE VOLTA (A DEFINIR)",
-      "sula-oitavas-F-ida": "OITAVAS F • JOGO DE IDA (A DEFINIR)",
-      "sula-oitavas-F-volta": "OITAVAS F • JOGO DE VOLTA (A DEFINIR)",
-      "sula-oitavas-G-ida": "OITAVAS G • JOGO DE IDA (A DEFINIR)",
-      "sula-oitavas-G-volta": "OITAVAS G • JOGO DE VOLTA (A DEFINIR)",
-      "sula-oitavas-H-ida": "OITAVAS H • JOGO DE IDA (A DEFINIR)",
-      "sula-oitavas-H-volta": "OITAVAS H • JOGO DE VOLTA (A DEFINIR)",
-      "sula-final-jogo": "FINAL ÚNICA • ESTÁDIO DOMINGO BURGUEÑO"
+      "sula-oitavas-A-ida": "SEG 05/10/2026 MONUMENTAL DE NÚÑEZ 21:30",
+      "sula-oitavas-A-volta": "QUI 08/10/2026 GRAN PARQUE CENTRAL 21:30",
+      "sula-oitavas-B-ida": "TER 06/10/2026 HERNANDO SILES 20:45",
+      "sula-oitavas-B-volta": "SEX 09/10/2026 CAMPEÓN DEL SIGLO 20:45",
+      "sula-oitavas-C-ida": "TER 06/10/2026 NUBANK PARQUE 21:30",
+      "sula-oitavas-C-volta": "SEX 09/10/2026 FÉLIX CAPRILES 21:30",
+      "sula-oitavas-D-ida": "TER 06/10/2026 ALBERTO GALLARDO 19:15",
+      "sula-oitavas-D-volta": "SEX 09/10/2026 MAIÃO 19:15",
+      "sula-oitavas-E-ida": "SEG 05/10/2026 BANCO GUAYAQUIL 19:15",
+      "sula-oitavas-E-volta": "QUI 08/10/2026 OLÍMPICO DE LA UCV 19:15",
+      "sula-oitavas-F-ida": "SEG 05/10/2026 SAN CARLOS DE APOQUINDO 20:00",
+      "sula-oitavas-F-volta": "QUI 08/10/2026 LA HUERTA 20:00",
+      "sula-oitavas-G-ida": "TER 06/10/2026 LA NUEVA OLLA 20:00",
+      "sula-oitavas-G-volta": "SEX 09/10/2026 HERNANDO SILES 20:00",
+      "sula-oitavas-H-ida": "SEG 05/10/2026 POLIDEPORTIVO PUEBLO NUEVO 20:45",
+      "sula-oitavas-H-volta": "SEX 09/10/2026 LA BOMBONERA 20:45",
+      "sula-final-jogo": "SÁB 24/10/2026 GRAN PARQUE CENTRAL 17:00"
     }
   }
 }
