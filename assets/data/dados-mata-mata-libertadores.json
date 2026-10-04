@@ -44,23 +44,23 @@
       "final-jogo": { "m": null, "v": null }
     },
     "infoJogos": {
-      "oitavas-A-ida": "OITAVAS A • JOGO DE IDA (A DEFINIR)",
-      "oitavas-A-volta": "OITAVAS A • JOGO DE VOLTA (A DEFINIR)",
-      "oitavas-B-ida": "OITAVAS B • JOGO DE IDA (A DEFINIR)",
-      "oitavas-B-volta": "OITAVAS B • JOGO DE VOLTA (A DEFINIR)",
-      "oitavas-C-ida": "OITAVAS C • JOGO DE IDA (A DEFINIR)",
-      "oitavas-C-volta": "OITAVAS C • JOGO DE VOLTA (A DEFINIR)",
-      "oitavas-D-ida": "OITAVAS D • JOGO DE IDA (A DEFINIR)",
-      "oitavas-D-volta": "OITAVAS D • JOGO DE VOLTA (A DEFINIR)",
-      "oitavas-E-ida": "OITAVAS E • JOGO DE IDA (A DEFINIR)",
-      "oitavas-E-volta": "OITAVAS E • JOGO DE VOLTA (A DEFINIR)",
-      "oitavas-F-ida": "OITAVAS F • JOGO DE IDA (A DEFINIR)",
-      "oitavas-F-volta": "OITAVAS F • JOGO DE VOLTA (A DEFINIR)",
-      "oitavas-G-ida": "OITAVAS G • JOGO DE IDA (A DEFINIR)",
-      "oitavas-G-volta": "OITAVAS G • JOGO DE VOLTA (A DEFINIR)",
-      "oitavas-H-ida": "OITAVAS H • JOGO DE IDA (A DEFINIR)",
-      "oitavas-H-volta": "OITAVAS H • JOGO DE VOLTA (A DEFINIR)",
-      "final-jogo": "FINAL ÚNICA • ESTÁDIO MARIO ALBERTO KEMPES • CÓRDOBA"
+      "oitavas-A-ida": "DOM 11/10/2026 MARACANÃ 21:30",
+      "oitavas-A-volta": "QUA 14/10/2026 LUIS HIRSCHI 21:30",
+      "oitavas-B-ida": "SÁB 10/10/2026 ATANASIO GIRARDOT 19:15",
+      "oitavas-B-volta": "TER 13/10/2026 METROPOLITANO ROBERTO MELÉNDEZ 19:15",
+      "oitavas-C-ida": "DOM 11/10/2026 PRESIDENTE PERÓN 19:15",
+      "oitavas-C-volta": "QUA 14/10/2026 ARENA MRV 19:15",
+      "oitavas-D-ida": "SÁB 10/10/2026 MARACANÃ 20:00",
+      "oitavas-D-volta": "TER 13/10/2026 MONUMENTAL U 20:00",
+      "oitavas-E-ida": "DOM 11/10/2026 REI PELÉ 20:00",
+      "oitavas-E-volta": "QUA 14/10/2026 MONUMENTAL DAVID ARELLANO 20:00",
+      "oitavas-F-ida": "SÁB 10/10/2026 CÍCERO DE SOUZA MARQUES 20:45",
+      "oitavas-F-volta": "TER 13/10/2026 ARENA FONTE NOVA 20:45",
+      "oitavas-G-ida": "SÁB 10/10/2026 NEO QUÍMICA ARENA 21:30",
+      "oitavas-G-volta": "TER 13/10/2026 MONUMENTAL ISIDRO ROMERO CARBO 21:30",
+      "oitavas-H-ida": "DOM 11/10/2026 MANUEL FERREIRA 20:45",
+      "oitavas-H-volta": "QUA 14/10/2026 CASABLANCA 20:45",
+      "final-jogo": "SÁB 31/10/2026 MARIO ALBERTO KEMPES 17:00"
     }
   }
 }
