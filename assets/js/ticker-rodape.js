@@ -37,8 +37,18 @@ const ESCUDOS_LIBERTA_OFICIAIS = {
     "The Strongest": "https://assets.footylogos.com/logos/the-strongest/the-strongest-logo-footylogos.png"
 };
 
+let diaRegistradoLiberta = null;
+
 function obterEscudoLiberta(nome) {
     return ESCUDOS_LIBERTA_OFICIAIS[nome] || `assets/img/escudos/${nome.toLowerCase().replace(/[^a-z0-9]/g, '-')}.png`;
+}
+
+function formatarDataHoje() {
+    const agora = new Date();
+    const dia = String(agora.getDate()).padStart(2, '0');
+    const mes = String(agora.getMonth() + 1).padStart(2, '0');
+    const ano = agora.getFullYear();
+    return `${dia}/${mes}/${ano}`;
 }
 
 function extrairDataRaw(textoData) {
@@ -56,50 +66,56 @@ function extrairHoraEEstadio(textoData) {
 }
 
 async function carregarTickerJogosDoDiaLiberta() {
+    diaRegistradoLiberta = new Date().getDate();
     const container = document.getElementById('trilha-ticker-topo');
     const labelData = document.getElementById('label-data-ticker-topo');
     if (!container) return;
 
-    let dados = null;
+    let todosJogos = [];
+
+    // Tenta carregar do mata-mata ou cai na fase de grupos
     try {
         const resp = await fetch('assets/data/dados-fase-de-grupos.json?v=' + Date.now());
-        if (resp.ok) dados = await resp.json();
-    } catch (e) {}
-
-    if (!dados) return;
-
-    const todosJogos = [];
-    const letras = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
-
-    letras.forEach(letra => {
-        const grupo = dados[letra];
-        if (grupo && grupo.rodadas) {
-            const rodadaAtual = grupo.rodadaExibida || 6;
-            const partidas = grupo.rodadas[rodadaAtual] || [];
-            partidas.forEach(p => {
-                todosJogos.push({
-                    grupo: `GRUPO ${letra}`,
-                    rodada: rodadaAtual,
-                    dataTexto: p.data,
-                    dataApenas: extrairDataRaw(p.data),
-                    m: p.m,
-                    v: p.v,
-                    gm: p.gm,
-                    gv: p.gv
-                });
+        if (resp.ok) {
+            const dados = await resp.json();
+            ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'].forEach(letra => {
+                const grupo = dados[letra];
+                if (grupo && grupo.rodadas) {
+                    const rodadaAtual = grupo.rodadaExibida || 6;
+                    (grupo.rodadas[rodadaAtual] || []).forEach(p => {
+                        todosJogos.push({
+                            grupo: `GRUPO ${letra}`,
+                            rodada: rodadaAtual,
+                            dataTexto: p.data,
+                            dataApenas: extrairDataRaw(p.data),
+                            m: p.m,
+                            v: p.v,
+                            gm: p.gm,
+                            gv: p.gv
+                        });
+                    });
+                }
             });
         }
-    });
+    } catch (e) {}
 
     if (todosJogos.length === 0) return;
 
-    // Busca a data mais recente com partidas (ex: 01/10/2026)
-    const todasDatas = [...new Set(todosJogos.map(j => j.dataApenas).filter(Boolean))];
-    const dataAtiva = todasDatas[todasDatas.length - 1];
-    const jogosDoDia = todosJogos.filter(j => j.dataApenas === dataAtiva);
+    // Filtra pela data de hoje do PC
+    const dataHoje = formatarDataHoje();
+    let jogosDoDia = todosJogos.filter(j => j.dataApenas === dataHoje);
 
-    if (labelData && dataAtiva) {
-        labelData.textContent = `JOGOS DO DIA • ${dataAtiva}`;
+    // Se hoje não houver jogo, exibe a rodada mais recente
+    if (jogosDoDia.length === 0) {
+        const todasDatas = [...new Set(todosJogos.map(j => j.dataApenas).filter(Boolean))];
+        const dataAtiva = todasDatas[todasDatas.length - 1];
+        jogosDoDia = todosJogos.filter(j => j.dataApenas === dataAtiva);
+    }
+
+    if (jogosDoDia.length === 0) return;
+
+    if (labelData && jogosDoDia[0].dataApenas) {
+        labelData.textContent = `JOGOS DO DIA • ${jogosDoDia[0].dataApenas}`;
     }
 
     container.innerHTML = '';
@@ -145,6 +161,15 @@ async function carregarTickerJogosDoDiaLiberta() {
         container.appendChild(card);
     });
 }
+
+// Monitor de virada 00:00
+setInterval(() => {
+    const diaAgora = new Date().getDate();
+    if (diaRegistradoLiberta !== null && diaAgora !== diaRegistradoLiberta) {
+        console.log('Virada de dia detectada no ticker da Libertadores. Atualizando...');
+        carregarTickerJogosDoDiaLiberta();
+    }
+}, 30000);
 
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', carregarTickerJogosDoDiaLiberta);

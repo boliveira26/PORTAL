@@ -1,5 +1,5 @@
 // ==========================================================================
-// assets/js/ticker.js - MOTOR DE JOGOS DO DIA (FASE DE GRUPOS)
+// assets/js/ticker.js - MOTOR UNIFICADO DO CARROSSEL DE JOGOS (HOME)
 // ==========================================================================
 
 const ESCUDOS_TICKER = {
@@ -22,6 +22,7 @@ const ESCUDOS_TICKER = {
     "Bahia": "https://logodetimes.com/times/bahia/logo-bahia-256.png",
     "Atlético Nacional": "https://logodetimes.com/times/atletico-nacional/logo-atletico-nacional-256.png",
     "Independiente del Valle": "https://logodetimes.com/times/independiente-del-valle/logo-independiente-del-valle-256.png",
+    "Ind. del Valle": "https://logodetimes.com/times/independiente-del-valle/logo-independiente-del-valle-256.png",
     "Nacional": "https://upload.wikimedia.org/wikipedia/commons/1/1e/Club_Nacional_de_Football%27s_logo.png?utm_source=pt.wikipedia.org&utm_campaign=index&utm_content=original",
     "Estudiantes": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/68/Escudo_del_Club_Estudiantes_de_La_Plata.svg/1280px-Escudo_del_Club_Estudiantes_de_La_Plata.svg.png?utm_source=pt.wikipedia.org&utm_campaign=index&utm_content=thumbnail",
     "Red Bull Bragantino": "https://logodetimes.com/times/red-bull-bragantino/logo-red-bull-bragantino-256.png",
@@ -37,53 +38,124 @@ const ESCUDOS_TICKER = {
     "The Strongest": "https://assets.footylogos.com/logos/the-strongest/the-strongest-logo-footylogos.png"
 };
 
+let diaRegistradoHome = null;
+
 function obterEscudoTicker(nome) {
     return ESCUDOS_TICKER[nome] || `assets/img/escudos/${nome.toLowerCase().replace(/[^a-z0-9]/g, '-')}.png`;
 }
 
-async function carregarTickerJogosFaseDeGrupos() {
+function formatarDataHoje() {
+    const agora = new Date();
+    const dia = String(agora.getDate()).padStart(2, '0');
+    const mes = String(agora.getMonth() + 1).padStart(2, '0');
+    const ano = agora.getFullYear();
+    return `${dia}/${mes}/${ano}`;
+}
+
+function extrairDataRaw(textoData) {
+    if (!textoData) return '';
+    const match = textoData.match(/(\d{2}\/\d{2}\/\d{4})/);
+    return match ? match[1] : '';
+}
+
+function formatarInfoJogo(texto) {
+    if (!texto) return { dataHora: '', estadio: 'ESTÁDIO OFICIAL' };
+    const partes = texto.trim().split(/\s+/);
+    if (partes.length < 3) return { dataHora: texto, estadio: 'ESTÁDIO OFICIAL' };
+
+    const diaSemana = partes[0];
+    const dataDia = partes[1].replace('/2026', '');
+    const horario = partes[partes.length - 1];
+    const estadio = partes.slice(2, partes.length - 1).join(' ');
+
+    return {
+        dataHora: `${diaSemana} ${dataDia} • ${horario}`,
+        estadio: estadio || 'ESTÁDIO OFICIAL'
+    };
+}
+
+async function carregarTickerHome() {
+    diaRegistradoHome = new Date().getDate();
     const container = document.getElementById('ticker-lista');
     if (!container) return;
 
-    let dados = null;
+    let todosJogos = [];
+
+    // 1. Tenta carregar partidas do mata-mata da Sul-Americana e da Libertadores
     try {
-        const resp = await fetch('assets/data/dados-fase-de-grupos.json?v=' + Date.now());
-        if (resp.ok) dados = await resp.json();
+        const [resSula, resLiberta] = await Promise.all([
+            fetch('assets/data/dados-mata-mata-sulamericana.json?v=' + Date.now()),
+            fetch('assets/data/dados-mata-mata-libertadores.json?v=' + Date.now())
+        ]);
+
+        if (resSula.ok) {
+            const dSula = await resSula.json();
+            if (dSula.partidasMataMata) todosJogos.push(...dSula.partidasMataMata);
+        }
+        if (resLiberta.ok) {
+            const dLib = await resLiberta.json();
+            if (dLib.partidasMataMata) todosJogos.push(...dLib.partidasMataMata);
+        }
     } catch (e) {}
 
-    if (!dados) return;
-
-    // Coleta todos os jogos da 6ª rodada (ou rodada ativa)
-    const todosJogos = [];
-    const letras = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
-
-    letras.forEach(letra => {
-        const grupo = dados[letra];
-        if (grupo && grupo.rodadas) {
-            const rodadaAtual = grupo.rodadaExibida || 6;
-            const jogos = grupo.rodadas[rodadaAtual] || [];
-            jogos.forEach(j => {
-                todosJogos.push({
-                    grupo: `GRUPO ${letra}`,
-                    rodada: rodadaAtual,
-                    data: j.data,
-                    m: j.m,
-                    v: j.v,
-                    gm: j.gm,
-                    gv: j.gv
+    // 2. Se não houver partidas no mata-mata, busca da fase de grupos como fallback
+    if (todosJogos.length === 0) {
+        try {
+            const resp = await fetch('assets/data/dados-fase-de-grupos.json?v=' + Date.now());
+            if (resp.ok) {
+                const dadosGrupos = await resp.json();
+                ['A','B','C','D','E','F','G','H'].forEach(l => {
+                    const g = dadosGrupos[l];
+                    if (g && g.rodadas) {
+                        const r = g.rodadaExibida || 6;
+                        (g.rodadas[r] || []).forEach(p => {
+                            todosJogos.push({
+                                torneio: 'libertadores',
+                                badgeNome: `GRUPO ${l} • R${r}`,
+                                data: p.data,
+                                m: p.m,
+                                v: p.v,
+                                gm: p.gm,
+                                gv: p.gv
+                            });
+                        });
+                    }
                 });
-            });
-        }
-    });
+            }
+        } catch (e) {}
+    }
 
     if (todosJogos.length === 0) return;
 
+    todosJogos = todosJogos.map(j => ({
+        ...j,
+        dataApenas: extrairDataRaw(j.data)
+    }));
+
+    // 3. Filtra pelas partidas da data de hoje
+    const dataHojeStr = formatarDataHoje();
+    let jogosExibir = todosJogos.filter(j => j.dataApenas === dataHojeStr);
+
+    // Se hoje não houver jogo marcado, exibe as partidas mais próximas
+    if (jogosExibir.length === 0) {
+        const datasUnicas = [...new Set(todosJogos.map(j => j.dataApenas).filter(Boolean))];
+        if (datasUnicas.length > 0) {
+            jogosExibir = todosJogos.filter(j => j.dataApenas === datasUnicas[0]);
+        }
+    }
+
+    if (jogosExibir.length === 0) return;
+
     container.innerHTML = '';
-    const loopDuplicado = [...todosJogos, ...todosJogos];
+    const loopDuplicado = [...jogosExibir, ...jogosExibir];
 
     loopDuplicado.forEach(jogo => {
         const card = document.createElement('div');
         card.className = 'card-jogo-ticker';
+
+        const ehLiberta = (jogo.torneio === 'libertadores');
+        const badgeCor = ehLiberta ? 'color: var(--gold-main);' : 'color: var(--sula-solar);';
+        const badgeTexto = jogo.badgeNome || (ehLiberta ? `LIBERTADORES • ${jogo.chave ? 'CHAVE ' + jogo.chave : 'OITAVAS'}` : `SUDAMERICANA • CHAVE ${jogo.chave || 'OITAVAS'}`);
 
         const temPlacar = (jogo.gm !== null && jogo.gm !== undefined && jogo.gv !== null && jogo.gv !== undefined);
         const gmTxt = temPlacar ? jogo.gm : '-';
@@ -102,7 +174,7 @@ async function carregarTickerJogosFaseDeGrupos() {
 
         card.innerHTML = `
             <div class="card-jogo-header">
-                <span class="badge-copa-ticker">${jogo.grupo} • R${jogo.rodada}</span>
+                <span class="badge-copa-ticker" style="${badgeCor}">${badgeTexto}</span>
                 <span style="font-size:0.6rem; color:#ffffff; font-weight:700;">${info.dataHora}</span>
             </div>
 
@@ -136,24 +208,17 @@ async function carregarTickerJogosFaseDeGrupos() {
     });
 }
 
-function formatarInfoJogo(texto) {
-    if (!texto) return { dataHora: '', estadio: 'ESTÁDIO OFICIAL' };
-    const partes = texto.trim().split(/\s+/);
-    if (partes.length < 3) return { dataHora: texto, estadio: 'ESTÁDIO OFICIAL' };
-
-    const diaSemana = partes[0];
-    const dataDia = partes[1].replace('/2026', '');
-    const horario = partes[partes.length - 1];
-    const estadio = partes.slice(2, partes.length - 1).join(' ');
-
-    return {
-        dataHora: `${diaSemana} ${dataDia} • ${horario}`,
-        estadio: estadio || 'ESTÁDIO OFICIAL'
-    };
-}
+// Monitor contínuo de virada de dia às 00:00
+setInterval(() => {
+    const diaAgora = new Date().getDate();
+    if (diaRegistradoHome !== null && diaAgora !== diaRegistradoHome) {
+        console.log('Virada de dia detectada no ticker Home. Atualizando...');
+        carregarTickerHome();
+    }
+}, 30000);
 
 if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', carregarTickerJogosFaseDeGrupos);
+    document.addEventListener('DOMContentLoaded', carregarTickerHome);
 } else {
-    carregarTickerJogosFaseDeGrupos();
+    carregarTickerHome();
 }
