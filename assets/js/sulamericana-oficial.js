@@ -1,12 +1,13 @@
 // ==========================================================================
-// assets/js/sulamericana-oficial.js - QUADRO OFICIAL MATA-MATA SUL-AMERICANA
+// assets/js/sulamericana-oficial.js - MODO VIEWER MATA-MATA SULA
+// Leitor inteligente com suporte tanto a partidasMataMata quanto a jogos.placares
 // ==========================================================================
 
 const CHAVE_SORTEIO_SULA = 'conmebol_sulamericana_sorteio_oficial_2026';
 const CHAVE_JOGOS_SULA = 'conmebol_sulamericana_jogos_oficial_2026';
 
 let estadoSulamericana = {
-    sorteioAtivo: false,
+    sorteioAtivo: true,
     placares: {},
     infoJogos: {}
 };
@@ -14,7 +15,6 @@ let estadoSulamericana = {
 async function inicializarTabelaSulamericana() {
     let dadosJson = null;
 
-    // 1. Tenta carregar dados oficiais publicados via JSON
     try {
         const resposta = await fetch('assets/data/dados-mata-mata-sulamericana.json?v=' + Date.now());
         if (resposta.ok) {
@@ -22,31 +22,25 @@ async function inicializarTabelaSulamericana() {
         }
     } catch (e) {}
 
-    // 2. Se houver dados oficiais no JSON e o sorteio estiver ativo
-    if (dadosJson && dadosJson.sorteioRealizado === true && dadosJson.sorteio) {
-        estadoSulamericana.sorteioAtivo = true;
-        carregarEstruturaOitavasSula(dadosJson.sorteio);
-        if (dadosJson.jogos) {
-            carregarJogosPublicadosSula(dadosJson.jogos);
-            calcularClassificadosEAvançoSula();
+    if (dadosJson) {
+        if (dadosJson.sorteio) {
+            carregarEstruturaOitavasSula(dadosJson.sorteio);
         }
+
+        // Lê placares tanto da lista partidasMataMata quanto do bloco jogos.placares
+        carregarPlacaresHibridosSula(dadosJson);
+        calcularClassificadosEAvançoSula();
         return;
     }
 
-    // 3. Fallback controlado via localStorage apenas se estiver explicitamente ativo
-    const sorteioLocal = localStorage.getItem(CHAVE_SORTEIO_SULA);
+    const sorteioLocal = localStorage.getItem(CHAVE_SORTEIO_SULA) || localStorage.getItem('resultado_sorteio_sulamericana');
     if (sorteioLocal) {
         try {
             const dadosSorteio = JSON.parse(sorteioLocal);
-            if (Array.isArray(dadosSorteio) && dadosSorteio.length > 0) {
-                estadoSulamericana.sorteioAtivo = true;
-                carregarEstruturaOitavasSula(dadosSorteio);
-                carregarJogosSalvosLocalSula();
-                calcularClassificadosEAvançoSula();
-            }
-        } catch (e) {
-            console.error('Erro ao ler sorteio local da Sul-Americana:', e);
-        }
+            carregarEstruturaOitavasSula(dadosSorteio);
+            carregarJogosSalvosLocalSula();
+            calcularClassificadosEAvançoSula();
+        } catch (e) {}
     }
 }
 
@@ -72,14 +66,42 @@ function carregarEstruturaOitavasSula(confrontos) {
     });
 }
 
-function carregarJogosPublicadosSula(dadosJogos) {
-    estadoSulamericana.placares = dadosJogos.placares || {};
-    estadoSulamericana.infoJogos = dadosJogos.infoJogos || {};
+// LÊ PLACARES TANTO DE partidasMataMata QUANTO DE jogos.placares
+function carregarPlacaresHibridosSula(dadosJson) {
+    estadoSulamericana.placares = {};
+    estadoSulamericana.infoJogos = {};
+
+    // 1. Lê do bloco jogos se existir
+    if (dadosJson.jogos) {
+        estadoSulamericana.placares = { ...dadosJson.jogos.placares };
+        estadoSulamericana.infoJogos = { ...dadosJson.jogos.infoJogos };
+    }
+
+    // 2. Lê da lista de partidasMataMata se você colocou gm/gv lá
+    if (dadosJson.partidasMataMata && Array.isArray(dadosJson.partidasMataMata)) {
+        dadosJson.partidasMataMata.forEach(partida => {
+            const chave = partida.chave;
+            const ehIda = partida.fase && partida.fase.includes('IDA');
+            const cardId = ehIda ? `sula-oitavas-${chave}-ida` : `sula-oitavas-${chave}-volta`;
+
+            if (partida.gm !== null && partida.gm !== undefined && partida.gv !== null && partida.gv !== undefined) {
+                estadoSulamericana.placares[cardId] = {
+                    m: parseInt(partida.gm, 10),
+                    v: parseInt(partida.gv, 10)
+                };
+            }
+
+            if (partida.data) {
+                estadoSulamericana.infoJogos[cardId] = partida.data;
+            }
+        });
+    }
+
     aplicarPlacaresNaTelaSula();
 }
 
 function carregarJogosSalvosLocalSula() {
-    const salvos = localStorage.getItem(CHAVE_JOGOS_SULA);
+    const salvos = localStorage.getItem(CHAVE_JOGOS_SULA) || localStorage.getItem('jogos_oficial_sulamericana');
     if (!salvos) return;
 
     try {
@@ -110,8 +132,6 @@ function aplicarPlacaresNaTelaSula() {
 }
 
 function calcularClassificadosEAvançoSula() {
-    if (!estadoSulamericana.sorteioAtivo) return;
-
     const chaves = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
     const vencedoresOitavas = {};
 

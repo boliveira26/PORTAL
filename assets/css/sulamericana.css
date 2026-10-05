@@ -36,7 +36,6 @@
 }
 
 :root {
-    /* Paleta Cósmica Oficial CONMEBOL Sudamericana */
     --sula-black-base: #020612;
     --sula-panel: #071126;
     --sula-panel-dark: #030814;
@@ -45,9 +44,8 @@
     --sula-blue-electric: #0077ff;
     --sula-blue-cyan: #00a3ff;
     --sula-silver-chrome: #d1dce8;
-    --sula-solar-gold: #f5a623;
+    --sula-solar: #f5a623;
     
-    /* Filetes e Badges Metálicos */
     --sula-bar: linear-gradient(90deg, transparent 0%, #0077ff 25%, #00a3ff 50%, #0077ff 75%, transparent 100%);
     --sula-badge: linear-gradient(180deg, #5cb3ff 0%, #0077ff 40%, #0047b3 85%, #002266 100%);
     --silver-badge: linear-gradient(180deg, #ffffff 0%, #c4d7ed 35%, #7592b5 85%, #2c425e 100%);
@@ -86,7 +84,6 @@ body.pagina-sulamericana-oficial {
     -webkit-font-smoothing: antialiased;
 }
 
-/* LUZES E REFLETORES CÓSMICOS LATERAIS */
 body.pagina-sulamericana-oficial::before,
 body.pagina-sulamericana-oficial::after {
     content: '';
@@ -107,20 +104,6 @@ body.pagina-sulamericana-oficial::after {
     right: 0;
     background: radial-gradient(circle at right, rgba(0, 163, 255, 0.15) 0%, transparent 70%);
 }
-
-.estadio-luz-sula {
-    position: absolute;
-    top: 0;
-    width: 40vw;
-    height: 450px;
-    pointer-events: none;
-    z-index: 0;
-    filter: blur(90px);
-    opacity: 0.25;
-}
-
-.estadio-luz-sula.esquerda { left: -10vw; background: radial-gradient(circle, rgba(0, 119, 255, 0.6) 0%, transparent 70%); }
-.estadio-luz-sula.direita { right: -10vw; background: radial-gradient(circle, rgba(0, 163, 255, 0.6) 0%, transparent 70%); }
 
 /* ================= 1. TOP SWITCHER ================= */
 .top-switcher-conmebol {
@@ -173,7 +156,7 @@ body.pagina-sulamericana-oficial::after {
     color: rgba(255, 255, 255, 0.15);
 }
 
-/* ================= 2. NAVBAR OFICIAL SUL-AMERICANA ================= */
+/* ================= 2. NAVBAR OFICIAL ================= */
 #navbar-conmebol-sula {
     background: rgba(4, 10, 24, 0.96);
     border-bottom: 1px solid var(--border-sula);
@@ -236,63 +219,184 @@ body.pagina-sulamericana-oficial::after {
     background: rgba(0, 119, 255, 0.12);
 }
 
-/* ================= 3. FAIXA DE STATUS ================= */
-.barra-status-sula {
-    background: #020614;
+/* ================= 3. CARROSSEL TICKER TOPO (ESTILIZAÇÃO CORRIGIDA) ================= */
+.barra-ticker-topo {
+    background: #02040c;
     border-bottom: 1px solid var(--border-sula);
-    padding: 10px 0;
+    display: flex;
+    align-items: center;
+    height: 60px;
+    width: 100%;
     position: relative;
     z-index: 5;
 }
 
-.status-sula-container {
-    max-width: 1360px;
-    margin: 0 auto;
-    padding: 0 20px;
+.header-bloco-ticker {
+    background: #020612;
+    padding: 0 16px;
+    height: 100%;
     display: flex;
-    align-items: center;
-    gap: 14px;
+    flex-direction: column;
+    justify-content: center;
+    border-right: 1px solid var(--border-sula);
+    flex-shrink: 0;
+    min-width: 155px;
+    font-family: var(--font-branding);
 }
 
-.tag-status-sula {
-    background: rgba(0, 119, 255, 0.15);
-    border: 1px solid var(--sula-blue-electric);
-    color: var(--sula-blue-cyan);
-    font-family: var(--font-branding);
-    font-size: 0.62rem;
+.tag-ao-vivo-ticker {
+    font-size: 0.58rem;
     font-weight: 900;
-    letter-spacing: 1px;
-    padding: 3px 8px;
-    border-radius: 2px;
+    letter-spacing: 1.2px;
+    color: var(--sula-blue-cyan);
+    text-transform: uppercase;
     display: flex;
     align-items: center;
     gap: 6px;
-    white-space: nowrap;
-    text-transform: uppercase;
 }
 
-.ponto-pulsante {
+.led-pulso {
     width: 6px;
     height: 6px;
     background: var(--sula-blue-cyan);
     border-radius: 50%;
     box-shadow: 0 0 8px var(--sula-blue-cyan);
+    animation: pulsoLED 1.5s infinite;
 }
 
-.texto-status-sula {
-    color: var(--text-silver);
-    font-size: 0.76rem;
-    font-weight: 500;
+@keyframes pulsoLED {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(0.85); }
+}
+
+.label-data-ticker {
+    font-size: 0.68rem;
+    font-weight: 900;
+    color: var(--text-pure-white);
+    letter-spacing: 0.5px;
+}
+
+.container-trilha-topo {
+    overflow: hidden;
+    flex: 1;
+    display: flex;
+    align-items: center;
+}
+
+.trilha-ticker-topo {
+    display: flex;
+    gap: 10px;
+    width: max-content;
+    will-change: transform;
+    animation: rolarTickerTopo 75s linear infinite;
+    padding-left: 12px;
+}
+
+.barra-ticker-topo:hover .trilha-ticker-topo {
+    animation-play-state: paused;
+}
+
+@keyframes rolarTickerTopo {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+.item-jogo-rodape {
+    background: linear-gradient(180deg, #071126 0%, #030814 100%);
+    border: 1px solid var(--border-sula);
+    border-radius: 3px;
+    padding: 6px 12px;
+    min-width: 235px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+}
+
+.info-meta-rodape {
+    display: flex;
+    flex-direction: column;
+    font-family: var(--font-branding);
+    font-size: 0.6rem;
+    font-weight: 900;
+    border-right: 1px solid rgba(255, 255, 255, 0.08);
+    padding-right: 8px;
+    min-width: 58px;
+}
+
+.bloco-confronto-rodape {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    flex: 1;
+}
+
+.linha-time-rodape {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    justify-content: space-between;
+}
+
+.escudo-min {
+    width: 15px !important;
+    height: 15px !important;
+    object-fit: contain;
+}
+
+.nome-min {
+    font-family: var(--font-ubuntu);
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: #ffffff;
+    white-space: nowrap;
+    flex: 1;
+}
+
+.gols-min {
+    font-family: var(--font-branding);
+    font-size: 0.82rem;
+    font-weight: 900;
+    color: #ffffff;
+    min-width: 14px;
+    text-align: right;
+}
+
+.status-meta-rodape {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    border-left: 1px solid rgba(255, 255, 255, 0.08);
+    padding-left: 8px;
+}
+
+.estadio-min {
+    font-size: 0.52rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    max-width: 80px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    text-transform: uppercase;
 }
 
-/* ================= 4. BANNER INSTITUCIONAL A GRANDE CONQUISTA ================= */
+.tag-status-rodape {
+    font-family: var(--font-branding);
+    font-size: 0.55rem;
+    font-weight: 900;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+.tag-status-rodape.encerrado { color: #8a96a8; }
+.tag-status-rodape.a-jogar { color: #00e676; }
+
+/* ================= 4. BANNER INSTITUCIONAL ================= */
 .secao-conceito-sula {
     background: linear-gradient(180deg, #02050e 0%, #061026 100%);
     border-bottom: 1px solid var(--border-sula);
-    padding: 1.8rem 0 1.6rem;
+    padding: 1.6rem 0;
     position: relative;
     z-index: 5;
 }
@@ -307,21 +411,20 @@ body.pagina-sulamericana-oficial::after {
 
 .slogan-principal-sula {
     font-family: var(--font-branding);
-    font-size: clamp(1.8rem, 4vw, 2.4rem);
+    font-size: clamp(1.6rem, 4vw, 2.2rem);
     font-weight: 900;
     letter-spacing: 3px;
     color: var(--text-pure-white);
     line-height: 1.1;
-    text-shadow: 0 0 30px rgba(0, 119, 255, 0.35);
+    text-shadow: 0 0 25px rgba(0, 119, 255, 0.35);
 }
 
 .frase-legado-sula {
     font-family: var(--font-ubuntu);
-    font-size: 0.9rem;
+    font-size: 0.88rem;
     color: var(--text-silver);
     font-weight: 400;
     margin-top: 4px;
-    letter-spacing: 0.5px;
 }
 
 /* ================= 5. SHOWCASE DE NOTÍCIAS ================= */
@@ -361,11 +464,6 @@ body.pagina-sulamericana-oficial::after {
     height: 2px;
     background: var(--sula-bar);
     z-index: 3;
-}
-
-.manchete-hero-grande:hover {
-    border-color: var(--sula-blue-cyan);
-    box-shadow: 0 15px 40px rgba(0, 119, 255, 0.2);
 }
 
 .imagem-hero-bg {
@@ -420,7 +518,6 @@ body.pagina-sulamericana-oficial::after {
     line-height: 1.45;
 }
 
-/* COLUNA DIREITA NOTÍCIAS */
 .coluna-noticias-empilhadas {
     display: flex;
     flex-direction: column;
@@ -601,7 +698,7 @@ body.pagina-sulamericana-oficial::after {
     filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.9));
 }
 
-/* ================= 7. RODAPÉ OFICIAL CONMEBOL ================= */
+/* ================= 7. RODAPÉ ================= */
 #rodape-conmebol-sula {
     background: #01040a;
     border-top: 1px solid var(--border-sula);
@@ -715,8 +812,17 @@ body.pagina-sulamericana-oficial::after {
         border: 1px solid rgba(0, 119, 255, 0.15);
     }
 
-    .status-sula-container { flex-direction: column; align-items: flex-start; gap: 8px; padding: 0 14px; }
-    .texto-status-sula { white-space: normal; font-size: 0.72rem; line-height: 1.4; }
+    .barra-ticker-topo { height: auto; flex-direction: column; align-items: stretch; padding: 6px 0; }
+    .header-bloco-ticker {
+        border-right: none;
+        border-bottom: 1px solid var(--border-sula);
+        padding: 4px 14px;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        min-width: 100%;
+    }
+    .item-jogo-rodape { min-width: 215px; padding: 5px 10px; }
 
     .secao-conceito-sula { padding: 1.4rem 0 1.2rem; }
     .faixa-conceito-container { padding: 0 14px; }
