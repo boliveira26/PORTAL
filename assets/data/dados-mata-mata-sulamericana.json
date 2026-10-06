@@ -19,8 +19,8 @@
       "data": "SEG 05/10/2026 MONUMENTAL DE NÚÑEZ 21:30",
       "m": "River Plate",
       "v": "Nacional",
-      "gm": null,
-      "gv": null
+      "gm": 1,
+      "gv": 2
     },
     {
       "fase": "OITAVAS • IDA",
@@ -89,8 +89,8 @@
       "data": "SEG 05/10/2026 POLIDEPORTIVO PUEBLO NUEVO 20:45",
       "m": "Deportivo Táchira",
       "v": "Boca Juniors",
-      "gm": null,
-      "gv": null
+      "gm": 0,
+      "gv": 2
     }
   ],
   "jogos": {

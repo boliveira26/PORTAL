@@ -4,7 +4,7 @@
 
 const ESCUDOS_SULA_MAPA = {
     "River Plate": "https://upload.wikimedia.org/wikipedia/commons/f/f1/River_Plate.png?utm_source=pt.wikipedia.org&utm_campaign=index&utm_content=original",
-    "Nacional": "https://upload.wikimedia.org/wikipedia/commons/1/1e/Club_Nacional_de_Football%27s_logo.png?utm_source=pt.wikipedia.org&utm_campaign=index&utm_content=original",
+    "Nacional": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/2684.png",
     "The Strongest": "https://assets.footylogos.com/logos/the-strongest/the-strongest-logo-footylogos.png",
     "Peñarol": "https://logodetimes.com/times/penarol/logo-penarol-256.png",
     "Palmeiras": "https://logodetimes.com/times/palmeiras/logo-palmeiras-256.png",

@@ -1031,8 +1031,8 @@
           "data": "QUI 01/10/2026 CAMPEÓN DEL SIGLO 21:30",
           "m": "Peñarol",
           "v": "Cerro Porteño",
-          "gm": null,
-          "gv": null
+          "gm": 0,
+          "gv": 1
         }
       ]
     }
