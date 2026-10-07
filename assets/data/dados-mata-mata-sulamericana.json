@@ -29,8 +29,8 @@
       "data": "TER 06/10/2026 HERNANDO SILES 20:45",
       "m": "The Strongest",
       "v": "Peñarol",
-      "gm": null,
-      "gv": null
+      "gm": 0,
+      "gv": 1
     },
     {
       "fase": "OITAVAS • IDA",
@@ -39,8 +39,8 @@
       "data": "TER 06/10/2026 NUBANK PARQUE 21:30",
       "m": "Palmeiras",
       "v": "Jorge Wilstermann",
-      "gm": null,
-      "gv": null
+      "gm": 0,
+      "gv": 1
     },
     {
       "fase": "OITAVAS • IDA",
@@ -49,8 +49,8 @@
       "data": "TER 06/10/2026 ALBERTO GALLARDO 19:15",
       "m": "Sporting Cristal",
       "v": "Mirassol",
-      "gm": null,
-      "gv": null
+      "gm": 3,
+      "gv": 1
     },
     {
       "fase": "OITAVAS • IDA",
@@ -79,8 +79,8 @@
       "data": "TER 06/10/2026 LA NUEVA OLLA 20:00",
       "m": "Cerro Porteño",
       "v": "Bolívar",
-      "gm": null,
-      "gv": null
+      "gm": 0,
+      "gv": 1
     },
     {
       "fase": "OITAVAS • IDA",
