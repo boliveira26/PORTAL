@@ -276,6 +276,31 @@
         "> \"Faltou atenção para matar o jogo quando tivemos o domínio. O resultado não era o que queríamos, mas iremos a Caracas para buscar a vaga.\"",
         "Sem a regra do gol qualificado, qualquer empate na Venezuela levará a decisão para as penalidades máximas."
       ]
+    },
+    {
+      "id": "quartas-sula",
+      "categoria": "SUL-AMERICANA",
+      "tipo_tag": "azul",
+      "titulo": "Confira a tabela detalhada das Quartas de Final da CONMEBOL Sudamericana",
+      "resumo": "Jogos serão realizados nos dias 12 e 15 de outubro.",
+      "autor": "Por Redação PES Media Hub",
+      "data_publicacao": "10/10/2026 04:40",
+      "imagem": "https://cdn.conmebol.com/wp-content/uploads/2020/10/sudamericana-int.jpg",
+      "legenda_foto": "Oito times estão vivos na disputa pela Grande Conquista",
+      "corpo_materia": [
+        "A Conmebol divulgou hoje a tabela detalhada dos jogos das quartas de final da CONMEBOL Sudamericana. Após grandes jogos nas oitavas, oito clubes ainda estão vivos no caminho rumo à grande final, do dia 24 deste mês.",
+        "Confira os jogos:",
+        "JOGOS DE IDA - 12/10/2026",
+        "19h15 - Independiente del Valle x Bolívar (Estádio Banco Guayaquil, Equador)",
+        "20h00 - Mirassol x Peñarol (Estádio José Maria de Campos Maia, Brasil)",
+        "20h45 - Libertad x Boca Juniors (Estádio Defensores del Chaco, Paraguai)",
+        "21h30 - River Plate x Palmeiras (Monumental de Núñez, Argentina)",
+        "JOGOS DE VOLTA - 15/10/2026",
+        "19h00 - Bolívar x Independiente del Valle (Estádio Hernando Siles, Bolívia)",
+        "19h45 - Peñarol x Mirassol (Estádio Campeón del Siglo, Uruguai)",
+        "20h30 - Boca Juniors x Libertad (La Bombonera, Argentina)",
+        "21h - Palmeiras x River Plate (Nubank Parque, Brasil)"
+      ]
     }
   ]
 }
