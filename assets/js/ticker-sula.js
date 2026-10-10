@@ -43,6 +43,13 @@ function extrairDataRaw(textoData) {
     return match ? match[1] : '';
 }
 
+function converterParaDataObj(dataStr) {
+    if (!dataStr) return null;
+    const partes = dataStr.split('/').map(Number);
+    if (partes.length < 3) return null;
+    return new Date(partes[2], partes[1] - 1, partes[0]);
+}
+
 function extrairHoraEEstadio(textoData) {
     if (!textoData) return { hora: '--:--', estadio: 'ESTÁDIO OFICIAL' };
     const partes = textoData.trim().split(/\s+/);
@@ -51,6 +58,41 @@ function extrairHoraEEstadio(textoData) {
     const hora = partes[partes.length - 1];
     const estadio = partes.slice(2, partes.length - 1).join(' ');
     return { hora: hora || '--:--', estadio: estadio || 'ESTÁDIO OFICIAL' };
+}
+
+// CÁLCULO INTELIGENTE DA DATA MAIS PRÓXIMA
+function calcularMelhorDataExibicao(todasPartidas) {
+    const hojeObj = new Date();
+    hojeObj.setHours(0, 0, 0, 0);
+    const hojeStr = formatarDataHoje();
+
+    // 1. Há jogos hoje?
+    const jogosHoje = todasPartidas.filter(p => p.dataApenas === hojeStr);
+    if (jogosHoje.length > 0) {
+        return { dataEscolhida: hojeStr, label: `JOGOS DE HOJE • ${hojeStr}` };
+    }
+
+    // 2. Extrai todas as datas únicas válidas
+    const datasUnicas = [...new Set(todasPartidas.map(p => p.dataApenas).filter(Boolean))];
+    if (datasUnicas.length === 0) return null;
+
+    const datasComObj = datasUnicas.map(str => {
+        const obj = converterParaDataObj(str);
+        const diffDias = obj ? Math.abs((obj.getTime() - hojeObj.getTime()) / (1000 * 60 * 60 * 24)) : Infinity;
+        const ehFuturo = obj ? obj >= hojeObj : false;
+        return { str, obj, diffDias, ehFuturo };
+    }).filter(d => d.obj !== null);
+
+    // Ordena pela MENOR diferença de dias até hoje
+    datasComObj.sort((a, b) => a.diffDias - b.diffDias);
+
+    const maisProxima = datasComObj[0];
+    const prefixo = maisProxima.ehFuturo ? 'PRÓXIMOS JOGOS' : 'ÚLTIMOS RESULTADOS';
+
+    return {
+        dataEscolhida: maisProxima.str,
+        label: `${prefixo} • ${maisProxima.str}`
+    };
 }
 
 async function carregarTickerSulamericana() {
@@ -66,15 +108,14 @@ async function carregarTickerSulamericana() {
 
         const placaresOficiais = (dados.jogos && dados.jogos.placares) ? dados.jogos.placares : {};
 
-        // Mapeia todas as partidas e puxa os placares de jogos.placares
         const todasPartidas = (dados.partidasMataMata || []).map(p => {
             const ehIda = !p.fase || p.fase.includes('IDA');
-            const cardId = `sula-oitavas-${p.chave}-${ehIda ? 'ida' : 'volta'}`;
+            const faseCod = p.fase && p.fase.includes('QUARTAS') ? 'quartas' : 'oitavas';
+            const cardId = `sula-${faseCod}-${p.chave}-${ehIda ? 'ida' : 'volta'}`;
 
             let gm = p.gm;
             let gv = p.gv;
 
-            // PONTE DIRETA: Se o placar foi digitado em jogos.placares, puxa dele!
             if (placaresOficiais[cardId]) {
                 const po = placaresOficiais[cardId];
                 if (po.m !== null && po.m !== undefined) gm = po.m;
@@ -91,21 +132,15 @@ async function carregarTickerSulamericana() {
 
         if (todasPartidas.length === 0) return;
 
-        // Filtra estritamente pela data de hoje real do sistema
-        const hojeReal = formatarDataHoje();
-        let jogosDoDia = todasPartidas.filter(p => p.dataApenas === hojeReal);
+        // Executa o cálculo cronológico de proximidade
+        const resultadoData = calcularMelhorDataExibicao(todasPartidas);
+        if (!resultadoData) return;
 
-        // Se hoje não houver jogo na tabela, exibe os jogos da data mais recente
-        if (jogosDoDia.length === 0) {
-            const datasDisponiveis = [...new Set(todasPartidas.map(p => p.dataApenas).filter(Boolean))];
-            const ultimaData = datasDisponiveis[datasDisponiveis.length - 1];
-            jogosDoDia = todasPartidas.filter(p => p.dataApenas === ultimaData);
-        }
-
+        const jogosDoDia = todasPartidas.filter(p => p.dataApenas === resultadoData.dataEscolhida);
         if (jogosDoDia.length === 0) return;
 
-        if (labelData && jogosDoDia[0].dataApenas) {
-            labelData.textContent = `JOGOS DO DIA • ${jogosDoDia[0].dataApenas}`;
+        if (labelData) {
+            labelData.textContent = resultadoData.label;
         }
 
         container.innerHTML = '';
@@ -131,7 +166,7 @@ async function carregarTickerSulamericana() {
 
             card.innerHTML = `
                 <div class="info-meta-rodape" style="color: var(--sula-solar);">
-                    <span>CHAVE ${jogo.chave}</span>
+                    <span>${jogo.fase || 'MATA-MATA'}</span>
                     <span style="font-size:0.55rem; color:#fff;">${info.hora}</span>
                 </div>
 

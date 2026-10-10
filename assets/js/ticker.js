@@ -58,6 +58,13 @@ function extrairDataRaw(textoData) {
     return match ? match[1] : '';
 }
 
+function converterParaDataObj(dataStr) {
+    if (!dataStr) return null;
+    const partes = dataStr.split('/').map(Number);
+    if (partes.length < 3) return null;
+    return new Date(partes[2], partes[1] - 1, partes[0]);
+}
+
 function formatarInfoJogo(texto) {
     if (!texto) return { dataHora: '', estadio: 'ESTÁDIO OFICIAL' };
     const partes = texto.trim().split(/\s+/);
@@ -81,7 +88,6 @@ async function carregarTickerHome() {
 
     let todosJogos = [];
 
-    // Carrega jogos do mata-mata da Sul-Americana e da Libertadores
     try {
         const [resSula, resLiberta] = await Promise.all([
             fetch('assets/data/dados-mata-mata-sulamericana.json?v=' + Date.now()),
@@ -94,10 +100,10 @@ async function carregarTickerHome() {
             
             (dSula.partidasMataMata || []).forEach(p => {
                 const ehIda = !p.fase || p.fase.includes('IDA');
-                const cardId = `sula-oitavas-${p.chave}-${ehIda ? 'ida' : 'volta'}`;
+                const faseCod = p.fase && p.fase.includes('QUARTAS') ? 'quartas' : 'oitavas';
+                const cardId = `sula-${faseCod}-${p.chave}-${ehIda ? 'ida' : 'volta'}`;
                 let gm = p.gm, gv = p.gv;
 
-                // Conexão direta com jogos.placares
                 if (placaresSula[cardId]) {
                     if (placaresSula[cardId].m !== null) gm = placaresSula[cardId].m;
                     if (placaresSula[cardId].v !== null) gv = placaresSula[cardId].v;
@@ -126,7 +132,7 @@ async function carregarTickerHome() {
         }
     } catch (e) {}
 
-    // Fallback fase de grupos caso o mata-mata ainda não tenha começado
+    // Fallback fase de grupos
     if (todosJogos.length === 0) {
         try {
             const resp = await fetch('assets/data/dados-fase-de-grupos.json?v=' + Date.now());
@@ -160,16 +166,27 @@ async function carregarTickerHome() {
         dataApenas: extrairDataRaw(j.data)
     }));
 
-    // Filtra rigorosamente pela data de hoje do seu computador
-    const hojeReal = formatarDataHoje();
-    let jogosExibir = todosJogos.filter(j => j.dataApenas === hojeReal);
+    const hojeObj = new Date();
+    hojeObj.setHours(0, 0, 0, 0);
+    const hojeStr = formatarDataHoje();
 
-    // Se hoje não houver jogo marcado, busca a data mais recente com partidas
+    // 1. Há jogos hoje?
+    let jogosExibir = todosJogos.filter(j => j.dataApenas === hojeStr);
+
+    // 2. Se não houver jogos hoje, calcula a menor distância de dias
     if (jogosExibir.length === 0) {
         const datasUnicas = [...new Set(todosJogos.map(j => j.dataApenas).filter(Boolean))];
-        if (datasUnicas.length > 0) {
-            const ultimaData = datasUnicas[datasUnicas.length - 1];
-            jogosExibir = todosJogos.filter(j => j.dataApenas === ultimaData);
+        const datasComDiff = datasUnicas.map(str => {
+            const obj = converterParaDataObj(str);
+            const diffDias = obj ? Math.abs((obj.getTime() - hojeObj.getTime()) / (1000 * 60 * 60 * 24)) : Infinity;
+            return { str, obj, diffDias };
+        }).filter(d => d.obj !== null);
+
+        datasComDiff.sort((a, b) => a.diffDias - b.diffDias);
+
+        if (datasComDiff.length > 0) {
+            const dataMaisProxima = datasComDiff[0].str;
+            jogosExibir = todosJogos.filter(j => j.dataApenas === dataMaisProxima);
         }
     }
 
@@ -184,7 +201,7 @@ async function carregarTickerHome() {
 
         const ehLiberta = (jogo.torneio === 'libertadores');
         const badgeCor = ehLiberta ? 'color: var(--gold-main);' : 'color: var(--sula-solar);';
-        const badgeTexto = jogo.badgeNome || (ehLiberta ? `LIBERTADORES • CHAVE ${jogo.chave || 'OITAVAS'}` : `SUDAMERICANA • CHAVE ${jogo.chave || 'OITAVAS'}`);
+        const badgeTexto = jogo.badgeNome || (ehLiberta ? `LIBERTADORES • ${jogo.chave ? 'CHAVE ' + jogo.chave : 'OITAVAS'}` : `SUDAMERICANA • ${jogo.chave ? 'CHAVE ' + jogo.chave : 'MATA-MATA'}`);
 
         const temPlacar = (jogo.gm !== null && jogo.gm !== undefined && jogo.gv !== null && jogo.gv !== undefined);
         const gmTxt = temPlacar ? jogo.gm : '-';
@@ -236,7 +253,6 @@ async function carregarTickerHome() {
     });
 }
 
-// Monitor de virada 00:00
 setInterval(() => {
     const diaAgora = new Date().getDate();
     if (diaRegistradoHome !== null && diaAgora !== diaRegistradoHome) {
