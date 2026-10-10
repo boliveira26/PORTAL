@@ -1,6 +1,6 @@
 {
   "sorteioRealizado": true,
-  "faseAtiva": "sorteio_concluido",
+  "faseAtiva": "oitavas_ida",
   "sorteio": [
     { "chave": "A", "pote2": "Flamengo", "pote1": "Estudiantes" },
     { "chave": "B", "pote2": "Atlético Nacional", "pote1": "Junior Barranquilla" },
@@ -10,6 +10,168 @@
     { "chave": "F", "pote2": "Red Bull Bragantino", "pote1": "Bahia" },
     { "chave": "G", "pote2": "Corinthians", "pote1": "Barcelona SC" },
     { "chave": "H", "pote2": "Olimpia", "pote1": "LDU Quito" }
+  ],
+  "partidasMataMata": [
+    {
+      "fase": "OITAVAS • IDA",
+      "torneio": "libertadores",
+      "chave": "B",
+      "data": "SÁB 10/10/2026 ATANASIO GIRARDOT 19:15",
+      "m": "Atlético Nacional",
+      "v": "Junior Barranquilla",
+      "gm": null,
+      "gv": null
+    },
+    {
+      "fase": "OITAVAS • IDA",
+      "torneio": "libertadores",
+      "chave": "D",
+      "data": "SÁB 10/10/2026 MARACANÃ 20:00",
+      "m": "Fluminense",
+      "v": "Universitario",
+      "gm": null,
+      "gv": null
+    },
+    {
+      "fase": "OITAVAS • IDA",
+      "torneio": "libertadores",
+      "chave": "F",
+      "data": "SÁB 10/10/2026 CÍCERO DE SOUZA MARQUES 20:45",
+      "m": "Red Bull Bragantino",
+      "v": "Bahia",
+      "gm": null,
+      "gv": null
+    },
+    {
+      "fase": "OITAVAS • IDA",
+      "torneio": "libertadores",
+      "chave": "G",
+      "data": "SÁB 10/10/2026 NEO QUÍMICA ARENA 21:30",
+      "m": "Corinthians",
+      "v": "Barcelona SC",
+      "gm": null,
+      "gv": null
+    },
+    {
+      "fase": "OITAVAS • IDA",
+      "torneio": "libertadores",
+      "chave": "C",
+      "data": "DOM 11/10/2026 PRESIDENTE PERÓN 19:15",
+      "m": "Racing Club",
+      "v": "Atlético Mineiro",
+      "gm": null,
+      "gv": null
+    },
+    {
+      "fase": "OITAVAS • IDA",
+      "torneio": "libertadores",
+      "chave": "E",
+      "data": "DOM 11/10/2026 REI PELÉ 20:00",
+      "m": "CRB",
+      "v": "Colo-Colo",
+      "gm": null,
+      "gv": null
+    },
+    {
+      "fase": "OITAVAS • IDA",
+      "torneio": "libertadores",
+      "chave": "H",
+      "data": "DOM 11/10/2026 MANUEL FERREIRA 20:45",
+      "m": "Olimpia",
+      "v": "LDU Quito",
+      "gm": null,
+      "gv": null
+    },
+    {
+      "fase": "OITAVAS • IDA",
+      "torneio": "libertadores",
+      "chave": "A",
+      "data": "DOM 11/10/2026 MARACANÃ 21:30",
+      "m": "Flamengo",
+      "v": "Estudiantes",
+      "gm": null,
+      "gv": null
+    },
+    {
+      "fase": "OITAVAS • VOLTA",
+      "torneio": "libertadores",
+      "chave": "B",
+      "data": "TER 13/10/2026 METROPOLITANO ROBERTO MELÉNDEZ 19:15",
+      "m": "Junior Barranquilla",
+      "v": "Atlético Nacional",
+      "gm": null,
+      "gv": null
+    },
+    {
+      "fase": "OITAVAS • VOLTA",
+      "torneio": "libertadores",
+      "chave": "D",
+      "data": "TER 13/10/2026 MONUMENTAL U 20:00",
+      "m": "Universitario",
+      "v": "Fluminense",
+      "gm": null,
+      "gv": null
+    },
+    {
+      "fase": "OITAVAS • VOLTA",
+      "torneio": "libertadores",
+      "chave": "F",
+      "data": "TER 13/10/2026 ARENA FONTE NOVA 20:45",
+      "m": "Bahia",
+      "v": "Red Bull Bragantino",
+      "gm": null,
+      "gv": null
+    },
+    {
+      "fase": "OITAVAS • VOLTA",
+      "torneio": "libertadores",
+      "chave": "G",
+      "data": "TER 13/10/2026 MONUMENTAL ISIDRO ROMERO CARBO 21:30",
+      "m": "Barcelona SC",
+      "v": "Corinthians",
+      "gm": null,
+      "gv": null
+    },
+    {
+      "fase": "OITAVAS • VOLTA",
+      "torneio": "libertadores",
+      "chave": "C",
+      "data": "QUA 14/10/2026 ARENA MRV 19:15",
+      "m": "Atlético Mineiro",
+      "v": "Racing Club",
+      "gm": null,
+      "gv": null
+    },
+    {
+      "fase": "OITAVAS • VOLTA",
+      "torneio": "libertadores",
+      "chave": "E",
+      "data": "QUA 14/10/2026 MONUMENTAL DAVID ARELLANO 20:00",
+      "m": "Colo-Colo",
+      "v": "CRB",
+      "gm": null,
+      "gv": null
+    },
+    {
+      "fase": "OITAVAS • VOLTA",
+      "torneio": "libertadores",
+      "chave": "H",
+      "data": "QUA 14/10/2026 CASABLANCA 20:45",
+      "m": "LDU Quito",
+      "v": "Olimpia",
+      "gm": null,
+      "gv": null
+    },
+    {
+      "fase": "OITAVAS • VOLTA",
+      "torneio": "libertadores",
+      "chave": "A",
+      "data": "QUA 14/10/2026 LUIS HIRSCHI 21:30",
+      "m": "Estudiantes",
+      "v": "Flamengo",
+      "gm": null,
+      "gv": null
+    }
   ],
   "jogos": {
     "placares": {
