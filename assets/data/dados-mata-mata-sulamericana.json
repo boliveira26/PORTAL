@@ -173,13 +173,64 @@
       "gm": null,
       "gv": null
     },
+
+    {
+    "fase": "QUARTAS • IDA",
+      "torneio": "sulamericana",
+      "chave": "1",
+      "data": "SEG 12/10/2026 MONUMENTAL DE NÚÑEZ 21:30",
+      "m": "River Plate",
+      "v": "Palmeiras",
+      "gm": null,
+      "gv": null
+    },
+    {
+    "fase": "QUARTAS • IDA",
+      "torneio": "sulamericana",
+      "chave": "2",
+      "data": "SEG 12/10/2026 BANCO GUAYAQUIL 19:15",
+      "m": "Ind. del Valle",
+      "v": "Bolívar",
+      "gm": null,
+      "gv": null
+    },
     {
     "fase": "QUARTAS • IDA",
       "torneio": "sulamericana",
       "chave": "3",
-      "data": "SEX 09/10/2026 LA BOMBONERA 20:45",
+      "data": "SEG 12/10/2026 MAIÃO 20:00",
       "m": "Mirassol",
       "v": "Peñarol",
+      "gm": null,
+      "gv": null
+    },
+    {
+    "fase": "QUARTAS • IDA",
+      "torneio": "sulamericana",
+      "chave": "4",
+      "data": "SEG 12/10/2026 DEFENSORES DEL CHACO 20:45",
+      "m": "Libertad",
+      "v": "Boca Juniors",
+      "gm": null,
+      "gv": null
+    },
+    {
+      "fase": "QUARTAS • VOLTA",
+      "torneio": "sulamericana",
+      "chave": "1",
+      "data": "QUI 15/10/2026 NUBANK PARQUE 21:00",
+      "m": "Palmeiras",
+      "v": "River Plate",
+      "gm": null,
+      "gv": null
+    },
+    {
+    "fase": "QUARTAS • VOLTA",
+      "torneio": "sulamericana",
+      "chave": "2",
+      "data": "QUI 15/10/2026 HERNANDO SILES 19:00",
+      "m": "Bolívar",
+      "v": "Ind. del Valle",
       "gm": null,
       "gv": null
     },
@@ -187,9 +238,19 @@
     "fase": "QUARTAS • VOLTA",
       "torneio": "sulamericana",
       "chave": "3",
-      "data": "SEX 09/10/2026 LA BOMBONERA 20:45",
+      "data": "QUI 15/10/2026 CAMPEÓN DEL SIGLO 19:45",
       "m": "Peñarol",
       "v": "Mirassol",
+      "gm": null,
+      "gv": null
+    },
+    {
+    "fase": "QUARTAS • VOLTA",
+      "torneio": "sulamericana",
+      "chave": "4",
+      "data": "QUI 15/10/2026 LA BOMBONERA 20:30",
+      "m": "Boca Juniors",
+      "v": "Libertad",
       "gm": null,
       "gv": null
     }
