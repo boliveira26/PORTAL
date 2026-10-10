@@ -1,5 +1,6 @@
+
 // ==========================================================================
-// assets/js/ticker-sula.js - TICKER OFICIAL DE JOGOS DA CONMEBOL SUDAMERICANA
+// assets/js/ticker-sula.js - TICKER REAL DE JOGOS DO DIA (SUL-AMERICANA)
 // ==========================================================================
 
 const ESCUDOS_SULA_MAPA = {
@@ -22,11 +23,38 @@ const ESCUDOS_SULA_MAPA = {
     "Boca Juniors": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cb/Boca_Juniors_-_Novo_Escudo.svg/1920px-Boca_Juniors_-_Novo_Escudo.svg.png?utm_source=pt.wikipedia.org&utm_campaign=index&utm_content=thumbnail"
 };
 
+let diaRegistradoSula = null;
+
 function obterEscudoSula(nome) {
     return ESCUDOS_SULA_MAPA[nome] || `assets/img/escudos/${nome.toLowerCase().replace(/[^a-z0-9]/g, '-')}.png`;
 }
 
+function formatarDataHoje() {
+    const agora = new Date();
+    const dia = String(agora.getDate()).padStart(2, '0');
+    const mes = String(agora.getMonth() + 1).padStart(2, '0');
+    const ano = agora.getFullYear();
+    return `${dia}/${mes}/${ano}`;
+}
+
+function extrairDataRaw(textoData) {
+    if (!textoData) return '';
+    const match = textoData.match(/(\d{2}\/\d{2}\/\d{4})/);
+    return match ? match[1] : '';
+}
+
+function extrairHoraEEstadio(textoData) {
+    if (!textoData) return { hora: '--:--', estadio: 'ESTÁDIO OFICIAL' };
+    const partes = textoData.trim().split(/\s+/);
+    if (partes.length < 3) return { hora: '--:--', estadio: 'ESTÁDIO OFICIAL' };
+
+    const hora = partes[partes.length - 1];
+    const estadio = partes.slice(2, partes.length - 1).join(' ');
+    return { hora: hora || '--:--', estadio: estadio || 'ESTÁDIO OFICIAL' };
+}
+
 async function carregarTickerSulamericana() {
+    diaRegistradoSula = new Date().getDate();
     const container = document.getElementById('trilha-ticker-topo');
     const labelData = document.getElementById('label-data-ticker-topo');
     if (!container) return;
@@ -36,16 +64,34 @@ async function carregarTickerSulamericana() {
         if (!resp.ok) return;
         const dados = await resp.json();
 
-        // Pega as partidas cadastradas no JSON
-        const jogos = dados.partidasMataMata || [];
-        if (jogos.length === 0) return;
+        // 1. Pega todas as partidas (Ida e Volta) com a data extraída
+        const todasPartidas = (dados.partidasMataMata || []).map(p => ({
+            ...p,
+            dataApenas: extrairDataRaw(p.data)
+        }));
 
-        if (labelData) {
-            labelData.textContent = `OITAVAS DE FINAL • JOGOS DE IDA`;
+        if (todasPartidas.length === 0) return;
+
+        // 2. Busca rigorosamente os jogos da DATA DE HOJE do seu computador
+        const hojeReal = formatarDataHoje();
+        let jogosDoDia = todasPartidas.filter(p => p.dataApenas === hojeReal);
+
+        // 3. Se hoje não houver jogos marcados, busca as partidas mais recentes já disputadas
+        if (jogosDoDia.length === 0) {
+            const datasDisponiveis = [...new Set(todasPartidas.map(p => p.dataApenas).filter(Boolean))];
+            // Pega a última data válida com partidas
+            const ultimaData = datasDisponiveis[datasDisponiveis.length - 1];
+            jogosDoDia = todasPartidas.filter(p => p.dataApenas === ultimaData);
+        }
+
+        if (jogosDoDia.length === 0) return;
+
+        if (labelData && jogosDoDia[0].dataApenas) {
+            labelData.textContent = `JOGOS DO DIA • ${jogosDoDia[0].dataApenas}`;
         }
 
         container.innerHTML = '';
-        const loopDuplicado = [...jogos, ...jogos];
+        const loopDuplicado = [...jogosDoDia, ...jogosDoDia];
 
         loopDuplicado.forEach(jogo => {
             const card = document.createElement('div');
@@ -57,24 +103,30 @@ async function carregarTickerSulamericana() {
             const statusTxt = temPlacar ? 'ENCERRADO' : 'A JOGAR';
             const statusClass = temPlacar ? 'encerrado' : 'a-jogar';
 
-            const info = formatarDataHoraEstadioSula(jogo.data);
+            let gmVenc = '', gvVenc = '';
+            if (temPlacar) {
+                if (jogo.gm > jogo.gv) gmVenc = 'vencedor';
+                else if (jogo.gv > jogo.gm) gvVenc = 'vencedor';
+            }
+
+            const info = extrairHoraEEstadio(jogo.data);
 
             card.innerHTML = `
                 <div class="info-meta-rodape" style="color: var(--sula-solar);">
                     <span>CHAVE ${jogo.chave}</span>
-                    <span style="font-size:0.55rem; color:#fff;">${info.dataHora}</span>
+                    <span style="font-size:0.55rem; color:#fff;">${info.hora}</span>
                 </div>
 
                 <div class="bloco-confronto-rodape">
                     <div class="linha-time-rodape">
                         <img src="${obterEscudoSula(jogo.m)}" class="escudo-min" alt="${jogo.m}" onerror="this.style.opacity='0.2'">
                         <span class="nome-min">${jogo.m}</span>
-                        <span class="gols-min">${gmTxt}</span>
+                        <span class="gols-min ${gmVenc}">${gmTxt}</span>
                     </div>
                     <div class="linha-time-rodape">
                         <img src="${obterEscudoSula(jogo.v)}" class="escudo-min" alt="${jogo.v}" onerror="this.style.opacity='0.2'">
                         <span class="nome-min">${jogo.v}</span>
-                        <span class="gols-min">${gvTxt}</span>
+                        <span class="gols-min ${gvVenc}">${gvTxt}</span>
                     </div>
                 </div>
 
@@ -91,21 +143,14 @@ async function carregarTickerSulamericana() {
     }
 }
 
-function formatarDataHoraEstadioSula(texto) {
-    if (!texto) return { dataHora: '', estadio: 'ESTÁDIO OFICIAL' };
-    const partes = texto.trim().split(/\s+/);
-    if (partes.length < 3) return { dataHora: texto, estadio: 'ESTÁDIO OFICIAL' };
-
-    const diaSemana = partes[0];
-    const dataDia = partes[1].replace('/2026', '');
-    const horario = partes[partes.length - 1];
-    const estadio = partes.slice(2, partes.length - 1).join(' ');
-
-    return {
-        dataHora: `${diaSemana} ${dataDia} • ${horario}`,
-        estadio: estadio || 'ESTÁDIO OFICIAL'
-    };
-}
+// Monitor contínuo de virada de dia às 00:00
+setInterval(() => {
+    const diaAgora = new Date().getDate();
+    if (diaRegistradoSula !== null && diaAgora !== diaRegistradoSula) {
+        console.log('00:00 detectado! Atualizando ticker da Sul-Americana para o novo dia...');
+        carregarTickerSulamericana();
+    }
+}, 30000);
 
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', carregarTickerSulamericana);

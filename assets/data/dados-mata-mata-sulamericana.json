@@ -91,8 +91,89 @@
       "v": "Boca Juniors",
       "gm": 0,
       "gv": 2
+    },
+        {
+      "fase": "OITAVAS • VOLTA",
+      "torneio": "sulamericana",
+      "chave": "A",
+      "data": "QUI 08/10/2026 GRAN PARQUE CENTRAL 21:30",
+      "m": "Nacional",
+      "v": "River Plate",
+      "gm": null,
+      "gv": null
+    },
+    {
+      "fase": "OITAVAS • VOLTA",
+      "torneio": "sulamericana",
+      "chave": "E",
+      "data": "QUI 08/10/2026 OLÍMPICO DE LA UCV 19:15",
+      "m": "Caracas",
+      "v": "Ind. del Valle",
+      "gm": null,
+      "gv": null
+    },
+    {
+      "fase": "OITAVAS • VOLTA",
+      "torneio": "sulamericana",
+      "chave": "F",
+      "data": "QUI 08/10/2026 LA HUERTA 20:00",
+      "m": "Libertad",
+      "v": "Universidad Católica",
+      "gm": null,
+      "gv": null
+    },
+    {
+      "fase": "OITAVAS • VOLTA",
+      "torneio": "sulamericana",
+      "chave": "B",
+      "data": "SEX 09/10/2026 CAMPEÓN DEL SIGLO 20:45",
+      "m": "Peñarol",
+      "v": "The Strongest",
+      "gm": null,
+      "gv": null
+    },
+    {
+      "fase": "OITAVAS • VOLTA",
+      "torneio": "sulamericana",
+      "chave": "C",
+      "data": "SEX 09/10/2026 FÉLIX CAPRILES 21:30",
+      "m": "Jorge Wilstermann",
+      "v": "Palmeiras",
+      "gm": null,
+      "gv": null
+    },
+    {
+      "fase": "OITAVAS • VOLTA",
+      "torneio": "sulamericana",
+      "chave": "D",
+      "data": "SEX 09/10/2026 MAIÃO 19:15",
+      "m": "Mirassol",
+      "v": "Sporting Cristal",
+      "gm": null,
+      "gv": null
+    },
+    {
+      "fase": "OITAVAS • VOLTA",
+      "torneio": "sulamericana",
+      "chave": "G",
+      "data": "SEX 09/10/2026 HERNANDO SILES 20:00",
+      "m": "Bolívar",
+      "v": "Cerro Porteño",
+      "gm": null,
+      "gv": null
+    },
+    {
+      "fase": "OITAVAS • VOLTA",
+      "torneio": "sulamericana",
+      "chave": "H",
+      "data": "SEX 09/10/2026 LA BOMBONERA 20:45",
+      "m": "Boca Juniors",
+      "v": "Deportivo Táchira",
+      "gm": null,
+      "gv": null
     }
   ],
+
   "jogos": {
     "placares": {
       "sula-oitavas-A-ida": { "m": null, "v": null },
