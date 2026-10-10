@@ -1,5 +1,5 @@
 // ==========================================================================
-// assets/js/ticker.js - MOTOR UNIFICADO DO CARROSSEL DE JOGOS (HOME)
+// assets/js/ticker.js - MOTOR HOME UNIFICADO (LÊ INFOJOGOS DIRETO DO JSON)
 // ==========================================================================
 
 const ESCUDOS_TICKER = {
@@ -88,93 +88,111 @@ async function carregarTickerHome() {
 
     let todosJogos = [];
 
+    // Carrega dados de ambas as copas
     try {
         const [resSula, resLiberta] = await Promise.all([
             fetch('assets/data/dados-mata-mata-sulamericana.json?v=' + Date.now()),
             fetch('assets/data/dados-mata-mata-libertadores.json?v=' + Date.now())
         ]);
 
+        // 1. Processa Sul-Americana
         if (resSula.ok) {
             const dSula = await resSula.json();
             const placaresSula = (dSula.jogos && dSula.jogos.placares) ? dSula.jogos.placares : {};
-            
-            (dSula.partidasMataMata || []).forEach(p => {
-                const ehIda = !p.fase || p.fase.includes('IDA');
-                const faseCod = p.fase && p.fase.includes('QUARTAS') ? 'quartas' : 'oitavas';
-                const cardId = `sula-${faseCod}-${p.chave}-${ehIda ? 'ida' : 'volta'}`;
-                let gm = p.gm, gv = p.gv;
+            const infoSula = (dSula.jogos && dSula.jogos.infoJogos) ? dSula.jogos.infoJogos : {};
 
-                if (placaresSula[cardId]) {
-                    if (placaresSula[cardId].m !== null) gm = placaresSula[cardId].m;
-                    if (placaresSula[cardId].v !== null) gv = placaresSula[cardId].v;
-                }
+            if (dSula.sorteio && Array.isArray(dSula.sorteio)) {
+                dSula.sorteio.forEach(c => {
+                    const l = c.chave;
+                    const idIda = `sula-oitavas-${l}-ida`;
+                    const idVolta = `sula-oitavas-${l}-volta`;
 
-                todosJogos.push({ ...p, gm, gv });
-            });
-        }
+                    if (infoSula[idIda] && !infoSula[idIda].includes('A DEFINIR')) {
+                        const pl = placaresSula[idIda] || { m: null, v: null };
+                        todosJogos.push({
+                            torneio: 'sulamericana',
+                            chave: l,
+                            dataTexto: infoSula[idIda],
+                            dataApenas: extrairDataRaw(infoSula[idIda]),
+                            m: c.pote4 || c.time4,
+                            v: c.pote3 || c.time3,
+                            gm: pl.m,
+                            gv: pl.v
+                        });
+                    }
 
-        if (resLiberta.ok) {
-            const dLib = await resLiberta.json();
-            const placaresLib = (dLib.jogos && dLib.jogos.placares) ? dLib.jogos.placares : {};
-
-            (dLib.partidasMataMata || []).forEach(p => {
-                const ehIda = !p.fase || p.fase.includes('IDA');
-                const cardId = `oitavas-${p.chave}-${ehIda ? 'ida' : 'volta'}`;
-                let gm = p.gm, gv = p.gv;
-
-                if (placaresLib[cardId]) {
-                    if (placaresLib[cardId].m !== null) gm = placaresLib[cardId].m;
-                    if (placaresLib[cardId].v !== null) gv = placaresLib[cardId].v;
-                }
-
-                todosJogos.push({ ...p, gm, gv });
-            });
-        }
-    } catch (e) {}
-
-    // Fallback fase de grupos
-    if (todosJogos.length === 0) {
-        try {
-            const resp = await fetch('assets/data/dados-fase-de-grupos.json?v=' + Date.now());
-            if (resp.ok) {
-                const dadosGrupos = await resp.json();
-                ['A','B','C','D','E','F','G','H'].forEach(l => {
-                    const g = dadosGrupos[l];
-                    if (g && g.rodadas) {
-                        const r = g.rodadaExibida || 6;
-                        (g.rodadas[r] || []).forEach(p => {
-                            todosJogos.push({
-                                torneio: 'libertadores',
-                                badgeNome: `GRUPO ${l} • R${r}`,
-                                data: p.data,
-                                m: p.m,
-                                v: p.v,
-                                gm: p.gm,
-                                gv: p.gv
-                            });
+                    if (infoSula[idVolta] && !infoSula[idVolta].includes('A DEFINIR')) {
+                        const pl = placaresSula[idVolta] || { m: null, v: null };
+                        todosJogos.push({
+                            torneio: 'sulamericana',
+                            chave: l,
+                            dataTexto: infoSula[idVolta],
+                            dataApenas: extrairDataRaw(infoSula[idVolta]),
+                            m: c.pote3 || c.time3,
+                            v: c.pote4 || c.time4,
+                            gm: pl.m,
+                            gv: pl.v
                         });
                     }
                 });
             }
-        } catch (e) {}
-    }
+        }
+
+        // 2. Processa Libertadores
+        if (resLiberta.ok) {
+            const dLib = await resLiberta.json();
+            const placaresLib = (dLib.jogos && dLib.jogos.placares) ? dLib.jogos.placares : {};
+            const infoLib = (dLib.jogos && dLib.jogos.infoJogos) ? dLib.jogos.infoJogos : {};
+
+            if (dLib.sorteio && Array.isArray(dLib.sorteio)) {
+                dLib.sorteio.forEach(c => {
+                    const l = c.chave;
+                    const idIda = `oitavas-${l}-ida`;
+                    const idVolta = `oitavas-${l}-volta`;
+
+                    if (infoLib[idIda] && !infoLib[idIda].includes('A DEFINIR')) {
+                        const pl = placaresLib[idIda] || { m: null, v: null };
+                        todosJogos.push({
+                            torneio: 'libertadores',
+                            chave: l,
+                            dataTexto: infoLib[idIda],
+                            dataApenas: extrairDataRaw(infoLib[idIda]),
+                            m: c.pote2,
+                            v: c.pote1,
+                            gm: pl.m,
+                            gv: pl.v
+                        });
+                    }
+
+                    if (infoLib[idVolta] && !infoLib[idVolta].includes('A DEFINIR')) {
+                        const pl = placaresLib[idVolta] || { m: null, v: null };
+                        todosJogos.push({
+                            torneio: 'libertadores',
+                            chave: l,
+                            dataTexto: infoLib[idVolta],
+                            dataApenas: extrairDataRaw(infoLib[idVolta]),
+                            m: c.pote1,
+                            v: c.pote2,
+                            gm: pl.m,
+                            gv: pl.v
+                        });
+                    }
+                });
+            }
+        }
+    } catch (e) {}
 
     if (todosJogos.length === 0) return;
 
-    todosJogos = todosJogos.map(j => ({
-        ...j,
-        dataApenas: extrairDataRaw(j.data)
-    }));
+    // Filtra pela data de hoje do PC (ex: 10/10/2026)
+    const hojeReal = formatarDataHoje();
+    let jogosExibir = todosJogos.filter(j => j.dataApenas === hojeReal);
 
-    const hojeObj = new Date();
-    hojeObj.setHours(0, 0, 0, 0);
-    const hojeStr = formatarDataHoje();
-
-    // 1. Há jogos hoje?
-    let jogosExibir = todosJogos.filter(j => j.dataApenas === hojeStr);
-
-    // 2. Se não houver jogos hoje, calcula a menor distância de dias
+    // Se não houver jogo hoje, busca a data mais próxima
     if (jogosExibir.length === 0) {
+        const hojeObj = new Date();
+        hojeObj.setHours(0, 0, 0, 0);
+
         const datasUnicas = [...new Set(todosJogos.map(j => j.dataApenas).filter(Boolean))];
         const datasComDiff = datasUnicas.map(str => {
             const obj = converterParaDataObj(str);
@@ -185,8 +203,7 @@ async function carregarTickerHome() {
         datasComDiff.sort((a, b) => a.diffDias - b.diffDias);
 
         if (datasComDiff.length > 0) {
-            const dataMaisProxima = datasComDiff[0].str;
-            jogosExibir = todosJogos.filter(j => j.dataApenas === dataMaisProxima);
+            jogosExibir = todosJogos.filter(j => j.dataApenas === datasComDiff[0].str);
         }
     }
 
@@ -201,7 +218,7 @@ async function carregarTickerHome() {
 
         const ehLiberta = (jogo.torneio === 'libertadores');
         const badgeCor = ehLiberta ? 'color: var(--gold-main);' : 'color: var(--sula-solar);';
-        const badgeTexto = jogo.badgeNome || (ehLiberta ? `LIBERTADORES • ${jogo.chave ? 'CHAVE ' + jogo.chave : 'OITAVAS'}` : `SUDAMERICANA • ${jogo.chave ? 'CHAVE ' + jogo.chave : 'MATA-MATA'}`);
+        const badgeTexto = ehLiberta ? `LIBERTADORES • CHAVE ${jogo.chave}` : `SUDAMERICANA • CHAVE ${jogo.chave}`;
 
         const temPlacar = (jogo.gm !== null && jogo.gm !== undefined && jogo.gv !== null && jogo.gv !== undefined);
         const gmTxt = temPlacar ? jogo.gm : '-';
@@ -215,7 +232,7 @@ async function carregarTickerHome() {
             else if (jogo.gv > jogo.gm) gvVenc = 'vencedor';
         }
 
-        const info = formatarInfoJogo(jogo.data);
+        const info = formatarInfoJogo(jogo.dataTexto);
 
         card.innerHTML = `
             <div class="card-jogo-header">

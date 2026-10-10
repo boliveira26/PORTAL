@@ -1,5 +1,6 @@
 // ==========================================================================
-// assets/js/ticker-rodape.js - TICKER REAL DE JOGOS DO DIA (LIBERTADORES)
+// assets/js/ticker-rodape.js - TICKER OFICIAL DA LIBERTADORES (MATA-MATA)
+// Lê diretamente jogos.infoJogos e dados.sorteio do mata-mata
 // ==========================================================================
 
 const ESCUDOS_LIBERTA_MAPA = {
@@ -59,6 +60,13 @@ function extrairDataRaw(textoData) {
     return match ? match[1] : '';
 }
 
+function converterParaDataObj(dataStr) {
+    if (!dataStr) return null;
+    const partes = dataStr.split('/').map(Number);
+    if (partes.length < 3) return null;
+    return new Date(partes[2], partes[1] - 1, partes[0]);
+}
+
 function extrairHoraEEstadio(textoData) {
     if (!textoData) return { hora: '--:--', estadio: 'ESTÁDIO OFICIAL' };
     const partes = textoData.trim().split(/\s+/);
@@ -77,87 +85,98 @@ async function carregarTickerJogosDoDiaLiberta() {
 
     let todasPartidas = [];
 
-    // 1. Tenta carregar do mata-mata da Libertadores
+    // 1. CARREGA DIRETAMENTE OS CONFRONTOS DO MATA-MATA DA LIBERTADORES
     try {
         const resp = await fetch('assets/data/dados-mata-mata-libertadores.json?v=' + Date.now());
         if (resp.ok) {
             const dados = await resp.json();
             const placaresOficiais = (dados.jogos && dados.jogos.placares) ? dados.jogos.placares : {};
+            const infoJogos = (dados.jogos && dados.jogos.infoJogos) ? dados.jogos.infoJogos : {};
 
-            todasPartidas = (dados.partidasMataMata || []).map(p => {
-                const ehIda = !p.fase || p.fase.includes('IDA');
-                const cardId = `oitavas-${p.chave}-${ehIda ? 'ida' : 'volta'}`;
+            // Constrói as partidas a partir do sorteio e do infoJogos
+            if (dados.sorteio && Array.isArray(dados.sorteio)) {
+                dados.sorteio.forEach(c => {
+                    const letra = c.chave;
+                    const p2 = c.pote2;
+                    const p1 = c.pote1;
 
-                let gm = p.gm;
-                let gv = p.gv;
+                    // Jogo de Ida
+                    const idIda = `oitavas-${letra}-ida`;
+                    const dataIda = infoJogos[idIda] || '';
+                    const placarIda = placaresOficiais[idIda] || { m: null, v: null };
 
-                // Conexão direta com os placares salvos
-                if (placaresOficiais[cardId]) {
-                    const po = placaresOficiais[cardId];
-                    if (po.m !== null && po.m !== undefined) gm = po.m;
-                    if (po.v !== null && po.v !== undefined) gv = po.v;
-                }
+                    if (dataIda && !dataIda.includes('A DEFINIR')) {
+                        todasPartidas.push({
+                            chave: letra,
+                            fase: 'OITAVAS • IDA',
+                            dataTexto: dataIda,
+                            dataApenas: extrairDataRaw(dataIda),
+                            m: p2,
+                            v: p1,
+                            gm: placarIda.m,
+                            gv: placarIda.v
+                        });
+                    }
 
-                return {
-                    ...p,
-                    gm,
-                    gv,
-                    dataApenas: extrairDataRaw(p.data)
-                };
-            });
-        }
-    } catch (e) {}
+                    // Jogo de Volta
+                    const idVolta = `oitavas-${letra}-volta`;
+                    const dataVolta = infoJogos[idVolta] || '';
+                    const placarVolta = placaresOficiais[idVolta] || { m: null, v: null };
 
-    // Fallback fase de grupos caso não haja jogos do mata-mata
-    if (todasPartidas.length === 0) {
-        try {
-            const respG = await fetch('assets/data/dados-fase-de-grupos.json?v=' + Date.now());
-            if (respG.ok) {
-                const dadosG = await respG.json();
-                ['A','B','C','D','E','F','G','H'].forEach(l => {
-                    const g = dadosG[l];
-                    if (g && g.rodadas) {
-                        const r = g.rodadaExibida || 6;
-                        (g.rodadas[r] || []).forEach(p => {
-                            todasPartidas.push({
-                                chave: l,
-                                data: p.data,
-                                m: p.m,
-                                v: p.v,
-                                gm: p.gm,
-                                gv: p.gv,
-                                dataApenas: extrairDataRaw(p.data)
-                            });
+                    if (dataVolta && !dataVolta.includes('A DEFINIR')) {
+                        todasPartidas.push({
+                            chave: letra,
+                            fase: 'OITAVAS • VOLTA',
+                            dataTexto: dataVolta,
+                            dataApenas: extrairDataRaw(dataVolta),
+                            m: p1,
+                            v: p2,
+                            gm: placarVolta.m,
+                            gv: placarVolta.v
                         });
                     }
                 });
             }
-        } catch (e) {}
+        }
+    } catch (e) {
+        console.warn('Erro ao carregar dados do mata-mata da Libertadores:', e);
     }
 
     if (todasPartidas.length === 0) return;
 
-    // 2. Filtra pela DATA DE HOJE real do seu computador (ex: 10/10/2026)
+    // 2. FILTRA RIGOROSAMENTE PELA DATA DE HOJE DO SEU COMPUTADOR (ex: 10/10/2026)
     const hojeReal = formatarDataHoje();
-    let jogosDoDia = todasPartidas.filter(p => p.dataApenas === hojeReal);
+    let jogosExibir = todasPartidas.filter(p => p.dataApenas === hojeReal);
 
-    // Se hoje não houver jogo, exibe as partidas mais recentes
-    if (jogosDoDia.length === 0) {
-        const datasDisponiveis = [...new Set(todasPartidas.map(p => p.dataApenas).filter(Boolean))];
-        if (datasDisponiveis.length > 0) {
-            const ultimaData = datasDisponiveis[datasDisponiveis.length - 1];
-            jogosDoDia = todasPartidas.filter(p => p.dataApenas === ultimaData);
+    // 3. Se hoje não houver jogo, calcula a menor distância de dias
+    if (jogosExibir.length === 0) {
+        const hojeObj = new Date();
+        hojeObj.setHours(0, 0, 0, 0);
+
+        const datasUnicas = [...new Set(todasPartidas.map(p => p.dataApenas).filter(Boolean))];
+        const datasComDiff = datasUnicas.map(str => {
+            const obj = converterParaDataObj(str);
+            const diffDias = obj ? Math.abs((obj.getTime() - hojeObj.getTime()) / (1000 * 60 * 60 * 24)) : Infinity;
+            const ehFuturo = obj ? obj >= hojeObj : false;
+            return { str, obj, diffDias, ehFuturo };
+        }).filter(d => d.obj !== null);
+
+        datasComDiff.sort((a, b) => a.diffDias - b.diffDias);
+
+        if (datasComDiff.length > 0) {
+            const maisProxima = datasComDiff[0];
+            jogosExibir = todasPartidas.filter(p => p.dataApenas === maisProxima.str);
+            const prefixo = maisProxima.ehFuturo ? 'PRÓXIMOS JOGOS' : 'ÚLTIMOS RESULTADOS';
+            if (labelData) labelData.textContent = `${prefixo} • ${maisProxima.str}`;
         }
+    } else {
+        if (labelData) labelData.textContent = `JOGOS DE HOJE • ${hojeReal}`;
     }
 
-    if (jogosDoDia.length === 0) return;
-
-    if (labelData && jogosDoDia[0].dataApenas) {
-        labelData.textContent = `JOGOS DO DIA • ${jogosDoDia[0].dataApenas}`;
-    }
+    if (jogosExibir.length === 0) return;
 
     container.innerHTML = '';
-    const loopDuplicado = [...jogosDoDia, ...jogosDoDia];
+    const loopDuplicado = [...jogosExibir, ...jogosExibir];
 
     loopDuplicado.forEach(jogo => {
         const card = document.createElement('div');
@@ -175,7 +194,7 @@ async function carregarTickerJogosDoDiaLiberta() {
             else if (jogo.gv > jogo.gm) gvVenc = 'vencedor';
         }
 
-        const info = extrairHoraEEstadio(jogo.data);
+        const info = extrairHoraEEstadio(jogo.dataTexto);
 
         card.innerHTML = `
             <div class="info-meta-rodape" style="color: var(--gold-main);">
@@ -206,7 +225,7 @@ async function carregarTickerJogosDoDiaLiberta() {
     });
 }
 
-// Monitor de virada 00:00
+// Monitor de virada às 00:00
 setInterval(() => {
     const diaAgora = new Date().getDate();
     if (diaRegistradoLiberta !== null && diaAgora !== diaRegistradoLiberta) {
