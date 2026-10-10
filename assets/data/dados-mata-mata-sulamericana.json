@@ -181,7 +181,7 @@
       "sula-oitavas-B-ida": { "m": null, "v": null },
       "sula-oitavas-B-volta": { "m": 0, "v": 0 },
       "sula-oitavas-C-ida": { "m": null, "v": null },
-      "sula-oitavas-C-volta": { "m": null, "v": null },
+      "sula-oitavas-C-volta": { "m": 0, "v": 2 },
       "sula-oitavas-D-ida": { "m": null, "v": null },
       "sula-oitavas-D-volta": { "m": 3, "v": 0 },
       "sula-oitavas-E-ida": { "m": null, "v": null },
