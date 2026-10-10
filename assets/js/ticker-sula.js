@@ -64,22 +64,40 @@ async function carregarTickerSulamericana() {
         if (!resp.ok) return;
         const dados = await resp.json();
 
-        // 1. Pega todas as partidas (Ida e Volta) com a data extraída
-        const todasPartidas = (dados.partidasMataMata || []).map(p => ({
-            ...p,
-            dataApenas: extrairDataRaw(p.data)
-        }));
+        const placaresOficiais = (dados.jogos && dados.jogos.placares) ? dados.jogos.placares : {};
+
+        // Mapeia todas as partidas e puxa os placares de jogos.placares
+        const todasPartidas = (dados.partidasMataMata || []).map(p => {
+            const ehIda = !p.fase || p.fase.includes('IDA');
+            const cardId = `sula-oitavas-${p.chave}-${ehIda ? 'ida' : 'volta'}`;
+
+            let gm = p.gm;
+            let gv = p.gv;
+
+            // PONTE DIRETA: Se o placar foi digitado em jogos.placares, puxa dele!
+            if (placaresOficiais[cardId]) {
+                const po = placaresOficiais[cardId];
+                if (po.m !== null && po.m !== undefined) gm = po.m;
+                if (po.v !== null && po.v !== undefined) gv = po.v;
+            }
+
+            return {
+                ...p,
+                gm,
+                gv,
+                dataApenas: extrairDataRaw(p.data)
+            };
+        });
 
         if (todasPartidas.length === 0) return;
 
-        // 2. Busca rigorosamente os jogos da DATA DE HOJE do seu computador
+        // Filtra estritamente pela data de hoje real do sistema
         const hojeReal = formatarDataHoje();
         let jogosDoDia = todasPartidas.filter(p => p.dataApenas === hojeReal);
 
-        // 3. Se hoje não houver jogos marcados, busca as partidas mais recentes já disputadas
+        // Se hoje não houver jogo na tabela, exibe os jogos da data mais recente
         if (jogosDoDia.length === 0) {
             const datasDisponiveis = [...new Set(todasPartidas.map(p => p.dataApenas).filter(Boolean))];
-            // Pega a última data válida com partidas
             const ultimaData = datasDisponiveis[datasDisponiveis.length - 1];
             jogosDoDia = todasPartidas.filter(p => p.dataApenas === ultimaData);
         }
@@ -143,11 +161,10 @@ async function carregarTickerSulamericana() {
     }
 }
 
-// Monitor contínuo de virada de dia às 00:00
+// Monitor de virada 00:00
 setInterval(() => {
     const diaAgora = new Date().getDate();
     if (diaRegistradoSula !== null && diaAgora !== diaRegistradoSula) {
-        console.log('00:00 detectado! Atualizando ticker da Sul-Americana para o novo dia...');
         carregarTickerSulamericana();
     }
 }, 30000);

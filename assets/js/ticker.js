@@ -81,7 +81,7 @@ async function carregarTickerHome() {
 
     let todosJogos = [];
 
-    // Carrega jogos do mata-mata da Sul-Americana e Libertadores
+    // Carrega jogos do mata-mata da Sul-Americana e da Libertadores
     try {
         const [resSula, resLiberta] = await Promise.all([
             fetch('assets/data/dados-mata-mata-sulamericana.json?v=' + Date.now()),
@@ -90,11 +90,39 @@ async function carregarTickerHome() {
 
         if (resSula.ok) {
             const dSula = await resSula.json();
-            if (dSula.partidasMataMata) todosJogos.push(...dSula.partidasMataMata);
+            const placaresSula = (dSula.jogos && dSula.jogos.placares) ? dSula.jogos.placares : {};
+            
+            (dSula.partidasMataMata || []).forEach(p => {
+                const ehIda = !p.fase || p.fase.includes('IDA');
+                const cardId = `sula-oitavas-${p.chave}-${ehIda ? 'ida' : 'volta'}`;
+                let gm = p.gm, gv = p.gv;
+
+                // Conexão direta com jogos.placares
+                if (placaresSula[cardId]) {
+                    if (placaresSula[cardId].m !== null) gm = placaresSula[cardId].m;
+                    if (placaresSula[cardId].v !== null) gv = placaresSula[cardId].v;
+                }
+
+                todosJogos.push({ ...p, gm, gv });
+            });
         }
+
         if (resLiberta.ok) {
             const dLib = await resLiberta.json();
-            if (dLib.partidasMataMata) todosJogos.push(...dLib.partidasMataMata);
+            const placaresLib = (dLib.jogos && dLib.jogos.placares) ? dLib.jogos.placares : {};
+
+            (dLib.partidasMataMata || []).forEach(p => {
+                const ehIda = !p.fase || p.fase.includes('IDA');
+                const cardId = `oitavas-${p.chave}-${ehIda ? 'ida' : 'volta'}`;
+                let gm = p.gm, gv = p.gv;
+
+                if (placaresLib[cardId]) {
+                    if (placaresLib[cardId].m !== null) gm = placaresLib[cardId].m;
+                    if (placaresLib[cardId].v !== null) gv = placaresLib[cardId].v;
+                }
+
+                todosJogos.push({ ...p, gm, gv });
+            });
         }
     } catch (e) {}
 
@@ -208,11 +236,10 @@ async function carregarTickerHome() {
     });
 }
 
-// Monitor contínuo de virada de dia às 00:00
+// Monitor de virada 00:00
 setInterval(() => {
     const diaAgora = new Date().getDate();
     if (diaRegistradoHome !== null && diaAgora !== diaRegistradoHome) {
-        console.log('00:00 detectado na Home! Atualizando para as partidas do novo dia...');
         carregarTickerHome();
     }
 }, 30000);
