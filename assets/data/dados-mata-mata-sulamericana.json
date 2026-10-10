@@ -100,7 +100,9 @@
       "m": "Nacional",
       "v": "River Plate",
       "gm": null,
-      "gv": null
+      "gv": null,
+      "pen_m": 5,
+      "pen_v": 6
     },
     {
       "fase": "OITAVAS • VOLTA",

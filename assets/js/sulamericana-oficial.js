@@ -1,6 +1,5 @@
 // ==========================================================================
-// assets/js/sulamericana-oficial.js - MODO VIEWER MATA-MATA SULA
-// Leitor inteligente com suporte tanto a partidasMataMata quanto a jogos.placares
+// assets/js/sulamericana-oficial.js - VIEWER MATA-MATA SULA COM PÊNALTIS
 // ==========================================================================
 
 const CHAVE_SORTEIO_SULA = 'conmebol_sulamericana_sorteio_oficial_2026';
@@ -27,7 +26,6 @@ async function inicializarTabelaSulamericana() {
             carregarEstruturaOitavasSula(dadosJson.sorteio);
         }
 
-        // Lê placares tanto da lista partidasMataMata quanto do bloco jogos.placares
         carregarPlacaresHibridosSula(dadosJson);
         calcularClassificadosEAvançoSula();
         return;
@@ -66,18 +64,16 @@ function carregarEstruturaOitavasSula(confrontos) {
     });
 }
 
-// LÊ PLACARES TANTO DE partidasMataMata QUANTO DE jogos.placares
+// LÊ PLACARES E PÊNALTIS
 function carregarPlacaresHibridosSula(dadosJson) {
     estadoSulamericana.placares = {};
     estadoSulamericana.infoJogos = {};
 
-    // 1. Lê do bloco jogos se existir
     if (dadosJson.jogos) {
         estadoSulamericana.placares = { ...dadosJson.jogos.placares };
         estadoSulamericana.infoJogos = { ...dadosJson.jogos.infoJogos };
     }
 
-    // 2. Lê da lista de partidasMataMata se você colocou gm/gv lá
     if (dadosJson.partidasMataMata && Array.isArray(dadosJson.partidasMataMata)) {
         dadosJson.partidasMataMata.forEach(partida => {
             const chave = partida.chave;
@@ -87,7 +83,9 @@ function carregarPlacaresHibridosSula(dadosJson) {
             if (partida.gm !== null && partida.gm !== undefined && partida.gv !== null && partida.gv !== undefined) {
                 estadoSulamericana.placares[cardId] = {
                     m: parseInt(partida.gm, 10),
-                    v: parseInt(partida.gv, 10)
+                    v: parseInt(partida.gv, 10),
+                    pen_m: (partida.pen_m !== undefined && partida.pen_m !== null) ? parseInt(partida.pen_m, 10) : null,
+                    pen_v: (partida.pen_v !== undefined && partida.pen_v !== null) ? parseInt(partida.pen_v, 10) : null
                 };
             }
 
@@ -123,6 +121,20 @@ function aplicarPlacaresNaTelaSula() {
             const p = estadoSulamericana.placares[id];
             if (elM && p.m !== null && p.m !== undefined) elM.textContent = p.m;
             if (elV && p.v !== null && p.v !== undefined) elV.textContent = p.v;
+
+            // Renderiza caixa de pênaltis se houver
+            const penBox = document.getElementById(`pen-${id}`);
+            if (penBox) {
+                if (p.pen_m !== null && p.pen_m !== undefined && p.pen_v !== null && p.pen_v !== undefined) {
+                    penBox.style.display = 'flex';
+                    const penMEl = penBox.querySelector('.pen-mandante');
+                    const penVEl = penBox.querySelector('.pen-visitante');
+                    if (penMEl) penMEl.textContent = `(${p.pen_m})`;
+                    if (penVEl) penVEl.textContent = `(${p.pen_v})`;
+                } else {
+                    penBox.style.display = 'none';
+                }
+            }
         }
 
         if (estadoSulamericana.infoJogos && estadoSulamericana.infoJogos[id] && infoEl) {
@@ -131,6 +143,7 @@ function aplicarPlacaresNaTelaSula() {
     });
 }
 
+// CÁLCULO INTELIGENTE DO MATA-MATA (CONSIDERA EMPATE AGREGADO E PÊNALTIS)
 function calcularClassificadosEAvançoSula() {
     const chaves = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
     const vencedoresOitavas = {};
@@ -142,8 +155,8 @@ function calcularClassificadosEAvançoSula() {
         const cardIda = document.getElementById(`sula-oitavas-${letra}-ida`);
         if (!cardIda) return;
 
-        const timeP4 = cardIda.querySelector('.time.mandante').textContent;
-        const timeP3 = cardIda.querySelector('.time.visitante').textContent;
+        const timeP4 = cardIda.querySelector('.time.mandante').textContent; // Mandante da Ida
+        const timeP3 = cardIda.querySelector('.time.visitante').textContent; // Mandante da Volta
 
         if (timeP4.includes('Lugar') || timeP3.includes('Lugar')) return;
 
@@ -161,7 +174,11 @@ function calcularClassificadosEAvançoSula() {
             } else if (golsP4 > golsP3) {
                 vencedoresOitavas[letra] = timeP4;
             } else {
-                vencedoresOitavas[letra] = timeP3;
+                // EMPATE NO AGREGADO! DECISÃO POR PÊNALTIS:
+                if (placarVolta.pen_m !== null && placarVolta.pen_m !== undefined &&
+                    placarVolta.pen_v !== null && placarVolta.pen_v !== undefined) {
+                    vencedoresOitavas[letra] = (placarVolta.pen_m > placarVolta.pen_v) ? timeP3 : timeP4;
+                }
             }
         }
     });
@@ -226,7 +243,12 @@ function calcularVencedorMataMataSula(prefixo) {
 
         if (golsT1 > golsT2) return t1;
         if (golsT2 > golsT1) return t2;
-        return t1;
+        
+        // Se empatou no agregado nas Quartas/Semis:
+        if (placarVolta.pen_m !== null && placarVolta.pen_m !== undefined &&
+            placarVolta.pen_v !== null && placarVolta.pen_v !== undefined) {
+            return (placarVolta.pen_m > placarVolta.pen_v) ? t2 : t1;
+        }
     }
     return null;
 }
