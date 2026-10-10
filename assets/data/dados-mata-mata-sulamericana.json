@@ -172,6 +172,26 @@
       "v": "Deportivo Táchira",
       "gm": null,
       "gv": null
+    },
+    {
+    "fase": "QUARTAS • IDA",
+      "torneio": "sulamericana",
+      "chave": "3",
+      "data": "SEX 09/10/2026 LA BOMBONERA 20:45",
+      "m": "Mirassol",
+      "v": "Peñarol",
+      "gm": null,
+      "gv": null
+    },
+    {
+    "fase": "QUARTAS • VOLTA",
+      "torneio": "sulamericana",
+      "chave": "3",
+      "data": "SEX 09/10/2026 LA BOMBONERA 20:45",
+      "m": "Peñarol",
+      "v": "Mirassol",
+      "gm": null,
+      "gv": null
     }
   ],
 
