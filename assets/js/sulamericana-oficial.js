@@ -1,5 +1,6 @@
 // ==========================================================================
-// assets/js/sulamericana-oficial.js - VIEWER MATA-MATA SULA COM PÊNALTIS
+// assets/js/sulamericana-oficial.js - MODO VIEWER MATA-MATA SULA COM PÊNALTIS
+// Mando de Campo Corrigido: Peñarol decide em casa nas Quartas 3
 // ==========================================================================
 
 const CHAVE_SORTEIO_SULA = 'conmebol_sulamericana_sorteio_oficial_2026';
@@ -64,7 +65,6 @@ function carregarEstruturaOitavasSula(confrontos) {
     });
 }
 
-// LÊ PLACARES E PÊNALTIS
 function carregarPlacaresHibridosSula(dadosJson) {
     estadoSulamericana.placares = {};
     estadoSulamericana.infoJogos = {};
@@ -122,7 +122,6 @@ function aplicarPlacaresNaTelaSula() {
             if (elM && p.m !== null && p.m !== undefined) elM.textContent = p.m;
             if (elV && p.v !== null && p.v !== undefined) elV.textContent = p.v;
 
-            // Renderiza caixa de pênaltis se houver
             const penBox = document.getElementById(`pen-${id}`);
             if (penBox) {
                 if (p.pen_m !== null && p.pen_m !== undefined && p.pen_v !== null && p.pen_v !== undefined) {
@@ -143,7 +142,6 @@ function aplicarPlacaresNaTelaSula() {
     });
 }
 
-// CÁLCULO INTELIGENTE DO MATA-MATA (CONSIDERA EMPATE AGREGADO E PÊNALTIS)
 function calcularClassificadosEAvançoSula() {
     const chaves = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
     const vencedoresOitavas = {};
@@ -174,7 +172,7 @@ function calcularClassificadosEAvançoSula() {
             } else if (golsP4 > golsP3) {
                 vencedoresOitavas[letra] = timeP4;
             } else {
-                // EMPATE NO AGREGADO! DECISÃO POR PÊNALTIS:
+                // Empate no agregado: decide nos pênaltis
                 if (placarVolta.pen_m !== null && placarVolta.pen_m !== undefined &&
                     placarVolta.pen_v !== null && placarVolta.pen_v !== undefined) {
                     vencedoresOitavas[letra] = (placarVolta.pen_m > placarVolta.pen_v) ? timeP3 : timeP4;
@@ -183,11 +181,19 @@ function calcularClassificadosEAvançoSula() {
         }
     });
 
+    // QUARTAS 1: Palmeiras (C) decide a volta contra River Plate (A)
     atualizarConfrontoMataMataSula('sula-quartas-1', vencedoresOitavas['A'] || 'Vencedor A', vencedoresOitavas['C'] || 'Vencedor C');
+    
+    // QUARTAS 2: Bolívar (G) decide a volta contra Ind. del Valle (E)
     atualizarConfrontoMataMataSula('sula-quartas-2', vencedoresOitavas['E'] || 'Vencedor E', vencedoresOitavas['G'] || 'Vencedor G');
-    atualizarConfrontoMataMataSula('sula-quartas-3', vencedoresOitavas['B'] || 'Vencedor B', vencedoresOitavas['D'] || 'Vencedor D');
+    
+    // QUARTAS 3: CORRIGIDO! Mirassol (D) manda a ida | Peñarol (B) decide a volta em casa!
+    atualizarConfrontoMataMataSula('sula-quartas-3', vencedoresOitavas['D'] || 'Vencedor D', vencedoresOitavas['B'] || 'Vencedor B');
+    
+    // QUARTAS 4: Boca Juniors (H) decide a volta contra Libertad (F)
     atualizarConfrontoMataMataSula('sula-quartas-4', vencedoresOitavas['F'] || 'Vencedor F', vencedoresOitavas['H'] || 'Vencedor H');
 
+    // CÁLCULO DAS SEMIFINAIS
     const vQ1 = calcularVencedorMataMataSula('sula-quartas-1');
     const vQ2 = calcularVencedorMataMataSula('sula-quartas-2');
     const vQ3 = calcularVencedorMataMataSula('sula-quartas-3');
@@ -196,6 +202,7 @@ function calcularClassificadosEAvançoSula() {
     atualizarConfrontoMataMataSula('sula-semi-1', vQ1 || 'Vencedor Q1', vQ2 || 'Vencedor Q2');
     atualizarConfrontoMataMataSula('sula-semi-2', vQ3 || 'Vencedor Q3', vQ4 || 'Vencedor Q4');
 
+    // FINAL
     const vS1 = calcularVencedorMataMataSula('sula-semi-1');
     const vS2 = calcularVencedorMataMataSula('sula-semi-2');
 
@@ -244,7 +251,6 @@ function calcularVencedorMataMataSula(prefixo) {
         if (golsT1 > golsT2) return t1;
         if (golsT2 > golsT1) return t2;
         
-        // Se empatou no agregado nas Quartas/Semis:
         if (placarVolta.pen_m !== null && placarVolta.pen_m !== undefined &&
             placarVolta.pen_v !== null && placarVolta.pen_v !== undefined) {
             return (placarVolta.pen_m > placarVolta.pen_v) ? t2 : t1;
