@@ -92,15 +92,14 @@
       "gm": 0,
       "gv": 2
     },
-        {
+    {
       "fase": "OITAVAS • VOLTA",
-      "torneio": "sulamericana",
       "chave": "A",
       "data": "QUI 08/10/2026 GRAN PARQUE CENTRAL 21:30",
       "m": "Nacional",
       "v": "River Plate",
-      "gm": null,
-      "gv": null,
+      "gm": 3,
+      "gv": 4,
       "pen_m": 5,
       "pen_v": 6
     },
