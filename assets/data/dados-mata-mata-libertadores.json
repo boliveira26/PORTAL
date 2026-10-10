@@ -177,7 +177,7 @@
     "placares": {
       "oitavas-A-ida": { "m": null, "v": null },
       "oitavas-A-volta": { "m": null, "v": null },
-      "oitavas-B-ida": { "m": null, "v": null },
+      "oitavas-B-ida": { "m": 2, "v": 1 },
       "oitavas-B-volta": { "m": null, "v": null },
       "oitavas-C-ida": { "m": null, "v": null },
       "oitavas-C-volta": { "m": null, "v": null },
