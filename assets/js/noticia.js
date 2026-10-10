@@ -7,49 +7,68 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function carregarMateriaCompleta() {
-    // 1. Pega o ID da notícia na URL (ex: noticia.html?id=river-humilhado-crb)
     const urlParams = new URLSearchParams(window.location.search);
     const idNoticia = urlParams.get('id');
 
-    fetch('assets/data/noticias.json?v=' + Date.now())
-        .then(response => {
-            if (!response.ok) throw new Error('Não foi possível carregar noticias.json');
-            return response.json();
-        })
-        .then(data => {
-            let noticiaSelecionada = null;
+    // Carrega ambos os arquivos JSON (Libertadores e Sul-Americana)
+    Promise.all([
+        fetch('assets/data/noticias.json?v=' + Date.now()).then(r => r.ok ? r.json() : null).catch(() => null),
+        fetch('assets/data/noticias-sulamericana.json?v=' + Date.now()).then(r => r.ok ? r.json() : null).catch(() => null)
+    ])
+    .then(([dataLiberta, dataSula]) => {
+        let noticiaSelecionada = null;
+        let listaRelacionadas = [];
 
-            // Procura a notícia correspondente na lista
-            if (idNoticia && data.ultimas_noticias) {
-                noticiaSelecionada = data.ultimas_noticias.find(n => n.id === idNoticia);
+        // 1. Procura primeiro no noticias-sulamericana.json
+        if (dataSula) {
+            if (dataSula.manchete_hero && (dataSula.manchete_hero.id === idNoticia || idNoticia === 'manchete-principal-sula')) {
+                noticiaSelecionada = dataSula.manchete_hero;
+            } else if (dataSula.ultimas_noticias) {
+                noticiaSelecionada = dataSula.ultimas_noticias.find(n => n.id === idNoticia);
             }
-
-            // Fallback: se não achar pelo ID ou não tiver ID na URL, pega a manchete principal ou a primeira
-            if (!noticiaSelecionada) {
-                if (idNoticia === 'manchete-principal' && data.manchete_hero) {
-                    noticiaSelecionada = data.manchete_hero;
-                } else if (data.ultimas_noticias && data.ultimas_noticias.length > 0) {
-                    noticiaSelecionada = data.ultimas_noticias[0];
-                }
-            }
-
             if (noticiaSelecionada) {
-                renderizarArtigo(noticiaSelecionada);
-                renderizarSidebarRelacionadas(data.ultimas_noticias, noticiaSelecionada.id);
+                listaRelacionadas = dataSula.ultimas_noticias || [];
             }
-        })
-        .catch(error => {
-            console.error('Erro ao renderizar matéria:', error);
-            const tituloEl = document.getElementById('artigo-titulo');
-            if (tituloEl) tituloEl.textContent = 'Matéria não encontrada.';
-        });
+        }
+
+        // 2. Se não achou na Sula, procura no noticias.json (Libertadores)
+        if (!noticiaSelecionada && dataLiberta) {
+            if (dataLiberta.manchete_hero && (dataLiberta.manchete_hero.id === idNoticia || idNoticia === 'manchete-principal')) {
+                noticiaSelecionada = dataLiberta.manchete_hero;
+            } else if (dataLiberta.ultimas_noticias) {
+                noticiaSelecionada = dataLiberta.ultimas_noticias.find(n => n.id === idNoticia);
+            }
+            if (noticiaSelecionada) {
+                listaRelacionadas = dataLiberta.ultimas_noticias || [];
+            }
+        }
+
+        // 3. Fallback se não encontrar por ID
+        if (!noticiaSelecionada) {
+            if (dataSula && dataSula.manchete_hero) {
+                noticiaSelecionada = dataSula.manchete_hero;
+                listaRelacionadas = dataSula.ultimas_noticias || [];
+            } else if (dataLiberta && dataLiberta.manchete_hero) {
+                noticiaSelecionada = dataLiberta.manchete_hero;
+                listaRelacionadas = dataLiberta.ultimas_noticias || [];
+            }
+        }
+
+        if (noticiaSelecionada) {
+            renderizarArtigo(noticiaSelecionada);
+            renderizarSidebarRelacionadas(listaRelacionadas, noticiaSelecionada.id);
+        }
+    })
+    .catch(error => {
+        console.error('Erro ao renderizar matéria:', error);
+        const tituloEl = document.getElementById('artigo-titulo');
+        if (tituloEl) tituloEl.textContent = 'Matéria não encontrada.';
+    });
 }
 
 function renderizarArtigo(noticia) {
-    // 1. Título da Aba
     document.title = `${noticia.titulo} | CONMEBOL PES`;
     
-    // 2. Elementos da Matéria
     const tagEl = document.getElementById('artigo-tag');
     const tituloEl = document.getElementById('artigo-titulo');
     const subtituloEl = document.getElementById('artigo-subtitulo');
@@ -60,14 +79,14 @@ function renderizarArtigo(noticia) {
     const corpoEl = document.getElementById('artigo-corpo-texto');
 
     if (tagEl) {
-        tagEl.textContent = noticia.categoria || 'CONMEBOL LIBERTADORES';
-        tagEl.className = `tag-categoria-badge ${noticia.tipo_tag || 'ouro'}`;
+        tagEl.textContent = noticia.categoria || 'CONMEBOL SUDAMERICANA';
+        tagEl.className = `tag-categoria-badge ${noticia.tipo_tag || 'azul'}`;
     }
 
     if (tituloEl) tituloEl.textContent = noticia.titulo;
     if (subtituloEl) subtituloEl.textContent = noticia.resumo || '';
     if (autorEl) autorEl.textContent = noticia.autor || 'Por Redação PES Media Hub';
-    if (dataEl) dataEl.textContent = noticia.data_publicacao || '30/09/2026';
+    if (dataEl) dataEl.textContent = noticia.data_publicacao || '09/10/2026';
 
     if (imagemEl) {
         imagemEl.src = noticia.imagem;
@@ -78,28 +97,19 @@ function renderizarArtigo(noticia) {
         legendaEl.textContent = noticia.legenda_foto;
     }
 
-    // 3. Parágrafos do Texto Desenvolvido
     if (corpoEl) {
         if (noticia.corpo_materia && Array.isArray(noticia.corpo_materia)) {
             corpoEl.innerHTML = noticia.corpo_materia.map(p => {
                 if (p.startsWith('>')) {
-                    // Renderiza como citação (Quote)
                     return `<blockquote>${p.replace('>', '').trim()}</blockquote>`;
                 }
                 return `<p>${p}</p>`;
             }).join('');
         } else {
-            // Se não houver parágrafos cadastrados ainda, usa o resumo como primeiro parágrafo
-            corpoEl.innerHTML = `
-                <p>${noticia.resumo}</p>
-                <p>A partida movimentou a rodada continental do eFootball PES, trazendo grandes jogadas, tensão tática e mudanças decisivas na tabela de classificação geral da competição.</p>
-                <blockquote>"Foi uma partida decidida nos detalhes. A equipe manteve o foco tático e garantiu o resultado fundamental nesta etapa decisiva da Copa."</blockquote>
-                <p>Com esse resultado, os clubes agora voltam suas atenções para os próximos desafios na corrida pela Glória Eterna e pela Grande Conquista.</p>
-            `;
+            corpoEl.innerHTML = `<p>${noticia.resumo}</p>`;
         }
     }
 
-    // 4. Ficha Técnica (Opcional)
     const fichaBox = document.getElementById('artigo-ficha-tecnica');
     const fichaConteudo = document.getElementById('artigo-ficha-conteudo');
     if (fichaBox && fichaConteudo) {
@@ -116,12 +126,10 @@ function renderizarArtigo(noticia) {
     }
 }
 
-// Renderiza a barra lateral com outras notícias
 function renderizarSidebarRelacionadas(todasNoticias, idAtual) {
     const container = document.getElementById('lista-noticias-relacionadas');
     if (!container || !todasNoticias) return;
 
-    // Filtra para não repetir a notícia que já está sendo lida
     const outras = todasNoticias.filter(n => n.id !== idAtual).slice(0, 5);
 
     container.innerHTML = outras.map(item => `

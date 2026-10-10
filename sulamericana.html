@@ -78,67 +78,14 @@
         </div>
     </section>
 
-    <!-- 5. SHOWCASE DE NOTÍCIAS (TODAS CLICÁVEIS) -->
+<!-- 5. SHOWCASE DE NOTÍCIAS (DINÂMICO) -->
     <main class="container-showcase-noticias">
         <section class="grid-layout-noticias">
-            
-            <!-- DESTAQUE PRINCIPAL (ESQUERDA - CLICÁVEL) -->
-            <article class="manchete-hero-grande" onclick="location.href='noticia.html?id=sorteio-confrontos-completos'" title="Clique para ler a matéria completa">
-                <div class="imagem-hero-bg" style="background-image: url('https://img.band.com.br/image/2025/10/10/trofeu-da-sul-americana-13580.jpg');">
-                    <div class="mascara-protecao-sula"></div>
-                    <div class="painel-conteudo-hero">
-                        <span class="tag-secao-azul">OITAVAS DE FINAL DEFINIDAS</span>
-                        <h2>River Plate x Nacional e Palmeiras na Bolívia: o mata-mata mais pesado da história</h2>
-                        <p class="resumo-hero-txt">Confira os 8 confrontos sorteados pela CONMEBOL para as Oitavas de Final da Grande Conquista no PES.</p>
-                    </div>
-                </div>
-            </article>
+            <!-- DESTAQUE PRINCIPAL -->
+            <article class="manchete-hero-grande" id="hero-sula-destaque"></article>
 
-            <!-- 4 NOTÍCIAS HORIZONTAIS EMPILHADAS (DIREITA - CLICÁVEIS) -->
-            <aside class="coluna-noticias-empilhadas">
-                
-                <!-- Notícia 1 -->
-                <article class="card-noticia-item" onclick="location.href='noticia.html?id=sorteio-confrontos-completos'" title="Clique para ler a matéria completa">
-                    <div class="thumb-quadrada" style="background-image: url('https://fimdejogo.com.br/wp-content/uploads/2020/09/libertadores-sudamericana-2_1.jpg');"></div>
-                    <div class="info-noticia-conteudo">
-                        <span class="categoria-azul">SORTEIO OFICIAL</span>
-                        <h4>Chaveamento completo das Oitavas de Final da Sul-Americana</h4>
-                        <span class="data-noticia-txt">Hoje &bull; Oficial</span>
-                    </div>
-                </article>
-
-                <!-- Notícia 2 -->
-                <article class="card-noticia-item" onclick="location.href='noticia.html?id=river-derrotado-crb'" title="Clique para ler a matéria completa">
-                    <div class="thumb-quadrada" style="background-image: url('https://lncimg.lance.com.br/cdn-cgi/image/width=1200,height=630,quality=75,fit=cover,format=webp/uploads/2026/08/Eduardo-Coudet-comandando-o-River-Plate-na-eliminacao-nas-oitavas-de-final-da-Sul-Americana-scaled-aspect-ratio-512-320.jpg');"></div>
-                    <div class="info-noticia-conteudo">
-                        <span class="categoria-azul">MATA-MATA</span>
-                        <h4>River Plate encara o tradicional Nacional do Uruguai na ida</h4>
-                        <span class="data-noticia-txt">Monumental de Núñez</span>
-                    </div>
-                </article>
-
-                <!-- Notícia 3 -->
-                <article class="card-noticia-item" onclick="location.href='noticia.html?id=criterios-desempate'" title="Clique para ler a matéria completa">
-                    <div class="thumb-quadrada" style="background-image: url('https://conteudo.imguol.com.br/c/esporte/bb/2024/03/18/a-conmebol-e-a-puma-apresentaram-a-nova-versao-da-bola-cumbre-para-a-copa-libertadores-e-sul-americana-1710803823080_v2_1x1.jpg');"></div>
-                    <div class="info-noticia-conteudo">
-                        <span class="categoria-azul">REGULAMENTO</span>
-                        <h4>Mata-mata sem gol qualificado: decisão por pênaltis em caso de empate</h4>
-                        <span class="data-noticia-txt">Critérios Oficiais</span>
-                    </div>
-                </article>
-
-                <!-- Notícia 4 -->
-                <article class="card-noticia-item" onclick="location.href='noticia.html?id=boca-eliminado-barcelona'" title="Clique para ler a matéria completa">
-                    <div class="thumb-quadrada" style="background-image: url('https://s2-ge.glbimg.com/ASG6A9GRp8MhZ5NrRF-kmm1he1g=/0x0:2048x1366/984x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_bc8228b6673f488aa253bbcb03c80ec5/internal_photos/bs/2025/2/Q/AYeiv4QwGQxT7tOMuy2Q/2025-02-26t025545z-866675613-up1el2q084wa2-rtrmadp-3-soccer-libertadores-boj-ali-report.jpg');"></div>
-                    <div class="info-noticia-conteudo">
-                        <span class="categoria-azul">MANDANTE</span>
-                        <h4>Boca Juniors decide confronto contra o Deportivo Táchira na Bombonera</h4>
-                        <span class="data-noticia-txt">Pote 1 &bull; Jogo de Volta</span>
-                    </div>
-                </article>
-
-            </aside>
-
+            <!-- 4 NOTÍCIAS EMPILHADAS -->
+            <aside class="coluna-noticias-empilhadas" id="grid-noticias-sula"></aside>
         </section>
     </main>
 
@@ -187,4 +134,9 @@
     <script src="assets/js/ticker-sula.js?v=100"></script>
     <script src="assets/js/audio-player.js?v=32"></script>
 </body>
+
+<script src="assets/js/ticker-sula.js?v=100"></script>
+    <script src="assets/js/sula-portal.js?v=1"></script> <!-- Adicionar este -->
+    <script src="assets/js/audio-player.js?v=32"></script>
+    
 </html>
