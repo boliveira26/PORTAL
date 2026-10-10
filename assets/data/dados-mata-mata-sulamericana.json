@@ -305,7 +305,16 @@
       "sula-oitavas-G-volta": "SEX 09/10/2026 HERNANDO SILES 20:00",
       "sula-oitavas-H-ida": "SEG 05/10/2026 POLIDEPORTIVO PUEBLO NUEVO 20:45",
       "sula-oitavas-H-volta": "SEX 09/10/2026 LA BOMBONERA 20:45",
-      "sula-final-jogo": "SÁB 24/10/2026 GRAN PARQUE CENTRAL 17:00"
+      "sula-final-jogo": "SÁB 24/10/2026 GRAN PARQUE CENTRAL 17:00",
+
+      "sula-quartas-1-ida": "SEG 12/10/2026 MONUMENTAL DE NÚÑEZ 21:30",
+      "sula-quartas-1-volta": "QUI 15/10/2026 NUBANK PARQUE 21:00",
+      "sula-quartas-2-ida": "SEG 12/10/2026 BANCO GUAYAQUIL 19:15",
+      "sula-quartas-2-volta": "QUI 15/10/2026 HERNANDO SILES 19:00",
+      "sula-quartas-3-ida": "SEG 12/10/2026 MAIÃO 20:00",
+      "sula-quartas-3-volta": "QUI 15/10/2026 CAMPEÓN DEL SIGLO 19:45",
+      "sula-quartas-4-ida": "SEG 12/10/2026 DEFENSORES DEL CHACO 20:45",
+      "sula-quartas-4-volta": "QUI 15/10/2026 LA BOMBONERA 20:30"
     }
   }
 }
