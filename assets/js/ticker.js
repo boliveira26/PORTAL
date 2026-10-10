@@ -81,7 +81,7 @@ async function carregarTickerHome() {
 
     let todosJogos = [];
 
-    // 1. Tenta carregar partidas do mata-mata da Sul-Americana e da Libertadores
+    // Carrega jogos do mata-mata da Sul-Americana e Libertadores
     try {
         const [resSula, resLiberta] = await Promise.all([
             fetch('assets/data/dados-mata-mata-sulamericana.json?v=' + Date.now()),
@@ -98,7 +98,7 @@ async function carregarTickerHome() {
         }
     } catch (e) {}
 
-    // 2. Se não houver partidas no mata-mata, busca da fase de grupos como fallback
+    // Fallback fase de grupos caso o mata-mata ainda não tenha começado
     if (todosJogos.length === 0) {
         try {
             const resp = await fetch('assets/data/dados-fase-de-grupos.json?v=' + Date.now());
@@ -132,15 +132,16 @@ async function carregarTickerHome() {
         dataApenas: extrairDataRaw(j.data)
     }));
 
-    // 3. Filtra pelas partidas da data de hoje
-    const dataHojeStr = formatarDataHoje();
-    let jogosExibir = todosJogos.filter(j => j.dataApenas === dataHojeStr);
+    // Filtra rigorosamente pela data de hoje do seu computador
+    const hojeReal = formatarDataHoje();
+    let jogosExibir = todosJogos.filter(j => j.dataApenas === hojeReal);
 
-    // Se hoje não houver jogo marcado, exibe as partidas mais próximas
+    // Se hoje não houver jogo marcado, busca a data mais recente com partidas
     if (jogosExibir.length === 0) {
         const datasUnicas = [...new Set(todosJogos.map(j => j.dataApenas).filter(Boolean))];
         if (datasUnicas.length > 0) {
-            jogosExibir = todosJogos.filter(j => j.dataApenas === datasUnicas[0]);
+            const ultimaData = datasUnicas[datasUnicas.length - 1];
+            jogosExibir = todosJogos.filter(j => j.dataApenas === ultimaData);
         }
     }
 
@@ -155,7 +156,7 @@ async function carregarTickerHome() {
 
         const ehLiberta = (jogo.torneio === 'libertadores');
         const badgeCor = ehLiberta ? 'color: var(--gold-main);' : 'color: var(--sula-solar);';
-        const badgeTexto = jogo.badgeNome || (ehLiberta ? `LIBERTADORES • ${jogo.chave ? 'CHAVE ' + jogo.chave : 'OITAVAS'}` : `SUDAMERICANA • CHAVE ${jogo.chave || 'OITAVAS'}`);
+        const badgeTexto = jogo.badgeNome || (ehLiberta ? `LIBERTADORES • CHAVE ${jogo.chave || 'OITAVAS'}` : `SUDAMERICANA • CHAVE ${jogo.chave || 'OITAVAS'}`);
 
         const temPlacar = (jogo.gm !== null && jogo.gm !== undefined && jogo.gv !== null && jogo.gv !== undefined);
         const gmTxt = temPlacar ? jogo.gm : '-';
@@ -163,11 +164,10 @@ async function carregarTickerHome() {
         const statusTxt = temPlacar ? 'ENCERRADO' : 'A JOGAR';
         const statusClasse = temPlacar ? 'encerrado' : 'proximo';
 
-        let gmVencedor = '';
-        let gvVencedor = '';
+        let gmVenc = '', gvVenc = '';
         if (temPlacar) {
-            if (jogo.gm > jogo.gv) gmVencedor = 'vencedor';
-            else if (jogo.gv > jogo.gm) gvVencedor = 'vencedor';
+            if (jogo.gm > jogo.gv) gmVenc = 'vencedor';
+            else if (jogo.gv > jogo.gm) gvVenc = 'vencedor';
         }
 
         const info = formatarInfoJogo(jogo.data);
@@ -184,7 +184,7 @@ async function carregarTickerHome() {
                         <img class="escudo-time-ticker" src="${obterEscudoTicker(jogo.m)}" alt="${jogo.m}" onerror="this.style.opacity='0.2'">
                         <span class="nome-time-ticker" title="${jogo.m}">${jogo.m}</span>
                     </div>
-                    <span class="gols-time-ticker ${gmVencedor}">${gmTxt}</span>
+                    <span class="gols-time-ticker ${gmVenc}">${gmTxt}</span>
                 </div>
 
                 <div class="linha-time-ticker">
@@ -192,7 +192,7 @@ async function carregarTickerHome() {
                         <img class="escudo-time-ticker" src="${obterEscudoTicker(jogo.v)}" alt="${jogo.v}" onerror="this.style.opacity='0.2'">
                         <span class="nome-time-ticker" title="${jogo.v}">${jogo.v}</span>
                     </div>
-                    <span class="gols-time-ticker ${gvVencedor}">${gvTxt}</span>
+                    <span class="gols-time-ticker ${gvVenc}">${gvTxt}</span>
                 </div>
             </div>
 
@@ -212,7 +212,7 @@ async function carregarTickerHome() {
 setInterval(() => {
     const diaAgora = new Date().getDate();
     if (diaRegistradoHome !== null && diaAgora !== diaRegistradoHome) {
-        console.log('Virada de dia detectada no ticker Home. Atualizando...');
+        console.log('00:00 detectado na Home! Atualizando para as partidas do novo dia...');
         carregarTickerHome();
     }
 }, 30000);
