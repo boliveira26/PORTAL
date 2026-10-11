@@ -224,7 +224,22 @@
         "Foram 13 finalizações do Fluminense, mas nenhuma delas resultou em gol. O Universitario teve apenas 2 finalizações, mas conseguiu segurar o empate.",
         "Agora, eles farão o jogo de volta em Lima, no estádio Monumental, e o Fluminense precisará vencer para avançar às Quartas de Final da CONMEBOL Libertadores. O jogo de volta acontece na próxima terça-feira, 13/10, às 20h00."
       ]
-
+    },
+    {
+      "id": "bragantino-empata-bahia",
+      "categoria": "LIBERTADORES",
+      "tipo_tag": "ouro",
+      "titulo": "Red Bull Bragantino e Bahia empatam em 1 a 1 em Bragança Paulista",
+      "resumo": "Duelo brasileiro das Oitavas de Final da Libertadores termina empatado e decisão da vaga será na Fonte Nova.",
+      "autor": "Por Redação PES Media Hub",
+      "data_publicacao": "10/10/2026 21:15",
+      "imagem": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHBdV94-yEQOOGpAckL_k5g7WEbWGciMdkMtRCoFDsJNwO5I4YdsON10PN&s=10",
+      "legenda_foto": "Bragantino foi melhor, mas não conseguiu vencer o Bahia",
+      "corpo_materia":[
+        "Red Bull Bragantino e Bahia ficaram no empate em 1 a 1 na noite deste sábado, em Bragança Paulista, no primeiro jogo das Oitavas de Final da CONMEBOL Libertadores.",
+        "O Massa Bruta foi melhor no todo dos noventa minutos, mas parou na defesa bem postada da equipe Tricolor. Os dois gols saíram na reta final do primeiro tempo. Lucas Barbosa inaugurou o placar para o Bragantino aos 37 minutos, e Willian José empatou para os tricolores aos 44 minutos.",
+        "Com esse resultado, uma vitória simples de qualquer lado garante a classificação às Quartas de Final. O jogo de volta será na próxima terça-feira, 13/10, às 20h45, na Arena Fonte Nova, em Salvador."
+      ]
     }
   ]
 }
