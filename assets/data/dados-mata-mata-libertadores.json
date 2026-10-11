@@ -187,7 +187,7 @@
       "oitavas-E-volta": { "m": null, "v": null },
       "oitavas-F-ida": { "m": 1, "v": 1 },
       "oitavas-F-volta": { "m": null, "v": null },
-      "oitavas-G-ida": { "m": null, "v": null },
+      "oitavas-G-ida": { "m": 3, "v": 0 },
       "oitavas-G-volta": { "m": null, "v": null },
       "oitavas-H-ida": { "m": null, "v": null },
       "oitavas-H-volta": { "m": null, "v": null },
