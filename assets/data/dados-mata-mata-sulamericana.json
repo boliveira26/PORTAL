@@ -284,7 +284,7 @@
       "sula-quartas-3-ida": { "m": 0, "v": 0 },
       "sula-quartas-3-volta": { "m": null, "v": null },
 
-      "sula-quartas-4-ida": { "m": null, "v": null },
+      "sula-quartas-4-ida": { "m": 3, "v": 0 },
       "sula-quartas-4-volta": { "m": null, "v": null },
 
       "sula-semi-1-ida": { "m": null, "v": null },
