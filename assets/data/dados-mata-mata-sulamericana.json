@@ -274,18 +274,24 @@
       "sula-oitavas-G-volta": { "m": 3, "v": 2 },
       "sula-oitavas-H-ida": { "m": null, "v": null },
       "sula-oitavas-H-volta": { "m": 4, "v": 0 },
+
       "sula-quartas-1-ida": { "m": null, "v": null },
       "sula-quartas-1-volta": { "m": null, "v": null },
-      "sula-quartas-2-ida": { "m": null, "v": null },
+
+      "sula-quartas-2-ida": { "m": 1, "v": 3 },
       "sula-quartas-2-volta": { "m": null, "v": null },
+
       "sula-quartas-3-ida": { "m": null, "v": null },
       "sula-quartas-3-volta": { "m": null, "v": null },
+
       "sula-quartas-4-ida": { "m": null, "v": null },
       "sula-quartas-4-volta": { "m": null, "v": null },
+
       "sula-semi-1-ida": { "m": null, "v": null },
       "sula-semi-1-volta": { "m": null, "v": null },
       "sula-semi-2-ida": { "m": null, "v": null },
       "sula-semi-2-volta": { "m": null, "v": null },
+
       "sula-final-jogo": { "m": null, "v": null }
     },
     "infoJogos": {
