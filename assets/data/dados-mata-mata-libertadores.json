@@ -175,7 +175,7 @@
   ],
   "jogos": {
     "placares": {
-      "oitavas-A-ida": { "m": null, "v": null },
+      "oitavas-A-ida": { "m": 2, "v": 0 },
       "oitavas-A-volta": { "m": null, "v": null },
       "oitavas-B-ida": { "m": 2, "v": 1 },
       "oitavas-B-volta": { "m": null, "v": null },
@@ -189,7 +189,7 @@
       "oitavas-F-volta": { "m": null, "v": null },
       "oitavas-G-ida": { "m": 3, "v": 0 },
       "oitavas-G-volta": { "m": null, "v": null },
-      "oitavas-H-ida": { "m": null, "v": null },
+      "oitavas-H-ida": { "m": 1, "v": 2 },
       "oitavas-H-volta": { "m": null, "v": null },
       "quartas-1-ida": { "m": null, "v": null },
       "quartas-1-volta": { "m": null, "v": null },
